@@ -6,7 +6,7 @@
     <name>Nepxion Polaris Platform</name>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.0</version>
     <description>Nepxion Polaris is an enterprise-level platform</description>
     <url>http://www.nepxion.com</url>
 
@@ -16,16 +16,10 @@
     </modules>
 
     <properties>
-        <discovery.version>6.0.6</discovery.version>
-        <banner.version>1.0.2</banner.version>
-
-        <opentracing.skywalking.version>8.0.1</opentracing.skywalking.version>
-        <apollo.client.version>1.6.0</apollo.client.version>
-
         <spring.cloud.version>Hoxton.SR6</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
         <spring.boot.version>2.2.8.RELEASE</spring.boot.version>
-
+        <nepxion.discovery.version>6.0.6</nepxion.discovery.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -64,6 +58,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery</artifactId>
+                <version>${nepxion.discovery.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
