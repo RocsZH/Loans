@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>polaris-component</artifactId>
+    <name>Nepxion Polaris Component</name>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.nepxion</groupId>
+        <artifactId>polaris-platform</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>polaris-component-apollo</module>
+        <module>polaris-component-banner</module>
+        <module>polaris-component-common</module>
+        <module>polaris-component-consul</module>
+        <module>polaris-component-eureka</module>
+        <module>polaris-component-gray</module>
+        <module>polaris-component-nacos</module>
+        <module>polaris-component-opentracing</module>
+        <module>polaris-component-sentinel</module>
+        <module>polaris-component-skywalking</module>
+        <module>polaris-component-test</module>
+    </modules>
+</project>
