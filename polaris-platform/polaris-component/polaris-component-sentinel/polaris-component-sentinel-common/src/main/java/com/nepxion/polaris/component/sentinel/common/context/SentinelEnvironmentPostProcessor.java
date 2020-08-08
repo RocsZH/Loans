@@ -36,9 +36,9 @@ public class SentinelEnvironmentPostProcessor extends PolarisEnvProcessor implem
 
             System.setProperty(PolarisConstant.SENTINEL_VERSION_NAME, PolarisConstant.SENTINEL_VERSION_VALUE);
         } catch (Exception e) {
-            LOG.error("Initialize Sentinel environment failed", e.getMessage());
+            LOG.error("Initialize Sentinel environment failed", e);
 
-            throw new SentinelException(e.getMessage());
+            throw new SentinelException(e);
         }
     }
 }
