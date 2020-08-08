@@ -27,6 +27,8 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String SKY_WALKING_AGENT_VERSION_NAME = "polaris.skywalking.agent.version";
 
+    public static final String GRAY_NAME = "gray";
+
     public static final String SERVER = "Server";
     public static final String APPLICATION = "Application";
     public static final String VERSION = "Version";
