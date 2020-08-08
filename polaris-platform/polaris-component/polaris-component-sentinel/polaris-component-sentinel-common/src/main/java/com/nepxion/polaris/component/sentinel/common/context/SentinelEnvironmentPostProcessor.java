@@ -30,8 +30,8 @@ public class SentinelEnvironmentPostProcessor extends PolarisEnvProcessor implem
             if (StringUtils.isBlank(env)) {
                 env = PolarisEnv.DEV.getEnv();
             }
-            loadComponentEnv(PolarisConstant.SENTINEL_NAME, env);
 
+            loadComponentEnv(PolarisConstant.SENTINEL_NAME, env);
             loadComponentConfig(PolarisConstant.SENTINEL_NAME);
 
             System.setProperty(PolarisConstant.SENTINEL_VERSION_NAME, PolarisConstant.SENTINEL_VERSION_VALUE);
