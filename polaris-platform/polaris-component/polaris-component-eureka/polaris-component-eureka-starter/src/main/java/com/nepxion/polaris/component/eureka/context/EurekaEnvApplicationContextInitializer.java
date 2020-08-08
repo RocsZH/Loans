@@ -18,6 +18,8 @@ public class EurekaEnvApplicationContextInitializer extends PolarisEnvProcessor 
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
+                LOG.info("Initialize Eureka env...");
+
                 String env = getEnv();
 
                 loadEnvProperties(PolarisConstant.EUREKA_NAME, env);
