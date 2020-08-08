@@ -21,13 +21,13 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-nacos-client-starter</artifactId>
+            <artifactId>polaris-component-nacos-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-apollo-client-starter</artifactId>
+            <artifactId>polaris-component-apollo-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 

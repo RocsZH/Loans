@@ -13,6 +13,6 @@
     </parent>
 
     <modules>
-        <module>polaris-component-eureka-client-starter</module>
+        <module>polaris-component-eureka-starter</module>
     </modules>
 </project>

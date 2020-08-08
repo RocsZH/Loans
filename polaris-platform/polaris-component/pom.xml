@@ -17,6 +17,7 @@
         <module>polaris-component-banner</module>
         <module>polaris-component-common</module>
         <module>polaris-component-consul</module>
+        <module>polaris-component-env</module>
         <module>polaris-component-eureka</module>
         <module>polaris-component-gray</module>
         <module>polaris-component-nacos</module>
