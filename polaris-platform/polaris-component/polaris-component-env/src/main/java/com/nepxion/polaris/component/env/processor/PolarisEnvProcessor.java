@@ -44,6 +44,7 @@ public class PolarisEnvProcessor {
         }
 
         String zone = PolarisEnvProvider.getZone();
+
         for (String key : properties.stringPropertyNames()) {
             String value = properties.getProperty(key);
 

@@ -20,6 +20,10 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
     public static final String EUREKA_VERSION_VALUE = "1.9.21";
 
+    public static final String APOLLO_NAME = "apollo";
+    public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
+    public static final String APOLLO_VERSION_VALUE = "1.6.0";
+
     public static final String SENTINEL_NAME = "sentinel";
     public static final String SENTINEL_PROJECT_NAME = "project.name";
     public static final String SENTINEL_VERSION_NAME = "polaris.sentinel.version";
