@@ -1,6 +1,7 @@
 package com.nepxion.polaris.component.nacos.context;
 
 import java.util.Map;
+import java.util.Properties;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
@@ -35,11 +36,15 @@ public class NacosMetadataApplicationContextInitializer implements ApplicationCo
 
         metadata.put(PolarisConstant.NACOS_VERSION_NAME, PolarisConstant.NACOS_VERSION_VALUE);
 
-        String sentinelVersion = System.getProperty(PolarisConstant.SENTINEL_VERSION_NAME);
-        metadata.put(PolarisConstant.SENTINEL_VERSION_NAME, StringUtils.isEmpty(sentinelVersion) ? PolarisConstant.UNKNOWN : sentinelVersion);
+        Properties properties = System.getProperties();
 
-        String skyWalkingAgentVersion = System.getProperty(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME);
-        metadata.put(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME, StringUtils.isEmpty(skyWalkingAgentVersion) ? PolarisConstant.UNKNOWN : skyWalkingAgentVersion);
+        for (String key : properties.stringPropertyNames()) {
+            if (StringUtils.startsWithIgnoreCase(key, PolarisConstant.POLARIS_NAME.toLowerCase() + ".")) {
+                String value = properties.getProperty(key);
+
+                metadata.put(key, StringUtils.isEmpty(value) ? PolarisConstant.UNKNOWN : value);
+            }
+        }
     }
 
     @Override
