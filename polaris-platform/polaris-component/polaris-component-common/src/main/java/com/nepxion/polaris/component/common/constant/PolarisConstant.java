@@ -9,23 +9,23 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_VERSION_VALUE = "1.0.0";
 
     public static final String NACOS_NAME = "nacos";
-    public static final String NACOS_VERSION_NAME = "nacos.version";
+    public static final String NACOS_VERSION_NAME = "polaris.nacos.version";
     public static final String NACOS_VERSION_VALUE = "1.2.1";
 
     public static final String CONSUL_NAME = "consul";
-    public static final String CONSUL_VERSION_NAME = "consul.version";
+    public static final String CONSUL_VERSION_NAME = "polaris.consul.version";
     public static final String CONSUL_VERSION_VALUE = "";
 
     public static final String EUREKA_NAME = "eureka";
-    public static final String EUREKA_VERSION_NAME = "eureka.version";
+    public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
     public static final String EUREKA_VERSION_VALUE = "1.9.13";
 
     public static final String SENTINEL_NAME = "sentinel";
     public static final String SENTINEL_PROJECT_NAME = "project.name";
-    public static final String SENTINEL_VERSION_NAME = "sentinel.version";
+    public static final String SENTINEL_VERSION_NAME = "polaris.sentinel.version";
     public static final String SENTINEL_VERSION_VALUE = "1.7.2";
 
-    public static final String SKY_WALKING_AGENT_VERSION_NAME = "skywalking.agent.version";
+    public static final String SKY_WALKING_AGENT_VERSION_NAME = "polaris.skywalking.agent.version";
 
     public static final String SERVER = "Server";
     public static final String APPLICATION = "Application";
