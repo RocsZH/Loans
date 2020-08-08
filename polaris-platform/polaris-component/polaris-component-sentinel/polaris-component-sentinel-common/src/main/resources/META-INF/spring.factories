@@ -1,2 +1,2 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-com.nepxion.polaris.component.sentinel.common.context.SentinelEnvironmentPostProcessor
+org.springframework.context.ApplicationContextInitializer=\
+com.nepxion.polaris.component.sentinel.common.context.SentinelEnvApplicationContextInitializer
