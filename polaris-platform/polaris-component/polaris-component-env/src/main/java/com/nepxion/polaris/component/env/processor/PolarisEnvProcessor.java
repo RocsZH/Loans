@@ -1,85 +1,31 @@
 package com.nepxion.polaris.component.env.processor;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.SystemUtils;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
-import com.nepxion.polaris.component.env.entity.PolarisEnv;
 
 public class PolarisEnvProcessor {
-    public String getEnv() throws Exception {
-        String env = System.getProperty(PolarisConstant.ENV);
-        if (!StringUtils.isBlank(env)) {
-            env = env.trim();
-        } else {
-            env = System.getenv(PolarisConstant.ENV.toUpperCase());
-            if (!StringUtils.isBlank(env)) {
-                env = env.trim();
-            } else {
-                Properties properties = new Properties();
-                String path = getServerPropertiesPath();
-
-                File file = new File(path);
-                if (file.exists() && file.canRead()) {
-                    FileInputStream inputStream = null;
-                    InputStreamReader inputStreamReader = null;
-
-                    try {
-                        inputStream = new FileInputStream(file);
-                        inputStreamReader = new InputStreamReader(inputStream);
-
-                        properties.load(inputStreamReader);
-                    } finally {
-                        IOUtils.closeQuietly(inputStreamReader);
-                        IOUtils.closeQuietly(inputStream);
-                    }
-                }
-
-                env = properties.getProperty(PolarisConstant.ENV);
-                if (!StringUtils.isBlank(env)) {
-                    env = env.trim();
-                } else {
-                    env = PolarisEnv.DEV.getEnv();
-                }
-            }
-        }
-
-        return env;
-    }
-
-    public void loadEnvProperties(String componentName, String env) throws Exception {
-        String path = PolarisConstant.META_INF_PATH + componentName + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
+    public void loadEnvProperties(String name, String env) throws Exception {
+        String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         loadProperties(path);
     }
 
-    public void loadConfigProperties(String componentName) throws Exception {
-        String path = PolarisConstant.META_INF_PATH + componentName + "-" + PolarisConstant.CONFIG + "." + PolarisConstant.PROPERTIES_FORMAT;
+    public void loadConfigProperties(String name) throws Exception {
+        String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.CONFIG + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         loadProperties(path);
     }
 
-    public void loadProperties(String path) throws Exception {
-        Properties properties = initializeProperties(path);
-
-        for (String key : properties.stringPropertyNames()) {
-            String value = properties.getProperty(key);
-
-            System.setProperty(key, value);
-        }
-    }
-
-    public Properties initializeProperties(String path) throws Exception {
+    private void loadProperties(String path) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -97,14 +43,48 @@ public class PolarisEnvProcessor {
             IOUtils.closeQuietly(inputStream);
         }
 
-        return properties;
+        String zone = PolarisEnvProvider.getZone();
+        for (String key : properties.stringPropertyNames()) {
+            String value = properties.getProperty(key);
+
+            System.setProperty(key, loadDomain(value, zone));
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    // 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
+    // 域名表达式，样例：nacos-fat{-%zone%}.nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
+    // 区域，zone表示用来区别多活或者多云的域名后缀或者前缀
+    private String loadDomain(String domainExpression, String zone) {
+        String zoneExpression = "%" + PolarisConstant.ZONE + "%";
+
+        String domain = null;
+        // 不符合域名表达式的配置项，不做处理直接返回
+        if (StringUtils.contains(domainExpression, zoneExpression) && StringUtils.contains(domainExpression, "{") && StringUtils.contains(domainExpression, "}") && StringUtils.indexOf(domainExpression, "}") - StringUtils.indexOf(domainExpression, "{") >= zoneExpression.length()) {
+            // 兼容低版本的commons-langs
+            domain = StringUtils.replacePattern(domainExpression, zoneExpression, zone);
+            domain = StringUtils.replace(domain, "{", StringUtils.EMPTY);
+            domain = StringUtils.replace(domain, "}", StringUtils.EMPTY);
+        } else {
+            domain = domainExpression;
+        }
+
+        return domain;
+    }
+
+    public String getEnv() {
+        return PolarisEnvProvider.getEnv();
+    }
+
+    public String getZone() {
+        return PolarisEnvProvider.getZone();
     }
 
     public String getServerPropertiesPath() {
-        return SystemUtils.IS_OS_WINDOWS ? PolarisConstant.SERVER_PROPERTIES_PATH_WINDOWS : PolarisConstant.SERVER_PROPERTIES_PATH_LINUX;
+        return PolarisEnvProvider.getServerPropertiesPath();
     }
 
     public String getLogPath() {
-        return SystemUtils.IS_OS_WINDOWS ? PolarisConstant.LOG_PATH_WINDOWS : PolarisConstant.LOG_PATH_LINUX;
+        return PolarisEnvProvider.getLogPath();
     }
 }

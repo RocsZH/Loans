@@ -38,6 +38,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String DOCS_VALUE = "http://www.nepxion.com";
 
     public static final String ENV = "env";
+    public static final String ZONE = "zone";
     public static final String CONFIG = "config";
 
     public static final String SERVER_PROPERTIES_PATH_WINDOWS = "C:/opt/settings/server.properties";
