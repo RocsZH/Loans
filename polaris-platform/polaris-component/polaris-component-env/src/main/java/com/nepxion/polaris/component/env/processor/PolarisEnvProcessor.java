@@ -14,6 +14,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
+import com.nepxion.polaris.component.env.entity.PolarisEnv;
 
 public class PolarisEnvProcessor {
     public String getEnv() throws Exception {
@@ -47,6 +48,8 @@ public class PolarisEnvProcessor {
                 env = properties.getProperty(PolarisConstant.ENV);
                 if (!StringUtils.isBlank(env)) {
                     env = env.trim();
+                } else {
+                    env = PolarisEnv.DEV.getEnv();
                 }
             }
         }

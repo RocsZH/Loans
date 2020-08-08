@@ -1,6 +1,5 @@
 package com.nepxion.polaris.component.nacos.context;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;
@@ -10,7 +9,6 @@ import org.springframework.core.Ordered;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 import com.nepxion.polaris.component.common.exception.PolarisException;
-import com.nepxion.polaris.component.env.entity.PolarisEnv;
 import com.nepxion.polaris.component.env.processor.PolarisEnvProcessor;
 
 public class NacosEnvApplicationContextInitializer extends PolarisEnvProcessor implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
@@ -21,9 +19,6 @@ public class NacosEnvApplicationContextInitializer extends PolarisEnvProcessor i
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
                 String env = getEnv();
-                if (StringUtils.isBlank(env)) {
-                    env = PolarisEnv.DEV.getEnv();
-                }
 
                 loadEnvProperties(PolarisConstant.NACOS_NAME, env);
                 loadConfigProperties(PolarisConstant.NACOS_NAME);
