@@ -51,20 +51,25 @@ public class PolarisEnvProcessor {
         }
     }
 
-    @SuppressWarnings("deprecation")
     // 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
     // 域名表达式，样例：nacos-fat{-%zone%}.nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
     // 区域，zone表示用来区别多活或者多云的域名后缀或者前缀
+    @SuppressWarnings("deprecation")
     private String loadDomain(String domainExpression, String zone) {
         String zoneExpression = "%" + PolarisConstant.ZONE + "%";
 
         String domain = null;
         // 不符合域名表达式的配置项，不做处理直接返回
         if (StringUtils.contains(domainExpression, zoneExpression) && StringUtils.contains(domainExpression, "{") && StringUtils.contains(domainExpression, "}") && StringUtils.indexOf(domainExpression, "}") - StringUtils.indexOf(domainExpression, "{") >= zoneExpression.length()) {
-            // 兼容低版本的commons-langs
-            domain = StringUtils.replacePattern(domainExpression, zoneExpression, zone);
-            domain = StringUtils.replace(domain, "{", StringUtils.EMPTY);
-            domain = StringUtils.replace(domain, "}", StringUtils.EMPTY);
+            if (StringUtils.isNotBlank(zone)) {
+                // 兼容低版本的commons-langs
+                domain = StringUtils.replaceAll(domainExpression, zoneExpression, zone);
+                domain = StringUtils.replace(domain, "{", StringUtils.EMPTY);
+                domain = StringUtils.replace(domain, "}", StringUtils.EMPTY);
+            } else {
+                // 兼容低版本的commons-langs
+                domain = StringUtils.replaceAll(domainExpression, "\\{\\S+\\}", zone);
+            }
         } else {
             domain = domainExpression;
         }
