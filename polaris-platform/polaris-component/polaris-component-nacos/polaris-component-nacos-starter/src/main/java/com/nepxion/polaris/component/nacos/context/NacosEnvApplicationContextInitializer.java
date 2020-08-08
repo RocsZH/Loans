@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.nacos.client.context;
+package com.nepxion.polaris.component.nacos.context;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class NacosEnvApplicationContextInitializer extends PolarisEnvProcessor i
                 loadComponentEnv(PolarisConstant.NACOS_NAME, env);
                 loadComponentConfig(PolarisConstant.NACOS_NAME);
             } catch (Exception e) {
-                LOG.error("Initialize Nacos environment failed", e);
+                LOG.error("Initialize Nacos env failed", e);
 
                 throw new PolarisException(e);
             }
