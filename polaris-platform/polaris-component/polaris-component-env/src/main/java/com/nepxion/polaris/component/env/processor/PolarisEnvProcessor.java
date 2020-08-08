@@ -54,19 +54,29 @@ public class PolarisEnvProcessor {
         return env;
     }
 
-    public void loadComponentConfig(String componentName) throws Exception {
-        String path = PolarisConstant.META_INF_PATH + componentName + "-." + PolarisConstant.CONFIG + PolarisConstant.PROPERTIES_FORMAT;
-
-        loadProperties(path);
-    }
-
     public void loadComponentEnv(String componentName, String env) throws Exception {
         String path = PolarisConstant.META_INF_PATH + componentName + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         loadProperties(path);
     }
 
+    public void loadComponentConfig(String componentName) throws Exception {
+        String path = PolarisConstant.META_INF_PATH + componentName + "-" + PolarisConstant.CONFIG + "." + PolarisConstant.PROPERTIES_FORMAT;
+
+        loadProperties(path);
+    }
+
     public void loadProperties(String path) throws Exception {
+        Properties properties = initializeProperties(path);
+
+        for (String key : properties.stringPropertyNames()) {
+            String value = properties.getProperty(key);
+
+            System.setProperty(key, value);
+        }
+    }
+
+    public Properties initializeProperties(String path) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -84,10 +94,7 @@ public class PolarisEnvProcessor {
             IOUtils.closeQuietly(inputStream);
         }
 
-        for (String key : properties.stringPropertyNames()) {
-            String value = properties.getProperty(key);
-            System.setProperty(key, value);
-        }
+        return properties;
     }
 
     public String getServerPropertiesPath() {
