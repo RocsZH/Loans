@@ -25,8 +25,8 @@ public class NacosEnvApplicationContextInitializer extends PolarisEnvProcessor i
                     env = PolarisEnv.DEV.getEnv();
                 }
 
-                loadComponentEnv(PolarisConstant.NACOS_NAME, env);
-                loadComponentConfig(PolarisConstant.NACOS_NAME);
+                loadEnvProperties(PolarisConstant.NACOS_NAME, env);
+                loadConfigProperties(PolarisConstant.NACOS_NAME);
             } catch (Exception e) {
                 LOG.error("Initialize Nacos env failed", e);
 

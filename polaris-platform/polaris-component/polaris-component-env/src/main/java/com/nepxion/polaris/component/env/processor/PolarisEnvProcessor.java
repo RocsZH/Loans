@@ -54,13 +54,13 @@ public class PolarisEnvProcessor {
         return env;
     }
 
-    public void loadComponentEnv(String componentName, String env) throws Exception {
+    public void loadEnvProperties(String componentName, String env) throws Exception {
         String path = PolarisConstant.META_INF_PATH + componentName + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         loadProperties(path);
     }
 
-    public void loadComponentConfig(String componentName) throws Exception {
+    public void loadConfigProperties(String componentName) throws Exception {
         String path = PolarisConstant.META_INF_PATH + componentName + "-" + PolarisConstant.CONFIG + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         loadProperties(path);
