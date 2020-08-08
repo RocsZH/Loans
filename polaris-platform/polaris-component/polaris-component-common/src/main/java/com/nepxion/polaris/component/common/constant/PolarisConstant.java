@@ -14,11 +14,11 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String CONSUL_NAME = "consul";
     public static final String CONSUL_VERSION_NAME = "polaris.consul.version";
-    public static final String CONSUL_VERSION_VALUE = "";
+    public static final String CONSUL_VERSION_VALUE = "1.4.5";
 
     public static final String EUREKA_NAME = "eureka";
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
-    public static final String EUREKA_VERSION_VALUE = "1.9.13";
+    public static final String EUREKA_VERSION_VALUE = "1.9.21";
 
     public static final String SENTINEL_NAME = "sentinel";
     public static final String SENTINEL_PROJECT_NAME = "project.name";

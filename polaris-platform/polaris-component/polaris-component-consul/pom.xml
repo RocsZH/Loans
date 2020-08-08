@@ -11,4 +11,8 @@
         <artifactId>polaris-component</artifactId>
         <version>1.0.0</version>
     </parent>
+
+    <modules>
+        <module>polaris-component-consul-starter</module>
+    </modules>
 </project>
