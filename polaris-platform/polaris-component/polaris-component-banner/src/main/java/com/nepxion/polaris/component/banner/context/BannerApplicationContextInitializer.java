@@ -50,8 +50,8 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION + ":", StringUtils.isEmpty(discoveryAgentVersion) ? PolarisConstant.UNKNOWN : discoveryAgentVersion, 0, 1));
         descriptions.add(new Description(PolarisConstant.SPRING_BOOT_VERSION + ":", SpringBootVersion.getVersion(), 0, 1));
         descriptions.add(new Description(PolarisConstant.POLARIS_VERSION_NAME + ":", PolarisConstant.POLARIS_VERSION_VALUE, 0, 1));
-        descriptions.add(new Description(PolarisConstant.POLARIS_CODES_NAME + ":", PolarisConstant.POLARIS_CODES_VALUE, 0, 1));
-        descriptions.add(new Description(PolarisConstant.POLARIS_DOCS_NAME + ":", PolarisConstant.POLARIS_DOCS_VALUE, 0, 1));
+        descriptions.add(new Description(PolarisConstant.CODES_NAME + ":", PolarisConstant.CODES_VALUE, 0, 1));
+        descriptions.add(new Description(PolarisConstant.DOCS_NAME + ":", PolarisConstant.DOCS_VALUE, 0, 1));
         if (StringUtils.isNotEmpty(PolarisConstant.APOLLO_VERSION_VALUE)) {
             descriptions.add(new Description(PolarisConstant.APOLLO_VERSION_NAME + ":", PolarisConstant.APOLLO_VERSION_VALUE, 0, 1));
         }
