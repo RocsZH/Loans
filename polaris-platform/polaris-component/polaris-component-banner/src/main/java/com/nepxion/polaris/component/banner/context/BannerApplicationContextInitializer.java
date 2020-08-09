@@ -20,7 +20,7 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
-            LogoBanner logoBanner = new LogoBanner(BannerApplicationContextInitializer.class, "/logo.txt", "Welcome to " + PolarisConstant.POLARIS_NAME, 5, 5, new Color[] { Color.red, Color.green, Color.cyan, Color.blue, Color.yellow }, true);
+            LogoBanner logoBanner = new LogoBanner(BannerApplicationContextInitializer.class, "/logo.txt", "Welcome to " + PolarisConstant.POLARIS_NAME, 7, 5, new Color[] { Color.red, Color.green, Color.cyan, Color.blue, Color.yellow, Color.magenta, Color.red }, true);
 
             show(logoBanner);
 
