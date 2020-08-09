@@ -69,7 +69,7 @@ public class PolarisEnvProcessor {
                 domain = StringUtils.replace(domain, "}", StringUtils.EMPTY);
             } else {
                 // 兼容低版本的commons-langs
-                domain = StringUtils.replaceAll(domainExpression, "\\{\\S+\\}", zone);
+                domain = StringUtils.replaceAll(domainExpression, "\\{\\S+\\}", StringUtils.EMPTY);
             }
         } else {
             domain = domainExpression;
