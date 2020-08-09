@@ -18,21 +18,6 @@
             <artifactId>polaris-component-env</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
-        <!-- You can replace with another register center -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-nacos-starter</artifactId>
-            <!-- <artifactId>polaris-component-eureka-starter</artifactId>
-            <artifactId>polaris-component-consul-starter</artifactId> -->
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-apollo-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <!-- You can replace with another register center -->
         <dependency>
