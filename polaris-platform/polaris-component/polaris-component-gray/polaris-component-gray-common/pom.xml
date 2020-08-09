@@ -18,10 +18,28 @@
             <artifactId>polaris-component-env</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
+        <!-- You can replace with another register center -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-nacos-starter</artifactId>
+            <!-- <artifactId>polaris-component-eureka-starter</artifactId>
+            <artifactId>polaris-component-consul-starter</artifactId> -->
+            <version>${project.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-apollo-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- You can replace with another register center -->
         <dependency>
             <groupId>com.nepxion</groupId>
             <artifactId>discovery-plugin-starter-nacos</artifactId>
+            <!-- <artifactId>discovery-plugin-starter-eureka</artifactId>
+            <artifactId>discovery-plugin-starter-consul</artifactId> -->
         </dependency>
 
         <dependency>
