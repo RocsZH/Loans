@@ -32,15 +32,15 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String CONSUL_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.consul.ConsulProperties");
 
     public static final String SENTINEL_NAME = "sentinel";
-    public static final String SENTINEL_PROJECT_NAME = "project.name";
     public static final String SENTINEL_VERSION_NAME = "polaris.sentinel.version";
     public static final String SENTINEL_VERSION_VALUE = PolarisVersion.getVersion("com.alibaba.csp.sentinel.SphU");
+    public static final String SENTINEL_PROJECT_NAME = "project.name";
 
     public static final String SKY_WALKING_AGENT_VERSION_NAME = "polaris.skywalking.agent.version";
 
     public static final String GRAY_NAME = "gray";
 
-    public static final String APPLICATION = "Application";
+    public static final String APPLICATION = "application";
     public static final String ZONE = "zone";
     public static final String CONFIG = "config";
 

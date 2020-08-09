@@ -43,12 +43,15 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         }
 
         List<Description> descriptions = new ArrayList<Description>();
+        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_NAME + ":", applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_NAME), 0, 1));
+        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_TYPE + ":", StringUtils.isNotEmpty(applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE)) ? applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE) : PolarisConstant.APPLICATION, 0, 1));
+        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_VERSION + ":", PolarisConstant.DISCOVERY_VERSION, 0, 1));
+        String discoveryAgentVersion = System.getProperty(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION);
+        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION + ":", StringUtils.isEmpty(discoveryAgentVersion) ? PolarisConstant.UNKNOWN : discoveryAgentVersion, 0, 1));
+        descriptions.add(new Description(PolarisConstant.SPRING_BOOT_VERSION + ":", SpringBootVersion.getVersion(), 0, 1));
         descriptions.add(new Description(PolarisConstant.POLARIS_VERSION_NAME + ":", PolarisConstant.POLARIS_VERSION_VALUE, 0, 1));
         descriptions.add(new Description(PolarisConstant.POLARIS_CODES_NAME + ":", PolarisConstant.POLARIS_CODES_VALUE, 0, 1));
         descriptions.add(new Description(PolarisConstant.POLARIS_DOCS_NAME + ":", PolarisConstant.POLARIS_DOCS_VALUE, 0, 1));
-        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_NAME + ":", applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_NAME), 0, 1));
-        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_TYPE + ":", StringUtils.isNotEmpty(applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE)) ? applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE) : PolarisConstant.APPLICATION, 0, 1));
-        descriptions.add(new Description(PolarisConstant.SPRING_BOOT_VERSION + ":", SpringBootVersion.getVersion(), 0, 1));
         if (StringUtils.isNotEmpty(PolarisConstant.APOLLO_VERSION_VALUE)) {
             descriptions.add(new Description(PolarisConstant.APOLLO_VERSION_NAME + ":", PolarisConstant.APOLLO_VERSION_VALUE, 0, 1));
         }
@@ -64,11 +67,6 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         if (StringUtils.isNotEmpty(PolarisConstant.SENTINEL_VERSION_VALUE)) {
             descriptions.add(new Description(PolarisConstant.SENTINEL_VERSION_NAME + ":", PolarisConstant.SENTINEL_VERSION_VALUE, 0, 1));
         }
-        if (StringUtils.isNotEmpty(PolarisConstant.SENTINEL_VERSION_VALUE)) {
-            descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_VERSION + ":", PolarisConstant.DISCOVERY_VERSION, 0, 1));
-        }
-        String discoveryAgentVersion = System.getProperty(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION);
-        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION + ":", StringUtils.isEmpty(discoveryAgentVersion) ? PolarisConstant.UNKNOWN : discoveryAgentVersion, 0, 1));
         String skywalkingAgentVersion = System.getProperty(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME);
         descriptions.add(new Description(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME + ":", StringUtils.isEmpty(skywalkingAgentVersion) ? PolarisConstant.UNKNOWN : skywalkingAgentVersion, 0, 1));
 
