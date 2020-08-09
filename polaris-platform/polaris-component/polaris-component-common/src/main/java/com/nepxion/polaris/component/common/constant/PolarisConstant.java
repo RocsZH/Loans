@@ -9,21 +9,21 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_VERSION_NAME = "polaris.version";
     public static final String POLARIS_VERSION_VALUE = "1.0.0";
 
+    public static final String APOLLO_NAME = "apollo";
+    public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
+    public static final String APOLLO_VERSION_VALUE = PolarisVersion.getVersion("com.ctrip.framework.apollo.ConfigService");
+
     public static final String NACOS_NAME = "nacos";
     public static final String NACOS_VERSION_NAME = "polaris.nacos.version";
     public static final String NACOS_VERSION_VALUE = PolarisVersion.getNacosVersion();
-
-    public static final String CONSUL_NAME = "consul";
-    public static final String CONSUL_VERSION_NAME = "polaris.consul.version";
-    public static final String CONSUL_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.consul.ConsulProperties");
 
     public static final String EUREKA_NAME = "eureka";
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
     public static final String EUREKA_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient");
 
-    public static final String APOLLO_NAME = "apollo";
-    public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
-    public static final String APOLLO_VERSION_VALUE = PolarisVersion.getVersion("com.ctrip.framework.apollo.ConfigService");
+    public static final String CONSUL_NAME = "consul";
+    public static final String CONSUL_VERSION_NAME = "polaris.consul.version";
+    public static final String CONSUL_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.consul.ConsulProperties");
 
     public static final String SENTINEL_NAME = "sentinel";
     public static final String SENTINEL_PROJECT_NAME = "project.name";
@@ -34,15 +34,12 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String GRAY_NAME = "gray";
 
-    public static final String SERVER = "Server";
     public static final String APPLICATION = "Application";
-    public static final String VERSION = "Version";
     public static final String CODES = "Codes";
     public static final String DOCS = "Docs";
     public static final String CODES_VALUE = "https://github.com/Nepxion/Polaris";
     public static final String DOCS_VALUE = "http://www.nepxion.com";
 
-    public static final String ENV = "env";
     public static final String ZONE = "zone";
     public static final String CONFIG = "config";
 
