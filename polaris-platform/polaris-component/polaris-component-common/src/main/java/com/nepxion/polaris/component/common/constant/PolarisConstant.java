@@ -1,6 +1,7 @@
 package com.nepxion.polaris.component.common.constant;
 
 import com.nepxion.discovery.common.constant.DiscoveryConstant;
+import com.nepxion.polaris.component.common.util.PolarisVersion;
 
 public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_NAME = "Polaris";
@@ -10,24 +11,24 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String NACOS_NAME = "nacos";
     public static final String NACOS_VERSION_NAME = "polaris.nacos.version";
-    public static final String NACOS_VERSION_VALUE = "1.2.1";
+    public static final String NACOS_VERSION_VALUE = PolarisVersion.getNacosVersion();
 
     public static final String CONSUL_NAME = "consul";
     public static final String CONSUL_VERSION_NAME = "polaris.consul.version";
-    public static final String CONSUL_VERSION_VALUE = "1.4.5";
+    public static final String CONSUL_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.consul.ConsulProperties");
 
     public static final String EUREKA_NAME = "eureka";
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
-    public static final String EUREKA_VERSION_VALUE = "1.9.21";
+    public static final String EUREKA_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient");
 
     public static final String APOLLO_NAME = "apollo";
     public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
-    public static final String APOLLO_VERSION_VALUE = "1.6.0";
+    public static final String APOLLO_VERSION_VALUE = PolarisVersion.getVersion("com.ctrip.framework.apollo.ConfigService");
 
     public static final String SENTINEL_NAME = "sentinel";
     public static final String SENTINEL_PROJECT_NAME = "project.name";
     public static final String SENTINEL_VERSION_NAME = "polaris.sentinel.version";
-    public static final String SENTINEL_VERSION_VALUE = "1.7.2";
+    public static final String SENTINEL_VERSION_VALUE = PolarisVersion.getVersion("com.alibaba.csp.sentinel.SphU");
 
     public static final String SKY_WALKING_AGENT_VERSION_NAME = "polaris.skywalking.agent.version";
 
