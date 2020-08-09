@@ -19,7 +19,7 @@ public class NacosEnvApplicationContextInitializer extends PolarisEnvProcessor i
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
                 LOG.info("Initialize Nacos env...");
-                
+
                 String env = getEnv();
 
                 loadEnvProperties(PolarisConstant.NACOS_NAME, env);
