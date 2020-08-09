@@ -27,7 +27,7 @@ public class PolarisEnvProvider {
 
     private static void initializeEnv() {
         try {
-            env = initializeContext(PolarisConstant.ENV);
+            env = initializeContext(PolarisConstant.ENVIRONMENT);
         } catch (Exception e) {
             LOG.error("Initialize env failed, use {} env as default", PolarisEnv.DEV.getEnv());
         }

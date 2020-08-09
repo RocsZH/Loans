@@ -9,6 +9,12 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_VERSION_NAME = "polaris.version";
     public static final String POLARIS_VERSION_VALUE = "1.0.0";
 
+    public static final String POLARIS_CODES_NAME = "polaris.codes";
+    public static final String POLARIS_CODES_VALUE = "https://github.com/Nepxion/Polaris";
+
+    public static final String POLARIS_DOCS_NAME = "polaris.docs";
+    public static final String POLARIS_DOCS_VALUE = "http://www.nepxion.com";
+
     public static final String APOLLO_NAME = "apollo";
     public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
     public static final String APOLLO_VERSION_VALUE = PolarisVersion.getVersion("com.ctrip.framework.apollo.ConfigService");
@@ -35,11 +41,6 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String GRAY_NAME = "gray";
 
     public static final String APPLICATION = "Application";
-    public static final String CODES = "Codes";
-    public static final String DOCS = "Docs";
-    public static final String CODES_VALUE = "https://github.com/Nepxion/Polaris";
-    public static final String DOCS_VALUE = "http://www.nepxion.com";
-
     public static final String ZONE = "zone";
     public static final String CONFIG = "config";
 
