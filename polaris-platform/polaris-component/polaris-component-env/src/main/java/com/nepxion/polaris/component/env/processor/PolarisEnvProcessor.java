@@ -6,6 +6,8 @@ import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -13,19 +15,21 @@ import org.springframework.core.io.ResourceLoader;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 
 public class PolarisEnvProcessor {
+    private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
+
     public void loadEnvProperties(String name, String env) throws Exception {
         String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        loadProperties(path);
+        loadProperties(path, true);
     }
 
     public void loadConfigProperties(String name) throws Exception {
         String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.CONFIG + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        loadProperties(path);
+        loadProperties(path, false);
     }
 
-    private void loadProperties(String path) throws Exception {
+    private void loadProperties(String path, boolean isEnvLoaded) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -47,8 +51,13 @@ public class PolarisEnvProcessor {
 
         for (String key : properties.stringPropertyNames()) {
             String value = properties.getProperty(key);
+            value = loadDomain(value, zone);
 
-            System.setProperty(key, loadDomain(value, zone));
+            if (isEnvLoaded) {
+                LOG.info("* Env parameter : {} = {}", key, value);
+            }
+
+            System.setProperty(key, value);
         }
     }
 
