@@ -17,19 +17,25 @@ import com.nepxion.polaris.component.common.constant.PolarisConstant;
 public class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
 
-    public void loadEnvProperties(String name, String env) throws Exception {
+    public void process(String name) throws Exception {
+        processEnvProperties(name);
+        processConfigProperties(name);
+    }
+
+    public void processEnvProperties(String name) throws Exception {
+        String env = getEnv();
         String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        loadProperties(path, true);
+        processProperties(path, true);
     }
 
-    public void loadConfigProperties(String name) throws Exception {
+    public void processConfigProperties(String name) throws Exception {
         String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.CONFIG + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        loadProperties(path, false);
+        processProperties(path, false);
     }
 
-    private void loadProperties(String path, boolean isEnvLoaded) throws Exception {
+    private void processProperties(String path, boolean isEnvProcessed) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -51,9 +57,9 @@ public class PolarisEnvProcessor {
 
         for (String key : properties.stringPropertyNames()) {
             String value = properties.getProperty(key);
-            value = loadDomain(value, zone);
+            value = processDomain(value, zone);
 
-            if (isEnvLoaded) {
+            if (isEnvProcessed) {
                 LOG.info("* Env parameter : {} = {}", key, value);
             }
 
@@ -65,7 +71,7 @@ public class PolarisEnvProcessor {
     // 域名表达式，样例：nacos-fat{-%zone%}.nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
     // 区域，zone表示用来区别多活或者多云的域名后缀或者前缀
     @SuppressWarnings("deprecation")
-    private String loadDomain(String domainExpression, String zone) {
+    private String processDomain(String domainExpression, String zone) {
         String zoneExpression = "%" + PolarisConstant.ZONE + "%";
 
         String domain = null;

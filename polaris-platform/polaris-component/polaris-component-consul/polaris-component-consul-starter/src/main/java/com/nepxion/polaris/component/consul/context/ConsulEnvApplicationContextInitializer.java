@@ -20,10 +20,7 @@ public class ConsulEnvApplicationContextInitializer extends PolarisEnvProcessor 
             try {
                 LOG.info("Initialize Consul env...");
 
-                String env = getEnv();
-
-                loadEnvProperties(PolarisConstant.CONSUL_NAME, env);
-                loadConfigProperties(PolarisConstant.CONSUL_NAME);
+                process(PolarisConstant.CONSUL_NAME);
             } catch (Exception e) {
                 LOG.error("Initialize Consul env failed", e);
 

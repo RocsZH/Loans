@@ -21,10 +21,7 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
             try {
                 LOG.info("Initialize Sentinel env...");
 
-                String env = getEnv();
-
-                loadEnvProperties(PolarisConstant.SENTINEL_NAME, env);
-                loadConfigProperties(PolarisConstant.SENTINEL_NAME);
+                process(PolarisConstant.SENTINEL_NAME);
 
                 String appId = Foundation.app().getAppId();
                 System.setProperty(PolarisConstant.SENTINEL_PROJECT_NAME, appId);

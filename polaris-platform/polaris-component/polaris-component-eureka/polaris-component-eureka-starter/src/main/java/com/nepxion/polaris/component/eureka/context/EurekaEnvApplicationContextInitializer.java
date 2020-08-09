@@ -20,10 +20,7 @@ public class EurekaEnvApplicationContextInitializer extends PolarisEnvProcessor 
             try {
                 LOG.info("Initialize Eureka env...");
 
-                String env = getEnv();
-
-                loadEnvProperties(PolarisConstant.EUREKA_NAME, env);
-                loadConfigProperties(PolarisConstant.EUREKA_NAME);
+                process(PolarisConstant.EUREKA_NAME);
             } catch (Exception e) {
                 LOG.error("Initialize Eureka env failed", e);
 

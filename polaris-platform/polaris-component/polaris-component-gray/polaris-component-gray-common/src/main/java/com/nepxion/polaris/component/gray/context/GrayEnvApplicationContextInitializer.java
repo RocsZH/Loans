@@ -20,9 +20,7 @@ public class GrayEnvApplicationContextInitializer extends PolarisEnvProcessor im
             try {
                 LOG.info("Initialize Gray env...");
 
-                String env = getEnv();
-
-                loadEnvProperties(PolarisConstant.GRAY_NAME, env);
+                process(PolarisConstant.GRAY_NAME);
             } catch (Exception e) {
                 LOG.error("Initialize Gray env failed", e);
 
