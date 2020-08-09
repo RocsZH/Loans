@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.skywalking.gray.adapter;
+package com.nepxion.polaris.component.skywalking.adapter;
 
 import java.util.HashMap;
 import java.util.Map;

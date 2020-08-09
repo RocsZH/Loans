@@ -13,7 +13,7 @@
     </parent>
 
     <modules>
-        <module>polaris-component-skywalking-starter-gray</module>
+        <module>polaris-component-skywalking-starter</module>
         <module>polaris-component-skywalking-starter-sentinel</module>
     </modules>
 </project>

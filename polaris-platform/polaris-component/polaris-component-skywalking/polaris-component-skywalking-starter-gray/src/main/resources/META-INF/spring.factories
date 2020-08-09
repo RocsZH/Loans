@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.nepxion.polaris.component.skywalking.gray.configuration.SkywalkingAutoConfiguration
