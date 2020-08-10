@@ -5,13 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.core.Ordered;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 import com.nepxion.polaris.component.common.exception.PolarisException;
 import com.nepxion.polaris.component.env.processor.PolarisEnvProcessor;
 
-public class EurekaEnvApplicationContextInitializer extends PolarisEnvProcessor implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
+public class EurekaEnvApplicationContextInitializer extends PolarisEnvProcessor implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     private static final Logger LOG = LoggerFactory.getLogger(EurekaEnvApplicationContextInitializer.class);
 
     @Override
@@ -32,10 +31,5 @@ public class EurekaEnvApplicationContextInitializer extends PolarisEnvProcessor 
     @Override
     public String getName() {
         return PolarisConstant.EUREKA_NAME;
-    }
-
-    @Override
-    public int getOrder() {
-        return Ordered.LOWEST_PRECEDENCE;
     }
 }

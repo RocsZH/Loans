@@ -8,12 +8,11 @@ import org.springframework.beans.factory.config.InstantiationAwareBeanPostProces
 import org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.Ordered;
 import org.springframework.util.StringUtils;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 
-public class ConsulMetadataApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
+public class ConsulMetadataApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         applicationContext.getBeanFactory().addBeanPostProcessor(new InstantiationAwareBeanPostProcessorAdapter() {
@@ -45,10 +44,5 @@ public class ConsulMetadataApplicationContextInitializer implements ApplicationC
                 metadata.add(key + "=" + (StringUtils.isEmpty(value) ? PolarisConstant.UNKNOWN : value));
             }
         }
-    }
-
-    @Override
-    public int getOrder() {
-        return Ordered.LOWEST_PRECEDENCE;
     }
 }

@@ -7,13 +7,12 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.Ordered;
 import org.springframework.util.StringUtils;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 
-public class NacosMetadataApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
+public class NacosMetadataApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         applicationContext.getBeanFactory().addBeanPostProcessor(new InstantiationAwareBeanPostProcessorAdapter() {
@@ -45,10 +44,5 @@ public class NacosMetadataApplicationContextInitializer implements ApplicationCo
                 metadata.put(key, StringUtils.isEmpty(value) ? PolarisConstant.UNKNOWN : value);
             }
         }
-    }
-
-    @Override
-    public int getOrder() {
-        return Ordered.LOWEST_PRECEDENCE;
     }
 }
