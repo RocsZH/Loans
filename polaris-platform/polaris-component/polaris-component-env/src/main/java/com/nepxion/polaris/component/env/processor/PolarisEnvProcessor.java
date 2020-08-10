@@ -58,12 +58,18 @@ public abstract class PolarisEnvProcessor {
         String zone = PolarisEnvProvider.getZone();
 
         for (String key : properties.stringPropertyNames()) {
-            String value = properties.getProperty(key);
-            value = processDomain(value, zone);
+            // 如果已经设置，则尊重已设置的值
+            String originVale = System.getProperty(key);
+            if (originVale == null) {
+                String value = properties.getProperty(key);
+                value = processDomain(value, zone);
 
-            LOG.info("* Env parameter : {} = {}", key, value);
+                LOG.info("* Env parameter : {} = {}", key, value);
 
-            System.setProperty(key, value);
+                System.setProperty(key, value);
+            } else {
+                LOG.info("* Env parameter : {} has been set, use {} as default", key, originVale);
+            }
         }
     }
 

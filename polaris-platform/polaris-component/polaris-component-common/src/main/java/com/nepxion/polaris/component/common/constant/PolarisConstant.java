@@ -38,6 +38,10 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String JAEGER_NAME = "jaeger";
     public static final String JAEGER_SENTINEL_NAME = "jaeger-sentinel";
 
+    public static final String SERVICE_NAME = "polaris-service";
+    public static final String GATEWAY_NAME = "polaris-gateway";
+    public static final String ZUUL_NAME = "polaris-zuul";
+
     public static final String ORIGIN_NAME = "origin";
     public static final String GRAY_NAME = "gray";
 
