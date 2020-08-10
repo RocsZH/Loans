@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.core.Ordered;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 import com.nepxion.polaris.component.common.exception.PolarisException;
