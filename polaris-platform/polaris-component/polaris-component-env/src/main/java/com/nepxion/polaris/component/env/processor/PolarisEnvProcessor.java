@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -17,27 +18,27 @@ import com.nepxion.polaris.component.common.constant.PolarisConstant;
 public abstract class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
 
-    public void process() throws Exception {
+    public void process(Environment environment) throws Exception {
         String name = getName();
 
-        processCommonProperties(name);
-        processEnvProperties(name);
+        processCommonProperties(environment, name);
+        processEnvProperties(environment, name);
     }
 
-    public void processCommonProperties(String name) throws Exception {
+    public void processCommonProperties(Environment environment, String name) throws Exception {
         String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        processProperties(path);
+        processProperties(environment, path);
     }
 
-    public void processEnvProperties(String name) throws Exception {
+    public void processEnvProperties(Environment environment, String name) throws Exception {
         String env = getEnv();
         String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        processProperties(path);
+        processProperties(environment, path);
     }
 
-    private void processProperties(String path) throws Exception {
+    private void processProperties(Environment environment, String path) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -58,9 +59,8 @@ public abstract class PolarisEnvProcessor {
         String zone = PolarisEnvProvider.getZone();
 
         for (String key : properties.stringPropertyNames()) {
-            // 如果已经设置，则尊重已设置的值
-            String originVale = System.getProperty(key);
-            if (originVale == null) {
+            // 如果已经设置，则尊重已经设置的值
+            if (environment.getProperty(key) == null && System.getProperty(key) == null) {
                 String value = properties.getProperty(key);
                 value = processDomain(value, zone);
 
@@ -68,7 +68,7 @@ public abstract class PolarisEnvProcessor {
 
                 System.setProperty(key, value);
             } else {
-                LOG.info("* Env parameter : {} has been set, use {} as default", key, originVale);
+                LOG.info("* Env parameter : {} has been set", key);
             }
         }
     }

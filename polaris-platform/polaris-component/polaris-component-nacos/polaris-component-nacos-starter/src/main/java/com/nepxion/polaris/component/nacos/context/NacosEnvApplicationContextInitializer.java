@@ -19,7 +19,7 @@ public class NacosEnvApplicationContextInitializer extends PolarisEnvProcessor i
             try {
                 LOG.info("Initialize {} env...", getName());
 
-                process();
+                process(applicationContext.getEnvironment());
             } catch (Exception e) {
                 LOG.error("Initialize {} env failed", getName(), e);
 

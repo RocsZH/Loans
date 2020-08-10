@@ -18,7 +18,7 @@ public class ApolloEnvProcessor extends PolarisEnvProcessor implements Environme
         try {
             LOG.info("Initialize {} env...", getName());
 
-            process();
+            process(environment);
 
             System.setProperty(PolarisConstant.APOLLO_VERSION_NAME, PolarisConstant.APOLLO_VERSION_VALUE);
         } catch (Exception e) {

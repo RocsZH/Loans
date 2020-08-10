@@ -19,7 +19,7 @@ public class SkywalkingEnvApplicationContextInitializer extends PolarisEnvProces
             try {
                 LOG.info("Initialize {} env...", getName());
 
-                process();
+                process(applicationContext.getEnvironment());
             } catch (Exception e) {
                 LOG.error("Initialize {} env failed", getName(), e);
 
