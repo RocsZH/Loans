@@ -22,7 +22,6 @@
         <module>polaris-component-gray</module>
         <module>polaris-component-jaeger</module>
         <module>polaris-component-nacos</module>
-        <module>polaris-component-origin</module>
         <module>polaris-component-sentinel</module>
         <module>polaris-component-skywalking</module>
         <module>polaris-component-test</module>
