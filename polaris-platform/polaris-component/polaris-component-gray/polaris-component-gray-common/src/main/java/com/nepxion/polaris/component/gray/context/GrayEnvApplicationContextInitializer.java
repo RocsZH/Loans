@@ -11,7 +11,7 @@ import com.nepxion.polaris.component.common.constant.PolarisConstant;
 import com.nepxion.polaris.component.common.exception.PolarisException;
 import com.nepxion.polaris.component.env.processor.PolarisEnvProcessor;
 
-public class GrayEnvApplicationContextInitializer extends PolarisEnvProcessor implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
+public class GrayEnvApplicationContextInitializer extends PolarisEnvProcessor implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     private static final Logger LOG = LoggerFactory.getLogger(GrayEnvApplicationContextInitializer.class);
 
     @Override
@@ -27,10 +27,5 @@ public class GrayEnvApplicationContextInitializer extends PolarisEnvProcessor im
                 throw new PolarisException(e);
             }
         }
-    }
-
-    @Override
-    public int getOrder() {
-        return Ordered.LOWEST_PRECEDENCE;
     }
 }
