@@ -25,17 +25,17 @@ public class PolarisEnvProcessor {
     public void processCommonProperties(String name) throws Exception {
         String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        processProperties(path, false);
+        processProperties(path);
     }
 
     public void processEnvProperties(String name) throws Exception {
         String env = getEnv();
         String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        processProperties(path, true);
+        processProperties(path);
     }
 
-    private void processProperties(String path, boolean isEnvProcessed) throws Exception {
+    private void processProperties(String path) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -59,9 +59,7 @@ public class PolarisEnvProcessor {
             String value = properties.getProperty(key);
             value = processDomain(value, zone);
 
-            if (isEnvProcessed) {
-                LOG.info("* Env parameter : {} = {}", key, value);
-            }
+            LOG.info("* Env parameter : {} = {}", key, value);
 
             System.setProperty(key, value);
         }
