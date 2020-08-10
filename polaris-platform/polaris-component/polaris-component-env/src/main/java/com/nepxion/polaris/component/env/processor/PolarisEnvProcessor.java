@@ -18,8 +18,14 @@ public class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
 
     public void process(String name) throws Exception {
+        processCommonProperties(name);
         processEnvProperties(name);
-        processConfigProperties(name);
+    }
+
+    public void processCommonProperties(String name) throws Exception {
+        String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
+
+        processProperties(path, false);
     }
 
     public void processEnvProperties(String name) throws Exception {
@@ -27,12 +33,6 @@ public class PolarisEnvProcessor {
         String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         processProperties(path, true);
-    }
-
-    public void processConfigProperties(String name) throws Exception {
-        String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.CONFIG + "." + PolarisConstant.PROPERTIES_FORMAT;
-
-        processProperties(path, false);
     }
 
     private void processProperties(String path, boolean isEnvProcessed) throws Exception {
