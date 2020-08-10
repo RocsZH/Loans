@@ -32,6 +32,7 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String SKY_WALKING_AGENT_VERSION_NAME = "polaris.skywalking.agent.version";
 
+    public static final String ORIGIN_NAME = "origin";
     public static final String GRAY_NAME = "gray";
 
     public static final String CODES_NAME = "polaris.codes";
