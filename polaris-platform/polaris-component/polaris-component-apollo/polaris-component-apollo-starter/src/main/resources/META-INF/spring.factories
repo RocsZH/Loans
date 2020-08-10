@@ -1,2 +1,2 @@
 org.springframework.boot.env.EnvironmentPostProcessor=\
-com.nepxion.polaris.component.apollo.context.ApolloEnvironmentPostProcessor
+com.nepxion.polaris.component.apollo.context.ApolloEnvProcessor
