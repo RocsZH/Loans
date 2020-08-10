@@ -16,13 +16,18 @@ public class OriginEnvProcessor extends PolarisEnvProcessor implements Environme
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
         try {
-            LOG.info("Initialize Origin env...");
+            LOG.info("Initialize {} env...", getName());
 
-            process(PolarisConstant.ORIGIN_NAME);
+            process();
         } catch (Exception e) {
-            LOG.error("Initialize Origin env failed", e);
+            LOG.error("Initialize {} env failed", getName(), e);
 
             throw new PolarisException(e);
         }
+    }
+
+    @Override
+    public String getName() {
+        return PolarisConstant.ORIGIN_NAME;
     }
 }

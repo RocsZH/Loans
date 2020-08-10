@@ -17,14 +17,19 @@ public class JaegerSentinelEnvApplicationContextInitializer extends PolarisEnvPr
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
-                LOG.info("Initialize jaeger-sentinel env...");
+                LOG.info("Initialize {} env...", getName());
 
-                process(PolarisConstant.JAEGER_SENTINEL_NAME);
+                process();
             } catch (Exception e) {
-                LOG.error("Initialize jaeger-sentinel env failed", e);
+                LOG.error("Initialize {} env failed", getName(), e);
 
                 throw new PolarisException(e);
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return PolarisConstant.JAEGER_SENTINEL_NAME;
     }
 }

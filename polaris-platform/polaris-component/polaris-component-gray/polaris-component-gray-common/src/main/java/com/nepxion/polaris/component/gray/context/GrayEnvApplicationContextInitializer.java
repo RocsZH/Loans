@@ -17,14 +17,19 @@ public class GrayEnvApplicationContextInitializer extends PolarisEnvProcessor im
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
-                LOG.info("Initialize Gray env...");
+                LOG.info("Initialize {} env...", getName());
 
-                process(PolarisConstant.GRAY_NAME);
+                process();
             } catch (Exception e) {
-                LOG.error("Initialize Gray env failed", e);
+                LOG.error("Initialize {} env failed", getName(), e);
 
                 throw new PolarisException(e);
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return PolarisConstant.GRAY_NAME;
     }
 }

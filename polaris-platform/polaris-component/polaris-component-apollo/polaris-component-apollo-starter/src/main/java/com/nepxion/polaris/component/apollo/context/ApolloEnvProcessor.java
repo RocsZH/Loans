@@ -16,15 +16,20 @@ public class ApolloEnvProcessor extends PolarisEnvProcessor implements Environme
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
         try {
-            LOG.info("Initialize Apollo env...");
+            LOG.info("Initialize {} env...", getName());
 
-            process(PolarisConstant.APOLLO_NAME);
+            process();
 
             System.setProperty(PolarisConstant.APOLLO_VERSION_NAME, PolarisConstant.APOLLO_VERSION_VALUE);
         } catch (Exception e) {
-            LOG.error("Initialize Apollo env failed", e);
+            LOG.error("Initialize {} env failed", getName(), e);
 
             throw new PolarisException(e);
         }
+    }
+
+    @Override
+    public String getName() {
+        return PolarisConstant.APOLLO_NAME;
     }
 }

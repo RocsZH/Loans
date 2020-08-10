@@ -19,9 +19,9 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
-                LOG.info("Initialize Sentinel env...");
+                LOG.info("Initialize {} env...", getName());
 
-                process(PolarisConstant.SENTINEL_NAME);
+                process();
 
                 String appId = Foundation.app().getAppId();
                 System.setProperty(PolarisConstant.SENTINEL_PROJECT_NAME, appId);
@@ -31,10 +31,15 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
 
                 System.setProperty(PolarisConstant.SENTINEL_VERSION_NAME, PolarisConstant.SENTINEL_VERSION_VALUE);
             } catch (Exception e) {
-                LOG.error("Initialize Sentinel env failed", e);
+                LOG.error("Initialize {} env failed", getName(), e);
 
                 throw new PolarisException(e);
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return PolarisConstant.SENTINEL_NAME;
     }
 }

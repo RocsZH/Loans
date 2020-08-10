@@ -14,10 +14,12 @@ import org.springframework.core.io.ResourceLoader;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 
-public class PolarisEnvProcessor {
+public abstract class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
 
-    public void process(String name) throws Exception {
+    public void process() throws Exception {
+        String name = getName();
+
         processCommonProperties(name);
         processEnvProperties(name);
     }
@@ -106,4 +108,6 @@ public class PolarisEnvProcessor {
     public String getLogPath() {
         return PolarisEnvProvider.getLogPath();
     }
+
+    public abstract String getName();
 }

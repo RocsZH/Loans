@@ -18,15 +18,20 @@ public class ConsulEnvApplicationContextInitializer extends PolarisEnvProcessor 
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
-                LOG.info("Initialize Consul env...");
+                LOG.info("Initialize {} env...", getName());
 
-                process(PolarisConstant.CONSUL_NAME);
+                process();
             } catch (Exception e) {
-                LOG.error("Initialize Consul env failed", e);
+                LOG.error("Initialize {} env failed", getName(), e);
 
                 throw new PolarisException(e);
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return PolarisConstant.CONSUL_NAME;
     }
 
     @Override

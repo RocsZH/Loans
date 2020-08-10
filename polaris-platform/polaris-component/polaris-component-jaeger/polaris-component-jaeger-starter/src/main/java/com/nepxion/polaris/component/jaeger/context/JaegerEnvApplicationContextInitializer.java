@@ -17,14 +17,19 @@ public class JaegerEnvApplicationContextInitializer extends PolarisEnvProcessor 
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
-                LOG.info("Initialize Jaeger env...");
+                LOG.info("Initialize {} env...", getName());
 
-                process(PolarisConstant.JAEGER_NAME);
+                process();
             } catch (Exception e) {
-                LOG.error("Initialize Jaeger env failed", e);
+                LOG.error("Initialize {} env failed", getName(), e);
 
                 throw new PolarisException(e);
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return PolarisConstant.JAEGER_NAME;
     }
 }
