@@ -19,12 +19,12 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose  Nacos or Eureka or Consul -->
+        <!-- You can choose Nacos or Eureka or Consul -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-nacos-starter</artifactId>
-            <!-- <artifactId>polaris-component-eureka-starter</artifactId>
-            <artifactId>polaris-component-consul-starter</artifactId> -->
+            <!-- <artifactId>polaris-component-eureka-starter</artifactId> -->
+            <!-- <artifactId>polaris-component-consul-starter</artifactId> -->
             <version>${project.version}</version>
         </dependency>
 
