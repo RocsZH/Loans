@@ -47,7 +47,7 @@
         </dependency>
 
         <!-- You can choose Skywalking or Jaeger -->
-        <dependency>
+        <!-- <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-skywalking-starter</artifactId>
             <version>${project.version}</version>
@@ -57,7 +57,7 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-skywalking-starter-sentinel</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>${project.groupId}</groupId>
