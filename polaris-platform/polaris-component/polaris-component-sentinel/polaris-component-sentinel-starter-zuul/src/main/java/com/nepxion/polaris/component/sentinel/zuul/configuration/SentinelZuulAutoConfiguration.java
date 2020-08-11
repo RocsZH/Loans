@@ -9,7 +9,7 @@ import com.alibaba.csp.sentinel.adapter.gateway.zuul.filters.SentinelZuulPostFil
 import com.alibaba.csp.sentinel.adapter.gateway.zuul.filters.SentinelZuulPreFilter;
 
 @Configuration
-public class ZuulSentinelAutoConfiguration {
+public class SentinelZuulAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public SentinelZuulPreFilter sentinelZuulPreFilter() {

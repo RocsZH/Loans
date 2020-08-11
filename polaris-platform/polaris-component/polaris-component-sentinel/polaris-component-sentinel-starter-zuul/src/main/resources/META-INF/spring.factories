@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.nepxion.polaris.component.sentinel.zuul.configuration.ZuulSentinelAutoConfiguration
+com.nepxion.polaris.component.sentinel.zuul.configuration.SentinelZuulAutoConfiguration
