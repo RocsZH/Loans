@@ -17,6 +17,5 @@
         <module>polaris-component-sentinel-starter-gateway</module>
         <module>polaris-component-sentinel-starter-zuul</module>
         <module>polaris-component-sentinel-starter-service</module>
-        <module>polaris-component-sentinel-starter-cluster</module>
     </modules>
 </project>
