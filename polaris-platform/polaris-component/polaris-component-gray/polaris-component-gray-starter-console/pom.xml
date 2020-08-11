@@ -19,7 +19,7 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can replace with another register center -->
+        <!-- You can choose Nacos or Eureka or Consul -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-nacos-starter</artifactId>

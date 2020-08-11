@@ -19,7 +19,7 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can replace with another register center -->
+        <!-- You can choose  Nacos or Eureka or Consul -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-nacos-starter</artifactId>
@@ -46,6 +46,7 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- You can choose Skywalking or Jaeger -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-skywalking-starter</artifactId>
@@ -55,6 +56,18 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-skywalking-starter-sentinel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-jaeger-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-jaeger-starter-sentinel</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
