@@ -1,2 +1,2 @@
 org.springframework.boot.env.EnvironmentPostProcessor=\
-com.nepxion.polaris.framework.zuul.context.PolarisZuulEnvProcessor
+com.nepxion.polaris.framework.gateway.context.PolarisGatewayEnvProcessor
