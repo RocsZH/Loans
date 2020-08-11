@@ -41,6 +41,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String SERVICE_NAME = "polaris-service";
     public static final String GATEWAY_NAME = "polaris-gateway";
     public static final String ZUUL_NAME = "polaris-zuul";
+    public static final String CONSOLE_NAME = "polaris-console";
 
     public static final String CODES_NAME = "polaris.codes";
     public static final String CODES_VALUE = "https://github.com/Nepxion/Polaris";
