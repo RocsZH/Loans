@@ -18,7 +18,7 @@ public class PolarisServiceEnvProcessor extends PolarisEnvProcessor implements E
         try {
             LOG.info("Initialize {} env...", getName());
 
-            process();
+            process(environment);
         } catch (Exception e) {
             LOG.error("Initialize {} env failed", getName(), e);
 

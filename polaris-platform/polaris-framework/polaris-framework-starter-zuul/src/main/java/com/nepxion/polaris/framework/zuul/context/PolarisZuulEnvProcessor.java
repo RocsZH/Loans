@@ -18,7 +18,7 @@ public class PolarisZuulEnvProcessor extends PolarisEnvProcessor implements Envi
         try {
             LOG.info("Initialize {} env...", getName());
 
-            process();
+            process(environment);
         } catch (Exception e) {
             LOG.error("Initialize {} env failed", getName(), e);
 
