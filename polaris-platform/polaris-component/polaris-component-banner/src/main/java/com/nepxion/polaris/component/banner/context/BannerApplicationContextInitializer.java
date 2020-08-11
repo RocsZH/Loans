@@ -8,6 +8,7 @@ import org.springframework.boot.SpringBootVersion;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.Ordered;
 
 import com.nepxion.banner.BannerConstant;
 import com.nepxion.banner.Description;
@@ -16,7 +17,7 @@ import com.nepxion.banner.LogoBanner;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 import com.taobao.text.Color;
 
-public class BannerApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+public class BannerApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
@@ -72,5 +73,10 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
 
         DescriptionBanner descriptionBanner = new DescriptionBanner();
         System.out.println(descriptionBanner.getBanner(descriptions));
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 }
