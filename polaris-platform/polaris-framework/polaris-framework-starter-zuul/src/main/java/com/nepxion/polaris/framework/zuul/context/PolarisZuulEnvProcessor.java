@@ -28,6 +28,6 @@ public class PolarisZuulEnvProcessor extends PolarisEnvProcessor implements Envi
 
     @Override
     public String getName() {
-        return PolarisConstant.ZUUL_NAME;
+        return PolarisConstant.POLARIS_ZUUL_NAME;
     }
 }

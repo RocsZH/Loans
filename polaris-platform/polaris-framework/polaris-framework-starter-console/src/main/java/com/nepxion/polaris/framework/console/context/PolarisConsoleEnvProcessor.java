@@ -28,6 +28,6 @@ public class PolarisConsoleEnvProcessor extends PolarisEnvProcessor implements E
 
     @Override
     public String getName() {
-        return PolarisConstant.CONSOLE_NAME;
+        return PolarisConstant.POLARIS_CONSOLE_NAME;
     }
 }

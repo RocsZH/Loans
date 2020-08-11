@@ -28,6 +28,6 @@ public class PolarisServiceEnvProcessor extends PolarisEnvProcessor implements E
 
     @Override
     public String getName() {
-        return PolarisConstant.SERVICE_NAME;
+        return PolarisConstant.POLARIS_SERVICE_NAME;
     }
 }

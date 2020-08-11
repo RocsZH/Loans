@@ -38,10 +38,12 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String JAEGER_NAME = "jaeger";
     public static final String JAEGER_SENTINEL_NAME = "jaeger-sentinel";
 
-    public static final String SERVICE_NAME = "polaris-service";
-    public static final String GATEWAY_NAME = "polaris-gateway";
-    public static final String ZUUL_NAME = "polaris-zuul";
-    public static final String CONSOLE_NAME = "polaris-console";
+    public static final String GRAY_CONSOLE_NAME = "gray-console";
+
+    public static final String POLARIS_SERVICE_NAME = "polaris-service";
+    public static final String POLARIS_GATEWAY_NAME = "polaris-gateway";
+    public static final String POLARIS_ZUUL_NAME = "polaris-zuul";
+    public static final String POLARIS_CONSOLE_NAME = "polaris-console";
 
     public static final String CODES_NAME = "polaris.codes";
     public static final String CODES_VALUE = "https://github.com/Nepxion/Polaris";
