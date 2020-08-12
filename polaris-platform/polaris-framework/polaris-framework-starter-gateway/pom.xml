@@ -22,16 +22,16 @@
         <!-- You can choose Nacos or Eureka or Consul Discovery Center -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-nacos-discovery-starter</artifactId>
-            <!-- <artifactId>polaris-component-eureka-discovery-starter</artifactId> -->
-            <!-- <artifactId>polaris-component-consul-discovery-starter</artifactId> -->
+            <artifactId>polaris-component-nacos-starter-discovery</artifactId>
+            <!-- <artifactId>polaris-component-eureka-starter-discovery</artifactId> -->
+            <!-- <artifactId>polaris-component-consul-starter-discovery</artifactId> -->
             <version>${project.version}</version>
         </dependency>
 
         <!-- You can choose Apollo or Nacos Config Center -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-apollo-config-starter</artifactId>
+            <artifactId>polaris-component-apollo-starter-config</artifactId>
             <version>${project.version}</version>
         </dependency>
 
