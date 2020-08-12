@@ -1,0 +1,3 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.nepxion.polaris.component.eureka.discovery.context.EurekaEnvApplicationContextInitializer,\
+com.nepxion.polaris.component.eureka.discovery.context.EurekaMetadataApplicationContextInitializer

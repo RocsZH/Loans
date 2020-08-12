@@ -23,7 +23,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-nacos-starter</artifactId>
-            <!-- <artifactId>polaris-component-eureka-starter</artifactId> -->
+            <!-- <artifactId>polaris-component-eureka-discovery-starter</artifactId> -->
             <!-- <artifactId>polaris-component-consul-starter</artifactId> -->
             <version>${project.version}</version>
         </dependency>

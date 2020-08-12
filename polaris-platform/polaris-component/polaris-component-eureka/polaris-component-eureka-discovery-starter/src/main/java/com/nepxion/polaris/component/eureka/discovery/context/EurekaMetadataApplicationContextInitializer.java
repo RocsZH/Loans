@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.eureka.context;
+package com.nepxion.polaris.component.eureka.discovery.context;
 
 import java.util.Map;
 import java.util.Properties;

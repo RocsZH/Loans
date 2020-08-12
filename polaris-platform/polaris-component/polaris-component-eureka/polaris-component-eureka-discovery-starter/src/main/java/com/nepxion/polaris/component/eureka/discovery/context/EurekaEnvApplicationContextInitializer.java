@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.eureka.context;
+package com.nepxion.polaris.component.eureka.discovery.context;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
