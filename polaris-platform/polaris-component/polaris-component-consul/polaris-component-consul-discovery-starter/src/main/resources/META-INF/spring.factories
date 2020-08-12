@@ -1,0 +1,3 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.nepxion.polaris.component.consul.discovery.context.ConsulEnvApplicationContextInitializer,\
+com.nepxion.polaris.component.consul.discovery.context.ConsulMetadataApplicationContextInitializer

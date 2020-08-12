@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.consul.context;
+package com.nepxion.polaris.component.consul.discovery.context;
 
 import java.util.List;
 import java.util.Properties;
