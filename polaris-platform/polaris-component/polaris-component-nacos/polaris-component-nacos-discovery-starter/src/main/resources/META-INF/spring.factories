@@ -1,0 +1,3 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.nepxion.polaris.component.nacos.discovery.context.NacosEnvApplicationContextInitializer,\
+com.nepxion.polaris.component.nacos.discovery.context.NacosMetadataApplicationContextInitializer

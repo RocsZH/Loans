@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.nacos.context;
+package com.nepxion.polaris.component.nacos.discovery.context;
 
 import java.util.Map;
 import java.util.Properties;

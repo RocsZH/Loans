@@ -13,6 +13,6 @@
     </parent>
 
     <modules>
-        <module>polaris-component-nacos-starter</module>
+        <module>polaris-component-nacos-discovery-starter</module>
     </modules>
 </project>
