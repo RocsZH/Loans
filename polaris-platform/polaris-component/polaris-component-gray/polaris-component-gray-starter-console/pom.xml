@@ -15,24 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-banner</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <!-- You can choose Nacos or Eureka or Consul Discovery -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-nacos-starter-discovery</artifactId>
-            <!-- <artifactId>polaris-component-eureka-starter-discovery</artifactId> -->
-            <!-- <artifactId>polaris-component-consul-starter-discovery</artifactId> -->
-            <version>${project.version}</version>
-        </dependency>
-
-        <!-- You can choose Apollo or Nacos Config -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-apollo-starter-config</artifactId>
-            <!-- <artifactId>polaris-component-nacos-starter-config</artifactId> -->
+            <artifactId>polaris-component-env</artifactId>
             <version>${project.version}</version>
         </dependency>
 
