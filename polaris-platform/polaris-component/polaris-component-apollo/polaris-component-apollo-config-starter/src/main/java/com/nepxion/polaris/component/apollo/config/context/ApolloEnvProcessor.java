@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.apollo.context;
+package com.nepxion.polaris.component.apollo.config.context;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

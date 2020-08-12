@@ -13,6 +13,6 @@
     </parent>
 
     <modules>
-        <module>polaris-component-apollo-starter</module>
+        <module>polaris-component-apollo-config-starter</module>
     </modules>
 </project>

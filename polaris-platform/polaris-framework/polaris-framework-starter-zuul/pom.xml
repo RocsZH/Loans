@@ -31,7 +31,7 @@
         <!-- You can choose Apollo or Nacos Config Center -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-apollo-starter</artifactId>
+            <artifactId>polaris-component-apollo-config-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
