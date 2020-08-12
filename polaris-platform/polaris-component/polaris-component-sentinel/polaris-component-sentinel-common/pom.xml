@@ -24,10 +24,11 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
-        <!-- You can choose Apollo or Nacos Config Center -->
+        <!-- You can choose Apollo or Nacos Config -->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-apollo</artifactId>
+            <!-- <artifactId>sentinel-datasource-nacos</artifactId> -->
         </dependency>
 
         <dependency>
