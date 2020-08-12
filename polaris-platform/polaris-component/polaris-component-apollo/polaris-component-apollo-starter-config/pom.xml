@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>polaris-component-apollo-config-starter</artifactId>
-    <name>Nepxion Polaris Component Apollo Config Starter</name>
+    <artifactId>polaris-component-apollo-starter-config</artifactId>
+    <name>Nepxion Polaris Component Apollo Starter Config</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
