@@ -35,6 +35,7 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- You can choose Apollo or Nacos Config Center -->
         <dependency>
             <groupId>com.nepxion</groupId>
             <artifactId>discovery-console-starter-apollo</artifactId>
