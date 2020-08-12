@@ -19,7 +19,7 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose Nacos or Eureka or Consul -->
+        <!-- You can choose Nacos or Eureka or Consul Register Center -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-nacos-starter</artifactId>
@@ -28,6 +28,7 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- You can choose Apollo or Nacos Config Center -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-apollo-starter</artifactId>
@@ -46,7 +47,7 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose Skywalking or Jaeger -->
+        <!-- You can choose Skywalking or Jaeger Monitor Center -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-skywalking-starter</artifactId>
