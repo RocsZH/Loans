@@ -13,6 +13,6 @@
     </parent>
 
     <modules>
-        <module>polaris-component-eureka-discovery-starter</module>
+        <module>polaris-component-eureka-starter-discovery</module>
     </modules>
 </project>
