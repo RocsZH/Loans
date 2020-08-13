@@ -21,13 +21,13 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-discovery-starter-gray</artifactId>
+            <artifactId>polaris-component-core-starter-discovery-gray</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-config-starter-gray</artifactId>
+            <artifactId>polaris-component-core-starter-config-gray</artifactId>
             <version>${project.version}</version>
         </dependency>
 

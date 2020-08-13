@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>polaris-component-config-starter</artifactId>
-    <name>Nepxion Polaris Component Config Starter</name>
+    <artifactId>polaris-component-core-starter-discovery</artifactId>
+    <name>Nepxion Polaris Component Core Starter Discovery</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.nepxion</groupId>
-        <artifactId>polaris-component-adapter</artifactId>
+        <artifactId>polaris-component-core</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <dependencies>
-        <!-- You can choose Apollo or Nacos Config -->
+        <!-- You can choose Nacos or Eureka or Consul Discovery -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-apollo-starter-config</artifactId>
-            <!-- <artifactId>polaris-component-nacos-starter-config</artifactId> -->
+            <artifactId>polaris-component-nacos-starter-discovery</artifactId>
+            <!-- <artifactId>polaris-component-eureka-starter-discovery</artifactId> -->
+            <!-- <artifactId>polaris-component-consul-starter-discovery</artifactId> -->
             <version>${project.version}</version>
         </dependency>
     </dependencies>

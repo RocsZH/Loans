@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-config-starter-gray-console</artifactId>
+            <artifactId>polaris-component-core-starter-config-gray-console</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
