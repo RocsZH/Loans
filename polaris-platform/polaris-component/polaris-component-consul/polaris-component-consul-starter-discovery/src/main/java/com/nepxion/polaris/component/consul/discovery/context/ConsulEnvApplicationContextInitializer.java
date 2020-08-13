@@ -30,6 +30,6 @@ public class ConsulEnvApplicationContextInitializer extends PolarisEnvProcessor 
 
     @Override
     public String getName() {
-        return PolarisConstant.CONSUL_NAME;
+        return PolarisConstant.CONSUL_DISCOVERY_NAME;
     }
 }

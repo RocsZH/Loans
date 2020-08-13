@@ -22,7 +22,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
     public static final String EUREKA_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient");
 
-    public static final String CONSUL_NAME = "consul";
+    public static final String CONSUL_DISCOVERY_NAME = "consul-discovery";
     public static final String CONSUL_VERSION_NAME = "polaris.consul.version";
     public static final String CONSUL_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.consul.ConsulProperties");
 
