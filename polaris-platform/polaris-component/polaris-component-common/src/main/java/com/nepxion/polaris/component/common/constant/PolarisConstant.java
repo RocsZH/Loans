@@ -13,7 +13,8 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
     public static final String APOLLO_VERSION_VALUE = PolarisVersion.getVersion("com.ctrip.framework.apollo.ConfigService");
 
-    public static final String NACOS_NAME = "nacos";
+    public static final String NACOS_DISCOVERY_NAME = "nacos-discovery";
+    public static final String NACOS_CONFIG_NAME = "nacos-config";
     public static final String NACOS_VERSION_NAME = "polaris.nacos.version";
     public static final String NACOS_VERSION_VALUE = PolarisVersion.getNacosVersion();
 

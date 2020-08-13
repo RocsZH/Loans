@@ -30,6 +30,6 @@ public class NacosEnvApplicationContextInitializer extends PolarisEnvProcessor i
 
     @Override
     public String getName() {
-        return PolarisConstant.NACOS_NAME;
+        return PolarisConstant.NACOS_DISCOVERY_NAME;
     }
 }
