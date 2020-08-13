@@ -37,5 +37,17 @@
             <artifactId>polaris-component-jaeger-starter-sentinel</artifactId>
             <version>${project.version}</version>
         </dependency> -->
+
+        <!-- <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-prometheus-starter-micrometer</artifactId>
+            <version>${project.version}</version>
+        </dependency> -->
+
+        <!-- <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-spring-boot-admin-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency> -->
     </dependencies>
 </project>
