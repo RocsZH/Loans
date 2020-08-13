@@ -19,12 +19,9 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose Nacos or Eureka or Consul Discovery -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-nacos-starter-discovery</artifactId>
-            <!-- <artifactId>polaris-component-eureka-starter-discovery</artifactId> -->
-            <!-- <artifactId>polaris-component-consul-starter-discovery</artifactId> -->
+            <artifactId>polaris-component-discovery-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
