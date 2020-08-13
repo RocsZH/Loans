@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>polaris-component-core-starter-config-sentinel</artifactId>
-    <name>Nepxion Polaris Component Core Starter Config Sentinel</name>
+    <artifactId>polaris-component-sentinel-config-starter-apollo</artifactId>
+    <name>Nepxion Polaris Component Sentinel Config Starter Apollo</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.nepxion</groupId>
-        <artifactId>polaris-component-core</artifactId>
+        <artifactId>polaris-component-sentinel</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <dependencies>
-        <!-- You can choose Apollo or Nacos Config -->
         <dependency>
-            <groupId>com.nepxion</groupId>
-            <artifactId>polaris-component-sentinel-config-starter-apollo</artifactId>
-            <!-- <artifactId>polaris-component-sentinel-config-starter-nacos</artifactId> -->
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-apollo</artifactId>
         </dependency>
     </dependencies>
 </project>
