@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>polaris-component-gray</artifactId>
+    <name>Nepxion Polaris Component Gray</name>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.nepxion</groupId>
+        <artifactId>polaris-component</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>polaris-component-gray-common</module>
+        <module>polaris-component-gray-starter-gateway</module>
+        <module>polaris-component-gray-starter-zuul</module>
+        <module>polaris-component-gray-starter-service</module>
+        <module>polaris-component-gray-starter-hystrix</module>
+        <module>polaris-component-gray-starter-agent</module>
+        <module>polaris-component-gray-starter-console</module>
+    </modules>
+</project>
