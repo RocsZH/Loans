@@ -19,19 +19,16 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose Nacos or Eureka or Consul Discovery -->
         <dependency>
-            <groupId>com.nepxion</groupId>
-            <artifactId>discovery-plugin-starter-nacos</artifactId>
-            <!-- <artifactId>discovery-plugin-starter-eureka</artifactId> -->
-            <!-- <artifactId>discovery-plugin-starter-consul</artifactId> -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-discovery-starter-gray</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose Apollo or Nacos Config -->
         <dependency>
-            <groupId>com.nepxion</groupId>
-            <artifactId>discovery-plugin-config-center-starter-apollo</artifactId>
-            <!-- <artifactId>discovery-plugin-config-center-starter-nacos</artifactId> -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-config-starter-gray</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

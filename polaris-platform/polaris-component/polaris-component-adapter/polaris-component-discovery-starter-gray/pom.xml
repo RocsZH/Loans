@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>polaris-component-discovery-starter-gray</artifactId>
+    <name>Nepxion Polaris Component Discovery Starter Gray</name>
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.nepxion</groupId>
+        <artifactId>polaris-component-adapter</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <dependencies>
+        <!-- You can choose Nacos or Eureka or Consul Discovery -->
+        <dependency>
+            <groupId>com.nepxion</groupId>
+            <artifactId>discovery-plugin-starter-nacos</artifactId>
+            <!-- <artifactId>discovery-plugin-starter-eureka</artifactId> -->
+            <!-- <artifactId>discovery-plugin-starter-consul</artifactId> -->
+        </dependency>
+    </dependencies>
+</project>
