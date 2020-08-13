@@ -19,11 +19,10 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose Apollo or Nacos Config -->
         <dependency>
-            <groupId>com.nepxion</groupId>
-            <artifactId>discovery-console-starter-apollo</artifactId>
-            <!-- <artifactId>discovery-console-starter-nacos</artifactId> -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-config-starter-gray-console</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
