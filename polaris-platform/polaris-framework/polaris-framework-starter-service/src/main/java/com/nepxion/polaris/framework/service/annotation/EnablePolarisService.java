@@ -11,15 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
-
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableApolloConfig
+// @EnableApolloConfig
 @EnableFeignClients
 public @interface EnablePolarisService {
 

@@ -10,15 +10,13 @@ import java.lang.annotation.Target;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
-
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableApolloConfig
+// @EnableApolloConfig
 public @interface EnablePolarisConsole {
 
 }

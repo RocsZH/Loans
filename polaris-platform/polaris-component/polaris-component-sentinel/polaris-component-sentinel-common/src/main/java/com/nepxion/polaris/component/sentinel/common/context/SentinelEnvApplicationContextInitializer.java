@@ -26,8 +26,6 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
 
                 String projectName = getProjectName(applicationContext.getEnvironment());
                 System.setProperty(PolarisConstant.SENTINEL_PROJECT_NAME, projectName);
-
-                LOG.info("Project name = {}", projectName);
                 
                 String logPath = getLogPath();
                 System.setProperty(LogBase.LOG_DIR, logPath + projectName);
