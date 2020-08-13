@@ -14,6 +14,7 @@
 
     <modules>
         <module>polaris-component-discovery-starter</module>
+        <module>polaris-component-config-starter</module>
         <module>polaris-component-monitor-starter</module>
     </modules>
 </project>
