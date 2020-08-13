@@ -16,8 +16,8 @@
         <!-- You can choose Apollo or Nacos Config -->
         <dependency>
             <groupId>com.nepxion</groupId>
-            <artifactId>polaris-component-sentinel-config-starter-apollo</artifactId>
-            <!-- <artifactId>polaris-component-sentinel-config-starter-nacos</artifactId> -->
+            <!-- <artifactId>polaris-component-sentinel-config-starter-apollo</artifactId> -->
+            <artifactId>polaris-component-sentinel-config-starter-nacos</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
