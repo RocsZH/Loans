@@ -21,19 +21,19 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-discovery-starter</artifactId>
+            <artifactId>polaris-component-core-starter-discovery</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-config-starter</artifactId>
+            <artifactId>polaris-component-core-starter-config</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-monitor-starter</artifactId>
+            <artifactId>polaris-component-core-starter-monitor</artifactId>
             <version>${project.version}</version>
         </dependency>
 
