@@ -17,6 +17,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String NACOS_CONFIG_NAME = "nacos-config";
     public static final String NACOS_VERSION_NAME = "polaris.nacos.version";
     public static final String NACOS_VERSION_VALUE = PolarisVersion.getNacosVersion();
+    public static final String NACOS_DATA_ID = "nacos.dataId";
 
     public static final String EUREKA_DISCOVERY_NAME = "eureka-discovery";
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";

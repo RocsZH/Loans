@@ -56,13 +56,12 @@ public abstract class PolarisEnvProcessor {
             IOUtils.closeQuietly(inputStream);
         }
 
-        String zone = PolarisEnvProvider.getZone();
-
         for (String key : properties.stringPropertyNames()) {
             // 如果已经设置，则尊重已经设置的值
             if (environment.getProperty(key) == null && System.getProperty(key) == null) {
                 String value = properties.getProperty(key);
-                value = processDomain(value, zone);
+
+                value = decorateValue(environment, key, value);
 
                 LOG.info("* Env parameter : {} = {}", key, value);
 
@@ -71,6 +70,12 @@ public abstract class PolarisEnvProcessor {
                 LOG.info("* Env parameter : {} has been set", key);
             }
         }
+    }
+
+    protected String decorateValue(Environment environment, String key, String value) {
+        String zone = PolarisEnvProvider.getZone();
+
+        return processDomain(value, zone);
     }
 
     // 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
@@ -109,14 +114,20 @@ public abstract class PolarisEnvProcessor {
 
     public String getProjectName(Environment environment) {
         try {
-            String appId = "";
-
-            return appId;
+            return getAppId();
         } catch (Exception e) {
-            String applicationName = environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
-
-            return applicationName;
+            return getSpringApplicationName(environment);
         }
+    }
+
+    public String getAppId() {
+        String appId = "";
+
+        return appId;
+    }
+
+    public String getSpringApplicationName(Environment environment) {
+        return environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
     }
 
     public String getServerPropertiesPath() {
