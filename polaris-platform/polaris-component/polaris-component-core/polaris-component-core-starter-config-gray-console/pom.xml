@@ -16,8 +16,8 @@
         <!-- You can choose Apollo or Nacos Config -->
         <dependency>
             <groupId>com.nepxion</groupId>
-            <artifactId>discovery-console-starter-apollo</artifactId>
-            <!-- <artifactId>discovery-console-starter-nacos</artifactId> -->
+            <!-- <artifactId>discovery-console-starter-apollo</artifactId> -->
+            <artifactId>discovery-console-starter-nacos</artifactId>
         </dependency>
     </dependencies>
 </project>
