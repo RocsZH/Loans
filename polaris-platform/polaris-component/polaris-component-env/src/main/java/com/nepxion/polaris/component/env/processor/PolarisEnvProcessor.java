@@ -107,6 +107,18 @@ public abstract class PolarisEnvProcessor {
         return PolarisEnvProvider.getZone();
     }
 
+    public String getProjectName(Environment environment) {
+        try {
+            String appId = "";
+
+            return appId;
+        } catch (Exception e) {
+            String applicationName = environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
+
+            return applicationName;
+        }
+    }
+
     public String getServerPropertiesPath() {
         return PolarisEnvProvider.getServerPropertiesPath();
     }

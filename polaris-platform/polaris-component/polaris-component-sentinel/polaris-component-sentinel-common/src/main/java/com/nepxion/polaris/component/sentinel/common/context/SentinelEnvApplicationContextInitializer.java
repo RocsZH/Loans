@@ -7,7 +7,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.alibaba.csp.sentinel.log.LogBase;
-import com.ctrip.framework.foundation.Foundation;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 import com.nepxion.polaris.component.common.exception.PolarisException;
 import com.nepxion.polaris.component.env.processor.PolarisEnvProcessor;
@@ -23,11 +22,11 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
 
                 process(applicationContext.getEnvironment());
 
-                String appId = Foundation.app().getAppId();
-                System.setProperty(PolarisConstant.SENTINEL_PROJECT_NAME, appId);
+                String projectName = getProjectName(applicationContext.getEnvironment());
+                System.setProperty(PolarisConstant.SENTINEL_PROJECT_NAME, projectName);
 
                 String logPath = getLogPath();
-                System.setProperty(LogBase.LOG_DIR, logPath + appId);
+                System.setProperty(LogBase.LOG_DIR, logPath + projectName);
 
                 System.setProperty(PolarisConstant.SENTINEL_VERSION_NAME, PolarisConstant.SENTINEL_VERSION_VALUE);
             } catch (Exception e) {
