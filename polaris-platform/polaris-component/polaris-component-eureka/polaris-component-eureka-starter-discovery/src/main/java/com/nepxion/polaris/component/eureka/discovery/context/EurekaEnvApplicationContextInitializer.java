@@ -30,6 +30,6 @@ public class EurekaEnvApplicationContextInitializer extends PolarisEnvProcessor 
 
     @Override
     public String getName() {
-        return PolarisConstant.EUREKA_NAME;
+        return PolarisConstant.EUREKA_DISCOVERY_NAME;
     }
 }

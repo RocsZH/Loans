@@ -18,7 +18,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String NACOS_VERSION_NAME = "polaris.nacos.version";
     public static final String NACOS_VERSION_VALUE = PolarisVersion.getNacosVersion();
 
-    public static final String EUREKA_NAME = "eureka";
+    public static final String EUREKA_DISCOVERY_NAME = "eureka-discovery";
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
     public static final String EUREKA_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient");
 
