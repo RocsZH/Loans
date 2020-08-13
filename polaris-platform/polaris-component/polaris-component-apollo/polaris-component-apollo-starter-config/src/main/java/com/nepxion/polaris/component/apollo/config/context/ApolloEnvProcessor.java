@@ -30,6 +30,6 @@ public class ApolloEnvProcessor extends PolarisEnvProcessor implements Environme
 
     @Override
     public String getName() {
-        return PolarisConstant.APOLLO_NAME;
+        return PolarisConstant.APOLLO_CONFIG_NAME;
     }
 }

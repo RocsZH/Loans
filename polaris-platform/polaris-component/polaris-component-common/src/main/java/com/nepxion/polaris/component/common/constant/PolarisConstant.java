@@ -9,7 +9,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_VERSION_NAME = "polaris.version";
     public static final String POLARIS_VERSION_VALUE = "1.0.0";
 
-    public static final String APOLLO_NAME = "apollo";
+    public static final String APOLLO_CONFIG_NAME = "apollo-config";
     public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
     public static final String APOLLO_VERSION_VALUE = PolarisVersion.getVersion("com.ctrip.framework.apollo.ConfigService");
 
@@ -26,6 +26,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String CONSUL_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.consul.ConsulProperties");
 
     public static final String SENTINEL_NAME = "sentinel";
+    public static final String SENTINEL_CONFIG_NAME = "sentinel-config";
     public static final String SENTINEL_VERSION_NAME = "polaris.sentinel.version";
     public static final String SENTINEL_VERSION_VALUE = PolarisVersion.getVersion("com.alibaba.csp.sentinel.SphU");
     public static final String SENTINEL_PROJECT_NAME = "project.name";
