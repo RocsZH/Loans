@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.env.processor;
+package com.nepxion.polaris.component.env.provider;
 
 import java.io.File;
 import java.io.FileInputStream;
