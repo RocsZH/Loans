@@ -20,15 +20,14 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-core-starter-config-sentinel</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
-        <!-- You can choose Apollo or Nacos Config -->
         <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-datasource-apollo</artifactId>
-            <!-- <artifactId>sentinel-datasource-nacos</artifactId> -->
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
         <dependency>
