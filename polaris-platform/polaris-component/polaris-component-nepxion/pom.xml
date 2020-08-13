@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>polaris-component-nepxion</artifactId>
+    <name>Nepxion Polaris Component Nepxion</name>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.nepxion</groupId>
+        <artifactId>polaris-component</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>polaris-component-nepxion-common</module>
+        <module>polaris-component-nepxion-starter-gateway</module>
+        <module>polaris-component-nepxion-starter-zuul</module>
+        <module>polaris-component-nepxion-starter-service</module>
+        <module>polaris-component-nepxion-starter-hystrix</module>
+        <module>polaris-component-nepxion-starter-agent</module>
+        <module>polaris-component-nepxion-starter-console</module>
+    </modules>
+</project>
