@@ -8,21 +8,16 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
-import com.nepxion.polaris.component.env.provider.PolarisAppIdProvider;
 import com.nepxion.polaris.component.env.provider.PolarisEnvProvider;
 
 public abstract class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
-
-    @Autowired(required = false)
-    private PolarisAppIdProvider polarisAppIdProvider;
 
     public void process(Environment environment) throws Exception {
         String name = getName();
@@ -118,6 +113,14 @@ public abstract class PolarisEnvProcessor {
         return PolarisEnvProvider.getZone();
     }
 
+    public String getAppId() {
+        return PolarisEnvProvider.getAppId();
+    }
+
+    public String getSpringApplicationName(Environment environment) {
+        return environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
+    }
+
     public String getProjectName(Environment environment) {
         String appId = getAppId();
         if (StringUtils.isNotEmpty(appId)) {
@@ -125,18 +128,6 @@ public abstract class PolarisEnvProcessor {
         }
 
         return getSpringApplicationName(environment);
-    }
-
-    public String getAppId() {
-        if (polarisAppIdProvider != null) {
-            return polarisAppIdProvider.getAppId();
-        }
-
-        return null;
-    }
-
-    public String getSpringApplicationName(Environment environment) {
-        return environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
     }
 
     public String getServerPropertiesPath() {

@@ -19,6 +19,7 @@ public class PolarisEnvProvider {
 
     private static String env;
     private static String zone;
+    private static String appId;
 
     static {
         initializeEnv();
@@ -89,6 +90,14 @@ public class PolarisEnvProvider {
 
     public static String getZone() {
         return zone;
+    }
+
+    public static String getAppId() {
+        return appId;
+    }
+
+    public static void setAppId(String appId) {
+        PolarisEnvProvider.appId = appId;
     }
 
     public static String getServerPropertiesPath() {
