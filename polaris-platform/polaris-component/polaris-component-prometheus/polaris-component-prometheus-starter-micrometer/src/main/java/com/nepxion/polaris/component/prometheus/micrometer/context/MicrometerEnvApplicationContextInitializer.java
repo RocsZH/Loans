@@ -20,6 +20,9 @@ public class MicrometerEnvApplicationContextInitializer extends PolarisEnvProces
                 LOG.info("Initialize {} env...", getName());
 
                 process(applicationContext.getEnvironment());
+
+                String projectName = getProjectName(applicationContext.getEnvironment());
+                System.setProperty(PolarisConstant.MANAGEMENT_METRICS_TAGS_APPLICATION_NAME, projectName);
             } catch (Exception e) {
                 LOG.error("Initialize {} env failed", getName(), e);
 
