@@ -32,29 +32,29 @@
             - polaris-component-gray-starter-service :〔Polaris Gray集成服务的封装〕
             - polaris-component-gray-starter-hystrix :〔Polaris Gray集成Hystrix限流熔断组件的封装〕
             - polaris-component-gray-starter-agent :〔Polaris Gray集成跨线程Agent的封装〕
-        - polaris-component-sentinel :〔Polaris Sentinel组件目录〕
+        - polaris-component-sentinel :〔Polaris Sentinel限流熔断组件目录〕
             - polaris-component-sentinel-common :〔Polaris Sentinel通用组件〕
-            - polaris-component-sentinel-config-starter-apollo
-            - polaris-component-sentinel-config-starter-nacos
-            - polaris-component-sentinel-starter-gateway
-            - polaris-component-sentinel-starter-zuul
-            - polaris-component-sentinel-starter-service
-        - polaris-component-console
-            - polaris-component-console-config-starter-apollo
-            - polaris-component-console-config-starter-nacos
-            - polaris-component-console-starter
-        - polaris-component-core
-            - polaris-component-core-starter-discovery
-            - polaris-component-core-starter-discovery-gray
-            - polaris-component-core-starter-config
-            - polaris-component-core-starter-config-gray
-            - polaris-component-core-starter-config-console
-            - polaris-component-core-starter-config-sentinel
-            - polaris-component-core-starter-monitor
-        - polaris-component-test
-            - polaris-component-test-automation-starter
-    - polaris-framework
-        - polaris-framework-starter-console
-        - polaris-framework-starter-gateway
-        - polaris-framework-starter-zuul
-        - polaris-framework-starter-service
+            - polaris-component-sentinel-config-starter-apollo :〔Polaris Sentinel集成Apollo配置组件的封装〕
+            - polaris-component-sentinel-config-starter-nacos :〔Polaris Sentinel集成Nacos配置组件的封装〕
+            - polaris-component-sentinel-starter-gateway :〔Polaris Sentinel集成Spring Cloud Gateway网关的封装〕
+            - polaris-component-sentinel-starter-zuul :〔Polaris Sentinel集成Zuul网关的封装〕
+            - polaris-component-sentinel-starter-service :〔Polaris Sentinel集成服务的封装〕
+        - polaris-component-console :〔Polaris控制台组件目录〕
+            - polaris-component-console-config-starter-apollo :〔Polaris控制台集成Apollo配置组件的封装〕
+            - polaris-component-console-config-starter-nacos :〔Polaris控制台集成Nacos配置组件的封装〕
+            - polaris-component-console-starter :〔Polaris控制台组件〕
+        - polaris-component-core :〔Polaris核心组件目录，主要是组装和代理基础底层组件〕
+            - polaris-component-core-starter-discovery :〔Polaris注册发现组件的组装〕
+            - polaris-component-core-starter-discovery-gray :〔Polaris灰度蓝绿对注册发现组件的组装〕
+            - polaris-component-core-starter-config :〔Polaris配置组件的组装〕
+            - polaris-component-core-starter-config-gray :〔Polaris灰度蓝绿对配置组件的组装〕
+            - polaris-component-core-starter-config-console :〔Polaris控制台对配置组件的组装〕
+            - polaris-component-core-starter-config-sentinel :〔Polaris Sentinel对配置组件的组装〕
+            - polaris-component-core-starter-monitor :〔Polaris监控组件的组装〕
+        - polaris-component-test :〔Polaris测试组件目录〕
+            - polaris-component-test-automation-starter :〔Polaris自动化测试组件〕
+    - polaris-framework :〔Polaris框架目录〕
+        - polaris-framework-starter-console :〔Polaris框架对控制台的封装〕
+        - polaris-framework-starter-gateway :〔Polaris框架对Spring Cloud Gateway网关的封装〕
+        - polaris-framework-starter-zuul :〔Polaris框架对Zuul网关的封装〕
+        - polaris-framework-starter-service :〔Polaris框架对服务的封装〕
