@@ -39,7 +39,7 @@ public abstract class PolarisEnvProcessor {
         processProperties(environment, path);
     }
 
-    private void processProperties(Environment environment, String path) throws Exception {
+    public void processProperties(Environment environment, String path) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -62,7 +62,7 @@ public abstract class PolarisEnvProcessor {
             if (environment.getProperty(key) == null && System.getProperty(key) == null) {
                 String value = properties.getProperty(key);
 
-                value = decorateValue(environment, key, value);
+                value = processValue(environment, key, value);
 
                 LOG.info("* Env parameter : {} = {}", key, value);
 
@@ -73,17 +73,23 @@ public abstract class PolarisEnvProcessor {
         }
     }
 
-    protected String decorateValue(Environment environment, String key, String value) {
+    protected String processValue(Environment environment, String key, String value) {
         String zone = PolarisEnvProvider.getZone();
 
-        return processDomain(value, zone);
+        return processDomainWildcard(value, zone);
     }
 
-    // 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
-    // 域名表达式，样例：nacos-fat{-%zone%}.nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
-    // 区域，zone表示用来区别多活或者多云的域名后缀或者前缀
+    // 通用通配处理。通配格式为${abc}
+    protected String processCommonWildcard() {
+        return null;
+    }
+
+    // 域名通配处理。通配格式为{-%zone%}
+    // 1. 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
+    // 2. 域名表达式，样例：nacos-fat{-%zone%}.nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
+    // 3. 区域，zone表示用来区别多活或者多云的域名后缀或者前缀
     @SuppressWarnings("deprecation")
-    private String processDomain(String domainExpression, String zone) {
+    protected String processDomainWildcard(String domainExpression, String zone) {
         String zoneExpression = "%" + PolarisConstant.ZONE + "%";
 
         String domain = null;
