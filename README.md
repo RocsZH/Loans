@@ -18,7 +18,7 @@
         - polaris-component-jaeger :【Polaris OpenTracing + Jaeger组件目录】
             - polaris-component-jaeger-starter :【Polaris OpenTracing + Jaeger调用链监控组件的封装】
             - polaris-component-jaeger-starter-sentinel :【Polaris OpenTracing + Jaeger调用链监控组件集成Sentinel的封装】
-        - polaris-component-skywalking【Polaris SkyWalking组件目录】
+        - polaris-component-skywalking :【Polaris SkyWalking组件目录】
             - polaris-component-skywalking-starter :【Polaris SkyWalking调用链监控组件的封装】
             - polaris-component-skywalking-starter-sentinel :【Polaris SkyWalking调用链监控组件集成Sentinel的封装】
         - polaris-component-prometheus :【Polaris Prometheus组件目录】
