@@ -16,8 +16,8 @@
         <!-- You can choose Apollo or Nacos Config -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <!-- <artifactId>polaris-component-console-starter-apollo</artifactId> -->
-            <artifactId>polaris-component-console-starter-nacos</artifactId>
+            <!-- <artifactId>polaris-component-console-config-starter-apollo</artifactId> -->
+            <artifactId>polaris-component-console-config-starter-nacos</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
