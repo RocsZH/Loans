@@ -53,7 +53,9 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         }
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_VERSION + ":", PolarisConstant.DISCOVERY_VERSION, 0, 1));
         String discoveryAgentVersion = System.getProperty(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION);
-        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION + ":", StringUtils.isEmpty(discoveryAgentVersion) ? PolarisConstant.UNKNOWN : discoveryAgentVersion, 0, 1));
+        if (StringUtils.isNotEmpty(discoveryAgentVersion)) {
+            descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION + ":", discoveryAgentVersion, 0, 1));
+        }
         descriptions.add(new Description(PolarisConstant.SPRING_BOOT_VERSION + ":", SpringBootVersion.getVersion(), 0, 1));
 
         descriptions.add(new Description(PolarisConstant.POLARIS_VERSION_NAME + ":", PolarisConstant.POLARIS_VERSION_VALUE, 0, 1));
@@ -77,7 +79,9 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
             descriptions.add(new Description(PolarisConstant.SENTINEL_VERSION_NAME + ":", PolarisConstant.SENTINEL_VERSION_VALUE, 0, 1));
         }
         String skywalkingAgentVersion = System.getProperty(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME);
-        descriptions.add(new Description(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME + ":", StringUtils.isEmpty(skywalkingAgentVersion) ? PolarisConstant.UNKNOWN : skywalkingAgentVersion, 0, 1));
+        if (StringUtils.isNotEmpty(skywalkingAgentVersion)) {
+            descriptions.add(new Description(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME + ":", skywalkingAgentVersion, 0, 1));
+        }
 
         DescriptionBanner descriptionBanner = new DescriptionBanner();
         System.out.println(descriptionBanner.getBanner(descriptions));
