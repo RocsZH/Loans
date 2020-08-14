@@ -43,7 +43,7 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
     protected String processValue(Environment environment, String key, String value) {
         // 处理Nacos作为Datasource下，dataId加上服务名前缀
         if (StringUtils.endsWith(key, PolarisConstant.NACOS_DATA_ID)) {
-            return getSpringApplicationName(environment) + PolarisConstant.DASH + value;
+            return value + PolarisConstant.DASH + getSpringApplicationName(environment);
         }
 
         return super.processValue(environment, key, value);
