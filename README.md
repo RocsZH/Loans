@@ -1,1 +1,22 @@
 # Polaris
+
+- polaris
+    - polaris-parent
+    - polaris-platform
+        - polaris-component
+            - polaris-component-common
+            - polaris-component-env
+            - polaris-component-banner
+            - polaris-component-apollo
+            - polaris-component-nacos
+            - polaris-component-consul
+            - polaris-component-eureka
+            - polaris-component-jaeger
+            - polaris-component-skywalking
+            - polaris-component-prometheus
+            - polaris-component-spring-boot-admin
+            - polaris-component-gray
+            - polaris-component-sentinel
+            - polaris-component-console
+            - polaris-component-core
+            - polaris-component-test
