@@ -1,22 +1,56 @@
 # Polaris
 
 - polaris
-    - polaris-parent :〔Parent定义〕
+    - polaris-parent :〔Polaris Parent定义〕
     - polaris-platform :
         - polaris-component
             - polaris-component-common
             - polaris-component-env
             - polaris-component-banner
             - polaris-component-apollo
+                - polaris-component-apollo-starter-config
             - polaris-component-nacos
+                - polaris-component-nacos-starter-config
+                - polaris-component-nacos-starter-discovery
             - polaris-component-consul
+                - polaris-component-consul-starter-discovery
             - polaris-component-eureka
+                - polaris-component-eureka-starter-discovery
             - polaris-component-jaeger
+                - polaris-component-jaeger-starter
+                - polaris-component-jaeger-starter-sentinel
             - polaris-component-skywalking
+                - polaris-component-skywalking-starter
+                - polaris-component-skywalking-starter-sentinel
             - polaris-component-prometheus
+                - polaris-component-prometheus-starter-micrometer
             - polaris-component-spring-boot-admin
+                - polaris-component-spring-boot-admin-starter
             - polaris-component-gray
+                - polaris-component-gray-common
+                - polaris-component-gray-starter-gateway
+                - polaris-component-gray-starter-zuul
+                - polaris-component-gray-starter-service
+                - polaris-component-gray-starter-hystrix
+                - polaris-component-gray-starter-agent
             - polaris-component-sentinel
+                - polaris-component-sentinel-common
+                - polaris-component-sentinel-config-starter-apollo
+                - polaris-component-sentinel-config-starter-nacos
+                - polaris-component-sentinel-starter-gateway
+                - polaris-component-sentinel-starter-zuul
+                - polaris-component-sentinel-starter-service
             - polaris-component-console
+                - polaris-component-console-config-starter-apollo
+                - polaris-component-console-config-starter-nacos
+                - polaris-component-console-starter
             - polaris-component-core
+                - polaris-component-core-starter-discovery
+                - polaris-component-core-starter-discovery-gray
+                - polaris-component-core-starter-config
+                - polaris-component-core-starter-config-gray
+                - polaris-component-core-starter-config-console
+                - polaris-component-core-starter-config-sentinel
+                - polaris-component-core-starter-monitor
             - polaris-component-test
+                - polaris-component-test-automation-starter
