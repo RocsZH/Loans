@@ -9,6 +9,8 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_VERSION_NAME = "polaris.version";
     public static final String POLARIS_VERSION_VALUE = "1.0.0";
 
+    public static final String POLARIS_ENV_NAME = "polaris.env";
+
     public static final String APOLLO_CONFIG_NAME = "apollo-config";
     public static final String APOLLO_VERSION_NAME = "polaris.apollo.version";
     public static final String APOLLO_VERSION_VALUE = PolarisVersion.getVersion("com.ctrip.framework.apollo.ConfigService");

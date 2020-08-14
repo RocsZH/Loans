@@ -15,6 +15,7 @@ import com.nepxion.banner.Description;
 import com.nepxion.banner.DescriptionBanner;
 import com.nepxion.banner.LogoBanner;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
+import com.nepxion.polaris.component.env.provider.PolarisEnvProvider;
 import com.taobao.text.Color;
 
 public class BannerApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
@@ -46,13 +47,20 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         List<Description> descriptions = new ArrayList<Description>();
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_NAME + ":", applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_NAME), 0, 1));
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_TYPE + ":", StringUtils.isNotEmpty(applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE)) ? applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE) : PolarisConstant.APPLICATION, 0, 1));
+        String appId = PolarisEnvProvider.getAppId();
+        if (StringUtils.isNotEmpty(appId)) {
+            descriptions.add(new Description(PolarisConstant.APP_ID + ":", appId, 0, 1));
+        }
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_VERSION + ":", PolarisConstant.DISCOVERY_VERSION, 0, 1));
         String discoveryAgentVersion = System.getProperty(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION);
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_DISCOVERY_AGENT_VERSION + ":", StringUtils.isEmpty(discoveryAgentVersion) ? PolarisConstant.UNKNOWN : discoveryAgentVersion, 0, 1));
         descriptions.add(new Description(PolarisConstant.SPRING_BOOT_VERSION + ":", SpringBootVersion.getVersion(), 0, 1));
+
         descriptions.add(new Description(PolarisConstant.POLARIS_VERSION_NAME + ":", PolarisConstant.POLARIS_VERSION_VALUE, 0, 1));
+        descriptions.add(new Description(PolarisConstant.POLARIS_ENV_NAME + ":", PolarisEnvProvider.getEnv(), 0, 1));
         descriptions.add(new Description(PolarisConstant.CODES_NAME + ":", PolarisConstant.CODES_VALUE, 0, 1));
         descriptions.add(new Description(PolarisConstant.DOCS_NAME + ":", PolarisConstant.DOCS_VALUE, 0, 1));
+
         if (StringUtils.isNotEmpty(PolarisConstant.APOLLO_VERSION_VALUE)) {
             descriptions.add(new Description(PolarisConstant.APOLLO_VERSION_NAME + ":", PolarisConstant.APOLLO_VERSION_VALUE, 0, 1));
         }
