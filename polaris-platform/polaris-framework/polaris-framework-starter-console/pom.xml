@@ -33,7 +33,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-gray-starter-console</artifactId>
+            <artifactId>polaris-component-console-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
