@@ -13,11 +13,11 @@
     </parent>
 
     <modules>
+        <module>polaris-component-sentinel-config-starter-apollo</module>
+        <module>polaris-component-sentinel-config-starter-nacos</module>
         <module>polaris-component-sentinel-common</module>
         <module>polaris-component-sentinel-starter-gateway</module>
         <module>polaris-component-sentinel-starter-zuul</module>
         <module>polaris-component-sentinel-starter-service</module>
-        <module>polaris-component-sentinel-config-starter-apollo</module>
-        <module>polaris-component-sentinel-config-starter-nacos</module>
     </modules>
 </project>
