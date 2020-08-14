@@ -1,60 +1,60 @@
 # Polaris
 
-- polaris-parent :〔Polaris Parent定义〕
-- polaris-platform :〔Polaris平台目录〕
-    - polaris-component :〔Polaris组件目录〕
-        - polaris-component-common :〔Polaris通用组件〕
-        - polaris-component-env :〔Polaris环境组件，支持DEV | FAT | UAT | PROD四个环境配置动态读取，支持动态域名，双云双活等〕
-        - polaris-component-banner :〔Polaris旗标组件，用来启动时显示旗标和重要中间件版本号信息等〕
-        - polaris-component-apollo :〔Polaris Apollo组件目录〕
-            - polaris-component-apollo-starter-config :〔Polaris Apollo配置组件的封装〕
-        - polaris-component-nacos :〔Polaris Nacos组件目录〕
-            - polaris-component-nacos-starter-config :〔Polaris Nacos配置组件的封装〕
-            - polaris-component-nacos-starter-discovery :〔Polaris Nacos注册发现组件的封装〕
-        - polaris-component-consul :〔Polaris Consul组件目录〕
-            - polaris-component-consul-starter-discovery :〔Polaris Consul注册发现组件的封装〕
-        - polaris-component-eureka :〔Polaris Eureka组件目录〕
-            - polaris-component-eureka-starter-discovery :〔Polaris Eureka注册发现组件的封装〕
-        - polaris-component-jaeger :〔Polaris OpenTracing + Jaeger组件目录〕
-            - polaris-component-jaeger-starter :〔Polaris OpenTracing + Jaeger调用链监控组件的封装〕
-            - polaris-component-jaeger-starter-sentinel :〔Polaris OpenTracing + Jaeger调用链监控组件集成Sentinel的封装〕
-        - polaris-component-skywalking〔Polaris SkyWalking组件目录〕
-            - polaris-component-skywalking-starter :〔Polaris SkyWalking调用链监控组件的封装〕
-            - polaris-component-skywalking-starter-sentinel :〔Polaris SkyWalking调用链监控组件集成Sentinel的封装〕
-        - polaris-component-prometheus :〔Polaris Prometheus组件目录〕
-            - polaris-component-prometheus-starter-micrometer :〔Polaris Prometheus监控组件集成Micrometer的封装〕
-        - polaris-component-spring-boot-admin :〔Polaris Spring Boot Admin组件目录〕
-            - polaris-component-spring-boot-admin-starter :〔Polaris Polaris Spring Boot Admin监控组件的封装〕
-        - polaris-component-gray :〔Polaris Gray灰度蓝绿，版本分流，区域路由，环境隔离路由等组件目录〕
-            - polaris-component-gray-common :〔Polaris Gray通用组件〕
-            - polaris-component-gray-starter-gateway :〔Polaris Gray集成Spring Cloud Gateway网关的封装〕
-            - polaris-component-gray-starter-zuul :〔Polaris Gray集成Zuul网关的封装〕
-            - polaris-component-gray-starter-service :〔Polaris Gray集成服务的封装〕
-            - polaris-component-gray-starter-hystrix :〔Polaris Gray集成Hystrix限流熔断组件的封装〕
-            - polaris-component-gray-starter-agent :〔Polaris Gray集成跨线程Agent的封装〕
-        - polaris-component-sentinel :〔Polaris Sentinel组件目录〕
-            - polaris-component-sentinel-common
-            - polaris-component-sentinel-config-starter-apollo
-            - polaris-component-sentinel-config-starter-nacos
-            - polaris-component-sentinel-starter-gateway
-            - polaris-component-sentinel-starter-zuul
-            - polaris-component-sentinel-starter-service
-        - polaris-component-console
-            - polaris-component-console-config-starter-apollo
-            - polaris-component-console-config-starter-nacos
-            - polaris-component-console-starter
-        - polaris-component-core
-            - polaris-component-core-starter-discovery
-            - polaris-component-core-starter-discovery-gray
-            - polaris-component-core-starter-config
-            - polaris-component-core-starter-config-gray
-            - polaris-component-core-starter-config-console
-            - polaris-component-core-starter-config-sentinel
-            - polaris-component-core-starter-monitor
-        - polaris-component-test
-            - polaris-component-test-automation-starter
-    - polaris-framework
-        - polaris-framework-starter-console
-        - polaris-framework-starter-gateway
-        - polaris-framework-starter-zuul
-        - polaris-framework-starter-service
+1. polaris-parent :〔Polaris Parent定义〕
+2. polaris-platform :〔Polaris平台目录〕
+- polaris-component :〔Polaris组件目录〕
+    - polaris-component-common :〔Polaris通用组件〕
+    - polaris-component-env :〔Polaris环境组件，支持DEV | FAT | UAT | PROD四个环境配置动态读取，支持动态域名，双云双活等〕
+    - polaris-component-banner :〔Polaris旗标组件，用来启动时显示旗标和重要中间件版本号信息等〕
+    - polaris-component-apollo :〔Polaris Apollo组件目录〕
+        - polaris-component-apollo-starter-config :〔Polaris Apollo配置组件的封装〕
+    - polaris-component-nacos :〔Polaris Nacos组件目录〕
+        - polaris-component-nacos-starter-config :〔Polaris Nacos配置组件的封装〕
+        - polaris-component-nacos-starter-discovery :〔Polaris Nacos注册发现组件的封装〕
+    - polaris-component-consul :〔Polaris Consul组件目录〕
+        - polaris-component-consul-starter-discovery :〔Polaris Consul注册发现组件的封装〕
+    - polaris-component-eureka :〔Polaris Eureka组件目录〕
+        - polaris-component-eureka-starter-discovery :〔Polaris Eureka注册发现组件的封装〕
+    - polaris-component-jaeger :〔Polaris OpenTracing + Jaeger组件目录〕
+        - polaris-component-jaeger-starter :〔Polaris OpenTracing + Jaeger调用链监控组件的封装〕
+        - polaris-component-jaeger-starter-sentinel :〔Polaris OpenTracing + Jaeger调用链监控组件集成Sentinel的封装〕
+    - polaris-component-skywalking〔Polaris SkyWalking组件目录〕
+        - polaris-component-skywalking-starter :〔Polaris SkyWalking调用链监控组件的封装〕
+        - polaris-component-skywalking-starter-sentinel :〔Polaris SkyWalking调用链监控组件集成Sentinel的封装〕
+    - polaris-component-prometheus :〔Polaris Prometheus组件目录〕
+        - polaris-component-prometheus-starter-micrometer :〔Polaris Prometheus监控组件集成Micrometer的封装〕
+    - polaris-component-spring-boot-admin :〔Polaris Spring Boot Admin组件目录〕
+        - polaris-component-spring-boot-admin-starter :〔Polaris Polaris Spring Boot Admin监控组件的封装〕
+    - polaris-component-gray :〔Polaris Gray灰度蓝绿，版本分流，区域路由，环境隔离路由等组件目录〕
+        - polaris-component-gray-common :〔Polaris Gray通用组件〕
+        - polaris-component-gray-starter-gateway :〔Polaris Gray集成Spring Cloud Gateway网关的封装〕
+        - polaris-component-gray-starter-zuul :〔Polaris Gray集成Zuul网关的封装〕
+        - polaris-component-gray-starter-service :〔Polaris Gray集成服务的封装〕
+        - polaris-component-gray-starter-hystrix :〔Polaris Gray集成Hystrix限流熔断组件的封装〕
+        - polaris-component-gray-starter-agent :〔Polaris Gray集成跨线程Agent的封装〕
+    - polaris-component-sentinel :〔Polaris Sentinel组件目录〕
+        - polaris-component-sentinel-common :〔Polaris Sentinel通用组件〕
+        - polaris-component-sentinel-config-starter-apollo
+        - polaris-component-sentinel-config-starter-nacos
+        - polaris-component-sentinel-starter-gateway
+        - polaris-component-sentinel-starter-zuul
+        - polaris-component-sentinel-starter-service
+    - polaris-component-console
+        - polaris-component-console-config-starter-apollo
+        - polaris-component-console-config-starter-nacos
+        - polaris-component-console-starter
+    - polaris-component-core
+        - polaris-component-core-starter-discovery
+        - polaris-component-core-starter-discovery-gray
+        - polaris-component-core-starter-config
+        - polaris-component-core-starter-config-gray
+        - polaris-component-core-starter-config-console
+        - polaris-component-core-starter-config-sentinel
+        - polaris-component-core-starter-monitor
+    - polaris-component-test
+        - polaris-component-test-automation-starter
+- polaris-framework
+    - polaris-framework-starter-console
+    - polaris-framework-starter-gateway
+    - polaris-framework-starter-zuul
+    - polaris-framework-starter-service
