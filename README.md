@@ -2,13 +2,13 @@
 
 - polaris
     - polaris-parent :〔Polaris Parent定义〕
-    - polaris-platform :
-        - polaris-component
-            - polaris-component-common
-            - polaris-component-env
-            - polaris-component-banner
-            - polaris-component-apollo
-                - polaris-component-apollo-starter-config
+    - polaris-platform :〔Polaris平台目录〕
+        - polaris-component :〔Polaris组件目录〕
+            - polaris-component-common :〔Polaris通用组件〕
+            - polaris-component-env :〔Polaris环境组件，支持DEV|FAT|UAT|PROD四个环境智能读取，支持动态域名，双云双活〕
+            - polaris-component-banner :〔Polaris旗标组件，用来启动时显示旗标和重要中间件版本号信息等〕
+            - polaris-component-apollo :〔Polaris Apollo组件目录〕
+                - polaris-component-apollo-starter-config :〔Polaris Apollo配置组件的封装〕
             - polaris-component-nacos
                 - polaris-component-nacos-starter-config
                 - polaris-component-nacos-starter-discovery
