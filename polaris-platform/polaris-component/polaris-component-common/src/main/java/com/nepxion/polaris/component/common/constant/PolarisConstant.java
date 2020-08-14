@@ -48,7 +48,7 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String SPRING_BOOT_ADMIN_NAME = "spring-boot-admin";
 
-    public static final String GRAY_CONSOLE_NAME = "gray-console";
+    public static final String CONSOLE_NAME = "console";
 
     public static final String POLARIS_SERVICE_NAME = "polaris-service";
     public static final String POLARIS_GATEWAY_NAME = "polaris-gateway";
