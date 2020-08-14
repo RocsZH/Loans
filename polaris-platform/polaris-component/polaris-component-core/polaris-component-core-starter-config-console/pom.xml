@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>polaris-component-core-starter-config-gray-console</artifactId>
-    <name>Nepxion Polaris Component Core Starter Config Gray Console</name>
+    <artifactId>polaris-component-core-starter-config-console</artifactId>
+    <name>Nepxion Polaris Component Core Starter Config Console</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,9 +15,10 @@
     <dependencies>
         <!-- You can choose Apollo or Nacos Config -->
         <dependency>
-            <groupId>com.nepxion</groupId>
-            <!-- <artifactId>discovery-console-starter-apollo</artifactId> -->
-            <artifactId>discovery-console-starter-nacos</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <!-- <artifactId>polaris-component-console-starter-apollo</artifactId> -->
+            <artifactId>polaris-component-console-starter-nacos</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

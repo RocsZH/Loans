@@ -17,7 +17,7 @@
         <module>polaris-component-core-starter-discovery-gray</module>
         <module>polaris-component-core-starter-config</module>
         <module>polaris-component-core-starter-config-gray</module>
-        <module>polaris-component-core-starter-config-gray-console</module>
+        <module>polaris-component-core-starter-config-console</module>
         <module>polaris-component-core-starter-config-sentinel</module>
         <module>polaris-component-core-starter-monitor</module>
     </modules>
