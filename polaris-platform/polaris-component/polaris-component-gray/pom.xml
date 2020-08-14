@@ -19,6 +19,5 @@
         <module>polaris-component-gray-starter-service</module>
         <module>polaris-component-gray-starter-hystrix</module>
         <module>polaris-component-gray-starter-agent</module>
-        <module>polaris-component-gray-starter-console</module>
     </modules>
 </project>
