@@ -54,3 +54,8 @@
                 - polaris-component-core-starter-monitor
             - polaris-component-test
                 - polaris-component-test-automation-starter
+        - polaris-framework
+            - polaris-framework-starter-console
+            - polaris-framework-starter-gateway
+            - polaris-framework-starter-zuul
+            - polaris-framework-starter-service
