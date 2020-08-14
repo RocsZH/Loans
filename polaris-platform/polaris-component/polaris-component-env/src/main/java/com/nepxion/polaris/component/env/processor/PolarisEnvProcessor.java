@@ -79,11 +79,6 @@ public abstract class PolarisEnvProcessor {
         return processDomainWildcard(value, zone);
     }
 
-    // 通用通配处理。通配格式为${abc}
-    protected String processCommonWildcard() {
-        return null;
-    }
-
     // 域名通配处理。通配格式为{-%zone%}
     // 1. 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
     // 2. 域名表达式，样例：nacos-fat{-%zone%}.nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
