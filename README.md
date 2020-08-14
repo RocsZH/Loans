@@ -1,8 +1,8 @@
 # Polaris
 
 - polaris
-    - polaris-parent
-    - polaris-platform
+    - polaris-parent :〔Parent定义〕
+    - polaris-platform :
         - polaris-component
             - polaris-component-common
             - polaris-component-env
