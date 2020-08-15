@@ -20,6 +20,8 @@ public class JaegerEnvApplicationContextInitializer extends PolarisEnvProcessor 
                 LOG.info("Initialize {} env...", getName());
 
                 process(applicationContext.getEnvironment());
+
+                System.setProperty(PolarisConstant.JAEGER_VERSION_NAME, PolarisConstant.JAEGER_VERSION_VALUE);
             } catch (Exception e) {
                 LOG.error("Initialize {} env failed", getName(), e);
 
