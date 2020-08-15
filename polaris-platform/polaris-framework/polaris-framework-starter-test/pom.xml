@@ -13,12 +13,14 @@
     </parent>
 
     <dependencies>
+        <!-- 旗标组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-banner</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 自动化测试组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-test-starter-automation</artifactId>

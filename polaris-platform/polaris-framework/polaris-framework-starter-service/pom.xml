@@ -13,36 +13,42 @@
     </parent>
 
     <dependencies>
+        <!-- 旗标组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-banner</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 注册发现组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-discovery</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 配置组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-config</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 监控组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-monitor</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 防护组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-protector-service</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 灰度蓝绿组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-gray-starter-service</artifactId>
