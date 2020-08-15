@@ -17,5 +17,6 @@
         <module>polaris-framework-starter-gateway</module>
         <module>polaris-framework-starter-zuul</module>
         <module>polaris-framework-starter-service</module>
+        <module>polaris-framework-starter-test</module>
     </modules>
 </project>
