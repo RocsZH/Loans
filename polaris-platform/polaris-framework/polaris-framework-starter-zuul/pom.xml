@@ -39,20 +39,14 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-gray-starter-zuul</artifactId>
+            <artifactId>polaris-component-core-starter-protector-zuul</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-sentinel-starter-zuul</artifactId>
+            <artifactId>polaris-component-gray-starter-zuul</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-hystrix-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>        
     </dependencies>
 </project>

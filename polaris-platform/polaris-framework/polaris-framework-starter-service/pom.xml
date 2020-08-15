@@ -39,13 +39,13 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-gray-starter-service</artifactId>
+            <artifactId>polaris-component-core-starter-protector-service</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-sentinel-starter-service</artifactId>
+            <artifactId>polaris-component-gray-starter-service</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

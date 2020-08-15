@@ -19,6 +19,9 @@
         <module>polaris-component-core-starter-config-gray</module>
         <module>polaris-component-core-starter-config-console</module>
         <module>polaris-component-core-starter-config-sentinel</module>
+        <module>polaris-component-core-starter-protector-gateway</module>
+        <module>polaris-component-core-starter-protector-zuul</module>
+        <module>polaris-component-core-starter-protector-service</module>
         <module>polaris-component-core-starter-monitor</module>
     </modules>
 </project>
