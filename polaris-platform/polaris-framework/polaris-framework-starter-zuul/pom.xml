@@ -48,5 +48,11 @@
             <artifactId>polaris-component-sentinel-starter-zuul</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-hystrix-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>        
     </dependencies>
 </project>
