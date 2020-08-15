@@ -25,6 +25,8 @@
         <module>polaris-component-prometheus</module>
         <module>polaris-component-spring-boot-admin</module>
         <module>polaris-component-gray</module>
+        <module>polaris-component-agent</module>
+        <module>polaris-component-hystrix</module>
         <module>polaris-component-sentinel</module>
         <module>polaris-component-console</module>
         <module>polaris-component-core</module>
