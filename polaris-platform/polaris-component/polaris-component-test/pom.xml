@@ -13,6 +13,6 @@
     </parent>
 
     <modules>
-        <module>polaris-component-test-automation-starter</module>
+        <module>polaris-component-test-starter-automation</module>
     </modules>
 </project>
