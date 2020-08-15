@@ -41,6 +41,8 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String SKYWALKING_SENTINEL_NAME = "skywalking-sentinel";
 
     public static final String JAEGER_NAME = "jaeger";
+    public static final String JAEGER_VERSION_NAME = "polaris.jaeger.version";
+    public static final String JAEGER_VERSION_VALUE = PolarisVersion.getVersion("io.jaegertracing.internal.JaegerTracer");
     public static final String JAEGER_SENTINEL_NAME = "jaeger-sentinel";
 
     public static final String PROMETHEUS_MICROMETER_NAME = "prometheus-micrometer";

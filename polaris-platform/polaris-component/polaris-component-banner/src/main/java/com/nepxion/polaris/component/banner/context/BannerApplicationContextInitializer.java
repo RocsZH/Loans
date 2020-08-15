@@ -78,6 +78,9 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         if (StringUtils.isNotEmpty(PolarisConstant.SENTINEL_VERSION_VALUE)) {
             descriptions.add(new Description(PolarisConstant.SENTINEL_VERSION_NAME + ":", PolarisConstant.SENTINEL_VERSION_VALUE, 0, 1));
         }
+        if (StringUtils.isNotEmpty(PolarisConstant.JAEGER_VERSION_VALUE)) {
+            descriptions.add(new Description(PolarisConstant.JAEGER_VERSION_NAME + ":", PolarisConstant.JAEGER_VERSION_VALUE, 0, 1));
+        }
         String skywalkingAgentVersion = System.getProperty(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME);
         if (StringUtils.isNotEmpty(skywalkingAgentVersion)) {
             descriptions.add(new Description(PolarisConstant.SKY_WALKING_AGENT_VERSION_NAME + ":", skywalkingAgentVersion, 0, 1));
