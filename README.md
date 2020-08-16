@@ -55,7 +55,7 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
         - [添加注解](#添加注解)
         - [添加配置](#添加配置)
     - [应用启动](#应用启动)
-        - [Spring Boot应用启动](#Spring Boot应用启动)
+        - [Spring-Boot应用启动](#Spring-Boot应用启动)
         - [Skywalking-Agent启动](#Skywalking-Agent启动)
         - [Polaris-Agent启动](#Polaris-Agent启动)
 - [Star走势图](#Star走势图)
@@ -411,7 +411,7 @@ public class PolarisApplication {
 
 ### 应用启动
 
-#### Spring Boot应用启动
+#### Spring-Boot应用启动
 跟原生的Spring Boot应用程序启动方式一致
 
 #### Skywalking-Agent启动
