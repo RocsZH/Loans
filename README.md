@@ -187,7 +187,6 @@ You can choose Sentinel or Hystrix Protector
 把搜索出来的三个pom.xml换成使用者想要的组件
 
 ### 环境切换
-
 所有的组件都支持四个环境（DEV | FAT | UAT | PRO），分别对应开发环境、测试环境、准生产环境、生产环境
 
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 框架默认的组件环境配置，并以Nacos注册为示例，如下：
@@ -195,11 +194,24 @@ You can choose Sentinel or Hystrix Protector
 | 环境 | 域名或者IP地址 | 示例 |
 | --- | --- | --- |
 | DEV | 默认为127.0.0.1:port | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
-| FAT | {组件名}-fat-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat{-%zone%}.nepxion.com |
-| UAT | {组件名}-uat-{可选的区域名}-{根域名}| spring.cloud.nacos.discovery.server-addr=<br>nacos-uat{-%zone%}.nepxion.com |
-| PRO | {组件名}-pro-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro{-%zone%}.nepxion.com |
+| FAT | {组件名}-fat-{可选的区域名}.{根域} | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat{-%zone%}.nepxion.com |
+| UAT | {组件名}-uat-{可选的区域名}.{根域}| spring.cloud.nacos.discovery.server-addr=<br>nacos-uat{-%zone%}.nepxion.com |
+| PRO | {组件名}-pro-{可选的区域名}.{根域} | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro{-%zone%}.nepxion.com |
+
+区域（zone）名表示用来区别多活或者多云的域名后缀或者前缀
+- 域名表达式为{组件名}-{环境号}-{可选的区域名}.{根域}。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
+- 实现通配处理，通配格式为{-%zone%}，如果区域（zone）名不设置，那么变成{组件名}-{环境号}.{根域}的简单格式
+- 通过运维侧来实现环境号和区域名的指定
+- 没有条件实现多环境的域名支持，那么采用IP地址也支持
+
+使用者需要根据企业的实际情况，把组件的四个环境域名和IP地址一一做更改
 
 ### 注解切换
+当配置中心组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig
+- @EnablePolarisGateway
+- @EnablePolarisZuul
+- @EnablePolarisService
+- @EnablePolarisConsole
 
 ## 使用步骤
 
