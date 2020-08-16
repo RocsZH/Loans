@@ -52,6 +52,8 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String CONSOLE_NAME = "console";
 
+    public static final String TEST_AUTOMATION = "test-automation";
+
     public static final String POLARIS_SERVICE_NAME = "polaris-service";
     public static final String POLARIS_GATEWAY_NAME = "polaris-gateway";
     public static final String POLARIS_ZUUL_NAME = "polaris-zuul";
