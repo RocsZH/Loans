@@ -37,12 +37,12 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 - [架构工程](#架构工程)
     - [工程介绍](#工程介绍)
 - [集成步骤](#集成步骤)
-    - [组件切换](#组件切换 默认是Nacos和Jaeger)
+    - [组件切换](#组件切换)
     - [环境切换](#环境切换)
     - [注解切换](#注解切换)
 - [使用步骤](#使用步骤)
-    - [环境和域名配置](#环境和域名配置 Server.properties或者-D，或者System Property，或者System Env)
-    - [Agent配置](#Agent配置)
+    - [环境和域名配置](#环境和域名配置)
+    - [Agent使用和配置](#Agent使用和配置)
 - [Star走势图](#Star走势图)
 
 ## 请联系我
@@ -53,19 +53,19 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ## 相关链接
 
 ### Polaris源码主页
-[Polaris源码主页](https://github.com/Nepxion/Polaris)
+[访问链接](https://github.com/Nepxion/Polaris)
 
 ### Polaris指南主页
-[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)
+[访问链接](https://github.com/Nepxion/PolarisGuide)
 
 ### Discovery源码主页
-[Discovery源码主页](https://github.com/Nepxion/Discovery)
+[访问链接](https://github.com/Nepxion/Discovery)
 
 ### Discovery指南主页
-[Discovery指南主页](https://github.com/Nepxion/DiscoveryGuide)
+[访问链接](https://github.com/Nepxion/DiscoveryGuide)
 
 ### Discovery文档主页
-[Discovery文档主页](https://gitee.com/Nepxion/Docs/tree/master/web-doc)
+[访问链接](https://gitee.com/Nepxion/Docs/tree/master/web-doc)
 
 ## 架构工程
 
@@ -143,6 +143,28 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-zuul | Polaris框架对Zuul网关的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-service | Polaris框架对微服务的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-test | Polaris框架对测试的封装 |
+
+## 集成步骤
+
+### 组件切换
+
+默认是Nacos和Jaeger
+
+### 环境切换
+
+### 注解切换
+
+## 使用步骤
+
+### 环境和域名配置
+
+Server.properties或者-D，或者System Property，或者System Env
+
+### Agent使用和配置
+
+- Skywalking Agent使用和配置
+
+- 跨线程异步调用Agent使用和配置
 
 ## Star走势图
 
