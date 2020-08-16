@@ -1,7 +1,62 @@
 <img src="http://nepxion.gitee.io/docs/polaris-doc/ProjectLogo.png">
 
-# Polaris【北极星】企业级微服务框架
+# Polaris【北极星】企业级云原生微服务框架
 [![Total lines](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/Polaris/blob/master/LICENSE)  [![Build Status](https://travis-ci.org/Nepxion/Polaris.svg?branch=master)](https://travis-ci.org/Nepxion/Polaris)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e39a24e1be740c58b83fb81763ba317)](https://www.codacy.com/project/HaojunRen/Polaris/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nepxion/Polaris&amp;utm_campaign=Badge_Grade_Dashboard)
+
+Polaris【北极星】企业级微服务框架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级微服务开源解决方案，更贴近企业级需求，赋能和助力企业快速搭建基础架构的底层云原生微服务框架
+
+支持如下中间件的集成和封装
+- 支持阿里巴巴Nacos、Eureka、Consul三个服务注册发现中心
+- 支持阿里巴巴Nacos、携程Apollo两个远程配置中心
+- 支持阿里巴巴Sentinel和Hystrix两个熔断隔离限流降级中间件
+- 支持Uber Jaeger、Apache Skywalking等符合OpenTracing调用链中间件
+- 支持Java Agent解决异步跨线程ThreadLocal上下文传递
+- 支持Prometheus Micrometer和Spring Boot Admin监控中间件
+- 支持Spring Cloud Gateway、Zuul网关、微服务、控制台、自动化测试五个独立微服务模块
+- 支持和兼容Spring Cloud Finchley版、Greenwich版和Hoxton版
+
+支持如下的应用型功能
+- 支持动态域名和双云双活的配置，支持跨云的服务注册和配置读取
+- 支持不需要更改任何代码，在pom.xml上实现同类型的组件一键切换（例如，Eureka注册中心切换到Consul，Apollo配置中心切换到Nacos等），但需要注意的是同类型组件不可并行使用（例如，Eureka和Consul注册中心不可同时存在，Apollo和Nacos配置中心不可同时存在等）
+- 支持每个组件对四个环境（DEV | FAT | UAT | PRO）的内置最佳配置，遵守“约定大于配置”的策略，业务层面零配置或微量配置即可。框架集成人员可以在里面定制个性化配置，业务开发人员支持在业务层把内置的配置覆盖掉，达到灵活使用的目的
+
+## 目录
+- [请联系我](#请联系我)
+- [相关链接](#相关链接)
+    - [Polaris源码主页](#Polaris源码主页)
+    - [Polaris指南主页](#Polaris指南主页)
+    - [Discovery源码主页](#Discovery源码主页)
+    - [Discovery指南主页](#Discovery指南主页)
+    - [Discovery文档主页](#Discovery文档主页)
+- [架构工程](#架构工程)
+    - [工程介绍](#工程介绍)
+- [Star走势图](#Star走势图)
+
+## 请联系我
+微信、公众号和文档
+
+![Alt text](http://nepxion.gitee.io/docs/zxing-doc/微信-1.jpg)![Alt text](http://nepxion.gitee.io/docs/zxing-doc/公众号-1.jpg)![Alt text](http://nepxion.gitee.io/docs/zxing-doc/文档-1.jpg)
+
+## 相关链接
+
+### Polaris源码主页
+[Polaris源码主页](https://github.com/Nepxion/Polaris)
+
+### Polaris指南主页
+[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)
+
+### Discovery源码主页
+[Discovery源码主页](https://github.com/Nepxion/Discovery)
+
+### Discovery指南主页
+[Discovery指南主页](https://github.com/Nepxion/DiscoveryGuide)
+
+### Discovery文档主页
+[Discovery文档主页](https://gitee.com/Nepxion/Docs/tree/master/web-doc)
+
+## 架构工程
+
+### 工程介绍
 
 | 工程名 | 描述 |
 | --- | --- |
@@ -75,8 +130,6 @@
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-zuul | Polaris框架对Zuul网关的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-service | Polaris框架对微服务的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-test | Polaris框架对测试的封装 |
-
-
 
 ## Star走势图
 
