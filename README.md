@@ -177,7 +177,7 @@ You can choose Apollo or Nacos Config
 ```
 You can choose Skywalking or Jaeger Monitor
 ```
-把搜索出来的四个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件
+把搜索出来的一个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件
 
 #### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
@@ -187,6 +187,17 @@ You can choose Sentinel or Hystrix Protector
 把搜索出来的三个pom.xml换成使用者想要的组件
 
 ### 环境切换
+
+所有的组件都支持四个环境（DEV | FAT | UAT | PRO），分别对应开发环境、测试环境、准生产环境、生产环境
+
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 框架默认的组件环境配置，并以Nacos注册为示例，如下：
+
+| 环境 | 域名或者IP地址 | 示例 |
+| --- | --- | --- |
+| DEV | 默认为127.0.0.1:port | spring.cloud.nacos.discovery.server-addr=127.0.0.1:8848 |
+| FAT | {组件名}-fat-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=nacos-fat{-%zone%}.nepxion.com |
+| UAT | {组件名}-uat-{可选的区域名}-{根域名}| spring.cloud.nacos.discovery.server-addr=nacos-uat{-%zone%}.nepxion.com |
+| PRO | {组件名}-pro-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=nacos-pro{-%zone%}.nepxion.com |
 
 ### 注解切换
 
