@@ -20,10 +20,10 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 自动化测试组件 -->
+        <!-- 测试核心组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-test-starter-automation</artifactId>
+            <artifactId>polaris-component-core-starter-test</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

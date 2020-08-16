@@ -26,5 +26,7 @@
         <module>polaris-component-core-starter-gray-gateway</module>
         <module>polaris-component-core-starter-gray-zuul</module>
         <module>polaris-component-core-starter-gray-service</module>
+        <module>polaris-component-core-starter-console</module>
+        <module>polaris-component-core-starter-test</module>
     </modules>
 </project>

@@ -20,24 +20,24 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 注册发现组件 -->
+        <!-- 注册发现核心组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-discovery</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 配置组件 -->
+        <!-- 配置核心组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-config</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 控制台组件 -->
+        <!-- 控制台核心组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-console-starter</artifactId>
+            <artifactId>polaris-component-core-starter-console</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
