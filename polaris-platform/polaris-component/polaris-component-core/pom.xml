@@ -23,5 +23,8 @@
         <module>polaris-component-core-starter-protector-zuul</module>
         <module>polaris-component-core-starter-protector-service</module>
         <module>polaris-component-core-starter-monitor</module>
+        <module>polaris-component-core-starter-gray-gateway</module>
+        <module>polaris-component-core-starter-gray-zuul</module>
+        <module>polaris-component-core-starter-gray-service</module>
     </modules>
 </project>
