@@ -13,6 +13,7 @@
     </parent>
 
     <modules>
+        <module>polaris-component-core-starter-banner</module>
         <module>polaris-component-core-starter-discovery</module>
         <module>polaris-component-core-starter-discovery-gray</module>
         <module>polaris-component-core-starter-config</module>

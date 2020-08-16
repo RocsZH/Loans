@@ -13,10 +13,10 @@
     </parent>
 
     <dependencies>
-        <!-- 旗标组件 -->
+        <!-- 旗标核心组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-banner</artifactId>
+            <artifactId>polaris-component-core-starter-banner</artifactId>
             <version>${project.version}</version>
         </dependency>
 
