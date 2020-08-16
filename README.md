@@ -393,7 +393,7 @@ zone=SET-sha
 ```
 
 #### 添加注解
-下面四个注解封装了标准Spring Boot、Spring Cloud、Apollo、服务注册发现等诸个注解，可以有效的降低业务使用成本
+下面四个注解封装了标准Spring Boot、Spring Cloud、Apollo、服务注册发现等多个注解，选择一个加在对应的应用类型上，可以有效的降低业务使用成本
 ```java
 @EnablePolarisGateway
 @EnablePolarisZuul
