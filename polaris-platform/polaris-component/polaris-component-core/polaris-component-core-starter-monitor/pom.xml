@@ -14,7 +14,7 @@
 
     <dependencies>
         <!-- You can choose Skywalking or Jaeger Monitor -->
-<!--         <dependency>
+        <!-- <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-skywalking-starter</artifactId>
             <version>${project.version}</version>
