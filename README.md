@@ -23,8 +23,8 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 友情提示
 
-- Polaris【北极星】企业级云原生微服务框架的使用指南，请参考下面的“相关链接”
-- Discovery【探索】框架的相关功能，请参考下面的“相关链接”
+- Polaris【北极星】框架的相关示例，请参考下面的“Polaris指南主页”
+- Discovery【探索】框架的相关功能，请参考下面的“Discovery源码主页”、“Discovery指南主页”、“Discovery文档主页”
 
 ## 目录
 - [请联系我](#请联系我)
