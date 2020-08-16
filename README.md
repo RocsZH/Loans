@@ -43,7 +43,10 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
         - [监控组件切换](#监控组件切换)
         - [防护组件切换](#防护组件切换)
     - [环境切换](#环境切换)
+        - [环境和域名解析](#环境和域名解析)
+        - [环境和域名设置](#环境和域名设置)
     - [注解切换](#注解切换)
+    - [配置切换](#配置切换)
 - [使用步骤](#使用步骤)
     - [Agent使用和配置](#Agent使用和配置)
 - [Star走势图](#Star走势图)
@@ -237,11 +240,15 @@ zone=SET-sha
 - server.properties
 
 ### 注解切换
-当配置中心组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig
+当配置中心组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置中心需要注释掉该注解，否则无法编译通过
 - @EnablePolarisGateway
 - @EnablePolarisZuul
 - @EnablePolarisService
 - @EnablePolarisConsole
+
+### 配置切换
+
+Sentinel在Apollo和Nacos上有所区别
 
 ## 使用步骤
 
