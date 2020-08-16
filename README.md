@@ -5,7 +5,7 @@
 
 Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级微服务开源解决方案，更贴近企业级需求，赋能和助力企业快速搭建基础架构的底层云原生微服务框架
 
-支持如下中间件的集成和封装
+支持如下中间件的集成和封装，遵从最严格的Maven对称结构和规范，最严格的命名格式
 - 支持阿里巴巴Nacos、Eureka、Consul三个服务注册发现中心
 - 支持阿里巴巴Nacos、携程Apollo两个远程配置中心
 - 支持阿里巴巴Sentinel和Hystrix两个熔断隔离限流降级中间件
@@ -148,7 +148,41 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 
 ### 组件切换
 
-默认是Nacos和Jaeger
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 框架默认的组件，如下：
+- 注册发现组件：Nacos
+- 配置组件：Nacos
+- 监控组件：Jaeger
+- 防护组件：Sentinel
+- 灰度蓝绿组件：Discovery（不需要切换）
+
+使用者可以通过如下方式，实现组件切换：
+- 注册发现组件切换
+在polaris-component-core目录下，搜索全部pom.xml，关键字
+```
+You can choose Nacos or Eureka or Consul Discovery
+```
+把搜索出来的两个pom.xml换成使用者想要的组件
+
+- 配置组件切换
+在polaris-component-core目录下，搜索全部pom.xml，关键字
+```
+You can choose Apollo or Nacos Config
+```
+把搜索出来的四个pom.xml换成使用者想要的组件
+
+- 监控组件切换
+在polaris-component-core目录下，搜索全部pom.xml，关键字
+```
+You can choose Skywalking or Jaeger Monitor
+```
+把搜索出来的四个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件
+
+- 配置组件切换
+在polaris-component-core目录下，搜索全部pom.xml，关键字
+```
+You can choose Sentinel or Hystrix Protector
+```
+把搜索出来的三个pom.xml换成使用者想要的组件
 
 ### 环境切换
 
