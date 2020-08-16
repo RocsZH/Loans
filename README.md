@@ -194,10 +194,10 @@ You can choose Sentinel or Hystrix Protector
 
 | 环境 | 域名或者IP地址 | 示例 |
 | --- | --- | --- |
-| DEV | 默认为127.0.0.1:port | spring.cloud.nacos.discovery.server-addr=127.0.0.1:8848 |
-| FAT | {组件名}-fat-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=nacos-fat{-%zone%}.nepxion.com |
-| UAT | {组件名}-uat-{可选的区域名}-{根域名}| spring.cloud.nacos.discovery.server-addr=nacos-uat{-%zone%}.nepxion.com |
-| PRO | {组件名}-pro-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=nacos-pro{-%zone%}.nepxion.com |
+| DEV | 默认为127.0.0.1:port | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
+| FAT | {组件名}-fat-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat{-%zone%}.nepxion.com |
+| UAT | {组件名}-uat-{可选的区域名}-{根域名}| spring.cloud.nacos.discovery.server-addr=<br>nacos-uat{-%zone%}.nepxion.com |
+| PRO | {组件名}-pro-{可选的区域名}-{根域名} | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro{-%zone%}.nepxion.com |
 
 ### 注解切换
 
