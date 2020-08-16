@@ -16,7 +16,7 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 - 支持和兼容Spring Cloud Finchley版、Greenwich版和Hoxton版
 
 支持如下的应用型功能
-- 支持动态域名和双云双活的配置，支持SET单元化模式，支持跨云的服务注册和配置读取（例如，阿里云上的微服务想要注册到华为云上的Nacos注册中心或者跨云读取Apollo配置中心的配置，通过运维侧修改相关配置驱动在域名上的跨云实现）
+- 支持动态域名、双云双活和SET单元化的配置，支持跨云的服务注册和配置读取（例如，阿里云上的微服务想要注册到华为云上的Nacos注册中心或者跨云读取Apollo配置中心的配置，通过运维侧修改相关配置驱动在域名上的跨云实现）
 - 支持不需要更改任何代码，在pom.xml上实现同类型的组件一键切换（例如，Eureka注册中心切换到Consul，Apollo配置中心切换到Nacos等），但需要注意的是同类型组件不可并行使用（例如，Eureka和Consul注册中心不可同时存在，Apollo和Nacos配置中心不可同时存在等）
 - 支持每个组件对四个环境（DEV | FAT | UAT | PRO）的内置最佳配置，遵守“约定大于配置”的策略，业务层面零配置或微量配置即可。框架集成人员可以在里面定制个性化配置，业务开发人员支持在业务层把内置的配置覆盖掉，达到灵活使用的目的
 - 支持业务开发人员使用该框架的时候，对他们尽量屏蔽一切跟Spring Cloud和中间件有关的代码书写、配置参数、环境地址等，有助于减轻业务侧的压力
@@ -92,7 +92,7 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 | <img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-platform | Polaris平台目录 |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component | Polaris组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-common | Polaris通用组件 |
-| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-env | Polaris环境组件，支持动态域名，双云双活，SET单元化<br>支持DEV、FAT、UAT、PRO四个环境配置动态读取 |
+| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-env | Polaris环境组件，支持动态域名、双云双活、SET单元化<br>支持DEV、FAT、UAT、PRO四个环境配置动态读取 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-banner | Polaris旗标组件，启动时显示旗标和重要中间件版本号信息 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-apollo | Polaris Apollo组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-apollo-starter-config | Polaris Apollo配置组件的封装 |
