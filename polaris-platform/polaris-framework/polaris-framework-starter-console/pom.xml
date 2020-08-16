@@ -13,24 +13,28 @@
     </parent>
 
     <dependencies>
+        <!-- 旗标组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-banner</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 注册发现组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-discovery</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 配置组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-core-starter-config</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 控制台组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-console-starter</artifactId>
