@@ -3,38 +3,31 @@
 # Polaris【北极星】企业级云原生微服务框架
 [![Total lines](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/Polaris/blob/master/LICENSE)  [![Build Status](https://travis-ci.org/Nepxion/Polaris.svg?branch=master)](https://travis-ci.org/Nepxion/Polaris)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e39a24e1be740c58b83fb81763ba317)](https://www.codacy.com/project/HaojunRen/Polaris/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nepxion/Polaris&amp;utm_campaign=Badge_Grade_Dashboard)
 
-Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级微服务开源解决方案，更贴近企业级需求，赋能和助力企业快速搭建基础架构的底层云原生微服务框架
+Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级云原生微服务开源解决方案，面向企业级生产需求精雕细琢，赋能和助力企业快速搭建基础架构的底层云原生微服务框架。整个架构体系打造，遵循最严格的Maven对称结构和规范，最严格的命名格式，给予使用者最舒适的使用体验
 
-支持如下中间件的集成和封装，遵从最严格的Maven对称结构和规范，最严格的命名格式
+支持如下中间件的集成和封装
 - 支持阿里巴巴Nacos、Eureka、Consul三个服务注册发现中心
 - 支持阿里巴巴Nacos、携程Apollo两个远程配置中心
-- 支持阿里巴巴Sentinel和Hystrix两个熔断隔离限流降级中间件
-- 支持Uber Jaeger、Apache Skywalking两个符合OpenTracing调用链中间件
-- 支持Java Agent解决异步跨线程ThreadLocal上下文传递
+- 支持阿里巴巴Sentinel和Hystrix两个熔断限流降级权限中间件
+- 支持Uber Jaeger、Apache Skywalking两个符合OpenTracing规范的调用链中间件
 - 支持Prometheus Micrometer和Spring Boot Admin监控中间件
+- 支持Java Agent解决异步跨线程ThreadLocal上下文传递
 - 支持Spring Cloud Gateway、Zuul网关、微服务、控制台、自动化测试五个独立微服务模块
-- 支持和兼容Spring Cloud Finchley版、Greenwich版和Hoxton版
+- 支持和兼容Spring Cloud Finchley版、Greenwich版和Hoxton版。默认集成Hoxton版，如果需要，请使用者自行修改成其它两个版本
 
-支持如下的应用型功能
-- 支持灰度蓝绿发布、路由、权重、限流、熔断、降级、隔离、监控、追踪等企业生产级功能
+支持如下应用型的功能
+- 支持灰度蓝绿发布、灰度路由过滤、流量权重、限流、熔断、降级、隔离、监控、追踪等企业生产级功能
 - 支持动态域名、双云双活和SET单元化的配置，支持跨云的服务注册和配置读取（例如，阿里云上的微服务想要注册到华为云上的Nacos注册中心或者跨云读取Apollo配置中心的配置，通过运维侧修改相关配置驱动在域名上的跨云实现）
 - 支持不需要更改任何代码，在pom.xml上实现同类型的组件一键切换（例如，Eureka注册中心切换到Consul，Apollo配置中心切换到Nacos等），但需要注意的是同类型组件不可并行使用（例如，Eureka和Consul注册中心不可同时存在，Apollo和Nacos配置中心不可同时存在等）
-- 支持每个组件对四个环境（DEV | FAT | UAT | PRO）的内置最佳配置，遵守“约定大于配置”的策略，业务层面零配置或微量配置即可。框架集成人员可以在里面定制个性化配置，业务开发人员支持在业务层把内置的配置覆盖掉，达到灵活使用的目的
-- 支持业务开发人员使用该框架的时候，对他们尽量屏蔽一切跟Spring Cloud和中间件有关的代码书写、配置参数、环境地址等，有助于减轻业务侧的压力
-
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 友情提示
-
-- Polaris【北极星】框架的相关示例，请参考下面的“Polaris指南主页”
-- Discovery【探索】框架的相关功能，请参考下面的“Discovery源码主页”、“Discovery指南主页”、“Discovery文档主页”
+- 支持每个组件对四个环境（DEV | FAT | UAT | PRO）的内置最佳配置，遵循全局Common配置和局部四大环境配置相结合的方式，遵循“约定大于配置”的策略，而在业务层面零配置或微量配置即可。框架集成人员可以在里面内置定制化的配置，业务开发人员支持在业务层把内置的配置覆盖掉，达到扩展性强、灵活使用的目的
+- 支持业务开发人员使用该框架的时候，对其尽最大可能屏蔽一切跟Spring Cloud和中间件有关的代码书写、配置参数、环境地址等，有助于减轻业务侧的压力，零Spring Cloud经验的业务开发人员也可以快速上手研发基于Spring Cloud微服务技术栈的业务服务
 
 ## 目录
 - [请联系我](#请联系我)
 - [相关链接](#相关链接)
-    - [Polaris源码主页](#Polaris源码主页)
-    - [Polaris指南主页](#Polaris指南主页)
-    - [Discovery源码主页](#Discovery源码主页)
-    - [Discovery指南主页](#Discovery指南主页)
-    - [Discovery文档主页](#Discovery文档主页)
+    - [源码主页](#源码主页)
+    - [指南主页](#指南主页)
+    - [文档主页](#文档主页)
 - [架构工程](#架构工程)
     - [工程介绍](#工程介绍)
 - [集成步骤](#集成步骤)
@@ -68,25 +61,23 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 
 ## 相关链接
 
-### Polaris源码主页
-[访问链接](https://github.com/Nepxion/Polaris)
+### 源码主页
+[Polaris源码主页](https://github.com/Nepxion/Polaris)
 
-### Polaris指南主页
-[访问链接](https://github.com/Nepxion/PolarisGuide)
+[Discovery源码主页](https://github.com/Nepxion/Discovery)
 
-### Discovery源码主页
-[访问链接](https://github.com/Nepxion/Discovery)
+### 指南主页
+[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)
 
-### Discovery指南主页
-[访问链接](https://github.com/Nepxion/DiscoveryGuide)
+[Discovery指南主页](https://github.com/Nepxion/DiscoveryGuide)
 
-### Discovery文档主页
-[访问链接](https://gitee.com/Nepxion/Docs/tree/master/web-doc)
+### 文档主页
+[文档主页](https://gitee.com/Nepxion/Docs/tree/master/web-doc)
 
 ## 架构工程
 
 ### 工程介绍
-工程树状结构和描述参考如下：
+
 | 工程名 | 描述 |
 | --- | --- |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/direction_east.png"> polaris-parent | Polaris Parent定义 |
@@ -164,11 +155,11 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 
 ### 集成入口
 集成入口位于polaris-framework模块下，包括如下五个子模块：
-- polaris-framework-starter-console
-- polaris-framework-starter-gateway
-- polaris-framework-starter-zuul
-- polaris-framework-starter-service
-- polaris-framework-starter-test
+- `polaris-framework-starter-gateway`
+- `polaris-framework-starter-zuul`
+- `polaris-framework-starter-service`
+- `polaris-framework-starter-console`
+- `polaris-framework-starter-test`
 
 以polaris-framework-starter-service为例，展现出高度对称统一的架构美感
 ```xml
@@ -234,11 +225,11 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 
 ### 组件切换
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 框架默认的组件，如下：
-- 注册发现组件：Nacos
-- 配置组件：Nacos
-- 监控组件：Jaeger
-- 防护组件：Sentinel
-- 灰度蓝绿组件：Discovery（不需要切换）
+- `注册发现组件：Nacos`
+- `配置组件：Nacos`
+- `监控组件：Jaeger`
+- `防护组件：Sentinel`
+- `灰度蓝绿组件：Discovery`（不需要切换）
 
 #### 注册发现组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
@@ -315,26 +306,26 @@ zone=SET-sha
 - 通过System Env环境变量方式进行设置
 
 ③ 读取优先级由高到低，如下：
-- System.getProperty
-- System.getenv
-- server.properties
+- `System.getProperty`
+- `System.getenv`
+- `server.properties`
 
 ### 注解切换
-当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过
-- @EnablePolarisGateway
-- @EnablePolarisZuul
-- @EnablePolarisService
-- @EnablePolarisConsole
+当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下五个模块进行切换
+- `@EnablePolarisGateway`
+- `@EnablePolarisZuul`
+- `@EnablePolarisService`
+- `@EnablePolarisConsole`
 
 ### 配置切换
 当防护中心选择Sentinel，并选择Apollo和Nacos做DataSource的时候，需要在如下三个模块切换配置
-- polaris-component-sentinel-starter-gateway
-- polaris-component-sentinel-starter-zuul
-- polaris-component-sentinel-starter-service
+- `polaris-component-sentinel-starter-gateway`
+- `polaris-component-sentinel-starter-zuul`
+- `polaris-component-sentinel-starter-service`
 
 ## 使用步骤
 
-参考[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)
+参考[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)的源码
 
 ### 应用搭建
 
@@ -454,7 +445,7 @@ PolarisServiceA:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
 
 PolarisServiceA（异步）:
--javaagent:C:/opt/polaris-agent/polaris-agent-6.0.7.jar -Dthread.scan.packages=com.nepxion.polaris.guide.service;org.springframework.aop.interceptor;com.netflix.hystrix -Dthread.request.decorator.enabled=true -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+-javaagent:C:/opt/polaris-agent/polaris-agent.jar -Dthread.scan.packages=com.nepxion.polaris.guide.service;org.springframework.aop.interceptor;com.netflix.hystrix -Dthread.request.decorator.enabled=true -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
 
 PolarisServiceB:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-b -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
