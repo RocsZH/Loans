@@ -49,7 +49,15 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
     - [注解切换](#注解切换)
     - [配置切换](#配置切换)
 - [使用步骤](#使用步骤)
-    - [Agent使用和配置](#Agent使用和配置)
+    - [应用搭建](#应用搭建)
+        - [引入Parent](#引入Parent)
+        - [引入Jar](#引入Jar)
+        - [添加注解](#添加注解)
+        - [添加配置](#添加配置)
+    - [应用启动](#应用启动)
+        - [Spring Boot应用启动](#Spring Boot应用启动)
+        - [Skywalking-Agent启动](#Skywalking-Agent启动)
+        - [Polaris-Agent启动](#Polaris-Agent启动)
 - [Star走势图](#Star走势图)
 
 ## 请联系我
@@ -77,14 +85,14 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ## 架构工程
 
 ### 工程介绍
-
+工程树状结构和描述参考如下：
 | 工程名 | 描述 |
 | --- | --- |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/direction_east.png"> polaris-parent | Polaris Parent定义 |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-platform | Polaris平台目录 |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component | Polaris组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-common | Polaris通用组件 |
-| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-env | Polaris环境组件，支持动态域名，双云双活，<br>支持DEV、FAT、UAT、PRO四个环境配置动态读取 |
+| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-env | Polaris环境组件，支持动态域名，双云双活，SET单元化<br>支持DEV、FAT、UAT、PRO四个环境配置动态读取 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-banner | Polaris旗标组件，启动时显示旗标和重要中间件版本号信息 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-apollo | Polaris Apollo组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-apollo-starter-config | Polaris Apollo配置组件的封装 |
@@ -154,7 +162,6 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ## 集成步骤
 
 ### 集成入口
-
 集成入口位于polaris-framework模块下，包括如下五个子模块：
 - polaris-framework-starter-console
 - polaris-framework-starter-gateway
@@ -163,7 +170,7 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 - polaris-framework-starter-test
 
 以polaris-framework-starter-service为例，展现出高度对称统一的架构美感
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -234,28 +241,28 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 
 #### 注册发现组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```
+```xml
 You can choose Nacos or Eureka or Consul Discovery
 ```
 把搜索出来的两个pom.xml换成使用者想要的组件
 
 #### 配置组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```
+```xml
 You can choose Apollo or Nacos Config
 ```
 把搜索出来的四个pom.xml换成使用者想要的组件
 
 #### 监控组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```
+```xml
 You can choose Skywalking or Jaeger Monitor
 ```
 把搜索出来的一个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件
 
 #### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```
+```xml
 You can choose Sentinel or Hystrix Protector
 ```
 把搜索出来的三个pom.xml换成使用者想要的组件
@@ -278,6 +285,7 @@ You can choose Sentinel or Hystrix Protector
 - 定义为用来区别不同的环境的标识
 - 四个环境的配置文件除了定义域名或者IP地址外，也支持根据环境不同设置不同的配置值或者开关，例如，Swagger功能需要在生产环境关闭，需要在PRO配置文件里关闭
 - 除了四个环境的配置文件外，还有一个公共配置文件，文件名格式为{组件名}-common.properties，其作用是设置确定的默认配置，共享给四个环境，避免重复冗余配置
+- 环境配置文件的位置在各个组件的src/main/resources/META-INF目录下
 
 ② 区域（zone）名
 - 定义为用来区别多活或者多云或者SET单元化的域名的后缀或者前缀标识
@@ -289,11 +297,10 @@ You can choose Sentinel or Hystrix Protector
 使用者需要根据企业的实际情况，把组件的四个环境域名和IP地址一一做更改
 
 #### 环境和域名设置
-
 ① 通过运维侧进行环境（env）号设置，有如下四种方式:
 - 通过System Property或者-Denv={环境号}（例如：-Denv=dev）进行设置，如果不设置，缺省为dev
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
-```
+```xml
 env=dev
 ```
 - 通过System Env环境变量方式进行设置
@@ -301,7 +308,7 @@ env=dev
 ② 通过运维侧进行区域（zone）名设置，有如下四种方式:
 - 通过通过System Property或者-Dzone={区域名}（例如：-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名）进行设置，如果不设置，缺省为空，即非多活或者多云的环境
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
-```
+```xml
 zone=SET-sha
 ```
 - 通过System Env环境变量方式进行设置
@@ -312,42 +319,151 @@ zone=SET-sha
 - server.properties
 
 ### 注解切换
-当配置中心组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置中心需要注释掉该注解，否则无法编译通过
+当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过
 - @EnablePolarisGateway
 - @EnablePolarisZuul
 - @EnablePolarisService
 - @EnablePolarisConsole
 
 ### 配置切换
-
-Sentinel在Apollo和Nacos上有所区别
+当防护中心选择Sentinel，并选择Apollo和Nacos做DataSource的时候，需要在如下三个模块切换配置
+- polaris-component-sentinel-starter-gateway
+- polaris-component-sentinel-starter-zuul
+- polaris-component-sentinel-starter-service
 
 ## 使用步骤
 
-### Agent使用和配置
+参考[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)
 
-- Skywalking Agent使用和配置
+### 应用搭建
 
-启动配置参数，适用于IDE里快速测试：
+#### 引入Parent
 ```xml
-PolarisServiceA:
--Dmetadata.version=polaris-001 -Dmetadata.region=NEPXION -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dnepxion.banner.shown.ansi.mode=true
-
-PolarisServiceA（异步）:
--Dmetadata.version=polaris-001 -Dmetadata.region=NEPXION -Dmetadata.env=env1 -javaagent:C:/opt/polaris-agent/polaris-agent-6.0.7.jar -Dthread.scan.packages=com.nepxion.polaris.guide.service;org.springframework.aop.interceptor;com.netflix.hystrix -Dthread.request.decorator.enabled=true -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dnepxion.banner.shown.ansi.mode=true
-
-PolarisServiceB:
--Dmetadata.version=polaris-001 -Dmetadata.region=NEPXION -Dmetadata.env=env1 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-b -Dpolaris.skywalking.agent.version=1.0.0 -Dnepxion.banner.shown.ansi.mode=true
-
-PolarisZuul:
--Dmetadata.version=polaris-001 -Dmetadata.region=NEPXION -Dmetadata.env=env1 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-zuul -Dpolaris.skywalking.agent.version=1.0.0 -Dnepxion.banner.shown.ansi.mode=true
-
-PolarisGateway:
--Dmetadata.version=polaris-001 -Dmetadata.region=NEPXION -Dmetadata.env=env1 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-gateway -Dpolaris.skywalking.agent.version=1.0.0 -Dnepxion.banner.shown.ansi.mode=true
+<parent>
+    <groupId>com.nepxion</groupId>
+    <artifactId>polaris-parent</artifactId>
+    <version>${polaris.version}</version>
+</parent>
 ```
 
+#### 引入Jar
+① 微服务引入
+```xml
+<dependency>
+    <groupId>com.nepxion</groupId>
+    <artifactId>polaris-framework-starter-service</artifactId>
+    <version>${polaris.version}</version>
+</dependency>
+```
 
-- 跨线程异步调用Agent使用和配置
+② Spring Cloud Gateway网关引入
+```xml
+<dependency>
+    <groupId>com.nepxion</groupId>
+    <artifactId>polaris-framework-starter-gateway</artifactId>
+    <version>${polaris.version}</version>
+</dependency>
+```
+
+③ Zuul网关引入
+```xml
+<dependency>
+    <groupId>com.nepxion</groupId>
+    <artifactId>polaris-framework-starter-zuul</artifactId>
+    <version>${polaris.version}</version>
+</dependency>
+```
+
+④ 控制台引入
+```xml
+<dependency>
+    <groupId>com.nepxion</groupId>
+    <artifactId>polaris-framework-starter-console</artifactId>
+    <version>${polaris.version}</version>
+</dependency>
+```
+
+⑤ 测试端引入
+```xml
+<dependency>
+    <groupId>com.nepxion</groupId>
+    <artifactId>polaris-framework-starter-test</artifactId>
+    <version>${polaris.version}</version>
+</dependency>
+```
+
+#### 添加注解
+下面四个注解封装了标准Spring Boot、Spring Cloud、Apollo、服务注册发现等诸个注解，可以有效的降低业务使用成本
+```java
+@EnablePolarisGateway
+@EnablePolarisZuul
+@EnablePolarisService
+@EnablePolarisConsole
+public class PolarisApplication {
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(PolarisApplication.class).run(args);
+    }
+}
+```
+
+#### 添加配置
+由于大量配置已经内置到框架里，除了服务名和端口号，业务层原则上不需要添加其它配置，除非想覆盖掉默认内置的配置
+
+### 应用启动
+
+#### Spring Boot应用启动
+跟原生的Spring Boot应用程序启动方式一致
+
+#### Skywalking-Agent启动
+获取Skywalking Agent，放置在指定目录（例如，C:/opt/apache-skywalking-apm-bin/agent/），通过-javaagent命令启动
+		
+#### Polaris-Agent启动
+灰度路由Header和调用链Span在Hystrix线程池隔离模式下或者线程、线程池、@Async注解等异步调用Feign或者RestTemplate时，通过线程上下文切换会存在丢失Header的问题，通过下述步骤解决，同时适用于网关端和服务端。该方案可以替代Hystrix线程池隔离模式下的解决方案，也适用于其它有相同使用场景的基础框架和业务场景，例如：Dubbo
+
+在如下源码目录下获取Polaris Agent
+```xml
+polaris-platform\polaris-component\polaris-component-agent\polaris-component-agent-starter-cross-thread\agent
+```
+
+① 插件使用
+- polaris-agent.jar为Agent引导启动程序，JVM启动时进行加载；agent/plugin目录包含polaris-agent-plugin.jar为Polaris/Discovery框架自带的实现方案，业务系统可以自定义plugin，解决业务自己定义的上下文跨线程传递
+- 通过如下-javaagent启动
+```xml
+-javaagent:/agent/polaris-agent.jar -Dthread.scan.packages=com.abc;com.xyz -Dthread.request.decorator.enabled=true
+```
+- 参数说明
+    - /agent：Agent所在的目录，需要对应到实际的目录上
+    - thread.scan.packages：Runnable，Callable对象所在的扫描目录，该目录下的Runnable，Callable对象都会被装饰。该目录最好精细和准确，这样可以减少被装饰的对象数，提高性能，目录如果有多个，用“;”分隔
+    - thread.request.decorator.enabled：异步调用场景下在服务端的Request请求的装饰，当主线程先于子线程执行完的时候，Request会被Destory，导致Header仍旧拿不到，开启装饰，就可以确保拿到。默认为关闭，根据实践经验，大多数场景下，需要开启这个开关	
+
+```xml
+扫描目录thread.scan.packages定义，该参数只作用于服务侧，网关侧不需要加
+1. @Async场景下的扫描目录为org.springframework.aop.interceptor
+2. Hystrix线程池隔离场景下的扫描目录为com.netflix.hystrix
+3. 线程、线程池的扫描目录为自定义Runnable，Callable对象所在类的目录
+```
+
+② 插件扩展
+- 根据规范开发一个插件，插件提供了钩子函数，在某个类被加载的时候，可以注册一个事件到线程上下文切换事件当中，实现业务自定义ThreadLocal的跨线程传递。参考：polaris-agent-plugin模块的com.nepxion.discovery.plugin.strategy.starter.agent.plugin.service下的实现方式
+- plugin目录为放置需要在线程切换时进行ThreadLocal传递的自定义插件。业务自定义插件开发完后，放入到plugin目录下即可
+
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 两个Agent完整启动参数如下（可以忽略包括-Dmetadata.version后面的启动参数，此为灰度蓝绿发布和子环境隔离路由的元数据参数）
+```xml
+PolarisServiceA:
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+
+PolarisServiceA（异步）:
+-javaagent:C:/opt/polaris-agent/polaris-agent-6.0.7.jar -Dthread.scan.packages=com.nepxion.polaris.guide.service;org.springframework.aop.interceptor;com.netflix.hystrix -Dthread.request.decorator.enabled=true -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+
+PolarisServiceB:
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-b -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+
+PolarisZuul:
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-zuul -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+
+PolarisGateway:
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-gateway -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+```	
 
 ## Star走势图
 
