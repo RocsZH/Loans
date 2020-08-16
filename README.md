@@ -202,12 +202,12 @@ You can choose Sentinel or Hystrix Protector
 | UAT | {组件名}-uat-{可选的区域名}.{根域}| {组件名}-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat{-%zone%}.nepxion.com |
 | PRO | {组件名}-pro-{可选的区域名}.{根域} | {组件名}-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro{-%zone%}.nepxion.com |
 
-环境（env）号
+① 环境（env）号
 - 定义为用来区别不同的环境的标识
 - 四个环境的配置文件除了定义域名或者IP地址外，也支持根据环境不同设置不同的配置值或者开关，例如，Swagger功能需要在生产环境关闭，需要在PRO配置文件里关闭
 - 除了四个环境的配置文件外，还有一个公共配置文件，文件名格式为{组件名}-common.properties，其作用是设置确定的默认配置，共享给四个环境，避免重复冗余配置
 
-区域（zone）名
+② 区域（zone）名
 - 定义为用来区别多活或者多云的域名的后缀或者前缀标识
 - 域名表达式为{组件名}-{环境号}-{可选的区域名}.{根域}。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
 - 实现通配处理，通配格式为{-%zone%}，如果区域（zone）名不设置，那么变成{组件名}-{环境号}.{根域}的简单格式
@@ -218,7 +218,7 @@ You can choose Sentinel or Hystrix Protector
 
 #### 环境和域名设置
 
-通过运维侧进行环境号设置，有如下四种方式:
+① 通过运维侧进行环境（env）号设置，有如下四种方式:
 - 通过System Property或者-Denv={环境号}（例如：-Denv=dev）进行设置，如果不设置，缺省为dev
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
 ```
@@ -226,7 +226,7 @@ env=dev
 ```
 - 通过System Env环境变量方式进行设置
 
-通过运维侧进行区域名设置，有如下四种方式:
+② 通过运维侧进行区域（zone）名设置，有如下四种方式:
 - 通过通过System Property或者-Dzone={区域名}（例如：-Denv=SET-sha）进行设置，如果不设置，缺省为空，即非多活或者多云的环境
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
 ```
@@ -234,7 +234,7 @@ zone=SET-sha
 ```
 - 通过System Env环境变量方式进行设置
 
-上述四种方式的读取优先级由高到低，如下：
+③ 读取优先级由高到低，如下：
 - System.getProperty
 - System.getenv
 - server.properties
