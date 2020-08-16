@@ -38,6 +38,10 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
     - [工程介绍](#工程介绍)
 - [集成步骤](#集成步骤)
     - [组件切换](#组件切换)
+        - [注册发现组件切换](#注册发现组件切换)
+        - [配置组件切换](#配置组件切换)
+        - [监控组件切换](#监控组件切换)
+        - [防护组件切换](#防护组件切换)
     - [环境切换](#环境切换)
     - [注解切换](#注解切换)
 - [使用步骤](#使用步骤)
@@ -147,7 +151,6 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ## 集成步骤
 
 ### 组件切换
-
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 框架默认的组件，如下：
 - 注册发现组件：Nacos
 - 配置组件：Nacos
@@ -155,29 +158,28 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 - 防护组件：Sentinel
 - 灰度蓝绿组件：Discovery（不需要切换）
 
-使用者可以通过如下方式，实现组件切换：
-- 注册发现组件切换
+#### 注册发现组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```
 You can choose Nacos or Eureka or Consul Discovery
 ```
 把搜索出来的两个pom.xml换成使用者想要的组件
 
-- 配置组件切换
+#### 配置组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```
 You can choose Apollo or Nacos Config
 ```
 把搜索出来的四个pom.xml换成使用者想要的组件
 
-- 监控组件切换
+#### 监控组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```
 You can choose Skywalking or Jaeger Monitor
 ```
 把搜索出来的四个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件
 
-- 配置组件切换
+#### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```
 You can choose Sentinel or Hystrix Protector
