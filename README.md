@@ -1,7 +1,7 @@
 <img src="http://nepxion.gitee.io/docs/polaris-doc/Banner.png">
 
 # Polaris【北极星】企业级云原生微服务框架
-[![Total lines](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/Polaris/blob/master/LICENSE)  [![Build Status](https://travis-ci.org/Nepxion/Polaris.svg?branch=master)](https://travis-ci.org/Nepxion/Polaris)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e39a24e1be740c58b83fb81763ba317)](https://www.codacy.com/project/HaojunRen/Polaris/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nepxion/Polaris&amp;utm_campaign=Badge_Grade_Dashboard)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/Polaris/blob/master/LICENSE)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e39a24e1be740c58b83fb81763ba317)](https://www.codacy.com/project/HaojunRen/Polaris/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nepxion/Polaris&amp;utm_campaign=Badge_Grade_Dashboard)
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果本文档由于Github网速原因无法完整阅读，请访问
 - [Polaris【北极星】企业级云原生微服务框架(PDF版)](http://nepxion.gitee.io/docs/link-doc/polaris-framework-pdf.html)
@@ -60,13 +60,17 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
         - [引入Jar](#引入Jar)
         - [添加注解](#添加注解)
         - [添加配置](#添加配置)
-    - [应用启动](#应用启动)
+    - [应用启动](#应用启动)	
+        - [中间件服务启动](#中间件服务启动)
         - [Spring-Boot应用启动](#Spring-Boot应用启动)
         - [Skywalking-Agent启动](#Skywalking-Agent启动)
         - [Polaris-Agent启动](#Polaris-Agent启动)
     - [启动参数](#启动参数)
         - [Agent启动参数](#Agent启动参数)
         - [Discovery框架启动参数](#Discovery框架启动参数)
+    - [验证结果](#验证结果)
+        - [Postman方式验证](#Postman方式验证)
+        - [自动化测试方式验证](#自动化测试方式验证)
 - [回馈社区](#回馈社区)
 - [Star走势图](#Star走势图)
 
@@ -451,8 +455,29 @@ public class PolarisApplication {
 
 ### 应用启动
 
+#### 中间件服务启动
+Polaris默认集成，需要依赖Nacos Server和Jaeger Server
+
+- Nacos [必须]
+    - Nacos服务器版本，推荐用最新版本，从[https://github.com/alibaba/nacos/releases](https://github.com/alibaba/nacos/releases)获取
+    - 功能界面主页，[http://localhost:8848/nacos/index.html](http://localhost:8848/nacos/index.html)
+
+- Jaeger [可选]
+    - Jaeger服务器版本，推荐用最新版本，从[https://github.com/jaegertracing/jaeger/releases](https://github.com/jaegertracing/jaeger/releases)获取
+    - 功能界面主页，[http://localhost:16686](http://localhost:16686)
+
 #### Spring-Boot应用启动
-跟原生的Spring Boot应用程序启动方式一致
+跟原生的Spring Boot应用程序启动方式一致。在IDE中，启动四个应用服务和两个网关服务，控制平台服务，如下 
+
+| 类名 | 微服务 | 服务端口 | 版本 | 区域 | 子环境 |
+| --- | --- | --- | --- | --- | -- | 
+| PolarisServiceA1.java | A1 | 3001 | 1.0 | dev | env1 |
+| PolarisServiceA2.java | A2 | 3002 | 1.1 | qa | common |
+| PolarisServiceB1.java | B1 | 4001 | 1.0 | qa | env1 |
+| PolarisServiceB2.java | B2 | 4002 | 1.1 | dev | common | 
+| PolarisGateway.java | Gateway | 5001 | 1.0 | 无 | 无 |
+| PolarisZuul.java | Zuul | 5002 | 1.0 | 无 | 无 |
+| PolarisConsole.java | Console | 6001 | 1.0 | 无 | 无 |
 
 #### Skywalking-Agent启动
 获取Skywalking Agent，放置在指定目录（例如，C:/opt/apache-skywalking-apm-bin/agent/），通过-javaagent命令启动
@@ -509,11 +534,20 @@ PolarisGateway（异步网关）:
 ```
 
 #### Discovery框架启动参数
-
 灰度蓝绿发布和子环境隔离路由的元数据注册的启动参数，分别对应灰度蓝绿版本号，区域号，子环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
 ```xml
 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
 ```
+
+### 验证结果
+
+#### Postman方式验证
+- 导入Postman的测试脚本，[脚本地址](https://github.com/Nepxion/PolarisGuide/raw/master/postman.json)
+- 执行“Polaris网关测试用例”，观察输出结果，5002端口对应的是Zuul网关，5001端口对应的是Spring Cloud Gateway网关
+- 执行“Polaris网关全链路侦测测试用例”，观察输出结果，5002端口对应的是Zuul网关，5001端口对应的是Spring Cloud Gateway网关
+
+#### 自动化测试方式验证
+- 运行PolarisTest，观察输出结构，自动化测试用例是否都通过
 
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
