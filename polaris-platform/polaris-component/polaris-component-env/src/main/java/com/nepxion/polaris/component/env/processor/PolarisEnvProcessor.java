@@ -8,7 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.env.Environment;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -19,32 +19,32 @@ import com.nepxion.polaris.component.env.provider.PolarisEnvProvider;
 public abstract class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
 
-    public void process(Environment environment) throws Exception {
+    public void process(ConfigurableEnvironment environment) throws Exception {
         String name = getName();
 
         processCommonProperties(environment, name);
         processEnvProperties(environment, name);
     }
 
-    public void processCommonProperties(Environment environment, String name) throws Exception {
+    public void processCommonProperties(ConfigurableEnvironment environment, String name) throws Exception {
         String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         processProperties(environment, path);
     }
 
-    public void processEnvProperties(Environment environment, String name) throws Exception {
+    public void processEnvProperties(ConfigurableEnvironment environment, String name) throws Exception {
         String env = getEnv();
         String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         processProperties(environment, path);
     }
 
-    public void processProperties(Environment environment, String path) throws Exception {
+    public void processProperties(ConfigurableEnvironment environment, String path) throws Exception {
         Properties properties = processProperties(path);
 
         for (String key : properties.stringPropertyNames()) {
             // 如果已经设置，则尊重已经设置的值
-            if (environment.getProperty(key) == null && System.getProperty(key) == null) {
+            if (environment.getProperty(key) == null && System.getProperty(key) == null && System.getenv(key.toUpperCase()) == null) {
                 String value = properties.getProperty(key);
 
                 value = processValue(environment, key, value);
@@ -79,7 +79,7 @@ public abstract class PolarisEnvProcessor {
         return properties;
     }
 
-    protected String processValue(Environment environment, String key, String value) {
+    protected String processValue(ConfigurableEnvironment environment, String key, String value) {
         String zone = PolarisEnvProvider.getZone();
 
         return processDomainPlaceholder(value, zone);
@@ -91,14 +91,12 @@ public abstract class PolarisEnvProcessor {
     // 3. 区域，zone表示用来区别多活、多云和SET单元化的域名后缀或者前缀
     @SuppressWarnings("deprecation")
     protected String processDomainPlaceholder(String domainExpression, String zone) {
-        String zoneExpression = "%" + PolarisConstant.ZONE + "%";
-
         String domain = null;
         // 不符合域名表达式的配置项，不做处理直接返回
-        if (StringUtils.contains(domainExpression, zoneExpression) && StringUtils.contains(domainExpression, "[") && StringUtils.contains(domainExpression, "]") && StringUtils.indexOf(domainExpression, "]") - StringUtils.indexOf(domainExpression, "[") >= zoneExpression.length()) {
+        if (StringUtils.isNotBlank(domainExpression) && StringUtils.contains(domainExpression, PolarisConstant.ZONE_EXPRESSION) && StringUtils.contains(domainExpression, "[") && StringUtils.contains(domainExpression, "]") && StringUtils.indexOf(domainExpression, "]") - StringUtils.indexOf(domainExpression, "[") >= PolarisConstant.ZONE_EXPRESSION.length()) {
             if (StringUtils.isNotBlank(zone)) {
                 // 兼容低版本的commons-langs
-                domain = StringUtils.replaceAll(domainExpression, zoneExpression, zone);
+                domain = StringUtils.replaceAll(domainExpression, PolarisConstant.ZONE_EXPRESSION, zone);
                 domain = StringUtils.replace(domain, "[", StringUtils.EMPTY);
                 domain = StringUtils.replace(domain, "]", StringUtils.EMPTY);
             } else {
@@ -124,11 +122,11 @@ public abstract class PolarisEnvProcessor {
         return PolarisEnvProvider.getAppId();
     }
 
-    public String getSpringApplicationName(Environment environment) {
+    public String getSpringApplicationName(ConfigurableEnvironment environment) {
         return environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
     }
 
-    public String getProjectName(Environment environment) {
+    public String getProjectName(ConfigurableEnvironment environment) {
         String appId = getAppId();
         if (StringUtils.isNotEmpty(appId)) {
             return appId;

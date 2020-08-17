@@ -75,7 +75,7 @@ public class PolarisEnvTest {
     public void test1() {
         // 占位符测试，占位符内外可以合并
         Map<String, Object> propertySource = new HashMap<String, Object>();
-        environment.getPropertySources().addLast(new MapPropertySource(PolarisConstant.POLARIS_PROPERTY_SOURCE, propertySource));
+        environment.getPropertySources().addLast(new MapPropertySource("polarisPropertySource", propertySource));
 
         for (String key : properties.stringPropertyNames()) {
             if (environment.getProperty(key) == null && System.getProperty(key) == null && System.getenv(key.toUpperCase()) == null) {
