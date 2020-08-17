@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.core.env.Environment;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 import com.alibaba.csp.sentinel.log.LogBase;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
@@ -40,7 +40,7 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
     }
 
     @Override
-    protected String processValue(Environment environment, String key, String value) {
+    protected String processValue(ConfigurableEnvironment environment, String key, String value) {
         // 处理Nacos作为Datasource下，dataId加上服务名前缀
         if (StringUtils.endsWith(key, PolarisConstant.NACOS_DATA_ID)) {
             return value + PolarisConstant.DASH + getSpringApplicationName(environment);
