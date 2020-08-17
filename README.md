@@ -19,7 +19,7 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 - 支持灰度蓝绿发布、灰度路由过滤、流量权重、限流、熔断、降级、隔离、监控、追踪等企业生产级功能
 - 支持动态域名、双云双活和SET单元化的配置，支持跨云的服务注册和配置读取（例如，阿里云上的微服务想要注册到华为云上的Nacos注册中心，或者跨云读取Apollo配置中心的配置，通过运维侧修改相关配置驱动即可）。一套SDK体系可以同时适配和运行在不同的云上
 - 支持在核心的pom.xml上实现同类型的组件的快速切换（例如，Eureka注册中心切换到Consul，Apollo配置中心切换到Nacos等），但同类型组件不可并存使用（例如，Eureka和Consul注册中心不可同时并存，Apollo和Nacos配置中心不可同时并存等）
-- 支持框架层面实现每个组件对四个环境（DEV | FAT | UAT | PRO）的内置最佳配置，遵循全局Common配置和局部四大环境配置相结合的方式，遵循“约定大于配置”的策略，业务层面实现微量配置甚至零配置。框架集成人员可以内置定制化的配置，业务开发人员在业务层可以把内置的配置覆盖掉，达到扩展性强、灵活使用的目的
+- 支持框架层面实现每个组件对四个环境（DEV | FAT | UAT | PRO）的内置最佳配置，遵循全局公共配置和局部环境配置相结合的方式，遵循“约定大于配置”的策略，业务层面实现微量配置甚至零配置。框架集成人员可以内置定制化的配置，业务开发人员在业务层可以把内置的配置覆盖掉，达到扩展性强、灵活使用的目的
 - 支持业务开发人员使用该框架的时候，对其尽最大可能屏蔽一切跟Spring Cloud和中间件有关的代码书写、配置参数、环境地址等，零Spring Cloud经验的业务开发人员也可以快速上手研发基于Spring Cloud微服务技术栈的业务服务，最大程度上减轻业务人员的压力
 
 ## 目录
@@ -84,7 +84,7 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 | <img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-platform | Polaris平台目录 |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component | Polaris组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-common | Polaris通用组件 |
-| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-env | Polaris环境组件，支持动态域名、双云双活、SET单元化<br>支持DEV、FAT、UAT、PRO四个环境配置动态读取 |
+| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-env | Polaris环境组件，支持动态域名、双云双活和SET单元化<br>支持DEV、FAT、UAT、PRO四个环境配置动态读取 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-banner | Polaris旗标组件，启动时显示旗标和重要中间件版本号信息 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-apollo | Polaris Apollo组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-apollo-starter-config | Polaris Apollo配置组件的封装 |
@@ -154,12 +154,12 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ## 集成步骤
 
 ### 集成入口
-集成入口位于polaris-framework模块下，包括如下五个子模块：
-- `polaris-framework-starter-gateway`
-- `polaris-framework-starter-zuul`
-- `polaris-framework-starter-service`
-- `polaris-framework-starter-console`
-- `polaris-framework-starter-test`
+集成入口位于polaris-framework模块下，包括如下五个子模块
+- polaris-framework-starter-gateway
+- polaris-framework-starter-zuul
+- polaris-framework-starter-service
+- polaris-framework-starter-console
+- polaris-framework-starter-test
 
 以polaris-framework-starter-service为例，展现出高度对称统一的架构美感
 ```xml
@@ -224,12 +224,12 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ```
 
 ### 组件切换
-![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 框架默认的组件，如下：
-- `注册发现组件：Nacos`
-- `配置组件：Nacos`
-- `监控组件：Jaeger`
-- `防护组件：Sentinel`
-- `灰度蓝绿组件：Discovery`（不需要切换）
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 框架默认生效的组件，如下
+- 注册发现组件：Nacos
+- 配置组件：Nacos
+- 监控组件：Jaeger
+- 防护组件：Sentinel
+- 灰度蓝绿组件：Discovery（不需要切换）
 
 #### 注册发现组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
@@ -250,7 +250,7 @@ You can choose Apollo or Nacos Config
 ```xml
 You can choose Skywalking or Jaeger Monitor
 ```
-把搜索出来的一个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件
+把搜索出来的一个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件（例如，Prometheus Micrometer和Spring Boot Admin）
 
 #### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
@@ -262,9 +262,9 @@ You can choose Sentinel or Hystrix Protector
 ### 环境切换
 
 #### 环境和域名解析
-所有的组件都支持四个环境（DEV | FAT | UAT | PRO），分别对应开发环境、测试环境、准生产环境、生产环境。框架支持动态解析和创建多活或者多云以及SET单元化模式的域名
+所有的组件都支持四个环境（DEV | FAT | UAT | PRO），分别对应开发环境、测试环境、准生产环境、生产环境。框架支持动态解析和创建多活、多云和SET单元化模式的域名
 
-![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 框架默认的组件环境配置，并以Nacos注册为示例，如下：
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 框架默认的组件环境配置（表格中以Nacos注册为示例），如下
 
 | 环境 | 域名或者IP地址 | 配置文件 | 示例 |
 | --- | --- | --- | --- |
@@ -272,43 +272,46 @@ You can choose Sentinel or Hystrix Protector
 | FAT | {组件名}-fat-{可选的区域名}.{根域} | {组件名}-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat{-%zone%}.nepxion.com |
 | UAT | {组件名}-uat-{可选的区域名}.{根域}| {组件名}-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat{-%zone%}.nepxion.com |
 | PRO | {组件名}-pro-{可选的区域名}.{根域} | {组件名}-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro{-%zone%}.nepxion.com |
+| COMMON | 无需配置 | {组件名}-common<br>.properties | 无需配置 |
 
 ① 环境（env）号
-- 定义为用来区别不同的环境的标识
-- 四个环境的配置文件除了定义域名或者IP地址外，也支持根据环境不同设置不同的配置值或者开关，例如，Swagger功能需要在生产环境关闭，需要在PRO配置文件里关闭
-- 除了四个环境的配置文件外，还有一个公共配置文件，文件名格式为{组件名}-common.properties，其作用是设置确定的默认配置，共享给四个环境，避免重复冗余配置
-- 环境配置文件的位置在各个组件的src/main/resources/META-INF目录下
+- 定义为用来区别不同环境的标识
+- 四个环境的配置文件除了定义域名或者IP地址外，也支持根据环境不同设置不同的配置值或者开关（例如，Swagger功能需要在生产环境关闭，需要在PRO配置文件里关闭）
+- 除了四个环境的配置文件外，还存在一个公共配置文件，其作用是设置全局的不会随环境改变的默认配置，共享给四个环境，避免重复冗余配置。公共配置和环境配置，其关系是全局配置和局部配置的关系，如果同一个配置在公共配置文件和环境配置文件里都存在，环境配置文件优先
+- 所有配置文件的位置在各个组件的src/main/resources/META-INF目录下
 
 ② 区域（zone）名
-- 定义为用来区别多活或者多云或者SET单元化的域名的后缀或者前缀标识
+- 定义为用来区别多活、多云和SET单元化的域名的后缀或者前缀标识
 - 域名表达式为{组件名}-{环境号}-{可选的区域名}.{根域}。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
-- 实现通配处理，通配格式为{-%zone%}，如果区域（zone）名不设置，那么变成{组件名}-{环境号}.{根域}的简单格式
-- 通过运维侧来实现环境号和区域名的指定
-- 没有条件实现多环境的域名支持，那么采用IP地址也支持
+- 实现通配处理，通配格式为{-%zone%}。如果区域（zone）名不设置，那么变成{组件名}-{环境号}.{根域}的简单格式
+- 通过运维侧来实现环境号和区域名的指定（下文“环境和域名设置”会讲到）
+- 如果使用者没有条件实现多环境的域名支持，那么采用IP地址也可以
 
-使用者需要根据企业的实际情况，把组件的四个环境域名和IP地址一一做更改
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 使用者需要根据企业的实际情况，把组件的四个环境域名或者IP地址一一做更改
 
 #### 环境和域名设置
-① 通过运维侧进行环境（env）号设置，有如下四种方式:
-- 通过System Property或者-Denv={环境号}（例如：-Denv=dev）进行设置，如果不设置，缺省为dev
+① 通过运维侧进行环境（env）号设置
+- 通过System Property或者-Denv={环境号}行设置。例如，-Denv=dev
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
 ```xml
 env=dev
 ```
 - 通过System Env环境变量方式进行设置
+- 上述设置都未执行，则缺省为dev
 
-② 通过运维侧进行区域（zone）名设置，有如下四种方式:
-- 通过通过System Property或者-Dzone={区域名}（例如：-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名）进行设置，如果不设置，缺省为空，即非多活或者多云的环境
+② 通过运维侧进行区域（zone）名设置
+- 通过System Property或者-Dzone={区域名}进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
 ```xml
 zone=SET-sha
 ```
 - 通过System Env环境变量方式进行设置
+- 上述设置都未执行，则缺省为空，即非多活或者多云的环境
 
 ③ 读取优先级由高到低，如下：
-- `System.getProperty`
-- `System.getenv`
-- `server.properties`
+- System.getProperty
+- System.getenv
+- server.properties
 
 ### 注解切换
 当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下五个模块进行切换
@@ -439,7 +442,7 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 - 根据规范开发一个插件，插件提供了钩子函数，在某个类被加载的时候，可以注册一个事件到线程上下文切换事件当中，实现业务自定义ThreadLocal的跨线程传递。参考：polaris-agent-plugin模块的com.nepxion.discovery.plugin.strategy.starter.agent.plugin.service下的实现方式
 - plugin目录为放置需要在线程切换时进行ThreadLocal传递的自定义插件。业务自定义插件开发完后，放入到plugin目录下即可
 
-![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 两个Agent完整启动参数如下（可以忽略包括-Dmetadata.version后面的启动参数，此为灰度蓝绿发布和子环境隔离路由的元数据参数）
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 两个Agent完整启动参数如下（可以忽略包括-Dmetadata.version后面的启动参数，此为灰度蓝绿发布和子环境隔离路由的元数据参数）
 ```xml
 PolarisServiceA:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
