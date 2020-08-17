@@ -480,19 +480,19 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 #### Agent启动参数
 Polaris应用完整启动参数如下（可以忽略包括-Dmetadata.version后面的启动参数，，）
 ```xml
-PolarisServiceA:
+PolarisServiceA（同步服务）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
 
-PolarisServiceA（异步）:
+PolarisServiceA（异步服务）:
 -javaagent:C:/opt/polaris-agent/polaris-agent.jar -Dthread.scan.packages=com.nepxion.polaris.guide.service;org.springframework.aop.interceptor;com.netflix.hystrix -Dthread.request.decorator.enabled=true -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
 
-PolarisServiceB:
+PolarisServiceB（同步服务）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-b -Dpolaris.skywalking.agent.version=1.0.0
 
-PolarisZuul:
+PolarisZuul（同步网关）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-zuul -Dpolaris.skywalking.agent.version=1.0.0
 
-PolarisGateway:
+PolarisGateway（异步网关）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-gateway -Dpolaris.skywalking.agent.version=1.0.0
 ```
 
