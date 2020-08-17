@@ -1,12 +1,10 @@
 package com.nepxion.polaris.component.sentinel.common.context;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.core.env.ConfigurableEnvironment;
 
 import com.alibaba.csp.sentinel.log.LogBase;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
@@ -26,7 +24,7 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
 
                 String projectName = getProjectName(applicationContext.getEnvironment());
                 System.setProperty(PolarisConstant.SENTINEL_PROJECT_NAME, projectName);
-                
+
                 String logPath = getLogPath();
                 System.setProperty(LogBase.LOG_DIR, logPath + projectName);
 
@@ -37,16 +35,6 @@ public class SentinelEnvApplicationContextInitializer extends PolarisEnvProcesso
                 throw new PolarisException(e);
             }
         }
-    }
-
-    @Override
-    protected String processValue(ConfigurableEnvironment environment, String key, String value) {
-        // 处理Nacos作为Datasource下，dataId加上服务名前缀
-        if (StringUtils.endsWith(key, PolarisConstant.NACOS_DATA_ID)) {
-            return value + PolarisConstant.DASH + getSpringApplicationName(environment);
-        }
-
-        return super.processValue(environment, key, value);
     }
 
     @Override
