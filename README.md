@@ -4,11 +4,14 @@
 [![Total lines](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/Polaris/blob/master/LICENSE)  [![Build Status](https://travis-ci.org/Nepxion/Polaris.svg?branch=master)](https://travis-ci.org/Nepxion/Polaris)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e39a24e1be740c58b83fb81763ba317)](https://www.codacy.com/project/HaojunRen/Polaris/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nepxion/Polaris&amp;utm_campaign=Badge_Grade_Dashboard)
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果本文档由于Github网速原因无法完整阅读，请访问
-- [Polaris【北极星】企业级云原生微服务框架(PDF版)](http://nepxion.gitee.io/docs/link-doc/polaris-framework-pdf.html) 或 [Polaris【北极星】企业级云原生微服务框架(HTML版)](http://nepxion.gitee.io/docs/link-doc/polaris-framework.html)
+- [Polaris【北极星】企业级云原生微服务框架(PDF版)](http://nepxion.gitee.io/docs/link-doc/polaris-framework-pdf.html)
+- [Polaris【北极星】企业级云原生微服务框架(HTML版)](http://nepxion.gitee.io/docs/link-doc/polaris-framework.html)
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果本代码由于Github网速原因无法快速阅读，请访问
 - [源码Gitee同步镜像](https://gitee.com/Nepxion/Polaris)
 - [源码Github原镜像](https://github.com/Nepxion/Polaris)
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果指南代码由于Github网速原因无法快速阅读，请访问
 - [指南Gitee同步镜像](https://gitee.com/Nepxion/PolarisGuide)
 - [指南Github原镜像](https://github.com/Nepxion/PolarisGuide)
 
