@@ -327,7 +327,7 @@ zone=SET-sha
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为空，即非多活或者多云的环境
 
-③ 读取优先级由高到低，如下：
+③ 读取优先级由高到低，如下
 - System.getProperty
 - System.getenv
 - server.properties
@@ -450,7 +450,7 @@ public class PolarisApplication {
 ```
 
 #### 添加配置
-由于大量配置已经内置到框架里，除了服务名和端口号之外，业务层原则上不需要再添加Spring Cloud和中间件其它配置，当然也可以覆盖掉默认内置的配置
+由于大量配置已经内置到框架里，除了服务名和端口号之外，业务层原则上不需要再添加Spring Cloud和中间件其它配置，当然也可以覆盖掉默认内置的配置。内置配置文件支持Spring标准占位符用法
 
 ### 应用启动
 
