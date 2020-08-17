@@ -34,26 +34,16 @@ public class PolarisEnvTest {
     @Autowired
     private ConfigurableEnvironment environment;
 
+    private static Properties properties;
+
     @BeforeClass
     public static void beforeTest() {
         startTime = System.currentTimeMillis();
-    }
 
-    @AfterClass
-    public static void afterTest() {
-        LOG.info("* Finished automation test in {} seconds", (System.currentTimeMillis() - startTime) / 1000);
-    }
-
-    @Test
-    public void test1() {
-        // System.setProperty("test.a", "A");
-        // System.setProperty("test.b", "${test.a}-B");
-        // System.setProperty("test.c", "${test.b}-C");
-        // System.setProperty("test.d", "${test.c}-D");
-
-        // 占位符测试。如果System.setProperty已设置，忽略内置默认的配置项，占位符内外可以合并
-        Map<String, Object> propertySource = new HashMap<String, Object>();
-        environment.getPropertySources().addLast(new MapPropertySource(PolarisConstant.POLARIS_PROPERTY_SOURCE, propertySource));
+        // System.setProperty("test.a", "AAA");
+        // System.setProperty("test.b", "${test.a}-BBB");
+        // System.setProperty("test.c", "${test.b}-CCC");
+        // System.setProperty("test.d", "${test.c}-DDD");
 
         String path = PolarisConstant.META_INF_PATH + "test" + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
 
@@ -64,12 +54,28 @@ public class PolarisEnvTest {
             }
         };
 
-        Properties properties = null;
         try {
             properties = polarisEnvProcessor.processProperties(path);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @AfterClass
+    public static void afterTest() {
+        System.out.println("System Property      : test.a = " + System.getProperty("test.a"));
+        System.out.println("System Property      : test.b = " + System.getProperty("test.b"));
+        System.out.println("System Property      : test.c = " + System.getProperty("test.c"));
+        System.out.println("System Property      : test.d = " + System.getProperty("test.d"));
+
+        LOG.info("* Finished automation test in {} seconds", (System.currentTimeMillis() - startTime) / 1000);
+    }
+
+    @Test
+    public void test1() {
+        // 占位符测试。如果System.setProperty已设置，忽略内置默认的配置项，占位符内外可以合并
+        Map<String, Object> propertySource = new HashMap<String, Object>();
+        environment.getPropertySources().addLast(new MapPropertySource(PolarisConstant.POLARIS_PROPERTY_SOURCE, propertySource));
 
         for (String key : properties.stringPropertyNames()) {
             if (environment.getProperty(key) == null && System.getProperty(key) == null && System.getenv(key.toUpperCase()) == null) {
@@ -96,55 +102,23 @@ public class PolarisEnvTest {
             }
         }
 
-        System.out.println(environment.getProperty("test.a"));
-        System.out.println(environment.getProperty("test.b"));
-        System.out.println(environment.getProperty("test.c"));
-        System.out.println(environment.getProperty("test.d"));
-
-        System.out.println(System.getProperty("test.a"));
-        System.out.println(System.getProperty("test.b"));
-        System.out.println(System.getProperty("test.c"));
-        System.out.println(System.getProperty("test.d"));
+        System.out.println("Environment Property : test.a = " + environment.getProperty("test.a"));
+        System.out.println("Environment Property : test.b = " + environment.getProperty("test.b"));
+        System.out.println("Environment Property : test.c = " + environment.getProperty("test.c"));
+        System.out.println("Environment Property : test.d = " + environment.getProperty("test.d"));
     }
 
     // @Test
     public void test2() {
-        // System.setProperty("test.a", "A");
-        // System.setProperty("test.b", "${test.a}-B");
-        // System.setProperty("test.c", "${test.b}-C");
-        // System.setProperty("test.d", "${test.c}-D");
-
-        String path = PolarisConstant.META_INF_PATH + "test" + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
-
-        PolarisEnvProcessor polarisEnvProcessor = new PolarisEnvProcessor() {
-            @Override
-            public String getName() {
-                return null;
-            }
-        };
-
-        Properties properties = null;
-        try {
-            properties = polarisEnvProcessor.processProperties(path);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // 占位符测试。如果System.setProperty已设置，忽略内置默认的配置项，占位符内外可以合并
         MutablePropertySources propertySources = new MutablePropertySources();
         propertySources.addFirst(new PropertiesPropertySource("systemProperties", System.getProperties()));
         propertySources.addLast(new PropertiesPropertySource("polarisProperties", properties));
-
         ConfigurablePropertyResolver propertyResolver = new PropertySourcesPropertyResolver(propertySources);
 
-        System.out.println(propertyResolver.getProperty("test.a"));
-        System.out.println(propertyResolver.getProperty("test.b"));
-        System.out.println(propertyResolver.getProperty("test.c"));
-        System.out.println(propertyResolver.getProperty("test.d"));
-
-        System.out.println(System.getProperty("test.a"));
-        System.out.println(System.getProperty("test.b"));
-        System.out.println(System.getProperty("test.c"));
-        System.out.println(System.getProperty("test.d"));
+        System.out.println("Environment Property : test.a = " + propertyResolver.getProperty("test.a"));
+        System.out.println("Environment Property : test.b = " + propertyResolver.getProperty("test.b"));
+        System.out.println("Environment Property : test.c = " + propertyResolver.getProperty("test.c"));
+        System.out.println("Environment Property : test.d = " + propertyResolver.getProperty("test.d"));
     }
 }
