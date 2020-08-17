@@ -72,7 +72,6 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
         - [Postman方式验证](#Postman方式验证)
         - [自动化测试方式验证](#自动化测试方式验证)
 - [回馈社区](#回馈社区)
-- [Star走势图](#Star走势图)
 
 ## 请联系我
 微信、公众号和文档
@@ -552,7 +551,3 @@ PolarisGateway（异步网关）:
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
 - 使用者可以根据企业实际情况，添加更多的配置到框架层并优化内置的参数，并希望能回馈给社区
-
-## Star走势图
-
-[![Stargazers over time](https://starchart.cc/Nepxion/Polaris.svg)](https://starchart.cc/Nepxion/Polaris)
