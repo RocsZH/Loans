@@ -52,6 +52,10 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
         - [Spring-Boot应用启动](#Spring-Boot应用启动)
         - [Skywalking-Agent启动](#Skywalking-Agent启动)
         - [Polaris-Agent启动](#Polaris-Agent启动)
+    - [启动参数](#启动参数)
+        - [Agent启动参数](#Agent启动参数)
+        - [Discovery框架启动参数](#Discovery框架启动参数)
+- [回馈社区](#回馈社区)
 - [Star走势图](#Star走势图)
 
 ## 请联系我
@@ -314,17 +318,17 @@ zone=SET-sha
 - server.properties
 
 ### 注解切换
-当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下五个模块进行切换
-- `@EnablePolarisGateway`
-- `@EnablePolarisZuul`
-- `@EnablePolarisService`
-- `@EnablePolarisConsole`
+当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下四个注解进行切换
+- `@`EnablePolarisGateway
+- `@`EnablePolarisZuul
+- `@`EnablePolarisService
+- `@`EnablePolarisConsole
 
 ### 配置切换
-当防护中心选择Sentinel，并选择Apollo和Nacos做DataSource的时候，需要在如下三个模块切换配置
-- `polaris-component-sentinel-starter-gateway`
-- `polaris-component-sentinel-starter-zuul`
-- `polaris-component-sentinel-starter-service`
+当防护中心选择Sentinel，并选择Apollo和Nacos做DataSource的时候，例如，当选择Apollo的时候，需要注释掉其它所有的Nacos配置。需要在如下三个模块的sentinel-common.properties配置文件里进行切换配
+- polaris-component-sentinel-starter-gateway
+- polaris-component-sentinel-starter-zuul
+- polaris-component-sentinel-starter-service
 
 ## 使用步骤
 
@@ -388,11 +392,40 @@ zone=SET-sha
 ```
 
 #### 添加注解
-下面四个注解封装了标准Spring Boot、Spring Cloud、Apollo、服务注册发现等多个注解，选择一个加在对应的应用类型上，可以有效的降低业务使用成本
+下面四个注解封装了标准Spring Boot、Spring Cloud、Apollo、服务注册发现等多个注解，可以有效的降低业务使用成本
+
+① 微服务引入
+```java
+@EnablePolarisService
+public class PolarisApplication {
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(PolarisApplication.class).run(args);
+    }
+}
+```
+
+② Spring Cloud Gateway网关引入
 ```java
 @EnablePolarisGateway
+public class PolarisApplication {
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(PolarisApplication.class).run(args);
+    }
+}
+```
+
+③ Zuul网关引入
+```java
 @EnablePolarisZuul
-@EnablePolarisService
+public class PolarisApplication {
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(PolarisApplication.class).run(args);
+    }
+}
+```
+
+④ 控制台引入
+```java
 @EnablePolarisConsole
 public class PolarisApplication {
     public static void main(String[] args) {
@@ -402,7 +435,7 @@ public class PolarisApplication {
 ```
 
 #### 添加配置
-由于大量配置已经内置到框架里，除了服务名和端口号，业务层原则上不需要添加其它配置，除非想覆盖掉默认内置的配置
+由于大量配置已经内置到框架里，除了服务名和端口号之外，业务层原则上不需要再添加Spring Cloud和中间件其它配置，当然也可以覆盖掉默认内置的配置
 
 ### 应用启动
 
@@ -439,26 +472,40 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 ```
 
 ② 插件扩展
-- 根据规范开发一个插件，插件提供了钩子函数，在某个类被加载的时候，可以注册一个事件到线程上下文切换事件当中，实现业务自定义ThreadLocal的跨线程传递。参考：polaris-agent-plugin模块的com.nepxion.discovery.plugin.strategy.starter.agent.plugin.service下的实现方式
+- 根据规范开发一个插件，插件提供了钩子函数，在某个类被加载的时候，可以注册一个事件到线程上下文切换事件当中，实现业务自定义ThreadLocal的跨线程传递。参考：discovery-plugin-strategy-starter-agent-plugin模块的com.nepxion.discovery.plugin.strategy.starter.agent.plugin.service下的实现方式
 - plugin目录为放置需要在线程切换时进行ThreadLocal传递的自定义插件。业务自定义插件开发完后，放入到plugin目录下即可
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 两个Agent完整启动参数如下（可以忽略包括-Dmetadata.version后面的启动参数，此为灰度蓝绿发布和子环境隔离路由的元数据参数）
+### 启动参数
+
+#### Agent启动参数
+Polaris应用完整启动参数如下（可以忽略包括-Dmetadata.version后面的启动参数，，）
 ```xml
 PolarisServiceA:
--javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
 
 PolarisServiceA（异步）:
--javaagent:C:/opt/polaris-agent/polaris-agent.jar -Dthread.scan.packages=com.nepxion.polaris.guide.service;org.springframework.aop.interceptor;com.netflix.hystrix -Dthread.request.decorator.enabled=true -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+-javaagent:C:/opt/polaris-agent/polaris-agent.jar -Dthread.scan.packages=com.nepxion.polaris.guide.service;org.springframework.aop.interceptor;com.netflix.hystrix -Dthread.request.decorator.enabled=true -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
 
 PolarisServiceB:
--javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-b -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-b -Dpolaris.skywalking.agent.version=1.0.0
 
 PolarisZuul:
--javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-zuul -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-zuul -Dpolaris.skywalking.agent.version=1.0.0
 
 PolarisGateway:
--javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-gateway -Dpolaris.skywalking.agent.version=1.0.0 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
-```	
+-javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-gateway -Dpolaris.skywalking.agent.version=1.0.0
+```
+
+#### Discovery框架启动参数
+
+灰度蓝绿发布和子环境隔离路由的元数据注册的启动参数，分别对应灰度蓝绿版本号，区域号，子环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
+```xml
+-Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+```
+
+## 回馈社区
+- 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
+- 使用者可以根据企业实际情况，添加更多的配置到框架层并优化内置的参数，并希望能回馈给社区
 
 ## Star走势图
 
