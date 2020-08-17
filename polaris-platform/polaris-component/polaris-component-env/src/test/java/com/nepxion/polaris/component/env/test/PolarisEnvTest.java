@@ -111,6 +111,7 @@ public class PolarisEnvTest {
     // @Test
     public void test2() {
         // 占位符测试。如果System.setProperty已设置，忽略内置默认的配置项，占位符内外可以合并
+        // 该方式无法读取application.properties定义的占位符
         MutablePropertySources propertySources = new MutablePropertySources();
         propertySources.addFirst(new PropertiesPropertySource("systemProperties", System.getProperties()));
         propertySources.addLast(new PropertiesPropertySource("polarisProperties", properties));
