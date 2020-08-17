@@ -3,6 +3,15 @@
 # Polaris【北极星】企业级云原生微服务框架
 [![Total lines](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)](https://tokei.rs/b1/github/Nepxion/Polaris?category=lines)  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/Polaris/blob/master/LICENSE)  [![Build Status](https://travis-ci.org/Nepxion/Polaris.svg?branch=master)](https://travis-ci.org/Nepxion/Polaris)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8e39a24e1be740c58b83fb81763ba317)](https://www.codacy.com/project/HaojunRen/Polaris/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nepxion/Polaris&amp;utm_campaign=Badge_Grade_Dashboard)
 
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果本文档由于Github网速原因无法完整阅读，请访问
+- [Polaris【北极星】企业级云原生微服务框架(PDF版)](http://nepxion.gitee.io/docs/link-doc/polaris-framework-pdf.html) 或 [Polaris【北极星】企业级云原生微服务框架(HTML版)](http://nepxion.gitee.io/docs/link-doc/polaris-framework-pdf.html)
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果本代码由于Github网速原因无法快速阅读，请访问
+- [源码Gitee同步镜像](https://gitee.com/Nepxion/Polaris)
+- [源码Github原镜像](https://github.com/Nepxion/Polaris)
+- [指南Gitee同步镜像](https://gitee.com/Nepxion/PolarisGuide)
+- [指南Github原镜像](https://github.com/Nepxion/PolarisGuide)
+
 Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级云原生微服务开源解决方案，面向企业级生产需求精雕细琢，赋能和助力企业快速搭建基础架构的底层云原生微服务框架。整个架构体系打造，遵循最严格的Maven对称结构和规范，最严格的命名格式，给予使用者最舒适的使用体验
 
 支持如下中间件的集成和封装
