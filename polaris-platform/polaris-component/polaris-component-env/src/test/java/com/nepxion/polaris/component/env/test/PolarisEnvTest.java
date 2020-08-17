@@ -2,16 +2,48 @@ package com.nepxion.polaris.component.env.test;
 
 import java.util.Properties;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.ConfigurablePropertyResolver;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.env.PropertySourcesPropertyResolver;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
 import com.nepxion.polaris.component.env.processor.PolarisEnvProcessor;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = { PolarisTestApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PolarisEnvTest {
-    public static void main(String[] args) {
+    private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvTest.class);
+
+    private static long startTime;
+
+    @Autowired
+    private ConfigurableEnvironment environment;
+
+    @BeforeClass
+    public static void beforeTest() {
+        startTime = System.currentTimeMillis();
+    }
+
+    @AfterClass
+    public static void afterTest() {
+        LOG.info("* Finished automation test in {} seconds", (System.currentTimeMillis() - startTime) / 1000);
+    }
+
+    @Test
+    public void test() {
+        System.out.println(environment.getProperty("spring.application.name"));
+
         // System.setProperty("test.a", "A");
         // System.setProperty("test.b", "B");
         // System.setProperty("test.b", "${test.a}-B");
