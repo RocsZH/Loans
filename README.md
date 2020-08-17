@@ -287,11 +287,11 @@ You can choose Sentinel or Hystrix Protector
 
 | 环境 | 域名或者IP地址 | 配置文件 | 示例 |
 | --- | --- | --- | --- |
-| DEV | 默认为127.0.0.1:port | 组件名-dev<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
-| FAT | 组件名-fat-可选的区域名.根域 | 组件名-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat[-%zone%].nepxion.com |
-| UAT | 组件名-uat-可选的区域名.根域| 组件名-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat[-%zone%].nepxion.com |
-| PRO | 组件名-pro-可选的区域名.根域 | 组件名-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro[-%zone%].nepxion.com |
-| COMMON | 无需配置 | 组件名-common<br>.properties | 无需配置 |
+| DEV | 默认为127.0.0.1:port | `组件名`-dev<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
+| FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat[-%zone%].nepxion.com |
+| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat[-%zone%].nepxion.com |
+| PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro[-%zone%].nepxion.com |
+| COMMON | 无需配置 | `组件名`-common<br>.properties | 无需配置 |
 
 ① 环境（env）号
 - 定义为用来区别不同环境的标识
@@ -301,8 +301,8 @@ You can choose Sentinel or Hystrix Protector
 
 ② 区域（zone）名
 - 定义为用来区别多活、多云和SET单元化的域名的后缀或者前缀标识
-- 域名表达式为“组件名-环境号-可选的区域名.根域”。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
-- 实现占位处理，占位格式为“[-%zone%]”。如果区域（zone）名不设置，那么变成“组件名-环境号.根域”的简单格式
+- 域名表达式为`组件名`-`环境号`-`可选的区域名`.`根域`。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
+- 实现占位处理，占位格式为[-%zone%]。如果区域（zone）名不设置，那么变成“组件名-环境号.根域”的简单格式
 - 通过运维侧来实现环境号和区域名的指定（下文“环境和域名设置”会讲到）
 - 如果使用者没有条件实现多环境的域名支持，那么采用IP地址也可以
 
@@ -310,7 +310,7 @@ You can choose Sentinel or Hystrix Protector
 
 #### 环境和域名设置
 ① 通过运维侧进行环境（env）号设置
-- 通过System Property或者-Denv=环境号，进行设置。例如，-Denv=dev
+- 通过System Property或者-Denv=`环境号`，进行设置。例如，-Denv=dev
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
 ```xml
 env=dev
@@ -319,7 +319,7 @@ env=dev
 - 上述设置都未执行，则缺省为dev
 
 ② 通过运维侧进行区域（zone）名设置
-- 通过System Property或者-Dzone=区域名，进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
+- 通过System Property或者-Dzone=`区域名`，进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
 - 通过server.properties进行设置。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
 ```xml
 zone=SET-sha
