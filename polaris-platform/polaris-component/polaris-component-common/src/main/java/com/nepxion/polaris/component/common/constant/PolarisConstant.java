@@ -68,6 +68,7 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String APPLICATION = "application";
     public static final String ZONE = "zone";
+    public static final String ZONE_EXPRESSION = "%" + ZONE + "%";
     public static final String COMMON = "common";
 
     public static final String SERVER_PROPERTIES_PATH_WINDOWS = "C:/opt/settings/server.properties";
