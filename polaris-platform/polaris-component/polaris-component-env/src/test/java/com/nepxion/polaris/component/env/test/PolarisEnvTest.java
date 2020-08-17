@@ -96,6 +96,8 @@ public class PolarisEnvTest {
                     System.setProperty(key, newValue);
 
                     LOG.info("* Env parameter : {} = {}", key, newValue);
+                } else {
+                    LOG.info("* Env parameter : {} = {}", key, value);
                 }
             } else {
                 LOG.info("* Env parameter : {} = {}", key, value);
