@@ -73,7 +73,7 @@ public class PolarisEnvTest {
 
     @Test
     public void test1() {
-        // 占位符测试。如果System.setProperty已设置，忽略内置默认的配置项，占位符内外可以合并
+        // 占位符测试，占位符内外可以合并
         Map<String, Object> propertySource = new HashMap<String, Object>();
         environment.getPropertySources().addLast(new MapPropertySource(PolarisConstant.POLARIS_PROPERTY_SOURCE, propertySource));
 
@@ -91,7 +91,7 @@ public class PolarisEnvTest {
                 if (StringUtils.isNotBlank(value) && StringUtils.contains(value, "${") && StringUtils.contains(value, "}") && StringUtils.indexOf(value, "}") - StringUtils.indexOf(value, "${") >= 1) {
                     propertySource.put(key, value);
 
-                    // 占位符转换后，塞回System.setProperty，保证environment.getProperty和System.getProperty都能取到该值
+                    // 占位符转换后，塞回System.setProperty，保证environment.getProperty能取到该值
                     String newValue = environment.getProperty(key);
                     System.setProperty(key, newValue);
 
@@ -110,7 +110,7 @@ public class PolarisEnvTest {
 
     // @Test
     public void test2() {
-        // 占位符测试。如果System.setProperty已设置，忽略内置默认的配置项，占位符内外可以合并
+        // 占位符测试，占位符内外可以合并
         // 该方式无法读取application.properties定义的占位符
         MutablePropertySources propertySources = new MutablePropertySources();
         propertySources.addFirst(new PropertiesPropertySource("systemProperties", System.getProperties()));
