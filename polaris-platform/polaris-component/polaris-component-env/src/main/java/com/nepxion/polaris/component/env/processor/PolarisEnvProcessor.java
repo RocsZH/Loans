@@ -40,6 +40,25 @@ public abstract class PolarisEnvProcessor {
     }
 
     public void processProperties(Environment environment, String path) throws Exception {
+        Properties properties = processProperties(path);
+
+        for (String key : properties.stringPropertyNames()) {
+            // 如果已经设置，则尊重已经设置的值
+            if (environment.getProperty(key) == null && System.getProperty(key) == null) {
+                String value = properties.getProperty(key);
+
+                value = processValue(environment, key, value);
+
+                LOG.info("* Env parameter : {} = {}", key, value);
+
+                System.setProperty(key, value);
+            } else {
+                LOG.info("* Env parameter : {} has been set", key);
+            }
+        }
+    }
+
+    public Properties processProperties(String path) throws Exception {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
@@ -57,20 +76,7 @@ public abstract class PolarisEnvProcessor {
             IOUtils.closeQuietly(inputStream);
         }
 
-        for (String key : properties.stringPropertyNames()) {
-            // 如果已经设置，则尊重已经设置的值
-            if (environment.getProperty(key) == null && System.getProperty(key) == null) {
-                String value = properties.getProperty(key);
-
-                value = processValue(environment, key, value);
-
-                LOG.info("* Env parameter : {} = {}", key, value);
-
-                System.setProperty(key, value);
-            } else {
-                LOG.info("* Env parameter : {} has been set", key);
-            }
-        }
+        return properties;
     }
 
     protected String processValue(Environment environment, String key, String value) {
