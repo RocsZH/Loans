@@ -1,2 +1,2 @@
-org.springframework.context.ApplicationContextInitializer=\
-com.nepxion.polaris.component.skywalking.sentinel.context.SkywalkingSentinelEnvApplicationContextInitializer
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.skywalking.sentinel.context.SkywalkingSentinelEnvProcessor
