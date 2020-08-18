@@ -71,6 +71,9 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
     - [验证结果](#验证结果)
         - [Postman方式验证](#Postman方式验证)
         - [自动化测试方式验证](#自动化测试方式验证)
+    - [新增组件](#新增组件)
+        - [组件结构创建](#组件结构创建)
+        - [核心模块聚合](#核心模块聚合)	
 - [回馈社区](#回馈社区)
 - [Star走势图](#Star走势图)
 
@@ -548,6 +551,59 @@ PolarisGateway（异步网关）:
 
 #### 自动化测试方式验证
 - 运行PolarisTest，观察输出结果，自动化测试用例是否都通过
+
+### 新增组件
+
+以创建一个监控模块Pinpoint为例，请尽量严格遵守Polaris集成方式，保持风格统一
+
+#### 组件结构创建
+
+① 按照如下结构进行目录创建，并编写相应的pom.xml
+- polaris-component
+    - polaris-component-pinpoint
+        - polaris-component-pinpoint-starter
+
+② 在resource/META-INF下创建如下5个环境文件，并分别写入相应的配置。如何写入，请参照上文“环境切换”章节
+- pinpoint-common.properties
+- pinpoint-dev.properties
+- pinpoint-fat.properties
+- pinpoint-pro.properties
+- pinpoint-uat.properties
+
+③ 新建com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor类
+```java
+public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
+    // 如果初始化环境的时候，如果还需要做其它事情，请继承process方法
+    @Override
+    public void process(ConfigurableEnvironment environment) throws Exception {
+	    // DO SOMETHING
+	
+        super.process(environment);
+
+        // DO SOMETHING
+    }
+
+    // 返回环境的名称，其值对应为环境文件的前缀
+    @Override
+    public String getName() {
+        return PolarisConstant.PINPOINT_NAME;
+    }
+}
+```
+
+④ 配置resource/META-INF/spring.factories
+```xml
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
+```
+
+#### 核心模块聚合
+
+① 在polaris-component-core目录下找到polaris-component-core-starter-monitor模块下的pom.xml，把polaris-component-pinpoint-starter加入，进行组件层面聚合。使用者也可以自行按照规范新建一个核心模块组件
+
+② 在polaris-framework下5个框架顶级模块，按需引入polaris-component-core-starter-monitor进行框架层面聚合
+
+③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
