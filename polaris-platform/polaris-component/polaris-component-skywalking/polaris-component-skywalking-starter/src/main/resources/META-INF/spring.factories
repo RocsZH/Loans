@@ -3,6 +3,3 @@ com.nepxion.polaris.component.skywalking.context.SkywalkingEnvProcessor
 
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.nepxion.polaris.component.skywalking.configuration.SkywalkingAutoConfiguration
-
-org.springframework.context.ApplicationContextInitializer=\
-com.nepxion.polaris.component.skywalking.context.SkywalkingEnvApplicationContextInitializer
