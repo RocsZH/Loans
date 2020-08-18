@@ -11,20 +11,29 @@ import org.springframework.core.env.StandardEnvironment;
 import com.nepxion.polaris.component.common.exception.PolarisException;
 
 public abstract class PolarisEnvPostProcessor extends PolarisEnvProcessor implements EnvironmentPostProcessor {
-    private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvPostProcessor.class);
 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
         if (StringUtils.equals(environment.getClass().getName(), StandardEnvironment.class.getName())) {
             try {
-                LOG.info("Initialize {} env...", getName());
+                boolean isEnvLogShown = isEnvLogShown();
+                if (isEnvLogShown) {
+                    LOG.info("Initialize {} env...", getName());
+                } else {
+                    System.out.println("Initialize " + getName() + " env...");
+                }
 
                 process(environment);
             } catch (Exception e) {
-                LOG.error("Initialize {} env failed", getName(), e);
 
                 throw new PolarisException(e);
             }
         }
+    }
+
+    @Override
+    protected boolean isEnvLogShown() {
+        return false;
     }
 }

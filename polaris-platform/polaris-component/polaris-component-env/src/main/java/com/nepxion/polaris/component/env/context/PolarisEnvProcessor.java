@@ -41,6 +41,7 @@ public abstract class PolarisEnvProcessor {
     public void processProperties(ConfigurableEnvironment environment, String path) throws Exception {
         Properties properties = processProperties(path);
 
+        boolean isEnvLogShown = isEnvLogShown();
         for (String key : properties.stringPropertyNames()) {
             // 如果已经设置，则尊重已经设置的值
             if (environment.getProperty(key) == null && System.getProperty(key) == null && System.getenv(key.toUpperCase()) == null) {
@@ -48,11 +49,19 @@ public abstract class PolarisEnvProcessor {
 
                 value = processValue(environment, key, value);
 
-                LOG.info("* Env parameter : {} = {}", key, value);
+                if (isEnvLogShown) {
+                    LOG.info("* Env parameter : {} = {}", key, value);
+                } else {
+                    System.out.println("* Env parameter : " + key + " = " + value);
+                }
 
                 System.setProperty(key, value);
             } else {
-                LOG.info("* Env parameter : {} has been set", key);
+                if (isEnvLogShown) {
+                    LOG.info("* Env parameter : {} has been set", key);
+                } else {
+                    System.out.println("* Env parameter : " + key + " has been set");
+                }
             }
         }
     }
@@ -107,6 +116,10 @@ public abstract class PolarisEnvProcessor {
         }
 
         return domain;
+    }
+
+    protected boolean isEnvLogShown() {
+        return true;
     }
 
     public String getEnv() {

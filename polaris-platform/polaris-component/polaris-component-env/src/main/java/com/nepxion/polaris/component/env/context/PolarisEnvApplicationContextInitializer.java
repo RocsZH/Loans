@@ -15,11 +15,15 @@ public abstract class PolarisEnvApplicationContextInitializer extends PolarisEnv
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (!(applicationContext instanceof AnnotationConfigApplicationContext)) {
             try {
-                LOG.info("Initialize {} env...", getName());
+                boolean isEnvLogShown = isEnvLogShown();
+                if (isEnvLogShown) {
+                    LOG.info("Initialize {} env...", getName());
+                } else {
+                    System.out.println("Initialize " + getName() + " env...");
+                }
 
                 process(applicationContext.getEnvironment());
             } catch (Exception e) {
-                LOG.error("Initialize {} env failed", getName(), e);
 
                 throw new PolarisException(e);
             }
