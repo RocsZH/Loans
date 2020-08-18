@@ -15,7 +15,7 @@ import com.nepxion.banner.Description;
 import com.nepxion.banner.DescriptionBanner;
 import com.nepxion.banner.LogoBanner;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
-import com.nepxion.polaris.component.env.provider.PolarisEnvProvider;
+import com.nepxion.polaris.component.env.context.PolarisEnvProvider;
 import com.taobao.text.Color;
 
 public class BannerApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {

@@ -20,11 +20,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.nepxion</groupId>
             <artifactId>banner</artifactId>
         </dependency>
