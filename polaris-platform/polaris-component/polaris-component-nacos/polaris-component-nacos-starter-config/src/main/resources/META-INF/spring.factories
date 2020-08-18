@@ -1,2 +1,2 @@
-org.springframework.context.ApplicationContextInitializer=\
-com.nepxion.polaris.component.nacos.config.context.NacosEnvApplicationContextInitializer
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.nacos.config.context.NacosEnvProcessor
