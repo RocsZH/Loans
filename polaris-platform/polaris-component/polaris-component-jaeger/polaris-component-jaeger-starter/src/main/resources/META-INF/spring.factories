@@ -1,2 +1,2 @@
-org.springframework.context.ApplicationContextInitializer=\
-com.nepxion.polaris.component.jaeger.context.JaegerEnvApplicationContextInitializer
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.jaeger.context.JaegerEnvProcessor
