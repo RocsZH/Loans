@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.env.processor;
+package com.nepxion.polaris.component.env.context;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,7 +14,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
-import com.nepxion.polaris.component.env.provider.PolarisEnvProvider;
 
 public abstract class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);

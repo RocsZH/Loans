@@ -22,7 +22,7 @@ import org.springframework.core.env.PropertySourcesPropertyResolver;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
-import com.nepxion.polaris.component.env.processor.PolarisEnvProcessor;
+import com.nepxion.polaris.component.env.context.PolarisEnvProcessor;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { PolarisTestApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
