@@ -10,22 +10,28 @@ import java.security.CodeSource;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 
-public final class PolarisVersion {
-    private PolarisVersion() {
+public class PolarisVersion {
+    public static String getNacosVersion() {
+        try {
+            // 高版本Nacos
+            return getNacosVersion("com.alibaba.nacos.common.utils.VersionUtils");
+        } catch (Exception e) {
+            try {
+                // 低版本Nacos
+                return getNacosVersion("com.alibaba.nacos.common.util.VersionUtils");
+            } catch (Exception ex) {
 
+            }
+        }
+
+        return null;
     }
 
-    public static String getNacosVersion() {
-        String className = "com.alibaba.nacos.common.utils.VersionUtils";
+    private static String getNacosVersion(String className) throws Exception {
+        Class<?> clazz = Class.forName(className);
+        Field field = clazz.getField("VERSION");
 
-        try {
-            Class<?> clazz = Class.forName(className);
-            Field field = clazz.getField("VERSION");
-
-            return field.get("VERSION").toString();
-        } catch (Exception e) {
-            return null;
-        }
+        return field.get("VERSION").toString();
     }
 
     public static String getVersion(String className) {
