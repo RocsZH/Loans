@@ -1,34 +1,21 @@
 package com.nepxion.polaris.component.apollo.config.context;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.StandardEnvironment;
 
 import com.ctrip.framework.foundation.Foundation;
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
-import com.nepxion.polaris.component.common.exception.PolarisException;
-import com.nepxion.polaris.component.env.processor.PolarisEnvProcessor;
-import com.nepxion.polaris.component.env.provider.PolarisEnvProvider;
+import com.nepxion.polaris.component.env.context.PolarisEnvPostProcessor;
+import com.nepxion.polaris.component.env.context.PolarisEnvProvider;
 
-public class ApolloEnvProcessor extends PolarisEnvProcessor implements EnvironmentPostProcessor {
+public class ApolloEnvProcessor extends PolarisEnvPostProcessor {
     @Override
-    public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
-        if (StringUtils.equals(environment.getClass().getName(), StandardEnvironment.class.getName())) {
-            try {
-                System.out.println("Initialize " + getName() + " env...");
+    public void process(ConfigurableEnvironment environment) throws Exception {
+        String appId = Foundation.app().getAppId();
+        PolarisEnvProvider.setAppId(appId);
 
-                String appId = Foundation.app().getAppId();
-                PolarisEnvProvider.setAppId(appId);
+        super.process(environment);
 
-                process(environment);
-
-                System.setProperty(PolarisConstant.APOLLO_VERSION_NAME, PolarisConstant.APOLLO_VERSION_VALUE);
-            } catch (Exception e) {
-                throw new PolarisException(e);
-            }
-        }
+        System.setProperty(PolarisConstant.APOLLO_VERSION_NAME, PolarisConstant.APOLLO_VERSION_VALUE);
     }
 
     @Override
