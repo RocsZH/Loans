@@ -1,2 +1,2 @@
-org.springframework.context.ApplicationContextInitializer=\
-com.nepxion.polaris.component.spring.boot.admin.context.SpringBootAdminEnvApplicationContextInitializer
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.spring.boot.admin.context.SpringBootAdminEnvProcessor
