@@ -475,7 +475,7 @@ public class PolarisApplication {
 #### 添加配置
 由于大量配置已经内置到框架里，除了服务名和端口号之外，业务层原则上不需要再添加Spring Cloud和中间件其它配置，当然也可以覆盖掉默认内置的配置。内置配置文件支持Spring标准占位符用法
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 小诀窍：为了避免引起业务层的配置无法覆盖掉默认内置的配置，请在bootstrap.properties定义想要覆盖的配置
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 小诀窍：为了避免引起业务层的配置无法覆盖掉默认内置的配置，请在bootstrap.properties定义想要覆盖的配置
 
 ### 应用启动
 
