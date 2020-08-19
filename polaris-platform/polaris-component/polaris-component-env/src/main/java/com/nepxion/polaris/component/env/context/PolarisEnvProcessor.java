@@ -93,7 +93,7 @@ public abstract class PolarisEnvProcessor {
         return processDomainPlaceholder(value, PolarisConstant.ZONE_EXPRESSION, zone);
     }
 
-    // 域名占位处理。占位格式为[-%zone%]
+    // 域名占位处理
     // 1. 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
     // 2. 域名表达式domainExpression，样例：nacos-fat[-%zone%].nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
     // 3. 区域表达式zoneExpression，样例：[-%zone%]，zone表示用来区别多活、多云和SET单元化的域名后缀或者前缀
