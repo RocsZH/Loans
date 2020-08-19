@@ -1,7 +1,7 @@
 @echo on
 @echo =============================================================
 @echo $                                                           $
-@echo $                     Nepxion Discovery                     $
+@echo $                      Nepxion Polaris                      $
 @echo $                                                           $
 @echo $                                                           $
 @echo $                                                           $
@@ -12,7 +12,7 @@
 @echo.
 @echo off
 
-@title Nepxion Discovery
+@title Nepxion Polaris
 @color 0a
 
 call mvn clean install -DskipTests
