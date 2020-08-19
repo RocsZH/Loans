@@ -15,14 +15,14 @@
 - [指南Gitee同步镜像](https://gitee.com/Nepxion/PolarisGuide)
 - [指南Github原镜像](https://github.com/Nepxion/PolarisGuide)
 
-Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级云原生微服务开源解决方案，面向企业级生产需求精雕细琢，赋能和助力企业快速搭建基础架构的底层云原生微服务框架。整个架构体系打造，遵循最严格的Maven对称结构和规范，最严格的命名格式，给予使用者最舒适的使用体验
+Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级云原生微服务开源解决方案，面向企业级生产需求精雕细琢，赋能和助力企业快速搭建基础架构的底层云原生微服务框架。整个架构体系打造，遵循最严格的Maven对称结构和规范，最严格的命名格式，给予使用者最舒适的使用体验
 
 支持如下中间件的集成和封装
 - 支持阿里巴巴Nacos、Eureka、Consul三个服务注册发现中心
 - 支持阿里巴巴Nacos、携程Apollo两个远程配置中心
 - 支持阿里巴巴Sentinel和Hystrix两个熔断限流降级权限中间件
 - 支持Uber Jaeger、Apache Skywalking两个符合OpenTracing规范的调用链中间件
-- 支持Prometheus Micrometer和Spring Boot Admin监控中间件
+- 支持Prometheus Micrometer和Spring Boot Admin两个指标中间件
 - 支持Java Agent解决异步跨线程ThreadLocal上下文传递
 - 支持Spring Cloud Gateway、Zuul网关、微服务、控制台、自动化测试五个独立的应用模块
 - 支持和兼容Spring Cloud Finchley版、Greenwich版和Hoxton版。默认集成Hoxton版，如果需要，请使用者自行修改成其它两个版本
@@ -47,7 +47,8 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
     - [组件切换](#组件切换)
         - [注册发现组件切换](#注册发现组件切换)
         - [配置组件切换](#配置组件切换)
-        - [监控组件切换](#监控组件切换)
+        - [调用链组件切换](#调用链组件切换)
+        - [指标组件切换](#指标组件切换)
         - [防护组件切换](#防护组件切换)
     - [环境切换](#环境切换)
         - [环境和域名解析](#环境和域名解析)
@@ -119,15 +120,15 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-eureka | Polaris Eureka组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-eureka-starter-discovery | Polaris Eureka注册发现组件的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-jaeger | Polaris OpenTracing + Jaeger组件目录 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-jaeger-starter | Polaris OpenTracing + Jaeger监控组件的封装 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-jaeger-starter-sentinel | Polaris OpenTracing + Jaeger监控组件集成Sentinel的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-jaeger-starter | Polaris OpenTracing + Jaeger调用链组件的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-jaeger-starter-sentinel | Polaris OpenTracing + Jaeger调用链组件集成Sentinel的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-skywalking | Polaris SkyWalking组件目录 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-skywalking-starter | Polaris SkyWalking监控组件的封装 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-skywalking-starter-sentinel | Polaris SkyWalking监控组件集成Sentinel的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-skywalking-starter | Polaris SkyWalking调用链组件的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-skywalking-starter-sentinel | Polaris SkyWalking调用链组件集成Sentinel的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-prometheus | Polaris Prometheus组件目录 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-prometheus-starter-micrometer | Polaris Prometheus监控组件集成Micrometer的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-prometheus-starter-micrometer | Polaris Prometheus指标组件集成Micrometer的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-spring-boot-admin | Polaris Spring Boot Admin组件目录 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-spring-boot-admin-starter | Polaris Polaris Spring Boot Admin监控组件的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-spring-boot-admin-starter | Polaris Polaris Spring Boot Admin指标组件的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-component-gray | Polaris Gray版本灰度蓝绿，区域路由，环境隔离等组件目录 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-gray-common | Polaris Gray通用组件 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-gray-starter-gateway | Polaris Gray集成Spring Cloud Gateway网关的封装 |
@@ -159,7 +160,8 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-protector-gateway | Polaris防护组件集成Spring Cloud Gateway网关的组装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-protector-zuul | Polaris防护组件集成Zuul网关的组装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-protector-service | Polaris防护组件集成微服务的组装 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-monitor | Polaris监控组件的组装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-tracing | Polaris调用链组件的组装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-metrics | Polaris指标组件的组装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-gray-gateway | Polaris灰度蓝绿组件集成Spring Cloud Gateway网关的组装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-gray-zuul | Polaris灰度蓝绿组件集成Zuul网关的组装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-component-core-starter-gray-service | Polaris灰度蓝绿组件集成微服务的组装 |
@@ -222,10 +224,17 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 监控核心组件 -->
+        <!-- 调用链核心组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-monitor</artifactId>
+            <artifactId>polaris-component-core-starter-tracing</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- 指标核心组件 -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-core-starter-metrics</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -250,8 +259,8 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 框架默认生效的组件，如下
 - 注册发现组件：Nacos
 - 配置组件：Nacos
-- 监控调用链组件：Skywalking
-- 监控指标组件：未激活
+- 调用链组件：Skywalking
+- 指标组件：未激活
 - 防护组件：Sentinel
 - 灰度蓝绿组件：Nepxion Discovery
 
@@ -269,17 +278,17 @@ You can select one of following polaris config components, such as Apollo
 ```
 把搜索出来的`4`个pom.xml换成使用者想要的组件
 
-#### 监控调用链组件切换
+#### 调用链组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
-You can select one of following polaris monitor tracing components, such as Skywalking
+You can select one of following polaris tracing components, such as Skywalking
 ```
 把搜索出来的一个pom.xml换成使用者想要的组件
 
-#### 监控指标组件切换
+#### 指标组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
-You can select one of following polaris monitor metrics components, such as Micrometer
+You can select one of following polaris metrics components, such as Micrometer
 ```
 把搜索出来的一个pom.xml换成使用者想要的组件
 
@@ -467,7 +476,7 @@ public class PolarisApplication {
 ### 应用启动
 
 #### 中间件服务启动
-Polaris默认集成，需要依赖Nacos Server（必选）和Skywalking Server（可选）
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) Polaris依赖Nacos Server（必选）和Skywalking Server（可选），请实现准备搭建好对应的Server
 
 #### Spring-Boot应用启动
 跟原生的Spring Boot应用程序启动方式一致。在IDE中，启动四个应用服务和两个网关服务，控制平台服务，如下 
@@ -484,7 +493,7 @@ Polaris默认集成，需要依赖Nacos Server（必选）和Skywalking Server�
 
 #### Skywalking-Agent启动
 获取Skywalking Agent，放置在指定目录（例如，C:/opt/apache-skywalking-apm-bin/agent/），通过-javaagent命令启动
-		
+
 #### Polaris-Agent启动
 灰度路由Header和调用链Span在Hystrix线程池隔离模式下或者线程、线程池、@Async注解等异步调用Feign或者RestTemplate时，通过线程上下文切换会存在丢失Header的问题，通过下述步骤解决，同时适用于网关端和服务端。该方案可以替代Hystrix线程池隔离模式下的解决方案，也适用于其它有相同使用场景的基础框架和业务场景，例如：Dubbo
 
@@ -518,7 +527,7 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 ### 启动参数
 
 #### Agent启动参数
-Polaris应用完整启动参数如下（可以忽略包括-Dmetadata.version后面的启动参数，，）
+Polaris应用完整启动参数如下
 ```xml
 PolarisServiceA（同步服务）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
@@ -537,7 +546,7 @@ PolarisGateway（异步网关）:
 ```
 
 #### Discovery框架启动参数
-灰度蓝绿发布和子环境隔离路由的元数据注册的启动参数，分别对应灰度蓝绿版本号，区域号，子环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
+灰度蓝绿发布和子环境隔离路由的元数据注册的启动参数如下，分别对应灰度蓝绿版本号，区域号，子环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
 ```xml
 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
 ```
@@ -554,7 +563,7 @@ PolarisGateway（异步网关）:
 
 ### 新增组件
 
-以创建一个监控模块Pinpoint为例，请尽量严格遵守Polaris集成方式，保持风格统一
+以创建一个调用链模块Pinpoint为例，请尽量严格遵守Polaris集成方式，保持风格统一
 
 #### 组件结构创建
 
@@ -599,9 +608,9 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 #### 核心模块聚合
 
-① 在polaris-component-core目录下找到polaris-component-core-starter-monitor模块下的pom.xml，把polaris-component-pinpoint-starter加入，进行组件层面聚合。使用者也可以自行按照规范新建一个核心模块组件
+① 在polaris-component-core目录下找到polaris-component-core-starter-tracing模块下的pom.xml，把polaris-component-pinpoint-starter加入，进行组件层面聚合。使用者也可以自行按照规范新建一个核心模块组件
 
-② 在polaris-framework下5个框架顶级模块，按需引入polaris-component-core-starter-monitor进行框架层面聚合
+② 在polaris-framework下5个框架顶级模块，按需引入polaris-component-core-starter-tracing进行框架层面聚合
 
 ③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
