@@ -14,6 +14,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
+import com.nepxion.polaris.component.env.constant.PolarisEnvConstant;
 
 public abstract class PolarisEnvProcessor {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProcessor.class);
@@ -26,14 +27,14 @@ public abstract class PolarisEnvProcessor {
     }
 
     public void processCommonProperties(ConfigurableEnvironment environment, String name) throws Exception {
-        String path = PolarisConstant.META_INF_PATH + name + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
+        String path = PolarisEnvConstant.META_INF_PATH + name + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         processProperties(environment, path);
     }
 
     public void processEnvProperties(ConfigurableEnvironment environment, String name) throws Exception {
         String env = getEnv();
-        String path = PolarisConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
+        String path = PolarisEnvConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         processProperties(environment, path);
     }
@@ -89,7 +90,7 @@ public abstract class PolarisEnvProcessor {
 
     protected String processValue(ConfigurableEnvironment environment, String key, String value) {
         String domainExpression = value;
-        String zoneExpression = PolarisConstant.ZONE_EXPRESSION;
+        String zoneExpression = PolarisEnvConstant.ZONE_EXPRESSION;
         String zone = PolarisEnvProvider.getZone();
 
         return processDomainPlaceholder(domainExpression, zoneExpression, zone);

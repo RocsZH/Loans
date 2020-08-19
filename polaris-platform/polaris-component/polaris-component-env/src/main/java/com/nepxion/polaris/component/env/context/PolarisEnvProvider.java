@@ -11,7 +11,7 @@ import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.nepxion.polaris.component.common.constant.PolarisConstant;
+import com.nepxion.polaris.component.env.constant.PolarisEnvConstant;
 import com.nepxion.polaris.component.env.entity.PolarisEnv;
 
 public class PolarisEnvProvider {
@@ -22,13 +22,22 @@ public class PolarisEnvProvider {
     private static String appId;
 
     static {
+        initializeDomain();
         initializeEnv();
         initializeZone();
     }
 
+    private static void initializeDomain() {
+        // 如果已经设置，则尊重已经设置的值
+        String rootDomain = PolarisEnvConstant.ROOT_DOMAIN_NAME;
+        if (System.getProperty(rootDomain) == null && System.getenv(rootDomain.toUpperCase()) == null) {
+            System.setProperty(rootDomain, PolarisEnvConstant.ROOT_DOMAIN_VALUE);
+        }
+    }
+
     private static void initializeEnv() {
         try {
-            env = initializeContext(PolarisConstant.ENVIRONMENT);
+            env = initializeContext(PolarisEnvConstant.ENV_NAME);
         } catch (Exception e) {
             LOG.error("Initialize env failed, use {} env as default", PolarisEnv.DEV.getEnv());
         }
@@ -40,7 +49,7 @@ public class PolarisEnvProvider {
 
     private static void initializeZone() {
         try {
-            zone = initializeContext(PolarisConstant.ZONE);
+            zone = initializeContext(PolarisEnvConstant.ZONE_NAME);
         } catch (Exception e) {
             LOG.error("Initialize zone failed, use no zone as default", PolarisEnv.DEV.getEnv());
         }
@@ -101,10 +110,10 @@ public class PolarisEnvProvider {
     }
 
     public static String getServerPropertiesPath() {
-        return SystemUtils.IS_OS_WINDOWS ? PolarisConstant.SERVER_PROPERTIES_PATH_WINDOWS : PolarisConstant.SERVER_PROPERTIES_PATH_LINUX;
+        return SystemUtils.IS_OS_WINDOWS ? PolarisEnvConstant.SERVER_PROPERTIES_PATH_WINDOWS : PolarisEnvConstant.SERVER_PROPERTIES_PATH_LINUX;
     }
 
     public static String getLogPath() {
-        return SystemUtils.IS_OS_WINDOWS ? PolarisConstant.LOG_PATH_WINDOWS : PolarisConstant.LOG_PATH_LINUX;
+        return SystemUtils.IS_OS_WINDOWS ? PolarisEnvConstant.LOG_PATH_WINDOWS : PolarisEnvConstant.LOG_PATH_LINUX;
     }
 }

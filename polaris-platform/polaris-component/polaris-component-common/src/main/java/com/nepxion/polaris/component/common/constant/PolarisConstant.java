@@ -70,16 +70,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String DOCS_VALUE = "http://www.nepxion.com";
 
     public static final String APPLICATION = "application";
-    public static final String ZONE = "zone";
-    public static final String ZONE_EXPRESSION = "%" + ZONE + "%";
     public static final String COMMON = "common";
-
-    public static final String SERVER_PROPERTIES_PATH_WINDOWS = "C:/opt/settings/server.properties";
-    public static final String SERVER_PROPERTIES_PATH_LINUX = "/opt/settings/server.properties";
-    public static final String LOG_PATH_WINDOWS = "C:/opt/logs/";
-    public static final String LOG_PATH_LINUX = "/opt/logs/";
-
-    public static final String META_INF_PATH = "classpath:/META-INF/";
 
     public static final String BIZ_TRACE_ID = "biz-trace-id";
 }

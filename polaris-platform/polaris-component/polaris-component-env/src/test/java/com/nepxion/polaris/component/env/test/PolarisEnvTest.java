@@ -22,6 +22,7 @@ import org.springframework.core.env.PropertySourcesPropertyResolver;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.nepxion.polaris.component.common.constant.PolarisConstant;
+import com.nepxion.polaris.component.env.constant.PolarisEnvConstant;
 import com.nepxion.polaris.component.env.context.PolarisEnvProcessor;
 import com.nepxion.polaris.component.env.context.PolarisEnvProvider;
 
@@ -46,7 +47,7 @@ public class PolarisEnvTest {
         // System.setProperty("test.c", "${test.b}-CCC");
         // System.setProperty("test.d", "${test.c}-DDD");
 
-        String path = PolarisConstant.META_INF_PATH + "test" + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
+        String path = PolarisEnvConstant.META_INF_PATH + "test" + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         PolarisEnvProcessor polarisEnvProcessor = new PolarisEnvProcessor() {
             @Override
@@ -131,7 +132,7 @@ public class PolarisEnvTest {
         System.out.println(processValue(environment, "spring.cloud.nacos.discovery.server-addr", "nacos-fat[-%zone%].nepxion.com"));
     }
 
-    public static final String ZONE_EXPRESSION = "%" + PolarisConstant.ZONE + "%";
+    public static final String ZONE_EXPRESSION = "%" + PolarisEnvConstant.ZONE_NAME + "%";
 
     protected String processValue(ConfigurableEnvironment environment, String key, String value) {
         String domainExpression = value;
