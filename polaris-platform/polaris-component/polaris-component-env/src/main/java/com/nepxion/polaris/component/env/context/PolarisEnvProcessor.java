@@ -90,21 +90,21 @@ public abstract class PolarisEnvProcessor {
     protected String processValue(ConfigurableEnvironment environment, String key, String value) {
         String zone = PolarisEnvProvider.getZone();
 
-        return processDomainPlaceholder(value, zone);
+        return processDomainPlaceholder(value, PolarisConstant.ZONE_EXPRESSION, zone);
     }
 
     // 域名占位处理。占位格式为[-%zone%]
     // 1. 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
-    // 2. 域名表达式，样例：nacos-fat[-%zone%].nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
-    // 3. 区域，zone表示用来区别多活、多云和SET单元化的域名后缀或者前缀
+    // 2. 域名表达式domainExpression，样例：nacos-fat[-%zone%].nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
+    // 3. 区域表达式zoneExpression，样例：[-%zone%]，zone表示用来区别多活、多云和SET单元化的域名后缀或者前缀
     @SuppressWarnings("deprecation")
-    protected String processDomainPlaceholder(String domainExpression, String zone) {
+    protected String processDomainPlaceholder(String domainExpression, String zoneExpression, String zone) {
         String domain = null;
         // 不符合域名表达式的配置项，不做处理直接返回
-        if (StringUtils.isNotBlank(domainExpression) && StringUtils.contains(domainExpression, PolarisConstant.ZONE_EXPRESSION) && StringUtils.contains(domainExpression, "[") && StringUtils.contains(domainExpression, "]") && StringUtils.indexOf(domainExpression, "]") - StringUtils.indexOf(domainExpression, "[") >= PolarisConstant.ZONE_EXPRESSION.length()) {
+        if (StringUtils.isNotBlank(domainExpression) && StringUtils.contains(domainExpression, zoneExpression) && StringUtils.contains(domainExpression, "[") && StringUtils.contains(domainExpression, "]") && StringUtils.indexOf(domainExpression, "]") - StringUtils.indexOf(domainExpression, "[") >= zoneExpression.length()) {
             if (StringUtils.isNotBlank(zone)) {
                 // 兼容低版本的commons-langs
-                domain = StringUtils.replaceAll(domainExpression, PolarisConstant.ZONE_EXPRESSION, zone);
+                domain = StringUtils.replaceAll(domainExpression, zoneExpression, zone);
                 domain = StringUtils.replace(domain, "[", StringUtils.EMPTY);
                 domain = StringUtils.replace(domain, "]", StringUtils.EMPTY);
             } else {
@@ -135,7 +135,7 @@ public abstract class PolarisEnvProcessor {
     }
 
     public String getSpringApplicationName(ConfigurableEnvironment environment) {
-        return environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
+        return environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME, String.class, PolarisConstant.UNKNOWN);
     }
 
     public String getProjectName(ConfigurableEnvironment environment) {
