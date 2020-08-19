@@ -22,11 +22,15 @@ public class PolarisConstant extends DiscoveryConstant {
 
     public static final String EUREKA_DISCOVERY_NAME = "eureka-discovery";
     public static final String EUREKA_VERSION_NAME = "polaris.eureka.version";
-    public static final String EUREKA_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient");
+    public static final String EUREKA_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean");
 
     public static final String CONSUL_DISCOVERY_NAME = "consul-discovery";
     public static final String CONSUL_VERSION_NAME = "polaris.consul.version";
     public static final String CONSUL_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.consul.ConsulProperties");
+
+    public static final String ZOOKEEPER_DISCOVERY_NAME = "zookeeper-discovery";
+    public static final String ZOOKEEPER_VERSION_NAME = "polaris.zookeeper.version";
+    public static final String ZOOKEEPER_VERSION_VALUE = PolarisVersion.getVersion("org.springframework.cloud.zookeeper.discovery.ZookeeperDiscoveryProperties");    
 
     public static final String SENTINEL_NAME = "sentinel";
     public static final String SENTINEL_CONFIG_NAME = "sentinel-config";

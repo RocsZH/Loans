@@ -20,6 +20,7 @@
         <module>polaris-component-nacos</module>
         <module>polaris-component-consul</module>
         <module>polaris-component-eureka</module>
+        <module>polaris-component-zookeeper</module>
         <module>polaris-component-jaeger</module>
         <module>polaris-component-skywalking</module>
         <module>polaris-component-prometheus</module>

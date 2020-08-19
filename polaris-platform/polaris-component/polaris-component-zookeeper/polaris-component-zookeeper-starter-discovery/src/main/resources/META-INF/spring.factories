@@ -1,0 +1,5 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.zookeeper.discovery.context.ZookeeperEnvProcessor
+
+org.springframework.context.ApplicationContextInitializer=\
+com.nepxion.polaris.component.zookeeper.discovery.context.ZookeeperMetadataApplicationContextInitializer

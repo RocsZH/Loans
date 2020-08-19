@@ -75,6 +75,9 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         if (StringUtils.isNotEmpty(PolarisConstant.CONSUL_VERSION_VALUE)) {
             descriptions.add(new Description(PolarisConstant.CONSUL_VERSION_NAME + ":", PolarisConstant.CONSUL_VERSION_VALUE, 0, 1));
         }
+        if (StringUtils.isNotEmpty(PolarisConstant.ZOOKEEPER_VERSION_VALUE)) {
+            descriptions.add(new Description(PolarisConstant.ZOOKEEPER_VERSION_NAME + ":", PolarisConstant.ZOOKEEPER_VERSION_VALUE, 0, 1));
+        }
         if (StringUtils.isNotEmpty(PolarisConstant.SENTINEL_VERSION_VALUE)) {
             descriptions.add(new Description(PolarisConstant.SENTINEL_VERSION_NAME + ":", PolarisConstant.SENTINEL_VERSION_VALUE, 0, 1));
         }
