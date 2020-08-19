@@ -250,30 +250,38 @@ Polaris【北极星】企业级云原生微服务框架，围绕Discovery【探�
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 框架默认生效的组件，如下
 - 注册发现组件：Nacos
 - 配置组件：Nacos
-- 监控组件：Jaeger
+- 监控调用链组件：Skywalking
+- 监控指标组件：未激活
 - 防护组件：Sentinel
-- 灰度蓝绿组件：Discovery（不需要切换）
+- 灰度蓝绿组件：Nepxion Discovery
 
 #### 注册发现组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
-You can choose Nacos or Eureka or Consul Discovery
+You can select one of following polaris discovery components, such as Nacos
 ```
-把搜索出来的两个pom.xml换成使用者想要的组件
+把搜索出来的`2`个pom.xml换成使用者想要的组件
 
 #### 配置组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
-You can choose Apollo or Nacos Config
+You can select one of following polaris config components, such as Apollo
 ```
-把搜索出来的四个pom.xml换成使用者想要的组件
+把搜索出来的`4`个pom.xml换成使用者想要的组件
 
-#### 监控组件切换
+#### 监控调用链组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
-You can choose Skywalking or Jaeger Monitor
+You can select one of following polaris monitor tracing components, such as Skywalking
 ```
-把搜索出来的一个pom.xml换成使用者想要的组件，使用者可以激活其它监控组件（例如，Prometheus Micrometer和Spring Boot Admin）
+把搜索出来的一个pom.xml换成使用者想要的组件
+
+#### 监控指标组件切换
+在polaris-component-core目录下，搜索全部pom.xml，关键字
+```xml
+You can select one of following polaris monitor metrics components, such as Micrometer
+```
+把搜索出来的一个pom.xml换成使用者想要的组件
 
 #### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
@@ -459,15 +467,7 @@ public class PolarisApplication {
 ### 应用启动
 
 #### 中间件服务启动
-Polaris默认集成，需要依赖Nacos Server和Jaeger Server
-
-- Nacos [必须]
-    - Nacos服务器版本，推荐用最新版本，从[https://github.com/alibaba/nacos/releases](https://github.com/alibaba/nacos/releases)获取
-    - 功能界面主页，[http://localhost:8848/nacos/index.html](http://localhost:8848/nacos/index.html)
-
-- Jaeger [可选]
-    - Jaeger服务器版本，推荐用最新版本，从[https://github.com/jaegertracing/jaeger/releases](https://github.com/jaegertracing/jaeger/releases)获取
-    - 功能界面主页，[http://localhost:16686](http://localhost:16686)
+Polaris默认集成，需要依赖Nacos Server（必选）和Skywalking Server（可选）
 
 #### Spring-Boot应用启动
 跟原生的Spring Boot应用程序启动方式一致。在IDE中，启动四个应用服务和两个网关服务，控制平台服务，如下 
@@ -576,8 +576,8 @@ public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
     // 如果初始化环境的时候，如果还需要做其它事情，请继承process方法
     @Override
     public void process(ConfigurableEnvironment environment) throws Exception {
-	    // DO SOMETHING
-	
+        // DO SOMETHING
+
         super.process(environment);
 
         // DO SOMETHING
