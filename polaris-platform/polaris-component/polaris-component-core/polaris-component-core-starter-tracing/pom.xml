@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>polaris-component-core-starter-monitor</artifactId>
-    <name>Nepxion Polaris Component Core Starter Monitor</name>
+    <artifactId>polaris-component-core-starter-tracing</artifactId>
+    <name>Nepxion Polaris Component Core Starter Tracing</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +13,7 @@
     </parent>
 
     <dependencies>
-        <!-- You can select one of following polaris monitor tracing components, such as Skywalking -->
+        <!-- You can select one of following polaris tracing components, such as Skywalking -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-skywalking-starter</artifactId>
@@ -35,19 +35,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-jaeger-starter-sentinel</artifactId>
-            <version>${project.version}</version>
-        </dependency> -->
-
-        <!-- You can select one of following polaris monitor metrics components, such as Micrometer -->
-        <!-- <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-prometheus-starter-micrometer</artifactId>
-            <version>${project.version}</version>
-        </dependency> -->
-
-        <!-- <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-spring-boot-admin-starter</artifactId>
             <version>${project.version}</version>
         </dependency> -->
     </dependencies>
