@@ -19,6 +19,7 @@
             <artifactId>polaris-component-nacos-starter-discovery</artifactId>
             <!-- <artifactId>polaris-component-eureka-starter-discovery</artifactId> -->
             <!-- <artifactId>polaris-component-consul-starter-discovery</artifactId> -->
+            <!-- <artifactId>polaris-component-zookeeper-starter-discovery</artifactId> -->
             <version>${project.version}</version>
         </dependency>
     </dependencies>

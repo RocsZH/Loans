@@ -19,6 +19,7 @@
             <artifactId>discovery-plugin-starter-nacos</artifactId>
             <!-- <artifactId>discovery-plugin-starter-eureka</artifactId> -->
             <!-- <artifactId>discovery-plugin-starter-consul</artifactId> -->
+            <!-- <artifactId>discovery-plugin-starter-zookeeper</artifactId> -->
         </dependency>
     </dependencies>
 </project>
