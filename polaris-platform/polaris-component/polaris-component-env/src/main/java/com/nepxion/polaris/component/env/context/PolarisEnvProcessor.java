@@ -88,9 +88,11 @@ public abstract class PolarisEnvProcessor {
     }
 
     protected String processValue(ConfigurableEnvironment environment, String key, String value) {
+        String domainExpression = value;
+        String zoneExpression = PolarisConstant.ZONE_EXPRESSION;
         String zone = PolarisEnvProvider.getZone();
 
-        return processDomainPlaceholder(value, PolarisConstant.ZONE_EXPRESSION, zone);
+        return processDomainPlaceholder(domainExpression, zoneExpression, zone);
     }
 
     // 域名占位处理
