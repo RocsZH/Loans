@@ -13,7 +13,7 @@
     </parent>
 
     <dependencies>
-        <!-- You can choose Nacos or Eureka or Consul Discovery -->
+        <!-- You can select one of following polaris discovery components, such as Nacos -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-nacos-starter-discovery</artifactId>
