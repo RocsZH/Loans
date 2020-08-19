@@ -648,7 +648,7 @@ PolarisGateway（异步网关）:
 ③ 新建com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor类
 ```java
 public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
-    // 如果初始化环境的时候，如果还需要做其它事情，请继承process方法
+    // 如果初始化环境的时候，如果还需要做其它处理，请继承process方法
     @Override
     public void process(ConfigurableEnvironment environment) throws Exception {
         // DO SOMETHING
@@ -656,6 +656,15 @@ public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
         super.process(environment);
 
         // DO SOMETHING
+    }
+
+    // 如果初始化环境的时候，如果还需要做每条值做特殊处理，请继承processValue方法
+    @Override
+    protected String processValue(ConfigurableEnvironment environment, String key, String value) {
+        // DO SOMETHING
+        String newValue = doSomething(key, value);
+
+        return super.processValue(environment, key, newValue);
     }
 
     // 返回环境的名称，其值对应为环境文件的前缀
