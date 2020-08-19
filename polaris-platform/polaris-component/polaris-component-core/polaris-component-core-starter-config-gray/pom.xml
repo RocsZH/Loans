@@ -13,7 +13,7 @@
     </parent>
 
     <dependencies>
-        <!-- You can choose Apollo or Nacos Config -->
+        <!-- You can switch to another polaris config component, such as Apollo -->
         <dependency>
             <groupId>com.nepxion</groupId>
             <!-- <artifactId>discovery-plugin-config-center-starter-apollo</artifactId> -->
