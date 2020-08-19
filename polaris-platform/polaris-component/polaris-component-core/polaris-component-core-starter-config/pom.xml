@@ -13,7 +13,7 @@
     </parent>
 
     <dependencies>
-        <!-- You can switch to another polaris config component, such as Apollo -->
+        <!-- You can select one of following polaris config components, such as Apollo -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <!-- <artifactId>polaris-component-apollo-starter-config</artifactId> -->
