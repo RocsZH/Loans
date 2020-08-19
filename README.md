@@ -286,7 +286,7 @@ You can select one of following polaris monitor metrics components, such as Micr
 #### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
-You can choose Sentinel or Hystrix Protector
+You can select one of following polaris protector components, such as Sentinel
 ```
 把搜索出来的三个pom.xml换成使用者想要的组件
 
