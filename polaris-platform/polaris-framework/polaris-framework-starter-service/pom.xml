@@ -34,10 +34,17 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 监控核心组件 -->
+        <!-- 调用链核心组件 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-monitor</artifactId>
+            <artifactId>polaris-component-core-starter-tracing</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- 指标核心组件 -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-core-starter-metrics</artifactId>
             <version>${project.version}</version>
         </dependency>
 
