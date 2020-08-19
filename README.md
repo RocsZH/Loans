@@ -285,21 +285,21 @@ You can select one of following polaris config components, such as Apollo
 ```xml
 You can select one of following polaris tracing components, such as Skywalking
 ```
-把搜索出来的一个pom.xml换成使用者想要的组件
+把搜索出来的`1`个pom.xml换成使用者想要的组件
 
 #### 指标组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
 You can select one of following polaris metrics components, such as Micrometer
 ```
-把搜索出来的一个pom.xml换成使用者想要的组件
+把搜索出来的`1`个pom.xml换成使用者想要的组件
 
 #### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
 ```xml
 You can select one of following polaris protector components, such as Sentinel
 ```
-把搜索出来的三个pom.xml换成使用者想要的组件
+把搜索出来的`3`个pom.xml换成使用者想要的组件
 
 ### 域名和环境切换
 
@@ -415,7 +415,7 @@ public class PolarisEnvConstant {
 }
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 特别注意：zone占位符前后切记不要出现分隔符，因为框架会自动去适配
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 特别注意：zone占位符前后切记不要出现分隔符
 
 ### 注解切换
 当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下四个注解进行切换
