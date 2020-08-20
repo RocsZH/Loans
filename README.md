@@ -743,8 +743,9 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 #### 部署Polaris框架包
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 由于Polaris框架包未推送到Maven中央仓库，需要使用者自行编译部署
-
+![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 重要提示
+- 在`Polaris源码`的polaris-parent工程目录下，修改pom.xml的Spring Boot版本为<spring.boot.version>2.3.3.RELEASE</spring.boot.version>
+- 由于Polaris框架包未推送到Maven中央仓库，需要使用者自行编译部署
 在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
 ```xml
 mvn clean install -U -DskipTests
@@ -819,7 +820,7 @@ application.jar包同级目录下，将会输出四个分层的目录和文件
 制作Dockerfile放在`polaris-guide-service-a`工程目录下。内置解压命令，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容。内容如下
 ```xml
 # 指定基础镜像，这是分阶段构建的前期阶段
-FROM openjdk:8u212-jdk-stretch as builder
+FROM openjdk:8-jre-alpine as builder
 # 执行工作目录
 WORKDIR application
 # 配置参数
@@ -830,7 +831,7 @@ COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
 # 正式构建镜像
-FROM openjdk:8u212-jdk-stretch
+FROM openjdk:8-jre-alpine
 WORKDIR application
 # 前一阶段从jar中提取除了多个文件，这里分别执行COPY命令复制到镜像空间中，每次COPY都是一个layer
 COPY --from=builder application/dependencies/ ./
@@ -849,7 +850,7 @@ docker build . --tag polaris-guide-service-a
 
 ④ 运行容器
 ```xml
-docker run -it -p3001:3001 polaris-guide-service-a:latest
+docker run -it -p3001:3001 --name polaris-guide-service-a polaris-guide-service-a:latest
 ```
 
 ## 回馈社区
