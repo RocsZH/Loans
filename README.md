@@ -845,16 +845,6 @@ ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 docker build . --tag polaris-guide-service-a
 ```
 
-通过如下命名查看镜像列表
-```xml
-docker image ls
-```
-
-通过如下命名查看容器列表
-```xml
-docker container ls
-```
-
 ④ 运行容器
 ```xml
 docker run -it -p3001:3001 polaris-guide-service-a:latest
