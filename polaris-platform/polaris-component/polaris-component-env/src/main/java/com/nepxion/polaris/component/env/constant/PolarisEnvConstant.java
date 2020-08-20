@@ -4,14 +4,14 @@ public class PolarisEnvConstant {
     // 根域名相关定义。包含三种传值方式，优先级至上而下。使用者需要把根域值改掉
     // 1. 通过-Droot.domain=nepxion.com或者System.setProperty("root.domain", "nepxion.com")方式进行传入
     // 2. 通过大写的ROOT.DOMAIN，其值为nepxion.com的System ENV方式进行传入
-    // 3. 通过运维侧server.properties定义root.domain=nepxion.com方式进行传入
+    // 3. 通过DevOps在server.properties定义root.domain=nepxion.com方式进行传入
     public static final String ROOT_DOMAIN_NAME = "root.domain";
     public static final String ROOT_DOMAIN_VALUE = "nepxion.com";
 
     // 区域名相关定义。包含三种传值方式，优先级至上而下
     // 1. 通过-Dzone=sha或者System.setProperty("zone", "sha")方式进行传入
     // 2. 通过大写的ZONE，其值为sha的System ENV方式进行传入
-    // 3. 通过运维侧server.properties定义zone=sha方式进行传入
+    // 3. 通过DevOps在server.properties定义zone=sha方式进行传入
 
     // 区域名分隔符相关定义
     // ZONE_SEPARATE表示区域在域名中的分隔符
@@ -30,7 +30,7 @@ public class PolarisEnvConstant {
     // 环境名相关定义。包含三种传值方式，优先级至上而下。以开发环境为例
     // 1. 通过-Denv=dev或者System.setProperty("env", "dev")方式进行传入
     // 2. 通过大写的ENV，其值为dev的System ENV方式进行传入
-    // 3. 通过运维侧server.properties定义env=dev方式进行传入
+    // 3. 通过DevOps在server.properties定义env=dev方式进行传入
     public static final String ENV_NAME = "env";
 
     // server.properties文件的存放位置
