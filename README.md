@@ -11,9 +11,13 @@
 - [源码Gitee同步镜像](https://gitee.com/Nepxion/Polaris)
 - [源码Github原镜像](https://github.com/Nepxion/Polaris)
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果指南代码由于Github网速原因无法快速阅读，请访问
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果指南示例的代码和文档由于Github网速原因无法快速阅读，请访问
 - [指南Gitee同步镜像](https://gitee.com/Nepxion/PolarisGuide)
 - [指南Github原镜像](https://github.com/Nepxion/PolarisGuide)
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 指南示例包含两个版本，请访问
+- 普遍适用版本，参考[指南示例极简版](https://github.com/Nepxion/DiscoveryGuide/tree/master)获取，分支为master
+- 基于Spring Boot 2.3.x特性制作的Docker版本，参考[指南示例高级版](https://github.com/Nepxion/DiscoveryGuide/tree/premium)获取，分支为premium
 
 ## 前言
 
@@ -33,7 +37,7 @@
 
 > 云原生计算基金会（CNCF）致力于培育和维护一个厂商中立的开源生态系统，来推广云原生技术。我们通过将最前沿的模式民主化，让这些创新为大众所用。
 
--- 摘自Github CNCF官网 [CNCF Cloud Native Definition v1.0](https://github.com/cncf/toc/blob/master/DEFINITION.md)
+-- 摘自Github CNCF官网[CNCF Cloud Native Definition v1.0](https://github.com/cncf/toc/blob/master/DEFINITION.md)
 
 ② 云原生（Cloud Native）要素
 
