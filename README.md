@@ -55,7 +55,7 @@
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/CloudNative.jpg)
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 下文着重讲述`MicroService`的架构，描述`DevOps`的边界，展现`Container`的落地，不涉及`CD（Continuous Delivery）`的层面
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 下文着重刻画`MicroService`的架构，描述`DevOps`的边界，展现`Container`的落地，但不涉及`CD（Continuous Delivery）`的层面
 
 ## 简介
 Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级云原生微服务开源解决方案，面向企业级生产需求精雕细琢，赋能和助力企业快速搭建基础架构的底层云原生微服务框架。整个架构体系打造，遵循最严格的Maven对称结构和规范，最严格的命名格式，给予使用者最舒适的使用体验
