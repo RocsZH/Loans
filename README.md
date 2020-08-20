@@ -55,7 +55,7 @@
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/CloudNative.jpg)
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 下文着重刻画`Micro Service`的架构，描述`DevOps`的边界，展现`Container`的落地，但不涉及`CD（Continuous Delivery）`的层面
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 下文着重刻画`Micro Service`的架构，阐述`DevOps`的边界，展现`Container`的落地，但不涉及`CD（Continuous Delivery）`的层面
 
 ## 简介
 Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级云原生微服务开源解决方案，面向企业级生产需求精雕细琢，赋能和助力企业快速搭建基础架构的底层云原生微服务框架。整个架构体系打造，遵循最严格的Maven对称结构和规范，最严格的命名格式，给予使用者最舒适的使用体验
@@ -121,9 +121,8 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         - [组件结构创建](#组件结构创建)
         - [核心模块聚合](#核心模块聚合)
     - [容器化部署](#容器化部署)
-        - [升级Spring-Boot-2.3.x版本](#升级Spring-Boot-2.3.x版本)
-        - [增加Spring-Boot-2.3.x打包插件](#增加Spring-Boot-2.3.x打包插件)
-        - [执行Mavne打包部署](#执行Mavne打包部署)
+        - [部署Polaris框架包](#部署Polaris框架包)
+        - [添加Spring-Boot打包插件](#添加Spring-Boot打包插件)
         - [执行Docker容器和镜像的制作和运行](#执行Docker容器和镜像的制作和运行)
 - [回馈社区](#回馈社区)
 - [Star走势图](#Star走势图)
@@ -740,16 +739,22 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 ③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
 ### 容器化部署
-基于Spring Boot 2.3.x版本进行Docker容器化部署
+基于Spring Boot 2.3.x新特性制作的Docker容器化部署
 
-#### 升级Spring-Boot-2.3.x版本
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 特别注意：使用该功能前，把polaris-parent的spring.boot.version版本改成2.3.3.RELEASE，执行如下Maven命令，把polaris-parent部署到本地仓库
+#### 部署Polaris框架包
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 由于Polaris框架包未推送到Maven中央仓库，需要使用者自行编译部署
+
+在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
 ```xml
 mvn clean install -U -DskipTests
 ```
 
-#### 增加Spring-Boot-2.3.x打包插件
-新版本的spring-boot-maven-plugin如下
+#### 添加Spring-Boot打包插件
+
+以`Polaris指南`的polaris-guide-service-a工程为例，下同
+
+在polaris-guide-service-a工程目录下的pom.xml，执行如下操作
 ```xml
 <plugin>
     <groupId>org.springframework.boot</groupId>
@@ -783,18 +788,21 @@ mvn clean install -U -DskipTests
 ```
 
 #### 执行Docker容器和镜像的制作和运行
-① 执行如下Maven命令
+
+在polaris-guide-service-a工程目录下，执行如下操作
+
+① 执行如下命令，编译Jar包
 ```xml
 mvn clean package -U -DskipTests
 ```
 
-② 验证镜像Layer分层是否正确
+② 验证镜像Layer分层
 
-执行如下命令
+执行如下命令，查看Layer分层
 ```xml
-java -Djarmode=layertools -jar application.jar list
+java -Djarmode=layertools -jar target/polaris-guide-service-a-0.0.1.jar list
 ```
-控制台输出如下四个分层，表示正确
+控制台输出如下四个分层，则表示有效
 ```xml
 dependencies
 spring-boot-loader
@@ -802,15 +810,11 @@ snapshot-dependencies
 application
 ```
 
-③ 通过dockerfile执行解压Layer分层用来创建镜像
+③ 创建dockerfile
 
-执行如下命令
-```xml
-java -Djarmode=layertools -jar application.jar extract
-```
-application.jar包同级目录下，将会输出四个分层的目录和文件。单独运行不起作用，需要配合dockerfile来执行
+application.jar包同级目录下，将会输出四个分层的目录和文件
 
-制作dockerfile，内置解压命令，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容
+制作Dockerfile放在`polaris-guide-service-a`工程目录下。内置解压命令，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容。内容如下
 ```xml
 # 指定基础镜像，这是分阶段构建的前期阶段
 FROM openjdk:8u212-jdk-stretch as builder
@@ -834,7 +838,27 @@ COPY --from=builder application/application/ ./
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 ```
 
-④ 创建和运行镜像，跟以前一样，不一一累述了
+④ 创建镜像和容器
+
+执行如下命令创建镜像和容器
+```xml
+docker build . --tag polaris-guide-service-a
+```
+
+通过如下命名查看镜像列表
+```xml
+docker image ls
+```
+
+通过如下命名查看容器列表
+```xml
+docker container ls
+```
+
+④ 运行容器
+```xml
+docker run -it -p3001:3001 polaris-guide-service-a:latest
+```
 
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
