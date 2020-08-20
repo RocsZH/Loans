@@ -780,18 +780,14 @@ mvn clean install
 
 执行如下命令
 ```xml
-mvn clean package
-```
-或者
-```xml
-mvn clean install
+mvn clean package -U -DskipTests
 ```
 
 ③ 验证镜像Layer分层是否正确
 
 执行如下命令
 ```xml
-java -Djarmode=layertools -jar polaris-guide-service-a-0.0.1.jar list
+java -Djarmode=layertools -jar application.jar list
 ```
 控制台输出如下四个分层，表示正确
 ```xml
@@ -801,13 +797,39 @@ snapshot-dependencies
 application
 ```
 
-④ 解压Layer分层用来创建镜像
+④ 通过dockerfile执行解压Layer分层用来创建镜像
 
 执行如下命令
 ```xml
-java -Djarmode=layertools -jar polaris-guide-service-a-0.0.1.jar extract
+java -Djarmode=layertools -jar application.jar extract
 ```
-jar包的同级目录下，将会输出四个分层的目录和文件
+jar包的同级目录下，将会输出四个分层的目录和文件。单独运行不起作用，需要配合dockerfile来执行
+
+制作dockerfile，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容
+```xml
+# 指定基础镜像，这是分阶段构建的前期阶段
+FROM openjdk:8u212-jdk-stretch as builder
+# 执行工作目录
+WORKDIR application
+# 配置参数
+ARG JAR_FILE=target/*.jar
+# 将编译构建得到的jar文件复制到镜像空间中
+COPY ${JAR_FILE} application.jar
+# 通过工具spring-boot-jarmode-layertools从application.jar中提取拆分后的构建结果
+RUN java -Djarmode=layertools -jar application.jar extract
+
+# 正式构建镜像
+FROM openjdk:8u212-jdk-stretch
+WORKDIR application
+# 前一阶段从jar中提取除了多个文件，这里分别执行COPY命令复制到镜像空间中，每次COPY都是一个layer
+COPY --from=builder application/dependencies/ ./
+COPY --from=builder application/spring-boot-loader/ ./
+COPY --from=builder application/snapshot-dependencies/ ./
+COPY --from=builder application/application/ ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+```
+
+⑤ 创建和运行镜像，跟以前一样，不一一累述了
 
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
