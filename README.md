@@ -789,6 +789,8 @@ mvn clean install -U -DskipTests
 
 #### 执行Docker容器和镜像的制作和运行
 
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果是Windows操作系统，需要在环境变量里配置DOCKER_HOST=tcp://localhost:2375
+
 在polaris-guide-service-a工程目录下，执行如下操作
 
 ① 执行如下命令，编译Jar包
