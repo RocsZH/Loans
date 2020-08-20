@@ -740,7 +740,7 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 特别注意：使用该功能前，把polaris-parent的spring.boot.version版本改成2.3.3.RELEASE，并执行
 ```xml
-mvn clean install
+mvn clean install -U -DskipTests
 ```
 
 ① 增加spring-boot-maven-plugin插件
