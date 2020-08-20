@@ -736,6 +736,78 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 ③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
 ### 容器化部署
+基于Spring Boot 2.3.x版本进行Docker容器化部署
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 特别注意：使用该功能前，把polaris-parent的spring.boot.version版本改成2.3.3.RELEASE，并执行
+```xml
+mvn clean install
+```
+
+① 增加spring-boot-maven-plugin插件
+```xml
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <version>2.3.3.RELEASE</version>
+    <configuration>
+        <executable>true</executable>
+        <mainClass>com.nepxion.polaris.guide.service.PolarisServiceA1</mainClass>
+        <layout>JAR</layout>
+        <layers>
+            <enabled>true</enabled>
+        </layers>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>repackage</goal>
+            </goals>
+            <configuration>
+                <attach>false</attach>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度
+```xml
+<layers>
+    <enabled>true</enabled>
+</layers>
+```
+
+② 执行打包部署
+
+执行如下命令
+```xml
+mvn clean package
+```
+或者
+```xml
+mvn clean install
+```
+
+③ 验证镜像Layer分层是否正确
+
+执行如下命令
+```xml
+java -Djarmode=layertools -jar polaris-guide-service-a-0.0.1.jar list
+```
+控制台输出如下四个分层，表示正确
+```xml
+dependencies
+spring-boot-loader
+snapshot-dependencies
+application
+```
+
+④ 解压Layer分层用来创建镜像
+
+执行如下命令
+```xml
+java -Djarmode=layertools -jar polaris-guide-service-a-0.0.1.jar extract
+```
+jar包的同级目录下，将会输出四个分层的目录和文件
 
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
