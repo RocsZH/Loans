@@ -45,10 +45,15 @@
 
 | 要素 | 描述 |
 | --- | --- |
-| MicroService | 微服务 |
+| Micro Service | 微服务 |
 | Container | 容器 |
 | DevOps | 开发运维一体化，包含CI（Continuous Integration）持续集成 |
 | CD（Continuous Delivery） | 持续交付 |
+
+
+③ 云原生（Cloud Native）所需能力与特征
+
+![](http://nepxion.gitee.io/docs/polaris-doc/CloudNative.jpg)
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 下文着重讲述`MicroService`的架构，描述`DevOps`的边界，展现`Container`的落地，不涉及`CD（Continuous Delivery）`的层面
 
@@ -67,7 +72,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 
 支持如下应用型的功能
 - 支持灰度蓝绿发布、灰度路由过滤、流量权重、限流、熔断、降级、隔离、监控、追踪等企业生产级功能
-- 支持动态域名、双云双活和SET单元化的配置，支持跨云的服务注册和配置读取（例如，阿里云上的微服务想要注册到华为云上的Nacos注册中心，或者跨云读取Apollo配置中心的配置，通过运维侧修改相关配置驱动即可）。一套SDK体系可以同时适配和运行在不同的云上
+- 支持动态域名、双云双活和SET单元化的配置，支持跨云的服务注册和配置读取（例如，阿里云上的微服务想要注册到华为云上的Nacos注册中心，或者跨云读取Apollo配置中心的配置，通过DevOps修改相关配置驱动即可）。一套SDK体系可以同时适配和运行在不同的云上
 - 支持在核心的pom.xml上实现同类型的组件的快速切换（例如，Eureka注册中心切换到Consul，Apollo配置中心切换到Nacos等），但同类型组件不可并存使用（例如，Eureka和Consul注册中心不可同时并存，Apollo和Nacos配置中心不可同时并存等）
 - 支持框架层面实现每个组件对四个环境（DEV | FAT | UAT | PRO）的内置最佳配置，遵循全局公共配置和局部环境配置相结合的方式，遵循“约定大于配置”的策略，业务层面实现微量配置甚至零配置。框架集成人员可以内置定制化的配置，业务开发人员在业务层可以把内置的配置覆盖掉，达到扩展性强、灵活使用的目的
 - 支持业务开发人员使用该框架的时候，对其尽最大可能屏蔽一切跟Spring Cloud和中间件有关的代码书写、配置参数、环境地址等，零Spring Cloud经验的业务开发人员也可以快速上手研发基于Spring Cloud微服务技术栈的业务服务，最大程度上减轻业务人员的压力
@@ -114,7 +119,8 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         - [自动化测试方式验证](#自动化测试方式验证)
     - [新增组件](#新增组件)
         - [组件结构创建](#组件结构创建)
-        - [核心模块聚合](#核心模块聚合)	
+        - [核心模块聚合](#核心模块聚合)
+    - [容器化部署](#容器化部署)
 - [回馈社区](#回馈社区)
 - [Star走势图](#Star走势图)
 
@@ -366,7 +372,7 @@ You can select one of following polaris protector components, such as Sentinel
 - 定义为用来区别多活、多云和SET单元化的域名的后缀或者前缀标识
 - 域名表达式为`组件名`-`环境号`-`可选的区域名`.`根域`。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
 - 实现占位处理，占位格式为${zone}。如果区域（zone）名不设置，那么变成“组件名-环境号.根域”的简单格式
-- 通过运维侧来实现环境号和区域名的指定（下文“域名和环境设置”会讲到）
+- 通过DevOps来实现环境号和区域名的指定（下文“域名和环境设置”会讲到）
 - 如果使用者没有条件实现多环境的域名支持，那么采用IP地址也可以
 
 ③ 根域（root domain）名
@@ -376,7 +382,7 @@ You can select one of following polaris protector components, such as Sentinel
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 使用者需要根据企业的实际情况，把组件的四个环境域名或者IP地址一一做更改
 
 #### 域名和环境设置
-① 通过运维侧进行环境（env）号设置
+① 通过DevOps进行环境（env）号设置
 - 通过System Property或者-Denv=`环境号`，进行设置
 - 通过server.properties进行设置
 ```xml
@@ -385,7 +391,7 @@ env=dev
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为dev
 
-② 通过运维侧进行区域（zone）名设置
+② 通过DevOps进行区域（zone）名设置
 - 通过System Property或者-Dzone=`区域名`，进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
 - 通过server.properties进行设置
 ```xml
@@ -394,7 +400,7 @@ zone=SET-sha
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为空，即非多活或者多云的环境
 
-③ 通过运维侧进行根域（root domain）名设置
+③ 通过DevOps进行根域（root domain）名设置
 - 通过System Property或者-Droot.domain=`根域名`，进行设置
 - 通过server.properties进行设置
 ```xml
@@ -414,14 +420,14 @@ public class PolarisEnvConstant {
     // 根域名相关定义。包含三种传值方式，优先级至上而下。使用者需要把根域值改掉
     // 1. 通过-Droot.domain=nepxion.com或者System.setProperty("root.domain", "nepxion.com")方式进行传入
     // 2. 通过大写的ROOT.DOMAIN，其值为nepxion.com的System ENV方式进行传入
-    // 3. 通过运维侧server.properties定义root.domain=nepxion.com方式进行传入
+    // 3. 通过DevOps在server.properties定义root.domain=nepxion.com方式进行传入
     public static final String ROOT_DOMAIN_NAME = "root.domain";
     public static final String ROOT_DOMAIN_VALUE = "nepxion.com";
 
     // 区域名相关定义。包含三种传值方式，优先级至上而下
     // 1. 通过-Dzone=sha或者System.setProperty("zone", "sha")方式进行传入
     // 2. 通过大写的ZONE，其值为sha的System ENV方式进行传入
-    // 3. 通过运维侧server.properties定义zone=sha方式进行传入
+    // 3. 通过DevOps在server.properties定义zone=sha方式进行传入
 
     // 区域名分隔符相关定义
     // ZONE_SEPARATE表示区域在域名中的分隔符
@@ -440,7 +446,7 @@ public class PolarisEnvConstant {
     // 环境名相关定义。包含三种传值方式，优先级至上而下。以开发环境为例
     // 1. 通过-Denv=dev或者System.setProperty("env", "dev")方式进行传入
     // 2. 通过大写的ENV，其值为dev的System ENV方式进行传入
-    // 3. 通过运维侧server.properties定义env=dev方式进行传入
+    // 3. 通过DevOps在server.properties定义env=dev方式进行传入
     public static final String ENV_NAME = "env";
 
     // server.properties文件的存放位置
@@ -728,6 +734,8 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 ② 在polaris-framework下5个框架顶级模块，按需引入polaris-component-core-starter-tracing进行框架层面聚合
 
 ③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
+
+### 容器化部署
 
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
