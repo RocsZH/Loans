@@ -121,6 +121,10 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         - [组件结构创建](#组件结构创建)
         - [核心模块聚合](#核心模块聚合)
     - [容器化部署](#容器化部署)
+        - [升级Spring-Boot-2.3.x版本](#升级Spring-Boot-2.3.x版本)
+        - [增加Spring-Boot-2.3.x打包插件](#增加Spring-Boot-2.3.x打包插件)
+        - [执行Mavne打包部署](#执行Mavne打包部署)
+        - [执行Docker容器和镜像的制作和运行](#执行Docker容器和镜像的制作和运行)
 - [回馈社区](#回馈社区)
 - [Star走势图](#Star走势图)
 
@@ -738,12 +742,14 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 ### 容器化部署
 基于Spring Boot 2.3.x版本进行Docker容器化部署
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 特别注意：使用该功能前，把polaris-parent的spring.boot.version版本改成2.3.3.RELEASE，并执行
+#### 升级Spring-Boot-2.3.x版本
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 特别注意：使用该功能前，把polaris-parent的spring.boot.version版本改成2.3.3.RELEASE，执行如下Maven命令，把polaris-parent部署到本地仓库
 ```xml
 mvn clean install -U -DskipTests
 ```
 
-① 增加spring-boot-maven-plugin插件
+#### 增加Spring-Boot-2.3.x打包插件
+新版本的spring-boot-maven-plugin如下
 ```xml
 <plugin>
     <groupId>org.springframework.boot</groupId>
@@ -776,14 +782,13 @@ mvn clean install -U -DskipTests
 </layers>
 ```
 
-② 执行打包部署
-
-执行如下命令
+#### 执行Docker容器和镜像的制作和运行
+① 执行如下Maven命令
 ```xml
 mvn clean package -U -DskipTests
 ```
 
-③ 验证镜像Layer分层是否正确
+② 验证镜像Layer分层是否正确
 
 执行如下命令
 ```xml
@@ -797,15 +802,15 @@ snapshot-dependencies
 application
 ```
 
-④ 通过dockerfile执行解压Layer分层用来创建镜像
+③ 通过dockerfile执行解压Layer分层用来创建镜像
 
 执行如下命令
 ```xml
 java -Djarmode=layertools -jar application.jar extract
 ```
-jar包的同级目录下，将会输出四个分层的目录和文件。单独运行不起作用，需要配合dockerfile来执行
+application.jar包同级目录下，将会输出四个分层的目录和文件。单独运行不起作用，需要配合dockerfile来执行
 
-制作dockerfile，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容
+制作dockerfile，内置解压命令，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容
 ```xml
 # 指定基础镜像，这是分阶段构建的前期阶段
 FROM openjdk:8u212-jdk-stretch as builder
@@ -829,7 +834,7 @@ COPY --from=builder application/application/ ./
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 ```
 
-⑤ 创建和运行镜像，跟以前一样，不一一累述了
+④ 创建和运行镜像，跟以前一样，不一一累述了
 
 ## 回馈社区
 - 使用者可以添加更多的中间件到框架里，并希望能回馈给社区
