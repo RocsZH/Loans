@@ -790,7 +790,7 @@ mvn clean install -U -DskipTests
 </layers>
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 严重提示，旧版的如下参数必须删除！否则无法创建镜像分层
+![](http://nepxion.gitee.io/docs/icon-doc/error.png) 严重提示，旧版的如下参数必须删除！否则无法创建镜像分层
 ```xml
 <configuration>
     <executable>true</executable>
