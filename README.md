@@ -877,6 +877,7 @@ docker run %RUN_MODE% -e JAVA_OPTS="-Dspring.cloud.nacos.discovery.server-addr=%
 ![](http://nepxion.gitee.io/docs/polaris-doc/Docker.jpg)
 
 ⑦ 官方部署Docker文档
+
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 参考[Spring Boot 2.3.x官方部署Docker文档](https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1)获取更多用法，但请谨慎使用，有不少错误的地方，可能是来不及更新
 
 ### 优雅停机
