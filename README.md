@@ -120,10 +120,12 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     - [新增组件](#新增组件)
         - [组件结构创建](#组件结构创建)
         - [核心模块聚合](#核心模块聚合)
+- [支持Spring-Boot-2.3.x新特性](#支持Spring-Boot-2.3.x新特性)
     - [容器化部署](#容器化部署)
         - [部署Polaris框架包](#部署Polaris框架包)
         - [添加Spring-Boot打包插件](#添加Spring-Boot打包插件)
         - [执行Docker容器和镜像的制作和运行](#执行Docker容器和镜像的制作和运行)
+    - [优雅停机](#优雅停机)
 - [回馈社区](#回馈社区)
 - [Star走势图](#Star走势图)
 
@@ -317,35 +319,35 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 
 #### 注册发现组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```xml
+```
 You can select one of following polaris discovery components, such as Nacos
 ```
 把搜索出来的`2`个pom.xml换成使用者想要的组件
 
 #### 配置组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```xml
+```
 You can select one of following polaris config components, such as Apollo
 ```
 把搜索出来的`4`个pom.xml换成使用者想要的组件
 
 #### 调用链组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```xml
+```
 You can select one of following polaris tracing components, such as Skywalking
 ```
 把搜索出来的`1`个pom.xml换成使用者想要的组件
 
 #### 指标组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```xml
+```
 You can select one of following polaris metrics components, such as Micrometer
 ```
 把搜索出来的`1`个pom.xml换成使用者想要的组件
 
 #### 防护组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
-```xml
+```
 You can select one of following polaris protector components, such as Sentinel
 ```
 把搜索出来的`3`个pom.xml换成使用者想要的组件
@@ -388,7 +390,7 @@ You can select one of following polaris protector components, such as Sentinel
 ① 通过DevOps进行环境（env）号设置
 - 通过System Property或者-Denv=`环境号`，进行设置
 - 通过server.properties进行设置
-```xml
+```
 env=dev
 ```
 - 通过System Env环境变量方式进行设置
@@ -397,7 +399,7 @@ env=dev
 ② 通过DevOps进行区域（zone）名设置
 - 通过System Property或者-Dzone=`区域名`，进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
 - 通过server.properties进行设置
-```xml
+```
 zone=SET-sha
 ```
 - 通过System Env环境变量方式进行设置
@@ -406,7 +408,7 @@ zone=SET-sha
 ③ 通过DevOps进行根域（root domain）名设置
 - 通过System Property或者-Droot.domain=`根域名`，进行设置
 - 通过server.properties进行设置
-```xml
+```
 root.domain=nepxion.com
 ```
 - 通过System Env环境变量方式进行设置
@@ -613,14 +615,14 @@ public class PolarisApplication {
 灰度路由Header和调用链Span在Hystrix线程池隔离模式下或者线程、线程池、@Async注解等异步调用Feign或者RestTemplate时，通过线程上下文切换会存在丢失Header的问题，通过下述步骤解决，同时适用于网关端和服务端。该方案可以替代Hystrix线程池隔离模式下的解决方案，也适用于其它有相同使用场景的基础框架和业务场景，例如：Dubbo
 
 在如下源码目录下获取Polaris Agent
-```xml
+```
 polaris-platform\polaris-component\polaris-component-agent\polaris-component-agent-starter-cross-thread\agent
 ```
 
 ① 插件使用
 - polaris-agent.jar为Agent引导启动程序，JVM启动时进行加载；agent/plugin目录包含polaris-agent-plugin.jar为Polaris/Discovery框架自带的实现方案，业务系统可以自定义plugin，解决业务自己定义的上下文跨线程传递
 - 通过如下-javaagent启动
-```xml
+```
 -javaagent:/agent/polaris-agent.jar -Dthread.scan.packages=com.abc;com.xyz -Dthread.request.decorator.enabled=true
 ```
 - 参数说明
@@ -628,7 +630,7 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
     - thread.scan.packages：Runnable，Callable对象所在的扫描目录，该目录下的Runnable，Callable对象都会被装饰。该目录最好精细和准确，这样可以减少被装饰的对象数，提高性能，目录如果有多个，用“;”分隔
     - thread.request.decorator.enabled：异步调用场景下在服务端的Request请求的装饰，当主线程先于子线程执行完的时候，Request会被Destory，导致Header仍旧拿不到，开启装饰，就可以确保拿到。默认为关闭，根据实践经验，大多数场景下，需要开启这个开关	
 
-```xml
+```
 扫描目录thread.scan.packages定义，该参数只作用于服务侧，网关侧不需要加
 1. @Async场景下的扫描目录为org.springframework.aop.interceptor
 2. Hystrix线程池隔离场景下的扫描目录为com.netflix.hystrix
@@ -643,7 +645,7 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 
 #### Agent启动参数
 Polaris应用完整启动参数如下
-```xml
+```
 PolarisServiceA（同步服务）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
 
@@ -662,7 +664,7 @@ PolarisGateway（异步网关）:
 
 #### Discovery框架启动参数
 灰度蓝绿发布和子环境隔离路由的元数据注册的启动参数如下，分别对应灰度蓝绿版本号，区域号，子环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
-```xml
+```
 -Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
 ```
 
@@ -725,7 +727,7 @@ public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
 ```
 
 ④ 配置resource/META-INF/spring.factories
-```xml
+```
 org.springframework.boot.env.EnvironmentPostProcessor=\
 com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 ```
@@ -738,6 +740,8 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 ③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
+## 支持Spring-Boot-2.3.x新特性
+
 ### 容器化部署
 基于Spring Boot 2.3.x新特性制作的Docker容器化部署
 
@@ -747,12 +751,11 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 - 在`Polaris源码`的polaris-parent工程目录下，修改pom.xml的Spring Boot版本为<spring.boot.version>2.3.3.RELEASE</spring.boot.version>
 - 由于Polaris框架包未推送到Maven中央仓库，需要使用者自行编译部署
 在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
-```xml
+```
 mvn clean install -U -DskipTests
 ```
 
 #### 添加Spring-Boot打包插件
-
 以`Polaris指南`的polaris-guide-service-a工程为例，下同
 
 在polaris-guide-service-a工程目录下的pom.xml，执行如下操作
@@ -762,7 +765,6 @@ mvn clean install -U -DskipTests
     <artifactId>spring-boot-maven-plugin</artifactId>
     <version>2.3.3.RELEASE</version>
     <configuration>
-        <executable>true</executable>
         <mainClass>com.nepxion.polaris.guide.service.PolarisServiceA1</mainClass>
         <layout>JAR</layout>
         <layers>
@@ -788,25 +790,31 @@ mvn clean install -U -DskipTests
 </layers>
 ```
 
-#### 执行Docker容器和镜像的制作和运行
+![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 严重提示，旧版的如下参数必须删除！否则无法创建镜像分层
+```xml
+<configuration>
+    <executable>true</executable>
+</configuration>
+```
 
+#### 执行Docker容器和镜像的制作和运行
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 如果是Windows操作系统，需要在环境变量里配置DOCKER_HOST=tcp://localhost:2375
 
 在polaris-guide-service-a工程目录下，执行如下操作
 
 ① 执行如下命令，编译Jar包
-```xml
+```
 mvn clean package -U -DskipTests
 ```
 
 ② 验证镜像Layer分层
 
 执行如下命令，查看Layer分层
-```xml
+```
 java -Djarmode=layertools -jar target/polaris-guide-service-a-0.0.1.jar list
 ```
 控制台输出如下四个分层，则表示有效
-```xml
+```
 dependencies
 spring-boot-loader
 snapshot-dependencies
@@ -818,7 +826,7 @@ application
 application.jar包同级目录下，将会输出四个分层的目录和文件
 
 制作Dockerfile放在`polaris-guide-service-a`工程目录下。内置解压命令，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容。内容如下
-```xml
+```
 # 指定基础镜像，这是分阶段构建的前期阶段
 FROM openjdk:8-jre-alpine as builder
 # 执行工作目录
@@ -844,13 +852,24 @@ ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 ④ 创建镜像和容器
 
 执行如下命令创建镜像和容器
-```xml
+```
 docker build . --tag polaris-guide-service-a
 ```
 
 ④ 运行容器
-```xml
+```
 docker run -it -p3001:3001 --name polaris-guide-service-a polaris-guide-service-a:latest
+```
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) [Spring Boot 2.3.x官方部署Docker文档](https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1)，谨慎使用，有不少错误的地方，可能是来不及更新
+
+### 优雅停机
+```
+# 开启Spring Boot 2.3.x优雅停机
+server.shutdown=graceful
+
+# 优雅停机缓冲时间
+spring.lifecycle.timeout-per-shutdown-phase=20s
 ```
 
 ## 回馈社区
