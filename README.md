@@ -747,7 +747,7 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 #### 部署Polaris框架包
 
-![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 重要提示
+![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 重要提醒
 - 在`Polaris源码`的polaris-parent工程目录下，修改pom.xml的Spring Boot版本为<spring.boot.version>2.3.3.RELEASE</spring.boot.version>
 - 由于Polaris框架包未推送到Maven中央仓库，需要使用者自行编译部署
 在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
@@ -790,7 +790,7 @@ mvn clean install -U -DskipTests
 </layers>
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/error.png) 严重提示，旧版的如下参数必须删除！否则无法创建镜像分层
+![](http://nepxion.gitee.io/docs/icon-doc/error.png) 严重提醒，旧版的如下参数必须删除！否则无法创建镜像分层
 ```xml
 <configuration>
     <executable>true</executable>
