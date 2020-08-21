@@ -87,6 +87,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     - [文档主页](#文档主页)
 - [架构工程](#架构工程)
     - [工程介绍](#工程介绍)
+    - [架构方式](#架构方式)
 - [集成步骤](#集成步骤)
     - [集成入口](#集成入口)
     - [组件切换](#组件切换)
@@ -228,6 +229,11 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-zuul | Polaris框架对Zuul网关的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-service | Polaris框架对微服务的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-test | Polaris框架对测试的封装 |
+
+### 架构方式
+- 暴露Polaris Parent层，定义了Spring Cloud、Spring Cloud Alibaba和Spring Boot版本，同时在Polaris SDK层也进行了这些版本的相同定义，目的是让业务开发人员可以接入Polaris的时候可以选择Polaris Parent，也可以选择业务自己的Parent，只接入Polaris SDK
+- 使用者可以自行对这Polaris Parent层和Polaris SDK层进行上述版本进行升级或者降低，也可以自定义更多的第三方中间件版本
+- 当接入Polaris Parent的时候，版本以Polaris Parent定义为优先，否则以Polaris SDK定义为准
 
 ## 集成步骤
 
@@ -747,9 +753,7 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 #### 部署Polaris框架包
 
-![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 重要提醒
-- 在`Polaris源码`的polaris-parent工程目录下，修改pom.xml的Spring Boot版本为<spring.boot.version>2.3.3.RELEASE</spring.boot.version>
-- 因`Polaris框架包`未推送到Maven中央仓库，需要使用者自行编译部署。在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
+![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 重要提醒，由于`Polaris框架包`未推送到Maven中央仓库，需要使用者自行编译部署。在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
 ```
 mvn clean install -U -DskipTests
 ```
