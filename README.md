@@ -749,8 +749,7 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 ![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 重要提醒
 - 在`Polaris源码`的polaris-parent工程目录下，修改pom.xml的Spring Boot版本为<spring.boot.version>2.3.3.RELEASE</spring.boot.version>
-- 由于Polaris框架包未推送到Maven中央仓库，需要使用者自行编译部署
-在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
+- 因`Polaris框架包`未推送到Maven中央仓库，需要使用者自行编译部署。在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
 ```
 mvn clean install -U -DskipTests
 ```
@@ -807,7 +806,7 @@ mvn clean install -U -DskipTests
 mvn clean package -U -DskipTests
 ```
 
-② 验证镜像Layer分层
+② 验证镜像Layer分层(*非必须执行的步骤)
 
 执行如下命令，查看Layer分层
 ```
@@ -825,7 +824,7 @@ application
 
 application.jar包同级目录下，将会输出四个分层的目录和文件
 
-制作Dockerfile放在`polaris-guide-service-a`工程目录下。内置解压命令，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容。内容如下
+制作Dockerfile放在polaris-guide-service-a工程目录下。内置解压命令，根据jar构建生成清单layers.idx解压提取每个Layer要写入镜像的内容。内容如下
 ```
 # 指定基础镜像，这是分阶段构建的前期阶段
 FROM openjdk:8-jre-alpine as builder
@@ -846,7 +845,8 @@ COPY --from=builder application/dependencies/ ./
 COPY --from=builder application/spring-boot-loader/ ./
 COPY --from=builder application/snapshot-dependencies/ ./
 COPY --from=builder application/application/ ./
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+# -Djava.security.egd=file:/dev/./urandom 内核随机种子，防止启动很慢
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom org.springframework.boot.loader.JarLauncher"]
 ```
 
 ④ 创建镜像和容器
@@ -858,7 +858,7 @@ docker build . --tag polaris-guide-service-a
 
 ④ 运行容器
 ```
-docker run -it -p3001:3001 --name polaris-guide-service-a polaris-guide-service-a:latest
+docker run -i -t -e JAVA_OPTS="-Dnepxion.banner.shown.ansi.mode=true -Dmetadata.version=my-version -Dmetadata.region=my-region -Dmetadata.env=my-env" -e TZ="Asia/Shanghai" -p 3001:3001 -h polaris-guide-service-a --name polaris-guide-service-a polaris-guide-service-a:latest
 ```
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) [Spring Boot 2.3.x官方部署Docker文档](https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1)，谨慎使用，有不少错误的地方，可能是来不及更新
