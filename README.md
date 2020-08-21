@@ -782,7 +782,7 @@ mvn clean install -U -DskipTests
     </executions>
 </plugin>
 ```
-相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 严重提醒，相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度。Spring Boot官方文档上没及时更新，是错误的
 ```xml
 <layers>
     <enabled>true</enabled>
