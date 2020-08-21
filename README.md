@@ -231,9 +231,9 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-test | Polaris框架对测试的封装 |
 
 ### 架构方式
-- 暴露Polaris Parent层，定义了Spring Cloud、Spring Cloud Alibaba和Spring Boot版本，同时在Polaris SDK层也进行了这些版本的相同定义，目的是让业务开发人员可以接入Polaris的时候可以选择Polaris Parent，也可以选择业务自己的Parent，只接入Polaris SDK
-- 使用者可以自行对这Polaris Parent层和Polaris SDK层进行上述版本进行升级或者降低，也可以自定义更多的第三方中间件版本
-- 当接入Polaris Parent的时候，版本以Polaris Parent定义为优先，否则以Polaris SDK定义为准
+- 暴露Polaris Parent层，定义了Spring Cloud、Spring Cloud Alibaba和Spring Boot版本号，同时在Polaris SDK层也进行了这些版本的相同定义，目的是让业务开发人员可以接入Polaris的时候可以选择Polaris Parent，也可以选择业务自己的Parent，只接入Polaris SDK
+- 使用者可以自行对Polaris Parent层和Polaris SDK层中三个中间件的版本号进行升级或者降级，也可以自定义更多的第三方中间件版本
+- 当接入Polaris Parent的时候，版本号以Polaris Parent定义为优先，否则以Polaris SDK定义为准
 
 ## 集成步骤
 
