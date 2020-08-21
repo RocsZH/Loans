@@ -782,7 +782,7 @@ mvn clean install -U -DskipTests
     </executions>
 </plugin>
 ```
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 严重提醒，相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度。Spring Boot官方文档上没及时更新，是错误的
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 严重提醒，相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度
 ```xml
 <layers>
     <enabled>true</enabled>
@@ -820,7 +820,7 @@ snapshot-dependencies
 application
 ```
 
-③ 创建dockerfile
+③ 创建Dockerfile
 
 application.jar包同级目录下，将会输出四个分层的目录和文件
 
@@ -857,11 +857,22 @@ docker build . --tag polaris-guide-service-a
 ```
 
 ④ 运行容器
+
+执行如下命令运行容器
 ```
 docker run -i -t -e JAVA_OPTS="-Dnepxion.banner.shown.ansi.mode=true -Dmetadata.version=my-version -Dmetadata.region=my-region -Dmetadata.env=my-env" -e TZ="Asia/Shanghai" -p 3001:3001 -h polaris-guide-service-a --name polaris-guide-service-a polaris-guide-service-a:latest
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) [Spring Boot 2.3.x官方部署Docker文档](https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1)，谨慎使用，有不少错误的地方，可能是来不及更新
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 在DEV（本地）环境下，配置Docker容器不能通过127.0.0.1的IP地址连接容器外中间件服务器，故需要把启动命令改成如下形式。域名方式则不需要这么做
+```
+set NACOS_SERVER=10.0.75.1:8848
+
+docker run %RUN_MODE% -e JAVA_OPTS="-Dspring.cloud.nacos.discovery.server-addr=%NACOS_SERVER% -Dspring.cloud.nacos.config.server-addr=%NACOS_SERVER% -Dspring.cloud.sentinel.datasource.nacos.server-addr=%NACOS_SERVER% -Dnacos.server-addr=%NACOS_SERVER% -Dnepxion.banner.shown.ansi.mode=%SHOWN_ANSI_MODE% -Dmetadata.version=%METADATA_VERSION% -Dmetadata.region=%METADATA_REGION% -Dmetadata.env=%METADATA_ENV%" -e TZ="Asia/Shanghai" -p %MACHINE_PORT%:%CONTAINER_PORT% -h %IMAGE_NAME% --name %IMAGE_NAME% %IMAGE_NAME%:latest
+```
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 上述所有的命令组装成一键启动方式的脚本：install-docker.bat和install-docker.sh，请参考polaris-guide-service-a工程目录下的相应脚本
+
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) [Spring Boot 2.3.x官方部署Docker文档](https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1)，谨慎使用，有不少错误的地方，可能是来不及更新
 
 ### 优雅停机
 ```
