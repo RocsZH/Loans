@@ -120,7 +120,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     - [新增组件](#新增组件)
         - [组件结构创建](#组件结构创建)
         - [核心模块聚合](#核心模块聚合)
-- [支持Spring-Boot-2.3.x新特性](#支持Spring-Boot-2.3.x新特性)
+- [支持Spring-Boot-2-3-x新特性](#支持Spring-Boot-2-3-x新特性)
     - [容器化部署](#容器化部署)
         - [部署Polaris框架包](#部署Polaris框架包)
         - [添加Spring-Boot打包插件](#添加Spring-Boot打包插件)
@@ -740,7 +740,7 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 ③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
-## 支持Spring-Boot-2.3.x新特性
+## 支持Spring-Boot-2-3-x新特性
 
 ### 容器化部署
 基于Spring Boot 2.3.x新特性制作的Docker容器化部署
