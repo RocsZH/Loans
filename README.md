@@ -156,6 +156,9 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 工程集成了众多的中间件，清单如下
 
 - 简略清单
+
+① 核心组件
+
 | 核心组件名 | 组件类型 |
 | --- | --- |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 旗标组件 | Nepxion Discovery |
@@ -170,6 +173,8 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 | <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 控制台组件 | Nepxion Discovery |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 自动化测试组件 | Nepxion Discovery |
 
+② 框架分层
+
 | 框架分层名 | 分层类型 |
 | --- | --- |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> Gateway网关层 | Spring Cloud Gateway + Nepxion Discovery |
@@ -179,6 +184,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 | <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 测试层 | Spring Boot + Nepxion Discovery |
 
 - 详细清单
+
 | 工程名 | 描述 |
 | --- | --- |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/direction_east.png"> polaris-parent | Polaris Parent定义 |
