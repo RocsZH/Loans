@@ -15,10 +15,6 @@
 - [指南Gitee同步镜像](https://gitee.com/Nepxion/PolarisGuide)
 - [指南Github原镜像](https://github.com/Nepxion/PolarisGuide)
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 指南示例包含两个版本，请访问
-- 普遍适用版本，参考[指南示例极简版](https://github.com/Nepxion/DiscoveryGuide/tree/master)获取，分支为master
-- 基于Spring Boot 2.3.x特性制作的Docker版本，参考[指南示例高级版](https://github.com/Nepxion/DiscoveryGuide/tree/premium)获取，分支为premium
-
 ## 前言
 
 ① 云原生（Cloud Native）定义
