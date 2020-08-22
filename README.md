@@ -714,7 +714,7 @@ PolarisGateway（异步网关）:
 #### Discovery框架启动参数
 灰度蓝绿发布和子环境隔离路由的元数据注册的启动参数如下，分别对应灰度蓝绿版本号，区域号，子环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
 ```
--Dmetadata.version=polaris-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
+-Dmetadata.version=20200818-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
 ```
 
 ### 验证结果
