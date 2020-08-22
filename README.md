@@ -153,7 +153,32 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 ## 架构工程
 
 ### 工程介绍
+工程集成了众多的中间件，清单如下
 
+- 简略清单
+| 核心组件名 | 组件类型 |
+| --- | --- |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 旗标组件 | Nepxion Discovery |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 注册发现组件 | Nacos & Eureka & Consul & Zookeeper |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 配置组件 | Apollo & Nacos |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 调用链组件 | Skywalking + OpenTracing & Jaeger + OpenTracing |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 指标组件 | Prometheus Micrometer & Spring Boot Admin |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 防护组件 | Sentinel & Hystrix |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 灰度蓝绿组件 | Nepxion Discovery |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> Agent组件 | Nepxion Discovery |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 环境组件 | Nepxion Polaris内置 |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 控制台组件 | Nepxion Discovery |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 自动化测试组件 | Nepxion Discovery |
+
+| 框架分层名 | 分层类型 |
+| --- | --- |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> Gateway网关层 | Spring Cloud Gateway + Nepxion Discovery |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> Zuul网关层 | Spring Cloud Netfilx Zuul + Nepxion Discovery  |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 微服务层 | Spring Cloud Service + Nepxion Discovery  |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 控制台层 | Spring Cloud Service + Nepxion Discovery |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 测试层 | Spring Boot + Nepxion Discovery |
+
+- 详细清单
 | 工程名 | 描述 |
 | --- | --- |
 | <img src="http://nepxion.gitee.io/docs/icon-doc/direction_east.png"> polaris-parent | Polaris Parent定义 |
@@ -316,12 +341,15 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 
 ### 组件切换
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 框架默认生效的组件，如下
-- 注册发现组件：Nacos
-- 配置组件：Nacos
-- 调用链组件：Skywalking
-- 指标组件：未激活
-- 防护组件：Sentinel
-- 灰度蓝绿组件：Nepxion Discovery
+| 核心组件名 | 默认生效的组件 |
+| --- | --- |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 旗标核心组件 | Nepxion Discovery |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 注册发现核心组件 | Nacos |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 配置核心组件 | Nacos |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 调用链核心组件 | Skywalking |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 指标核心组件 | 未激活 |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 防护核心组件 | Sentinel |
+| <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 灰度蓝绿核心组件 | Nepxion Discovery |
 
 #### 注册发现组件切换
 在polaris-component-core目录下，搜索全部pom.xml，关键字
