@@ -86,6 +86,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     - [架构方式](#架构方式)
 - [集成步骤](#集成步骤)
     - [集成入口](#集成入口)
+    - [GroupId切换](#GroupId切换)
     - [组件切换](#组件切换)
         - [注册发现组件切换](#注册发现组件切换)
         - [配置组件切换](#配置组件切换)
@@ -283,7 +284,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.nepxion</groupId>
+        <groupId>com.nepxion.polaris</groupId>
         <artifactId>polaris-framework</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -339,6 +340,18 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         </dependency>
     </dependencies>
 </project>
+```
+
+### GroupId切换
+使用者可以把Polaris改造成自己公司的框架，换掉com.nepxion.polaris的Pom GroupId
+
+在根目录下，搜索全部pom.xml，关键字
+```
+<groupId>com.nepxion.polaris</groupId>
+```
+替换成
+```
+<groupId>com.xyz.polaris</groupId>
 ```
 
 ### 组件切换
@@ -526,7 +539,7 @@ public class PolarisEnvConstant {
 #### 引入Parent
 ```xml
 <parent>
-    <groupId>com.nepxion</groupId>
+    <groupId>com.nepxion.polaris</groupId>
     <artifactId>polaris-parent</artifactId>
     <version>${polaris.version}</version>
 </parent>
@@ -536,7 +549,7 @@ public class PolarisEnvConstant {
 ① 微服务引入
 ```xml
 <dependency>
-    <groupId>com.nepxion</groupId>
+    <groupId>com.nepxion.polaris</groupId>
     <artifactId>polaris-framework-starter-service</artifactId>
     <version>${polaris.version}</version>
 </dependency>
@@ -545,7 +558,7 @@ public class PolarisEnvConstant {
 ② Spring Cloud Gateway网关引入
 ```xml
 <dependency>
-    <groupId>com.nepxion</groupId>
+    <groupId>com.nepxion.polaris</groupId>
     <artifactId>polaris-framework-starter-gateway</artifactId>
     <version>${polaris.version}</version>
 </dependency>
@@ -554,7 +567,7 @@ public class PolarisEnvConstant {
 ③ Zuul网关引入
 ```xml
 <dependency>
-    <groupId>com.nepxion</groupId>
+    <groupId>com.nepxion.polaris</groupId>
     <artifactId>polaris-framework-starter-zuul</artifactId>
     <version>${polaris.version}</version>
 </dependency>
@@ -563,7 +576,7 @@ public class PolarisEnvConstant {
 ④ 控制台引入
 ```xml
 <dependency>
-    <groupId>com.nepxion</groupId>
+    <groupId>com.nepxion.polaris</groupId>
     <artifactId>polaris-framework-starter-console</artifactId>
     <version>${polaris.version}</version>
 </dependency>
@@ -572,7 +585,7 @@ public class PolarisEnvConstant {
 ⑤ 测试端引入
 ```xml
 <dependency>
-    <groupId>com.nepxion</groupId>
+    <groupId>com.nepxion.polaris</groupId>
     <artifactId>polaris-framework-starter-test</artifactId>
     <version>${polaris.version}</version>
 </dependency>
