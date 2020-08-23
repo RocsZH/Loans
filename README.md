@@ -372,8 +372,6 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     <properties>
         <polaris.version>1.0.0</polaris.version>
 
-        <nepxion.discovery.version>6.0.7</nepxion.discovery.version>
-
         <!-- Spring Cloud Hoxton compatible versions -->
         <spring.cloud.version>Hoxton.SR7</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
@@ -402,20 +400,14 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         <opentracing.spring.jaeger.version>2.0.3</opentracing.spring.jaeger.version>
         <opentracing.concurrent.version>0.3.0</opentracing.concurrent.version> -->
 
+        <nepxion.discovery.version>6.0.7</nepxion.discovery.version>
+
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.nepxion</groupId>
-                <artifactId>discovery</artifactId>
-                <version>${nepxion.discovery.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -444,6 +436,14 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>
                 <version>${spring.boot.admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery</artifactId>
+                <version>${nepxion.discovery.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
