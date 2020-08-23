@@ -81,12 +81,13 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     - [源码主页](#源码主页)
     - [指南主页](#指南主页)
     - [文档主页](#文档主页)
-- [架构工程](#架构工程)
-    - [工程介绍](#工程介绍)
-    - [架构方式](#架构方式)
+- [工程架构](#工程架构)
+    - [工程清单](#工程清单)
+    - [架构核心](#架构核心)
 - [集成步骤](#集成步骤)
-    - [集成入口](#集成入口)
+    - [Parent切换](#Parent切换)
     - [GroupId切换](#GroupId切换)
+    - [版本切换](#版本切换)
     - [组件切换](#组件切换)
         - [注册发现组件切换](#注册发现组件切换)
         - [配置组件切换](#配置组件切换)
@@ -147,9 +148,9 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 ### 文档主页
 [文档主页](https://gitee.com/Nepxion/Docs/tree/master/web-doc)
 
-## 架构工程
+## 工程架构
 
-### 工程介绍
+### 工程清单
 工程集成了众多的中间件，清单如下
 
 ① 简略清单
@@ -258,15 +259,8 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-service | Polaris框架对微服务的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-test | Polaris框架对测试的封装 |
 
-### 架构方式
-- 暴露Polaris Parent层，定义了Spring Cloud、Spring Cloud Alibaba和Spring Boot版本号，同时在Polaris SDK层也进行了这些版本的相同定义，目的是让业务开发人员可以接入Polaris的时候可以选择Polaris Parent，也可以选择业务自己的Parent，只接入Polaris SDK
-- 使用者可以自行对Polaris Parent层和Polaris SDK层中三个中间件的版本号进行升级或者降级，也可以自定义更多的第三方中间件版本
-- 当接入Polaris Parent的时候，版本号以Polaris Parent定义为优先，否则以Polaris SDK定义为准
-
-## 集成步骤
-
-### 集成入口
-集成入口位于polaris-framework模块下，包括如下五个子模块
+### 架构核心
+架构核心位于polaris-framework模块下，包括如下五个核心模块
 - polaris-framework-starter-gateway
 - polaris-framework-starter-zuul
 - polaris-framework-starter-service
@@ -342,7 +336,12 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 </project>
 ```
 
-### GroupId切换
+## 集成步骤
+### Parent切换
+- 框架提供Polaris Parent，定义了Spring Cloud、Spring Cloud Alibaba和Spring Boot版本号，同时在Polaris SDK上也进行了这些版本的相同定义，目的是让业务开发人员可以接入Polaris的时候可以选择Polaris Parent，也可以选择业务自己的Parent，只接入Polaris SDK
+- 当接入Polaris Parent的时候，版本号以Polaris Parent定义为优先，否则以Polaris SDK定义为准
+
+### GroupId切换 
 使用者可以把Polaris改造成自己公司的框架，换掉com.nepxion.polaris的Pom GroupId
 
 在根目录下，搜索全部pom.xml，关键字
@@ -353,6 +352,131 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 ```
 <groupId>com.xyz.polaris</groupId>
 ```
+
+### 版本切换
+- Polaris Parent定义
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 使用者可以自行对Polaris Parent层和Polaris SDK层中三个中间件的版本号进行升级或者降级，也可以自定义更多的第三方中间件版本
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>com.nepxion.polaris</groupId>
+    <artifactId>polaris-parent</artifactId>
+    <name>Nepxion Polaris Parent</name>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <version>1.0.0</version>
+    <description>Nepxion Polaris is an enterprise-level platform</description>
+    <url>http://www.nepxion.com</url>
+
+    <properties>
+        <polaris.version>1.0.0</polaris.version>
+
+        <nepxion.discovery.version>6.0.7</nepxion.discovery.version>
+
+        <!-- Spring Cloud Hoxton compatible versions -->
+        <spring.cloud.version>Hoxton.SR7</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
+        <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
+        <spring.boot.admin.version>2.3.0</spring.boot.admin.version>
+
+        <!-- Spring Cloud Greenwich compatible versions -->
+        <!-- <spring.cloud.version>Greenwich.SR6</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.1.1.RELEASE</spring.cloud.alibaba.version>
+        <spring.boot.version>2.1.16.RELEASE</spring.boot.version>
+        <spring.boot.admin.version>2.1.6</spring.boot.admin.version> -->
+
+        <!-- Spring Cloud Finchley compatible versions -->
+        <!-- <spring.cloud.version>Finchley.SR4</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.0.1.RELEASE</spring.cloud.alibaba.version>
+        <spring.boot.version>2.0.9.RELEASE</spring.boot.version>
+        <spring.boot.admin.version>2.0.6</spring.boot.admin.version> -->
+
+        <!-- OpenTracing for Spring Cloud & Jaeger compatible versions -->
+        <!-- Select low OpenTracing versions while executing failed in low Spring Cloud versions -->
+        <opentracing.spring.cloud.version>0.5.5</opentracing.spring.cloud.version>
+        <opentracing.spring.jaeger.version>3.1.2</opentracing.spring.jaeger.version>
+        <opentracing.concurrent.version>0.4.0</opentracing.concurrent.version>
+
+        <!-- <opentracing.spring.cloud.version>0.3.12</opentracing.spring.cloud.version>
+        <opentracing.spring.jaeger.version>2.0.3</opentracing.spring.jaeger.version>
+        <opentracing.concurrent.version>0.3.0</opentracing.concurrent.version> -->
+
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery</artifactId>
+                <version>${nepxion.discovery.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring.boot.admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
+```
+
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 注意：OpenTracing在Polaris Parent的版本定义如果低版本Spring Cloud运行时存在问题，请自行把OpenTracing也切换到低版本。目前测试下来都是兼容的
+
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 注意：OpenTracing对Finchley版的Spring Cloud Gateway的reactor-core包存在版本兼容性问题，如果使用者希望Finchley版的Spring Cloud Gateway上使用OpenTracing，需要做如下改造
+```xml
+<dependency>
+    <groupId>com.nepxion</groupId>
+    <artifactId>discovery-plugin-strategy-starter-gateway</artifactId>
+    <version>${discovery.version}</version>
+    <exclusions>
+        <exclusion>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<dependency>
+    <groupId>io.projectreactor</groupId>
+    <artifactId>reactor-core</artifactId>
+    <version>3.2.3.RELEASE</version>
+</dependency>
+```
+上述方式也适用于其它引入了低版本reactor-core包版本兼容性的场景
+
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 注意：“策略下内置Header来决策蓝绿和灰度，可以代替外部传入Header”，这块功能Spring Cloud Gateway在Finchley版不支持
 
 ### 组件切换
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 框架默认生效的组件，如下
