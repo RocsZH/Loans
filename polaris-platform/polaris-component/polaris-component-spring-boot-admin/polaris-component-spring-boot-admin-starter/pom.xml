@@ -12,10 +12,6 @@
         <version>1.0.0</version>
     </parent>
 
-    <properties>
-        <spring.boot.admin.version>2.2.2</spring.boot.admin.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -26,7 +22,6 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring.boot.admin.version}</version>
         </dependency>
     </dependencies>
 </project>
