@@ -46,7 +46,6 @@
 | DevOps | 开发运维一体化，包含CI（Continuous Integration）持续集成 |
 | CD（Continuous Delivery） | 持续交付 |
 
-
 ③ 云原生（Cloud Native）所需能力与特征
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/CloudNative.jpg)
@@ -355,6 +354,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 
 ### 版本切换
 - Polaris Parent定义
+
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 使用者可以自行对Polaris Parent层和Polaris SDK层中三个中间件的版本号进行升级或者降级，也可以自定义更多的第三方中间件版本
 ```
 <?xml version="1.0" encoding="UTF-8"?>
