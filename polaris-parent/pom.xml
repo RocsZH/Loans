@@ -11,17 +11,52 @@
     <url>http://www.nepxion.com</url>
 
     <properties>
+        <polaris.version>1.0.0</polaris.version>
+
+        <nepxion.discovery.version>6.0.7</nepxion.discovery.version>
+
+        <!-- Spring Cloud Hoxton compatible versions -->
         <spring.cloud.version>Hoxton.SR7</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
         <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
-        <nepxion.discovery.version>6.0.7</nepxion.discovery.version>
-        <polaris.version>1.0.0</polaris.version>
+        <spring.boot.admin.version>2.3.0</spring.boot.admin.version>
+
+        <!-- Spring Cloud Greenwich compatible versions -->
+        <!-- <spring.cloud.version>Greenwich.SR6</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.1.1.RELEASE</spring.cloud.alibaba.version>
+        <spring.boot.version>2.1.16.RELEASE</spring.boot.version>
+        <spring.boot.admin.version>2.1.6</spring.boot.admin.version> -->
+
+        <!-- Spring Cloud Finchley compatible versions -->
+        <!-- <spring.cloud.version>Finchley.SR4</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.0.1.RELEASE</spring.cloud.alibaba.version>
+        <spring.boot.version>2.0.9.RELEASE</spring.boot.version>
+        <spring.boot.admin.version>2.0.6</spring.boot.admin.version> -->
+
+        <!-- OpenTracing for Spring Cloud & Jaeger compatible versions -->
+        <!-- Select low OpenTracing versions while executing failed in low Spring Cloud versions -->
+        <opentracing.spring.cloud.version>0.5.5</opentracing.spring.cloud.version>
+        <opentracing.spring.jaeger.version>3.1.2</opentracing.spring.jaeger.version>
+        <opentracing.concurrent.version>0.4.0</opentracing.concurrent.version>
+
+        <!-- <opentracing.spring.cloud.version>0.3.12</opentracing.spring.cloud.version>
+        <opentracing.spring.jaeger.version>2.0.3</opentracing.spring.jaeger.version>
+        <opentracing.concurrent.version>0.3.0</opentracing.concurrent.version> -->
+
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.nepxion</groupId>
+                <artifactId>discovery</artifactId>
+                <version>${nepxion.discovery.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -47,9 +82,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.nepxion</groupId>
-                <artifactId>discovery</artifactId>
-                <version>${nepxion.discovery.version}</version>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring.boot.admin.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
