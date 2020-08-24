@@ -374,6 +374,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 
     <properties>
         <polaris.version>1.0.0</polaris.version>
+        <discovery.version>6.0.7</discovery.version>
 
         <!-- Spring Cloud Hoxton compatible versions -->
         <spring.cloud.version>Hoxton.SR7</spring.cloud.version>
@@ -402,8 +403,6 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         <!-- <opentracing.spring.cloud.version>0.3.12</opentracing.spring.cloud.version>
         <opentracing.spring.jaeger.version>2.0.3</opentracing.spring.jaeger.version>
         <opentracing.concurrent.version>0.3.0</opentracing.concurrent.version> -->
-
-        <nepxion.discovery.version>6.0.7</nepxion.discovery.version>
 
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -446,7 +445,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
             <dependency>
                 <groupId>com.nepxion</groupId>
                 <artifactId>discovery</artifactId>
-                <version>${nepxion.discovery.version}</version>
+                <version>${discovery.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
