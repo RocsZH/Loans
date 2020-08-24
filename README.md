@@ -16,7 +16,6 @@
 - [指南Github原镜像](https://github.com/Nepxion/PolarisGuide)
 
 ## 前言
-
 ① 云原生（Cloud Native）定义
 
 英文版定义
@@ -118,7 +117,11 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     - [新增组件](#新增组件)
         - [组件结构创建](#组件结构创建)
         - [核心模块聚合](#核心模块聚合)
-- [支持Spring-Boot-2-3-x新特性](#支持Spring-Boot-2-3-x新特性)
+- [Nepxion-Discovery核心功能](#Nepxion-Discovery核心功能)
+    - [核心功能概括](#核心功能概括)
+    - [灰度发布和路由的实现方式](#灰度发布和路由的实现方式)
+    - [灰度发布和路由的订阅格式](#灰度发布和路由的订阅格式)
+- [Spring-Boot-2-3-x新特性](#Spring-Boot-2-3-x新特性)
     - [容器化部署](#容器化部署)
         - [部署Polaris框架包](#部署Polaris框架包)
         - [添加Spring-Boot打包插件](#添加Spring-Boot打包插件)
@@ -913,7 +916,33 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 ③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
-## 支持Spring-Boot-2-3-x新特性
+## Nepxion-Discovery核心功能
+
+### 核心功能概括
+- 灰度蓝绿发布
+    - 版本匹配灰度发布
+    - 版本权重灰度发布
+- 多区域路由
+    - 区域匹配灰度路由
+    - 区域权重灰度路由
+- 多IP和端口灰度路由
+- 环境隔离
+    - 环境隔离
+    - 环境路由
+- 基于Sentinel-LimitApp扩展的防护机制
+- 基于组的服务调用隔离
+
+### 灰度发布和路由的实现方式
+![Alt text](http://nepxion.gitee.io/docs/discovery-doc/Difference.jpg)
+- `基于网关为触点的Header传递的全链路灰度路由`，适用于网关前置部署方式的企业。域网关部署模式下，最适用于该方式；非域网关部署模式下，开启并行灰度路由下的版本优选策略
+- `基于全局订阅方式的全连路灰度发布`，适用于网关部署方式比较弱化的企业
+- `基于全局订阅和Header传递组合式全链路灰度路由`，上述两种方式的结合体，是比较理想和节省成本的落地方式
+
+### 灰度发布和路由的订阅格式
+![Alt text](http://nepxion.gitee.io/docs/discovery-doc/Apollo1.jpg)
+![Alt text](http://nepxion.gitee.io/docs/discovery-doc/Nacos2.jpg)
+
+## Spring-Boot-2-3-x新特性
 
 ### 容器化部署
 基于Spring Boot 2.3.x新特性制作的Docker容器化部署
