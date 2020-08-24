@@ -932,14 +932,14 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 - 基于组的服务调用隔离
 
 ### 灰度发布和路由的实现方式
-![Alt text](http://nepxion.gitee.io/docs/discovery-doc/Difference.jpg)
+![](http://nepxion.gitee.io/docs/discovery-doc/Difference.jpg)
 - `基于网关为触点的Header传递的全链路灰度路由`，适用于网关前置部署方式的企业。域网关部署模式下，最适用于该方式；非域网关部署模式下，开启并行灰度路由下的版本优选策略
-- `基于全局订阅方式的全连路灰度发布`，适用于网关部署方式比较弱化的企业
+- `基于全局订阅方式的全链路灰度发布`，适用于网关部署方式比较弱化的企业
 - `基于全局订阅和Header传递组合式全链路灰度路由`，上述两种方式的结合体，是比较理想和节省成本的落地方式
 
 ### 灰度发布和路由的订阅格式
-![Alt text](http://nepxion.gitee.io/docs/discovery-doc/Apollo1.jpg)
-![Alt text](http://nepxion.gitee.io/docs/discovery-doc/Nacos2.jpg)
+![](http://nepxion.gitee.io/docs/discovery-doc/Apollo1.jpg)
+![](http://nepxion.gitee.io/docs/discovery-doc/Nacos2.jpg)
 
 ## Spring-Boot-2-3-x新特性
 
