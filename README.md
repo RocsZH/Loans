@@ -454,7 +454,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 </project>
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 注意：OpenTracing在Polaris Parent的版本定义如果低版本Spring Cloud运行时存在问题，请自行把OpenTracing也切换到低版本。目前测试下来都是兼容的 
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 注意：OpenTracing在Polaris Parent的版本定义如果低版本Spring Cloud运行时存在问题，请自行把OpenTracing也切换到低版本。目前测试下来都是兼容的
 
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 注意：OpenTracing对Finchley版的Spring Cloud Gateway的reactor-core包存在版本兼容性问题，如果使用者希望Finchley版的Spring Cloud Gateway上使用OpenTracing，需要做如下改造
 ```xml
