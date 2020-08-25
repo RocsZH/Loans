@@ -548,7 +548,7 @@ You can select one of following polaris protector components, such as Sentinel
 | --- | --- | --- | --- |
 | DEV | 默认为127.0.0.1:port | `组件名`-dev<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
 | FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat`${zone}`.`${root.domain}` |
-| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat`${zone}`.`${root.domain} |
+| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat`${zone}`.`${root.domain}` |
 | PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro`${zone}`.`${root.domain}` |
 | COMMON | 无需配置 | `组件名`-common<br>.properties | 无需配置 |
 
