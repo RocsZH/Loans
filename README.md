@@ -547,9 +547,9 @@ You can select one of following polaris protector components, such as Sentinel
 | 环境 | 域名或者IP地址 | 配置文件 | 示例 |
 | --- | --- | --- | --- |
 | DEV | 默认为127.0.0.1:port | `组件名`-dev<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
-| FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat${zone}.${root.domain} |
-| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat${zone}.${root.domain} |
-| PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro${zone}.${root.domain} |
+| FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat`${zone}`.`${root.domain}` |
+| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat`${zone}`.`${root.domain} |
+| PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro`${zone}`.`${root.domain}` |
 | COMMON | 无需配置 | `组件名`-common<br>.properties | 无需配置 |
 
 ① 环境（env）号
@@ -561,13 +561,13 @@ You can select one of following polaris protector components, such as Sentinel
 ② 区域（zone）名
 - 定义为用来区别多活、多云和SET单元化的域名的后缀或者前缀标识
 - 域名表达式为`组件名`-`环境号`-`可选的区域名`.`根域`。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
-- 实现占位处理，占位格式为${zone}。如果区域（zone）名不设置，那么变成“组件名-环境号.根域”的简单格式
+- 实现占位处理，占位格式为`${zone}`。如果区域（zone）名不设置，那么变成“组件名-环境号.根域”的简单格式
 - 通过DevOps来实现环境号和区域名的指定（下文“域名和环境设置”会讲到）
 - 如果使用者没有条件实现多环境的域名支持，那么采用IP地址也可以
 
 ③ 根域（root domain）名
 - 定义为不同环境域名的根域后缀
-- 实现占位处理，占位格式为${root.domain}
+- 实现占位处理，占位格式为`${root.domain}`
 
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 使用者需要根据企业的实际情况，把组件的四个环境域名或者IP地址一一做更改
 
