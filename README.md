@@ -85,6 +85,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 - [集成步骤](#集成步骤)
     - [Parent切换](#Parent切换)
     - [GroupId切换](#GroupId切换)
+    - [组织命名切换](#组织命名切换)
     - [版本切换](#版本切换)
     - [组件切换](#组件切换)
         - [注册发现组件切换](#注册发现组件切换)
@@ -343,16 +344,25 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 - 框架提供Polaris Parent，定义了Spring Cloud、Spring Cloud Alibaba和Spring Boot版本号，同时在Polaris SDK上也进行了这些版本的相同定义，目的是让业务开发人员可以接入Polaris的时候可以选择Polaris Parent，也可以选择业务自己的Parent，只接入Polaris SDK
 - 当接入Polaris Parent的时候，版本号以Polaris Parent定义为优先，否则以Polaris SDK定义为准
 
-### GroupId切换 
-使用者可以把Polaris改造成自己公司的框架，换掉com.nepxion.polaris的Pom GroupId
+### 组织命名切换
+使用者可以把Polaris改造成自己企业名义上的框架。假设，企业名称为alibaba
 
-在根目录下，搜索全部pom.xml，关键字
+① 全局替换Pom GroupId和src/main/resources/META-INF/spring.factories。在根目录下，搜索全部文件，关键字
 ```
-<groupId>com.nepxion.polaris</groupId>
+com.nepxion.polaris
 ```
 替换成
 ```
-<groupId>com.xyz.polaris</groupId>
+com.alibaba.polaris
+```
+
+② 手工替换src/main/java/下的Java包目录名
+```
+com.nepxion.polaris
+```
+替换成
+```
+com.alibaba.polaris
 ```
 
 ### 版本切换
