@@ -352,6 +352,7 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 ```
 
 ## 集成步骤
+
 ### Parent切换
 - 框架提供Polaris Parent，定义了Spring Cloud、Spring Cloud Alibaba和Spring Boot版本号，同时在Polaris SDK上也进行了这些版本的相同定义，目的是让业务开发人员可以接入Polaris的时候可以选择Polaris Parent，也可以选择业务自己的Parent，只接入Polaris SDK
 - 当接入Polaris Parent的时候，版本号以Polaris Parent定义为优先，否则以Polaris SDK定义为准
@@ -679,7 +680,6 @@ public class PolarisEnvConstant {
 - polaris-component-sentinel-starter-service
 
 ## 使用步骤
-
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 参考[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)的源码
 
 ### 应用搭建
@@ -876,11 +876,9 @@ PolarisGateway（异步网关）:
 - 运行PolarisTest，观察输出结果，自动化测试用例是否都通过
 
 ### 新增组件
-
 以创建一个调用链模块Pinpoint为例，请尽量严格遵守Polaris集成方式，保持风格统一
 
 #### 组件结构创建
-
 ① 按照如下结构进行目录创建，并编写相应的pom.xml
 - polaris-component
     - polaris-component-pinpoint
@@ -930,7 +928,6 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 ```
 
 #### 核心模块聚合
-
 ① 在polaris-component-core目录下找到polaris-component-core-starter-tracing模块下的pom.xml，把polaris-component-pinpoint-starter加入，进行组件层面聚合。使用者也可以自行按照规范新建一个核心模块组件
 
 ② 在polaris-framework下5个框架顶级模块，按需引入polaris-component-core-starter-tracing进行框架层面聚合
@@ -969,7 +966,6 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 基于Spring Boot 2.3.x新特性制作的Docker容器化部署
 
 #### 部署Polaris框架包
-
 ![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 重要提醒，由于`Polaris框架包`未推送到Maven中央仓库，需要使用者自行编译部署。在`Polaris源码`的polaris-parent和polaris-platform工程目录下，分别执行如下命令，把Polaris框架相关包部署到本地仓库
 ```
 mvn clean install -U -DskipTests
