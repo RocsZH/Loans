@@ -26,9 +26,9 @@ public abstract class PolarisEnvProcessor {
 
         boolean isEnvLogShown = isEnvLogShown();
         if (isEnvLogShown) {
-            LOG.info("Initialize {} {} env...", name, env);
+            LOG.info("Initialize {} env...", name);
         } else {
-            System.out.println("Initialize " + name + " " + env + " env...");
+            System.out.println("Initialize " + name + " env...");
         }
 
         processEnvProperties(environment, name, PolarisConstant.COMMON, true);
