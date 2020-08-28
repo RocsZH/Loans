@@ -39,7 +39,7 @@ public abstract class PolarisEnvProcessor {
         String path = PolarisEnvConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
         try {
-            processProperties(environment, path);
+            processProperties(environment, env, path);
         } catch (IOException e) {
             boolean isEnvLogShown = isEnvLogShown();
             if (canMissing) {
@@ -60,7 +60,7 @@ public abstract class PolarisEnvProcessor {
         }
     }
 
-    public void processProperties(ConfigurableEnvironment environment, String path) throws IOException {
+    public void processProperties(ConfigurableEnvironment environment, String env, String path) throws IOException {
         Properties properties = processProperties(path);
 
         boolean isEnvLogShown = isEnvLogShown();
@@ -72,17 +72,17 @@ public abstract class PolarisEnvProcessor {
                 value = processValue(environment, key, value);
 
                 if (isEnvLogShown) {
-                    LOG.info("* Env parameter : {} = {}", key, value);
+                    LOG.info("* Env[{}] parameter : {} = {}", env, key, value);
                 } else {
-                    System.out.println("* Env parameter : " + key + " = " + value);
+                    System.out.println("* Env[" + env + "] parameter : " + key + " = " + value);
                 }
 
                 System.setProperty(key, value);
             } else {
                 if (isEnvLogShown) {
-                    LOG.info("* Env parameter : {} has been set outside", key);
+                    LOG.info("* Env[{}] parameter : {} has been set outside", env, key);
                 } else {
-                    System.out.println("* Env parameter : " + key + " has been set outside");
+                    System.out.println("* Env[" + env + "] parameter : " + key + " has been set outside");
                 }
             }
         }
