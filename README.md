@@ -29,7 +29,7 @@
 - [指南Github原镜像](https://github.com/Nepxion/DiscoveryGuide)
 
 ## 前言
-① 云原生（Cloud Native）定义 
+① 云原生（Cloud Native）定义
 
 英文版定义
 > Cloud native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.
