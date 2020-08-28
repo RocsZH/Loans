@@ -56,13 +56,13 @@
 | Micro Service | 微服务 |
 | Container | 容器 |
 | DevOps | 开发运维一体化，包含CI（Continuous Integration）持续集成 |
-| CD（Continuous Delivery） | 持续交付 |
+| CD | 持续交付（Continuous Delivery） |
 
 ③ 云原生（Cloud Native）所需能力与特征
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/CloudNative.jpg)
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 下文着重刻画`Micro Service`的架构，阐述`DevOps`的边界，展现`Container`的落地，但不涉及`CD（Continuous Delivery）`的层面
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 下文着重刻画`Micro Service`的架构，阐述`DevOps`的边界，展现`Container`的落地，但不涉及`CD`的层面
 
 ## 简介
 Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕Discovery【探索】框架打造，基于Spring Cloud Discovery服务注册发现、Ribbon负载均衡、Feign和RestTemplate调用等组件全方位增强的企业级云原生微服务开源解决方案，面向企业级生产需求精雕细琢，赋能和助力企业快速搭建基础架构的底层云原生微服务框架。整个架构体系打造，遵循最严格的Maven对称结构和规范，最严格的命名格式，给予使用者最舒适的使用体验
@@ -824,7 +824,7 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 -javaagent:/agent/polaris-agent.jar -Dthread.scan.packages=com.abc;com.xyz -Dthread.request.decorator.enabled=true
 ```
 
-- 参数说明
+参数说明
 - /agent：Agent所在的目录，需要对应到实际的目录上
 - thread.scan.packages：Runnable，Callable对象所在的扫描目录，该目录下的Runnable，Callable对象都会被装饰。该目录最好精细和准确，这样可以减少被装饰的对象数，提高性能，目录如果有多个，用“;”分隔
 - thread.request.decorator.enabled：异步调用场景下在服务端的Request请求的装饰，当主线程先于子线程执行完的时候，Request会被Destory，导致Header仍旧拿不到，开启装饰，就可以确保拿到。默认为关闭，根据实践经验，大多数场景下，需要开启这个开关
