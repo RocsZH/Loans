@@ -823,11 +823,11 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 ```
 -javaagent:/agent/polaris-agent.jar -Dthread.scan.packages=com.abc;com.xyz -Dthread.request.decorator.enabled=true
 ```
-- 参数说明
-    - /agent：Agent所在的目录，需要对应到实际的目录上
-    - thread.scan.packages：Runnable，Callable对象所在的扫描目录，该目录下的Runnable，Callable对象都会被装饰。该目录最好精细和准确，这样可以减少被装饰的对象数，提高性能，目录如果有多个，用“;”分隔
-    - thread.request.decorator.enabled：异步调用场景下在服务端的Request请求的装饰，当主线程先于子线程执行完的时候，Request会被Destory，导致Header仍旧拿不到，开启装饰，就可以确保拿到。默认为关闭，根据实践经验，大多数场景下，需要开启这个开关	
 
+- 参数说明
+- /agent：Agent所在的目录，需要对应到实际的目录上
+- thread.scan.packages：Runnable，Callable对象所在的扫描目录，该目录下的Runnable，Callable对象都会被装饰。该目录最好精细和准确，这样可以减少被装饰的对象数，提高性能，目录如果有多个，用“;”分隔
+- thread.request.decorator.enabled：异步调用场景下在服务端的Request请求的装饰，当主线程先于子线程执行完的时候，Request会被Destory，导致Header仍旧拿不到，开启装饰，就可以确保拿到。默认为关闭，根据实践经验，大多数场景下，需要开启这个开关
 ```
 扫描目录thread.scan.packages定义，该参数只作用于服务侧，网关侧不需要加
 1. @Async场景下的扫描目录为org.springframework.aop.interceptor
@@ -953,9 +953,12 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 
 ### 灰度发布和路由的实现方式
 ![](http://nepxion.gitee.io/docs/discovery-doc/Difference.jpg)
-- `基于网关为触点的Header传递的全链路灰度路由`，适用于网关前置部署方式的企业。域网关部署模式下，最适用于该方式；非域网关部署模式下，开启并行灰度路由下的版本优选策略
-- `基于全局订阅方式的全链路灰度发布`，适用于网关部署方式比较弱化的企业
-- `基于全局订阅和Header传递组合式全链路灰度路由`，上述两种方式的结合体，是比较理想和节省成本的落地方式
+
+① 基于网关为触点的Header传递的全链路灰度路由，适用于网关前置部署方式的企业。域网关部署模式下，最适用于该方式；非域网关部署模式下，开启并行灰度路由下的版本优选策略
+
+② 基于全局订阅方式的全链路灰度发布，适用于网关部署方式比较弱化的企业
+
+③ 基于全局订阅和Header传递组合式全链路灰度路由，上述两种方式的结合体，是比较理想和节省成本的落地方式
 
 ### 灰度发布和路由的订阅格式
 ![](http://nepxion.gitee.io/docs/discovery-doc/Apollo1.jpg)
