@@ -59,9 +59,9 @@ public abstract class PolarisEnvProcessor {
                 System.setProperty(key, value);
             } else {
                 if (isEnvLogShown) {
-                    LOG.info("* Env parameter : {} has been set", key);
+                    LOG.info("* Env parameter : {} has been set outside", key);
                 } else {
-                    System.out.println("* Env parameter : " + key + " has been set");
+                    System.out.println("* Env parameter : " + key + " has been set outside");
                 }
             }
         }
