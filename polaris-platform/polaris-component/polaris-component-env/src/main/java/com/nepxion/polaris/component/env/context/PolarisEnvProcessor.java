@@ -1,5 +1,6 @@
 package com.nepxion.polaris.component.env.context;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
@@ -21,25 +22,45 @@ public abstract class PolarisEnvProcessor {
 
     public void process(ConfigurableEnvironment environment) throws Exception {
         String name = getName();
-
-        processCommonProperties(environment, name);
-        processEnvProperties(environment, name);
-    }
-
-    public void processCommonProperties(ConfigurableEnvironment environment, String name) throws Exception {
-        String path = PolarisEnvConstant.META_INF_PATH + name + "-" + PolarisConstant.COMMON + "." + PolarisConstant.PROPERTIES_FORMAT;
-
-        processProperties(environment, path);
-    }
-
-    public void processEnvProperties(ConfigurableEnvironment environment, String name) throws Exception {
         String env = getEnv();
+
+        boolean isEnvLogShown = isEnvLogShown();
+        if (isEnvLogShown) {
+            LOG.info("Initialize {} {} env...", name, env);
+        } else {
+            System.out.println("Initialize " + name + " " + env + " env...");
+        }
+
+        processEnvProperties(environment, name, PolarisConstant.COMMON, true);
+        processEnvProperties(environment, name, env, false);
+    }
+
+    public void processEnvProperties(ConfigurableEnvironment environment, String name, String env, boolean canMissing) throws IOException {
         String path = PolarisEnvConstant.META_INF_PATH + name + "-" + env + "." + PolarisConstant.PROPERTIES_FORMAT;
 
-        processProperties(environment, path);
+        try {
+            processProperties(environment, path);
+        } catch (IOException e) {
+            boolean isEnvLogShown = isEnvLogShown();
+            if (canMissing) {
+                if (isEnvLogShown) {
+                    LOG.warn("* Not found {}, ignore to process...", path);
+                } else {
+                    System.out.println("* Not found " + path + ", ignore to process...");
+                }
+            } else {
+                if (isEnvLogShown) {
+                    LOG.error("* Not found {}, failed to process...", path);
+                } else {
+                    System.out.println("* Not found " + path + ", failed to process...");
+                }
+
+                throw e;
+            }
+        }
     }
 
-    public void processProperties(ConfigurableEnvironment environment, String path) throws Exception {
+    public void processProperties(ConfigurableEnvironment environment, String path) throws IOException {
         Properties properties = processProperties(path);
 
         boolean isEnvLogShown = isEnvLogShown();
@@ -67,7 +88,7 @@ public abstract class PolarisEnvProcessor {
         }
     }
 
-    public Properties processProperties(String path) throws Exception {
+    public Properties processProperties(String path) throws IOException {
         Properties properties = new Properties();
 
         InputStream inputStream = null;
