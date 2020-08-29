@@ -570,9 +570,9 @@ You can select one of following polaris protector components, such as Sentinel
 | 环境 | 域名或者IP地址 | 配置文件 | 示例 |
 | --- | --- | --- | --- |
 | DEV | 默认为127.0.0.1:port | `组件名`-dev<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
-| FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat`${region}`.`${root.domain}` |
-| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat`${region}`.`${root.domain}` |
-| PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro`${region}`.`${root.domain}` |
+| FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat`${region}`.`${domain}` |
+| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat`${region}`.`${domain}` |
+| PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro`${region}`.`${domain}` |
 | COMMON | 无需配置 | `组件名`-common<br>.properties | 无需配置 |
 
 ① 环境（env）号
@@ -588,9 +588,9 @@ You can select one of following polaris protector components, such as Sentinel
 - 通过DevOps来实现环境号和区域名的指定（下文“域名和环境设置”会讲到）
 - 如果使用者没有条件实现多环境的域名支持，那么采用IP地址也可以
 
-③ 根域（root domain）名
+③ 根域（domain）名
 - 定义为不同环境域名的根域后缀
-- 实现占位处理，占位格式为`${root.domain}`
+- 实现占位处理，占位格式为`${domain}`
 
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 使用者需要根据企业的实际情况，把组件的四个环境域名或者IP地址一一做更改
 
@@ -613,14 +613,14 @@ region=SET-sha
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为空，即非多活或者多云的环境
 
-③ 通过DevOps进行根域（root domain）名设置
-- 通过System Property或者-Droot.domain=`根域名`，进行设置
+③ 通过DevOps进行根域（domain）名设置
+- 通过System Property或者-Ddomain=`根域名`，进行设置
 - 通过server.properties进行设置
 ```
-root.domain=nepxion.com
+domain=nepxion.com
 ```
 - 通过System Env环境变量方式进行设置
-- 上述设置都未执行，则缺省为PolarisEnvConstant类里的ROOT_DOMAIN_VALUE静态变量
+- 上述设置都未执行，则缺省为PolarisEnvConstant类里的DOMAIN_VALUE静态变量
 
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 读取优先级由高到低，如下
 - System.getProperty
@@ -631,11 +631,11 @@ root.domain=nepxion.com
 ```java
 public class PolarisEnvConstant {
     // 根域名相关定义。包含三种传值方式，优先级至上而下。使用者需要把根域值改掉
-    // 1. 通过-Droot.domain=nepxion.com或者System.setProperty("root.domain", "nepxion.com")方式进行传入
-    // 2. 通过大写的ROOT.DOMAIN，其值为nepxion.com的System ENV方式进行传入
-    // 3. 通过DevOps在server.properties定义root.domain=nepxion.com方式进行传入
-    public static final String ROOT_DOMAIN_NAME = "root.domain";
-    public static final String ROOT_DOMAIN_VALUE = "nepxion.com";
+    // 1. 通过-Ddomain=nepxion.com或者System.setProperty("domain", "nepxion.com")方式进行传入
+    // 2. 通过大写的DOMAIN，其值为nepxion.com的System ENV方式进行传入
+    // 3. 通过DevOps在server.properties定义domain=nepxion.com方式进行传入
+    public static final String DOMAIN_NAME = "domain";
+    public static final String DOMAIN_VALUE = "nepxion.com";
 
     // 区域名相关定义。包含三种传值方式，优先级至上而下
     // 1. 通过-Dregion=sha或者System.setProperty("region", "sha")方式进行传入
@@ -646,10 +646,10 @@ public class PolarisEnvConstant {
     // REGION_SEPARATE表示区域在域名中的分隔符
     // REGION_SEPARATE_PREFIX表示区域在域名中的分隔符是否在前面还是后面
     // 包含两种表现形式。特别注意：region占位符前后切记不要出现分隔符，因为框架会自动去适配
-    // 1. 例如，原始格式为nacos-fat${region}.${root.domain}
+    // 1. 例如，原始格式为nacos-fat${region}.${domain}
     //    1.1 在region存在的情况下，会解析成nacos-fat-sha.nepxion.com
     //    1.2 在region缺失的情况下，会解析成nacos-fat.nepxion.com
-    // 2. 例如，原始格式为${region}fat-nacos.${root.domain}
+    // 2. 例如，原始格式为${region}fat-nacos.${domain}
     //    2.1 在region存在的情况下，会解析成sha-fat-nacos.nepxion.com
     //    2.2 在region缺失的情况下，会解析成fat-nacos.nepxion.com
     public static final String REGION_NAME = "region";
