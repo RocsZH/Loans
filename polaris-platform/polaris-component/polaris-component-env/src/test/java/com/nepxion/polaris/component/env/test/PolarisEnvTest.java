@@ -129,31 +129,31 @@ public class PolarisEnvTest {
 
     // @Test
     public void test3() {
-        System.out.println(processValue(environment, "spring.cloud.nacos.discovery.server-addr", "nacos-fat[-%zone%].nepxion.com"));
+        System.out.println(processValue(environment, "spring.cloud.nacos.discovery.server-addr", "nacos-fat[-%region%].${domain}"));
     }
 
-    public static final String ZONE_EXPRESSION = "%" + PolarisEnvConstant.ZONE_NAME + "%";
+    public static final String REGION_EXPRESSION = "%" + PolarisEnvConstant.REGION_NAME + "%";
 
     protected String processValue(ConfigurableEnvironment environment, String key, String value) {
         String domainExpression = value;
-        String zoneExpression = ZONE_EXPRESSION;
-        String zone = PolarisEnvProvider.getZone();
+        String regionExpression = REGION_EXPRESSION;
+        String region = PolarisEnvProvider.getRegion();
 
-        return processDomainPlaceholder(domainExpression, zoneExpression, zone);
+        return processDomainPlaceholder(domainExpression, regionExpression, region);
     }
 
     // 域名占位处理
-    // 1. 根据server.properties里配置的env和zone，动态解析和创建多活或者多云的域名
-    // 2. 域名表达式domainExpression，样例：nacos-fat[-%zone%].nepxion.com，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
-    // 3. 区域表达式zoneExpression，样例：[-%zone%]，zone表示用来区别多活、多云和SET单元化的域名后缀或者前缀
+    // 1. 根据server.properties里配置的domain、region、env，动态解析和创建多活或者多云的域名
+    // 2. 域名表达式domainExpression，样例：nacos-fat[-%region%].${domain}，该域名格式为组件-环境-区域.根域，也可以用其它符号代替"-"
+    // 3. 区域表达式regionExpression，样例：[-%region%]，region表示用来区别多活、多云和SET单元化的域名后缀或者前缀
     @SuppressWarnings("deprecation")
-    protected String processDomainPlaceholder(String domainExpression, String zoneExpression, String zone) {
+    protected String processDomainPlaceholder(String domainExpression, String regionExpression, String region) {
         String domain = null;
         // 不符合域名表达式的配置项，不做处理直接返回
-        if (StringUtils.isNotBlank(domainExpression) && StringUtils.contains(domainExpression, zoneExpression) && StringUtils.contains(domainExpression, "[") && StringUtils.contains(domainExpression, "]") && StringUtils.indexOf(domainExpression, "]") - StringUtils.indexOf(domainExpression, "[") >= zoneExpression.length()) {
-            if (StringUtils.isNotBlank(zone)) {
+        if (StringUtils.isNotBlank(domainExpression) && StringUtils.contains(domainExpression, regionExpression) && StringUtils.contains(domainExpression, "[") && StringUtils.contains(domainExpression, "]") && StringUtils.indexOf(domainExpression, "]") - StringUtils.indexOf(domainExpression, "[") >= regionExpression.length()) {
+            if (StringUtils.isNotBlank(region)) {
                 // 兼容低版本的commons-langs
-                domain = StringUtils.replaceAll(domainExpression, zoneExpression, zone);
+                domain = StringUtils.replaceAll(domainExpression, regionExpression, region);
                 domain = StringUtils.replace(domain, "[", StringUtils.EMPTY);
                 domain = StringUtils.replace(domain, "]", StringUtils.EMPTY);
             } else {

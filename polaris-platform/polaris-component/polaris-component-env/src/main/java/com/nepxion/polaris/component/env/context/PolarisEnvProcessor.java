@@ -118,12 +118,12 @@ public abstract class PolarisEnvProcessor {
         return true;
     }
 
-    public String getRootDomain() {
-        return PolarisEnvProvider.getRootDomain();
+    public String getDomain() {
+        return PolarisEnvProvider.getDomain();
     }
 
-    public String getZone() {
-        return PolarisEnvProvider.getZone();
+    public String getRegion() {
+        return PolarisEnvProvider.getRegion();
     }
 
     public String getEnv() {

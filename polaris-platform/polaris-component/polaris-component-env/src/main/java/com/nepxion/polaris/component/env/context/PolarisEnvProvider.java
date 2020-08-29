@@ -18,57 +18,57 @@ import com.nepxion.polaris.component.env.entity.PolarisEnv;
 public class PolarisEnvProvider {
     private static final Logger LOG = LoggerFactory.getLogger(PolarisEnvProvider.class);
 
-    private static String rootDomain;
-    private static String zone;
+    private static String domain;
+    private static String region;
     private static String env;
     private static String appId;
 
     static {
         initializeDomain();
-        initializeZone();
+        initializeRegion();
         initializeEnv();
     }
 
     private static void initializeDomain() {
         try {
-            rootDomain = initializeContext(PolarisEnvConstant.ROOT_DOMAIN_NAME);
+            domain = initializeContext(PolarisEnvConstant.DOMIAN_NAME);
         } catch (Exception e) {
-            LOG.info("Initialize root domain failed, use root domain={} as default", PolarisEnvConstant.ROOT_DOMAIN_VALUE);
+            LOG.info("Initialize domain failed, use domain={} as default", PolarisEnvConstant.DOMIAN_VALUE);
         }
 
-        if (StringUtils.isBlank(rootDomain)) {
+        if (StringUtils.isBlank(domain)) {
             // 通过三种方式之一未找到根域值，默认取预定义的静态变量值
-            rootDomain = PolarisEnvConstant.ROOT_DOMAIN_VALUE;
+            domain = PolarisEnvConstant.DOMIAN_VALUE;
         }
 
         // 设置到System Property，保证占位符生效。根域名值不可空缺的
-        System.setProperty(PolarisEnvConstant.ROOT_DOMAIN_NAME, rootDomain);
+        System.setProperty(PolarisEnvConstant.DOMIAN_NAME, domain);
 
         // 设置到System Property，提供给注册中心元数据用
-        System.setProperty(PolarisConstant.POLARIS_ROOT_DOMIAN_NAME, rootDomain);
+        System.setProperty(PolarisConstant.POLARIS_DOMIAN_NAME, domain);
     }
 
-    private static void initializeZone() {
+    private static void initializeRegion() {
         try {
-            zone = initializeContext(PolarisEnvConstant.ZONE_NAME);
+            region = initializeContext(PolarisEnvConstant.REGION_NAME);
         } catch (Exception e) {
-            LOG.info("Initialize zone failed, use no zone as default");
+            LOG.info("Initialize region failed, use no region as default");
         }
 
-        if (StringUtils.isBlank(zone)) {
+        if (StringUtils.isBlank(region)) {
             // 通过三种方式之一未找到区域，把空字符串设置到System Property，代替到占位符
-            System.setProperty(PolarisEnvConstant.ZONE_NAME, StringUtils.EMPTY);
+            System.setProperty(PolarisEnvConstant.REGION_NAME, StringUtils.EMPTY);
         } else {
             // 通过三种方式之一找到区域，进行分隔符拼接，并设置到System Property，保证占位符生效
-            // 前缀方式，把分隔符放在zone前面；后缀方式，把分隔符放在zone后面
-            if (PolarisEnvConstant.ZONE_SEPARATE_PREFIX) {
-                System.setProperty(PolarisEnvConstant.ZONE_NAME, PolarisEnvConstant.ZONE_SEPARATE + zone);
+            // 前缀方式，把分隔符放在region前面；后缀方式，把分隔符放在region后面
+            if (PolarisEnvConstant.REGION_SEPARATE_PREFIX) {
+                System.setProperty(PolarisEnvConstant.REGION_NAME, PolarisEnvConstant.REGION_SEPARATE + region);
             } else {
-                System.setProperty(PolarisEnvConstant.ZONE_NAME, zone + PolarisEnvConstant.ZONE_SEPARATE);
+                System.setProperty(PolarisEnvConstant.REGION_NAME, region + PolarisEnvConstant.REGION_SEPARATE);
             }
 
             // 设置到System Property，提供给注册中心元数据用
-            System.setProperty(PolarisConstant.POLARIS_ZONE_NAME, zone);
+            System.setProperty(PolarisConstant.POLARIS_REGION_NAME, region);
         }
     }
 
@@ -126,12 +126,12 @@ public class PolarisEnvProvider {
         return value;
     }
 
-    public static String getRootDomain() {
-        return rootDomain;
+    public static String getDomain() {
+        return domain;
     }
 
-    public static String getZone() {
-        return zone;
+    public static String getRegion() {
+        return region;
     }
 
     public static String getEnv() {
