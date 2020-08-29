@@ -570,9 +570,9 @@ You can select one of following polaris protector components, such as Sentinel
 | 环境 | 域名或者IP地址 | 配置文件 | 示例 |
 | --- | --- | --- | --- |
 | DEV | 默认为127.0.0.1:port | `组件名`-dev<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>127.0.0.1:8848 |
-| FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat`${zone}`.`${root.domain}` |
-| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat`${zone}`.`${root.domain}` |
-| PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro`${zone}`.`${root.domain}` |
+| FAT | `组件名`-fat-`可选的区域名`.`根域` | `组件名`-fat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-fat`${region}`.`${root.domain}` |
+| UAT | `组件名`-uat-`可选的区域名`.`根域` | `组件名`-uat<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-uat`${region}`.`${root.domain}` |
+| PRO | `组件名`-pro-`可选的区域名`.`根域` | `组件名`-pro<br>.properties | spring.cloud.nacos.discovery.server-addr=<br>nacos-pro`${region}`.`${root.domain}` |
 | COMMON | 无需配置 | `组件名`-common<br>.properties | 无需配置 |
 
 ① 环境（env）号
@@ -581,10 +581,10 @@ You can select one of following polaris protector components, such as Sentinel
 - 除了四个环境的配置文件外，还存在一个公共配置文件，其作用是设置全局的不会随环境改变的默认配置，共享给四个环境，避免重复冗余配置。公共配置和环境配置，其关系是全局配置和局部配置的关系，如果同一个配置在公共配置文件和环境配置文件里都存在，环境配置文件优先
 - 所有配置文件的位置在各个组件的src/main/resources/META-INF目录下，其中COMMON配置文件可以缺失，其它四个环境的配置文件不可缺失
 
-② 区域（zone）名
+② 区域（region）名
 - 定义为用来区别多活、多云和SET单元化的域名的后缀或者前缀标识
 - 域名表达式为`组件名`-`环境号`-`可选的区域名`.`根域`。使用者可以改变前缀或者后缀的组装形式和顺序，前缀中的“-”可以用其它符号来代替
-- 实现占位处理，占位格式为`${zone}`。如果区域（zone）名不设置，那么变成“组件名-环境号.根域”的简单格式
+- 实现占位处理，占位格式为`${region}`。如果区域（region）名不设置，那么变成“组件名-环境号.根域”的简单格式
 - 通过DevOps来实现环境号和区域名的指定（下文“域名和环境设置”会讲到）
 - 如果使用者没有条件实现多环境的域名支持，那么采用IP地址也可以
 
@@ -604,11 +604,11 @@ env=dev
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为dev
 
-② 通过DevOps进行区域（zone）名设置
-- 通过System Property或者-Dzone=`区域名`，进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
+② 通过DevOps进行区域（region）名设置
+- 通过System Property或者-Dregion=`区域名`，进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
 - 通过server.properties进行设置
 ```
-zone=SET-sha
+region=SET-sha
 ```
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为空，即非多活或者多云的环境
@@ -638,23 +638,23 @@ public class PolarisEnvConstant {
     public static final String ROOT_DOMAIN_VALUE = "nepxion.com";
 
     // 区域名相关定义。包含三种传值方式，优先级至上而下
-    // 1. 通过-Dzone=sha或者System.setProperty("zone", "sha")方式进行传入
-    // 2. 通过大写的ZONE，其值为sha的System ENV方式进行传入
-    // 3. 通过DevOps在server.properties定义zone=sha方式进行传入
+    // 1. 通过-Dregion=sha或者System.setProperty("region", "sha")方式进行传入
+    // 2. 通过大写的REGION，其值为sha的System ENV方式进行传入
+    // 3. 通过DevOps在server.properties定义region=sha方式进行传入
 
     // 区域名分隔符相关定义
-    // ZONE_SEPARATE表示区域在域名中的分隔符
-    // ZONE_SEPARATE_PREFIX表示区域在域名中的分隔符是否在前面还是后面
-    // 包含两种表现形式。特别注意：zone占位符前后切记不要出现分隔符，因为框架会自动去适配
-    // 1. 例如，原始格式为nacos-fat${zone}.${root.domain}
-    //    1.1 在zone存在的情况下，会解析成nacos-fat-sha.nepxion.com
-    //    1.2 在zone缺失的情况下，会解析成nacos-fat.nepxion.com
-    // 2. 例如，原始格式为${zone}fat-nacos.${root.domain}
-    //    2.1 在zone存在的情况下，会解析成sha-fat-nacos.nepxion.com
-    //    2.2 在zone缺失的情况下，会解析成fat-nacos.nepxion.com
-    public static final String ZONE_NAME = "zone";
-    public static final String ZONE_SEPARATE = "-";
-    public static final boolean ZONE_SEPARATE_PREFIX = true;
+    // REGION_SEPARATE表示区域在域名中的分隔符
+    // REGION_SEPARATE_PREFIX表示区域在域名中的分隔符是否在前面还是后面
+    // 包含两种表现形式。特别注意：region占位符前后切记不要出现分隔符，因为框架会自动去适配
+    // 1. 例如，原始格式为nacos-fat${region}.${root.domain}
+    //    1.1 在region存在的情况下，会解析成nacos-fat-sha.nepxion.com
+    //    1.2 在region缺失的情况下，会解析成nacos-fat.nepxion.com
+    // 2. 例如，原始格式为${region}fat-nacos.${root.domain}
+    //    2.1 在region存在的情况下，会解析成sha-fat-nacos.nepxion.com
+    //    2.2 在region缺失的情况下，会解析成fat-nacos.nepxion.com
+    public static final String REGION_NAME = "region";
+    public static final String REGION_SEPARATE = "-";
+    public static final boolean REGION_SEPARATE_PREFIX = true;
 
     // 环境名相关定义。包含三种传值方式，优先级至上而下。以开发环境为例
     // 1. 通过-Denv=dev或者System.setProperty("env", "dev")方式进行传入
@@ -674,7 +674,7 @@ public class PolarisEnvConstant {
 }
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 特别注意：zone占位符前后切记不要出现分隔符
+![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 特别注意：region占位符前后切记不要出现分隔符
 
 ### 注解切换
 当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下四个注解进行切换
