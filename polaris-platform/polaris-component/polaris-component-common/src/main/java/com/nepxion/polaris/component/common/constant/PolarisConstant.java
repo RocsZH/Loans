@@ -9,7 +9,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_VERSION_NAME = "polaris.version";
     public static final String POLARIS_VERSION_VALUE = "1.0.0";
 
-    public static final String POLARIS_DOMIAN_NAME = "polaris.domain";
+    public static final String POLARIS_DOMAIN_NAME = "polaris.domain";
     public static final String POLARIS_REGION_NAME = "polaris.region";
     public static final String POLARIS_ENV_NAME = "polaris.env";
 

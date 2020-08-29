@@ -61,7 +61,7 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         descriptions.add(new Description(PolarisConstant.POLARIS_VERSION_NAME + ":", PolarisConstant.POLARIS_VERSION_VALUE, 0, 1));
         String domain = PolarisEnvProvider.getDomain();
         if (StringUtils.isNotEmpty(domain)) {
-            descriptions.add(new Description(PolarisConstant.POLARIS_DOMIAN_NAME + ":", domain, 0, 1));
+            descriptions.add(new Description(PolarisConstant.POLARIS_DOMAIN_NAME + ":", domain, 0, 1));
         }
         String region = PolarisEnvProvider.getRegion();
         if (StringUtils.isNotEmpty(region)) {

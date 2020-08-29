@@ -5,8 +5,8 @@ public class PolarisEnvConstant {
     // 1. 通过-Ddomain=nepxion.com或者System.setProperty("domain", "nepxion.com")方式进行传入
     // 2. 通过大写的DOMAIN，其值为nepxion.com的System ENV方式进行传入
     // 3. 通过DevOps在server.properties定义domain=nepxion.com方式进行传入
-    public static final String DOMIAN_NAME = "domain";
-    public static final String DOMIAN_VALUE = "nepxion.com";
+    public static final String DOMAIN_NAME = "domain";
+    public static final String DOMAIN_VALUE = "nepxion.com";
 
     // 区域名相关定义。包含三种传值方式，优先级至上而下
     // 1. 通过-Dregion=sha或者System.setProperty("region", "sha")方式进行传入

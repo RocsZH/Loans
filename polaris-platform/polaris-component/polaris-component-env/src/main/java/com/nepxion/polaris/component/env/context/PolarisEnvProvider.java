@@ -31,21 +31,21 @@ public class PolarisEnvProvider {
 
     private static void initializeDomain() {
         try {
-            domain = initializeContext(PolarisEnvConstant.DOMIAN_NAME);
+            domain = initializeContext(PolarisEnvConstant.DOMAIN_NAME);
         } catch (Exception e) {
-            LOG.info("Initialize domain failed, use domain={} as default", PolarisEnvConstant.DOMIAN_VALUE);
+            LOG.info("Initialize domain failed, use domain={} as default", PolarisEnvConstant.DOMAIN_VALUE);
         }
 
         if (StringUtils.isBlank(domain)) {
             // 通过三种方式之一未找到根域值，默认取预定义的静态变量值
-            domain = PolarisEnvConstant.DOMIAN_VALUE;
+            domain = PolarisEnvConstant.DOMAIN_VALUE;
         }
 
         // 设置到System Property，保证占位符生效。根域名值不可空缺的
-        System.setProperty(PolarisEnvConstant.DOMIAN_NAME, domain);
+        System.setProperty(PolarisEnvConstant.DOMAIN_NAME, domain);
 
         // 设置到System Property，提供给注册中心元数据用
-        System.setProperty(PolarisConstant.POLARIS_DOMIAN_NAME, domain);
+        System.setProperty(PolarisConstant.POLARIS_DOMAIN_NAME, domain);
     }
 
     private static void initializeRegion() {
