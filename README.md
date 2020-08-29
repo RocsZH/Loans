@@ -605,10 +605,10 @@ env=dev
 - 上述设置都未执行，则缺省为dev
 
 ② 通过DevOps进行区域（region）名设置
-- 通过System Property或者-Dregion=`区域名`，进行设置。例如，-Denv=SET-sha，SET表示单元名，sha表示双活或者多活的机房名，两者可以独立配置其中之一，也可以同时并存
+- 通过System Property或者-Dregion=`区域名`，进行设置。例如，-Dregion=sh-pd，sh-pd表示双活或者多活的机房名（上海浦东机房），两者可以独立配置其中之一，也可以同时并存
 - 通过server.properties进行设置
 ```
-region=SET-sha
+region=sh-pd
 ```
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为空，即非多活或者多云的环境
@@ -617,7 +617,7 @@ region=SET-sha
 - 通过System Property或者-Ddomain=`根域名`，进行设置
 - 通过server.properties进行设置
 ```
-domain=nepxion.com
+domain=aliyun.com
 ```
 - 通过System Env环境变量方式进行设置
 - 上述设置都未执行，则缺省为PolarisEnvConstant类里的DOMAIN_VALUE静态变量
@@ -638,19 +638,19 @@ public class PolarisEnvConstant {
     public static final String DOMAIN_VALUE = "nepxion.com";
 
     // 区域名相关定义。包含三种传值方式，优先级至上而下
-    // 1. 通过-Dregion=sha或者System.setProperty("region", "sha")方式进行传入
-    // 2. 通过大写的REGION，其值为sha的System ENV方式进行传入
-    // 3. 通过DevOps在server.properties定义region=sha方式进行传入
+    // 1. 通过-Dregion=sh-pd或者System.setProperty("region", "sh-pd")方式进行传入
+    // 2. 通过大写的REGION，其值为sh-pd的System ENV方式进行传入
+    // 3. 通过DevOps在server.properties定义region=sh-pd方式进行传入
 
     // 区域名分隔符相关定义
     // REGION_SEPARATE表示区域在域名中的分隔符
     // REGION_SEPARATE_PREFIX表示区域在域名中的分隔符是否在前面还是后面
     // 包含两种表现形式。特别注意：region占位符前后切记不要出现分隔符，因为框架会自动去适配
     // 1. 例如，原始格式为nacos-fat${region}.${domain}
-    //    1.1 在region存在的情况下，会解析成nacos-fat-sha.nepxion.com
+    //    1.1 在region存在的情况下，会解析成nacos-fat-sh-pd.nepxion.com
     //    1.2 在region缺失的情况下，会解析成nacos-fat.nepxion.com
     // 2. 例如，原始格式为${region}fat-nacos.${domain}
-    //    2.1 在region存在的情况下，会解析成sha-fat-nacos.nepxion.com
+    //    2.1 在region存在的情况下，会解析成sh-pd-fat-nacos.nepxion.com
     //    2.2 在region缺失的情况下，会解析成fat-nacos.nepxion.com
     public static final String REGION_NAME = "region";
     public static final String REGION_SEPARATE = "-";
