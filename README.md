@@ -625,7 +625,12 @@ domain=aliyun.com
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 读取优先级由高到低，如下
 - System.getProperty
 - System.getenv
-- server.properties。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties
+- server.properties。Windows环境下该文件路径为C:/opt/settings/server.properties，Linux环境下该文件路径为/opt/settings/server.properties。示例内容如下
+```
+domain=aliyun.com
+region=sh-pd
+env=pro
+```
 
 ④ 通过PolarisEnvConstant类进行设置。请参考里面的中文注释
 ```java
