@@ -810,7 +810,7 @@ public class PolarisApplication {
 #### Spring-Boot应用启动
 跟原生的Spring Boot应用程序启动方式一致。在IDE中，启动四个应用服务和两个网关服务，控制平台服务，如下 
 
-| 类名 | 微服务 | 服务端口 | 版本 | 区域 | 子环境 |
+| 类名 | 微服务 | 服务端口 | 版本 | 区域 | 环境 |
 | --- | --- | --- | --- | --- | -- | 
 | PolarisServiceA1.java | A1 | 3001 | 1.0 | dev | env1 |
 | PolarisServiceA2.java | A2 | 3002 | 1.1 | qa | common |
@@ -875,7 +875,7 @@ PolarisGateway（异步网关）:
 ```
 
 #### Discovery框架启动参数
-灰度蓝绿发布和子环境隔离路由的元数据注册的启动参数如下，分别对应灰度蓝绿版本号，区域号，子环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
+灰度蓝绿发布和环境隔离路由的元数据注册的启动参数如下，分别对应灰度蓝绿版本号，区域号，环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
 ```
 -Dmetadata.version=20200818-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
 ```
