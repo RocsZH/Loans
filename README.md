@@ -37,7 +37,7 @@
 - 对于熟练级玩家，参考[指南示例精进版](https://github.com/Nepxion/DiscoveryGuide/tree/master)，分支为master。除上述《极简版》功能外，涉及到指南篇里的绝大多数高级功能
 - 对于骨灰级玩家，参考[指南示例高级版](https://github.com/Nepxion/DiscoveryGuide/tree/premium)，分支为premium。除上述《精进版》功能外，涉及到指南篇里的ActiveMQ、MongoDB、RabbitMQ、Redis、RocketMQ、MySQL等高级调用链和灰度调用链的整合
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 两套框架联合架构图
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 联合架构图
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/Architecture.jpg)
 
