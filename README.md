@@ -183,6 +183,8 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 
 ## 工程架构
 
+![](http://nepxion.gitee.io/docs/polaris-doc/Layer.jpg)
+
 ### 工程清单
 工程集成了众多的中间件，清单如下
 
