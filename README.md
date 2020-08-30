@@ -45,6 +45,10 @@
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/Topology.jpg)
 
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 分层架构图
+
+![](http://nepxion.gitee.io/docs/polaris-doc/Layer.jpg)
+
 ## 前言
 ① 云原生（Cloud Native）定义
 
@@ -182,8 +186,6 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 [文档主页](https://gitee.com/Nepxion/Docs/tree/master/web-doc)
 
 ## 工程架构
-
-![](http://nepxion.gitee.io/docs/polaris-doc/Layer.jpg)
 
 ### 工程清单
 工程集成了众多的中间件，清单如下
