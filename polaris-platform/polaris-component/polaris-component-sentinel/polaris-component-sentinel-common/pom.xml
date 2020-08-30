@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-config-sentinel</artifactId>
+            <artifactId>polaris-module-starter-config-sentinel</artifactId>
             <version>${project.version}</version>
         </dependency>
 

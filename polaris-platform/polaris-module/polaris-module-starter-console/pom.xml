@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <artifactId>polaris-framework-starter-test</artifactId>
-    <name>Nepxion Polaris Framework Starter Test</name>
+    <artifactId>polaris-module-starter-console</artifactId>
+    <name>Nepxion Polaris Module Starter Console</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>com.nepxion.polaris</groupId>
-        <artifactId>polaris-framework</artifactId>
+        <artifactId>polaris-module</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <dependencies>
-        <!-- 旗标核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-banner</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <!-- 测试核心模块 -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-test</artifactId>
+            <artifactId>polaris-component-console-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

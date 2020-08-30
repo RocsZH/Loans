@@ -13,52 +13,52 @@
     </parent>
 
     <dependencies>
-        <!-- 旗标核心组件 -->
+        <!-- 旗标核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-banner</artifactId>
+            <artifactId>polaris-module-starter-banner</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 注册发现核心组件 -->
+        <!-- 注册发现核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-discovery</artifactId>
+            <artifactId>polaris-module-starter-discovery</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 配置核心组件 -->
+        <!-- 配置核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-config</artifactId>
+            <artifactId>polaris-module-starter-config</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 调用链核心组件 -->
+        <!-- 调用链核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-tracing</artifactId>
+            <artifactId>polaris-module-starter-tracing</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 指标核心组件 -->
+        <!-- 指标核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-metrics</artifactId>
+            <artifactId>polaris-module-starter-metrics</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 防护核心组件 -->
+        <!-- 防护核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-protector-gateway</artifactId>
+            <artifactId>polaris-module-starter-protector-gateway</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 灰度蓝绿核心组件 -->
+        <!-- 灰度蓝绿核心模块 -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-core-starter-gray-gateway</artifactId>
+            <artifactId>polaris-module-starter-gray-gateway</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

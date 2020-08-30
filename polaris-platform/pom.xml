@@ -12,6 +12,7 @@
 
     <modules>
         <module>polaris-component</module>
+        <module>polaris-module</module>
         <module>polaris-framework</module>
     </modules>
 
