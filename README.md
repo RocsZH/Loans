@@ -49,6 +49,14 @@
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/Layer.jpg)
 
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 域网关实施图
+
+![](http://nepxion.gitee.io/docs/polaris-doc/DomainEnable.jpg)
+
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 非域网关实施图
+
+![](http://nepxion.gitee.io/docs/polaris-doc/DomainDisable.jpg)
+
 ## 前言
 ① 云原生（Cloud Native）定义
 
