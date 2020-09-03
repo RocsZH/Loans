@@ -987,6 +987,9 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
     - 区域匹配灰度路由
     - 区域权重灰度路由
 - 多IP和端口灰度路由
+- 服务下线实时性的流量绝对无损的灰度路由
+- 动态变更元数据的灰度路由策略
+- 全局订阅式的灰度路由策略
 - 环境隔离
     - 环境隔离
     - 环境路由
