@@ -157,8 +157,8 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         - [Skywalking-Agent启动](#Skywalking-Agent启动)
         - [Polaris-Agent启动](#Polaris-Agent启动)
     - [启动参数](#启动参数)
-        - [Skywalking-Agent和Polaris-Agent启动启动参数](#Skywalking-Agent和Polaris-Agent启动启动参数)
-        - [Nepxion-Discovery框架启动参数](#Nepxion-Discovery框架启动参数)
+        - [Agent启动参数](#Agent启动参数)
+        - [Nepxion-Discovery启动参数](#Nepxion-Discovery启动参数)
     - [验证结果](#验证结果)
         - [Postman方式验证](#Postman方式验证)
         - [自动化测试方式验证](#自动化测试方式验证)
@@ -882,7 +882,7 @@ polaris-platform\polaris-component\polaris-component-agent\polaris-component-age
 
 ### 启动参数
 
-#### Skywalking-Agent和Polaris-Agent启动启动参数
+#### Agent启动参数
 Polaris应用完整启动参数如下
 ```
 PolarisServiceA（同步服务）:
@@ -901,7 +901,7 @@ PolarisGateway（异步网关）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-gateway -Dpolaris.skywalking.agent.version=1.0.0
 ```
 
-#### Nepxion-Discovery框架启动参数
+#### Nepxion-Discovery启动参数
 灰度蓝绿发布和环境隔离路由的元数据注册的启动参数如下，分别对应灰度蓝绿版本号，区域号，环境号，最后一项是启动的时候是否显示旗标为彩色，可以忽略
 ```
 -Dmetadata.version=20200818-001 -Dmetadata.region=region1 -Dmetadata.env=env1 -Dnepxion.banner.shown.ansi.mode=true
