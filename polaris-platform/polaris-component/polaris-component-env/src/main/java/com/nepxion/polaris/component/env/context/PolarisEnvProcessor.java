@@ -134,7 +134,7 @@ public abstract class PolarisEnvProcessor {
         return PolarisEnvProvider.getAppId();
     }
 
-    public String getSpringApplicationName(ConfigurableEnvironment environment) {
+    public String getApplicationName(ConfigurableEnvironment environment) {
         return environment.getProperty(PolarisConstant.SPRING_APPLICATION_NAME, String.class, PolarisConstant.UNKNOWN);
     }
 
@@ -144,7 +144,7 @@ public abstract class PolarisEnvProcessor {
             return appId;
         }
 
-        return getSpringApplicationName(environment);
+        return getApplicationName(environment);
     }
 
     public String getServerPropertiesPath() {
