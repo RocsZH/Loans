@@ -990,9 +990,13 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 - 多IP和端口灰度路由
 - 服务下线实时性的流量绝对无损的灰度路由
 - 全局订阅式的灰度路由策略
-- 环境隔离
+- 全局订阅式的灰度路由策略
+- 环境隔离和路由
     - 环境隔离
     - 环境路由
+- 可用区亲和性隔离和路由
+    - 可用区亲和性隔离
+    - 可用区亲和性路由
 - 基于Sentinel-LimitApp扩展的防护机制
 - 基于组的服务调用隔离
 
