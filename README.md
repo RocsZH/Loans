@@ -850,15 +850,15 @@ public class PolarisApplication {
 #### Spring-Boot应用启动
 跟原生的Spring Boot应用程序启动方式一致。在IDE中，启动四个应用服务和两个网关服务，控制平台服务，如下 
 
-| 类名 | 微服务 | 服务端口 | 版本 | 区域 | 环境 |
-| --- | --- | --- | --- | --- | -- | 
-| PolarisServiceA1.java | A1 | 3001 | 1.0 | dev | env1 |
-| PolarisServiceA2.java | A2 | 3002 | 1.1 | qa | common |
-| PolarisServiceB1.java | B1 | 4001 | 1.0 | qa | env1 |
-| PolarisServiceB2.java | B2 | 4002 | 1.1 | dev | common | 
-| PolarisGateway.java | Gateway | 5001 | 1.0 | 无 | 无 |
-| PolarisZuul.java | Zuul | 5002 | 1.0 | 无 | 无 |
-| PolarisConsole.java | Console | 6001 | 1.0 | 无 | 无 |
+| 类名 | 微服务 | 服务端口 | 版本 | 区域 | 环境 | 可用区
+| --- | --- | --- | --- | --- | -- | -- | 
+| PolarisServiceA1.java | A1 | 3001 | 1.0 | dev | env1 | zone1 |
+| PolarisServiceA2.java | A2 | 3002 | 1.1 | qa | common | zone2 |
+| PolarisServiceB1.java | B1 | 4001 | 1.0 | qa | env1 | zone1 |
+| PolarisServiceB2.java | B2 | 4002 | 1.1 | dev | common | zone2 |
+| PolarisGateway.java | Gateway | 5001 | 1.0 | 无 | 无 | 无 |
+| PolarisZuul.java | Zuul | 5002 | 1.0 | 无 | 无 | 无 |
+| PolarisConsole.java | Console | 6001 | 1.0 | 无 | 无 | 无 |
 
 #### Skywalking-Agent启动
 获取Skywalking Agent，放置在指定目录（例如，C:/opt/apache-skywalking-apm-bin/agent/），通过-javaagent命令启动
