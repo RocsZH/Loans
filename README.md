@@ -923,7 +923,7 @@ PolarisGateway（异步网关）:
 ### 验证结果
 
 #### Postman方式验证
-- 导入Postman的测试脚本，[脚本地址](https://github.com/Nepxion/PolarisGuide/raw/master/postman.json)
+- 导入Postman的测试脚本postman.json（位于根目录下）
 - 执行“Polaris网关测试用例”，观察输出结果，5002端口对应的是Zuul网关，5001端口对应的是Spring Cloud Gateway网关
 - 执行“Polaris网关全链路侦测测试用例”，观察输出结果，5002端口对应的是Zuul网关，5001端口对应的是Spring Cloud Gateway网关
 
