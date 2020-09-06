@@ -1030,6 +1030,7 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 - 全链路Header传递
 - 全链路侦测
 - 全链路服务侧注解
+- 全链路服务侧API权限
 - 异步跨线程Agent。主要包括
     - 插件获取
     - 插件使用
