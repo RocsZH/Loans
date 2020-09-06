@@ -305,17 +305,19 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-module-starter-console | Polaris控制台组件的聚合和组装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-module-starter-test | Polaris测试组件的聚合和组装 |
 | &nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_south.png"> polaris-framework | Polaris框架目录 |
-| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-console | Polaris框架对控制台的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-api | Polaris框架对微服务API二方包的封装，主要是对Feign的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-service | Polaris框架对微服务的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-gateway | Polaris框架对Spring Cloud Gateway网关的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-zuul | Polaris框架对Zuul网关的封装 |
-| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-service | Polaris框架对微服务的封装 |
+| &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-console | Polaris框架对控制台的封装 |
 | &nbsp;&nbsp;&nbsp;&nbsp;<img src="http://nepxion.gitee.io/docs/icon-doc/direction_west.png"> polaris-framework-starter-test | Polaris框架对测试的封装 |
 
 ### 架构核心
-架构核心位于polaris-framework下，包括如下5个顶级框架层
+架构核心位于polaris-framework下，包含如下6个顶级框架层
+- polaris-framework-starter-api
+- polaris-framework-starter-service
 - polaris-framework-starter-gateway
 - polaris-framework-starter-zuul
-- polaris-framework-starter-service
 - polaris-framework-starter-console
 - polaris-framework-starter-test
 
@@ -738,7 +740,7 @@ public class PolarisEnvConstant {
 ```
 
 #### 引入Jar
-① 微服务引入
+① 微服务API二方包引入
 ```xml
 <dependency>
     <groupId>com.nepxion.polaris</groupId>
@@ -747,7 +749,16 @@ public class PolarisEnvConstant {
 </dependency>
 ```
 
-② Spring Cloud Gateway网关引入
+② 微服务引入
+```xml
+<dependency>
+    <groupId>com.nepxion.polaris</groupId>
+    <artifactId>polaris-framework-starter-service</artifactId>
+    <version>${polaris.version}</version>
+</dependency>
+```
+
+③ Spring Cloud Gateway网关引入
 ```xml
 <dependency>
     <groupId>com.nepxion.polaris</groupId>
@@ -756,7 +767,7 @@ public class PolarisEnvConstant {
 </dependency>
 ```
 
-③ Zuul网关引入
+④ Zuul网关引入
 ```xml
 <dependency>
     <groupId>com.nepxion.polaris</groupId>
@@ -765,7 +776,7 @@ public class PolarisEnvConstant {
 </dependency>
 ```
 
-④ 控制台引入
+⑤ 控制台引入
 ```xml
 <dependency>
     <groupId>com.nepxion.polaris</groupId>
@@ -774,7 +785,7 @@ public class PolarisEnvConstant {
 </dependency>
 ```
 
-⑤ 测试端引入
+⑥ 测试端引入
 ```xml
 <dependency>
     <groupId>com.nepxion.polaris</groupId>
