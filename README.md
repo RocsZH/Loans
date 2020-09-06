@@ -1060,6 +1060,8 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
 ### 灰度发布和路由的实现方式
 ![](http://nepxion.gitee.io/docs/discovery-doc/Difference.jpg)
 
+![](http://nepxion.gitee.io/docs/discovery-doc/Govern.jpg)
+
 ① 基于网关为触点的Header传递的全链路灰度路由，适用于网关前置部署方式的企业。域网关部署模式下，最适用于该方式；非域网关部署模式下，开启并行灰度路由下的版本优选策略
 
 ② 基于全局订阅方式的全链路灰度发布，适用于网关部署方式比较弱化的企业
