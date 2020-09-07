@@ -710,7 +710,7 @@ public class PolarisEnvConstant {
 
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 特别注意：region占位符前后切记不要出现分隔符
 
-![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 参考[Polaris环境演示视频](http://nepxion.gitee.io/docs/web-doc/Polaris%E3%80%90%E5%8C%97%E6%9E%81%E6%98%9F%E3%80%91%E7%8E%AF%E5%A2%83%E6%BC%94%E7%A4%BA.wmv)
+![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 参考[Polaris环境演示视频](http://nepxion.gitee.io/docs/polaris-doc/Polaris.wmv)
 
 ### 注解切换
 当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下四个注解进行切换
