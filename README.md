@@ -1111,6 +1111,7 @@ mvn clean install -U -DskipTests
     </executions>
 </plugin>
 ```
+
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 严重提醒，相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度
 ```xml
 <layers>
@@ -1209,12 +1210,15 @@ docker run %RUN_MODE% -e JAVA_OPTS="-Dspring.cloud.nacos.discovery.server-addr=%
 ⑥  Docker运行效果
 
 - Docker Desktop
+
 ![](http://nepxion.gitee.io/docs/polaris-doc/DockerDesktop.jpg)
 
 - Docker Windows
+
 ![](http://nepxion.gitee.io/docs/polaris-doc/DockerWindows.jpg)
 
 - Docker Linux
+
 ![](http://nepxion.gitee.io/docs/polaris-doc/DockerLinux.jpg)
 
 ⑦ 官方部署Docker文档
