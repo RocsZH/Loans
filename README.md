@@ -710,7 +710,7 @@ public class PolarisEnvConstant {
 
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 特别注意：region占位符前后切记不要出现分隔符
 
-![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 参考[Polaris环境演示视频](http://nepxion.gitee.io/docs/polaris-doc/Polaris.wmv)
+![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 参考[Polaris环境演示视频](http://nepxion.gitee.io/videos/polaris-video/PolarisEnv.wmv)
 
 ### 注解切换
 当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下四个注解进行切换
@@ -1112,14 +1112,14 @@ mvn clean install -U -DskipTests
 </plugin>
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/information.png) 严重提醒，相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度
+![](http://nepxion.gitee.io/docs/icon-doc/information.png) 重要提醒，相对旧版本的spring-boot-maven-plugin，新版本增加了如下配置参数，用来支持镜像Layer分层，加快打包部署的速度
 ```xml
 <layers>
     <enabled>true</enabled>
 </layers>
 ```
 
-![](http://nepxion.gitee.io/docs/icon-doc/error.png) 严重提醒，旧版的如下参数必须删除！否则无法创建镜像分层
+![](http://nepxion.gitee.io/docs/icon-doc/error.png) 重要提醒，旧版的如下参数必须删除！否则无法创建镜像分层
 ```xml
 <configuration>
     <executable>true</executable>
