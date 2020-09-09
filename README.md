@@ -1000,6 +1000,7 @@ com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
     - 负载均衡策略类触发路由
     - 并行路由下的版本优选路由
     - 异步场景下的触发路由
+- 基于动态变更元数据的全链路灰度路由
 - 基于全局订阅式的全链路灰度路由
 - 基于服务下线实时性的流量绝对无损策略。支持全局订阅和Header全链路传递两种方式，主要包括
     - 通过全局唯一ID进行屏蔽。适用于Docker和Kubernetes上IP地址不确定的场景
