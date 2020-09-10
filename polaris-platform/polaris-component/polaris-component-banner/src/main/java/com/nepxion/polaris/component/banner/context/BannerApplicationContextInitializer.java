@@ -47,6 +47,7 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         List<Description> descriptions = new ArrayList<Description>();
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_NAME + ":", applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_NAME), 0, 1));
         descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_TYPE + ":", StringUtils.isNotEmpty(applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE)) ? applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE) : PolarisConstant.APPLICATION, 0, 1));
+        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_UUID + ":", StringUtils.isNotEmpty(applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_UUID)) ? applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_UUID) : PolarisConstant.UNKNOWN, 0, 1));
         String appId = PolarisEnvProvider.getAppId();
         if (StringUtils.isNotEmpty(appId)) {
             descriptions.add(new Description(PolarisConstant.APP_ID + ":", appId, 0, 1));
@@ -106,6 +107,6 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
 
     @Override
     public int getOrder() {
-        return Ordered.HIGHEST_PRECEDENCE;
+        return Ordered.HIGHEST_PRECEDENCE + 1;
     }
 }
