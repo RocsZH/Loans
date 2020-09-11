@@ -14,11 +14,11 @@
 
     <dependencies>
         <!-- You can select one of following polaris metrics components, such as Micrometer -->
-        <dependency>
+        <!-- <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>polaris-component-metrics-starter-micrometer</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency> -->
 
         <!-- <dependency>
             <groupId>${project.groupId}</groupId>
