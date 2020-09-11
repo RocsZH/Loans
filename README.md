@@ -729,7 +729,7 @@ public class PolarisEnvConstant {
 ```xml
 <dependency>
     <groupId>com.nepxion.polaris</groupId>
-    <artifactId>polaris-framework-starter-service</artifactId>
+    <artifactId>polaris-framework-starter-api</artifactId>
     <version>${polaris.version}</version>
 </dependency>
 ```
