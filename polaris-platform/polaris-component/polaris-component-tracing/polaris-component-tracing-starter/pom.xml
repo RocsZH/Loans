@@ -28,7 +28,7 @@
 
         <!-- <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-tracing-starter-jaeger-starter</artifactId>
+            <artifactId>polaris-component-tracing-starter-jaeger</artifactId>
             <version>${project.version}</version>
         </dependency>
 
