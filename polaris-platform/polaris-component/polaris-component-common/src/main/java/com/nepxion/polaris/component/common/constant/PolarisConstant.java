@@ -71,7 +71,6 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String DOCS_NAME = "polaris.docs";
     public static final String DOCS_VALUE = "http://www.nepxion.com";
 
-    public static final String APPLICATION = "application";
     public static final String COMMON = "common";
 
     public static final String BIZ_TRACE_ID = "biz-trace-id";
