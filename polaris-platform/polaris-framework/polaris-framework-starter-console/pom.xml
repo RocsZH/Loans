@@ -27,6 +27,13 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 配置核心组件-->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-config-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- 控制台核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
