@@ -13,31 +13,31 @@
     </parent>
 
     <dependencies>
-        <!-- 旗标核心模块 -->
+        <!-- 旗标核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-banner</artifactId>
+            <artifactId>polaris-component-banner-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 注册发现核心模块 -->
+        <!-- 注册发现核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-discovery</artifactId>
+            <artifactId>polaris-component-discovery-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 配置核心模块 -->
+        <!-- 配置核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-config</artifactId>
+            <artifactId>polaris-component-config-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 控制台核心模块 -->
+        <!-- 控制台核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-console</artifactId>
+            <artifactId>polaris-component-console-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

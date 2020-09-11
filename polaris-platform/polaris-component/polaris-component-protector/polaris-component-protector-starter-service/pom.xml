@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>polaris-component-protector-starter-service</artifactId>
+    <name>Nepxion Polaris Component Protector Starter Service</name>
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.nepxion.polaris</groupId>
+        <artifactId>polaris-component-protector</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <dependencies>
+        <!-- You can select one of following polaris protector components, such as Sentinel -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-protector-starter-sentinel-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>polaris-component-protector-starter-hystrix</artifactId>
+            <version>${project.version}</version>
+        </dependency> -->
+    </dependencies>
+</project>

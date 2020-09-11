@@ -13,9 +13,11 @@
     </parent>
 
     <dependencies>
+        <!-- You can select one of following polaris config components, such as Apollo -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-config-console</artifactId>
+            <!-- <artifactId>polaris-component-config-starter-apollo-console</artifactId> -->
+            <artifactId>polaris-component-config-starter-nacos-console</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

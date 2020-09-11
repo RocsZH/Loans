@@ -13,52 +13,52 @@
     </parent>
 
     <dependencies>
-        <!-- 旗标核心模块 -->
+        <!-- 旗标核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-banner</artifactId>
+            <artifactId>polaris-component-banner-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 注册发现核心模块 -->
+        <!-- 注册发现核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-discovery</artifactId>
+            <artifactId>polaris-component-discovery-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 配置核心模块 -->
+        <!-- 配置核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-config</artifactId>
+            <artifactId>polaris-component-config-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 调用链核心模块 -->
+        <!-- 调用链核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-tracing</artifactId>
+            <artifactId>polaris-component-tracing-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 指标核心模块 -->
+        <!-- 指标核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-metrics</artifactId>
+            <artifactId>polaris-component-metrics-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 防护核心模块 -->
+        <!-- 防护核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-protector-service</artifactId>
+            <artifactId>polaris-component-protector-starter-service</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 灰度蓝绿核心模块 -->
+        <!-- 灰度蓝绿核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-gray-service</artifactId>
+            <artifactId>polaris-component-gray-starter-service</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

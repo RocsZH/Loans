@@ -50,7 +50,7 @@ public class PolarisConstant extends DiscoveryConstant {
     public static final String JAEGER_VERSION_VALUE = PolarisVersion.getVersion("io.jaegertracing.internal.JaegerTracer");
     public static final String JAEGER_SENTINEL_NAME = "jaeger-sentinel";
 
-    public static final String PROMETHEUS_MICROMETER_NAME = "prometheus-micrometer";
+    public static final String MICROMETER_NAME = "micrometer";
     public static final String MANAGEMENT_METRICS_TAGS_APPLICATION_NAME = "management.metrics.tags.application";
 
     public static final String SPRING_BOOT_ADMIN_NAME = "spring-boot-admin";

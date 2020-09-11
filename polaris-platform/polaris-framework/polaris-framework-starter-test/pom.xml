@@ -13,17 +13,17 @@
     </parent>
 
     <dependencies>
-        <!-- 旗标核心模块 -->
+        <!-- 旗标核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-banner</artifactId>
+            <artifactId>polaris-component-banner-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 测试核心模块 -->
+        <!-- 测试核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-test</artifactId>
+            <artifactId>polaris-component-test-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

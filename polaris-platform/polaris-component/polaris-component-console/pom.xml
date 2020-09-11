@@ -13,8 +13,6 @@
     </parent>
 
     <modules>
-        <module>polaris-component-console-config-starter-apollo</module>
-        <module>polaris-component-console-config-starter-nacos</module>
         <module>polaris-component-console-starter</module>
     </modules>
 </project>

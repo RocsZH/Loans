@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-component-gray-common</artifactId>
+            <artifactId>polaris-component-gray-starter-common</artifactId>
             <version>${project.version}</version>
         </dependency>
 

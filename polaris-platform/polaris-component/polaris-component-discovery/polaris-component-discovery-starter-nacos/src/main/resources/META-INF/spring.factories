@@ -1,0 +1,5 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.discovery.nacos.context.NacosEnvProcessor
+
+org.springframework.context.ApplicationContextInitializer=\
+com.nepxion.polaris.component.discovery.nacos.context.NacosMetadataApplicationContextInitializer

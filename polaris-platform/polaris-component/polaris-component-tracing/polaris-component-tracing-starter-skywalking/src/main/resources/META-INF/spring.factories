@@ -1,0 +1,5 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.nepxion.polaris.component.tracing.skywalking.context.SkywalkingEnvProcessor
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.nepxion.polaris.component.tracing.skywalking.configuration.SkywalkingAutoConfiguration

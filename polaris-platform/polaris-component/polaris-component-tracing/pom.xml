@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <artifactId>polaris-component-tracing</artifactId>
+    <name>Nepxion Polaris Component Tracing</name>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.nepxion.polaris</groupId>
+        <artifactId>polaris-component</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modules>
+        <module>polaris-component-tracing-starter</module>
+        <module>polaris-component-tracing-starter-jaeger</module>
+        <module>polaris-component-tracing-starter-jaeger-sentinel</module>
+        <module>polaris-component-tracing-starter-skywalking</module>
+        <module>polaris-component-tracing-starter-skywalking-sentinel</module>
+    </modules>
+</project>

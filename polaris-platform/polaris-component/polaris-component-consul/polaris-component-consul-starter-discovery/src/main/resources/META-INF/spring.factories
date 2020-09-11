@@ -1,5 +1,0 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-com.nepxion.polaris.component.consul.discovery.context.ConsulEnvProcessor
-
-org.springframework.context.ApplicationContextInitializer=\
-com.nepxion.polaris.component.consul.discovery.context.ConsulMetadataApplicationContextInitializer

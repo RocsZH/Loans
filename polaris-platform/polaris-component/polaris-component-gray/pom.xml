@@ -13,7 +13,7 @@
     </parent>
 
     <modules>
-        <module>polaris-component-gray-common</module>
+        <module>polaris-component-gray-starter-common</module>
         <module>polaris-component-gray-starter-gateway</module>
         <module>polaris-component-gray-starter-zuul</module>
         <module>polaris-component-gray-starter-service</module>
