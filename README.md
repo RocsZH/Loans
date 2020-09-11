@@ -165,8 +165,8 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         - [Postman方式验证](#Postman方式验证)
         - [自动化测试方式验证](#自动化测试方式验证)
     - [新增组件](#新增组件)
-        - [组件结构创建](#组件结构创建)
-        - [核心模块聚合](#核心模块聚合)
+        - [组件创建](#组件创建)
+        - [组件聚合](#组件聚合)
 - [Nepxion-Discovery核心功能](#Nepxion-Discovery核心功能)
     - [核心功能概括](#核心功能概括)
     - [灰度发布和路由的实现方式](#灰度发布和路由的实现方式)
@@ -916,24 +916,24 @@ PolarisGateway（异步网关）:
 - 运行PolarisTest，观察输出结果，自动化测试用例是否都通过
 
 ### 新增组件
-以创建一个调用链模块Pinpoint为例，请尽量严格遵守Polaris集成方式，保持风格统一
+以创建一个配置中心组件Etcd为例，请尽量严格遵守Polaris集成方式，保持风格统一
 
-#### 组件结构创建
+#### 组件创建
 ① 按照如下结构进行目录创建，并编写相应的pom.xml
 - polaris-component
-    - polaris-component-pinpoint
-        - polaris-component-pinpoint-starter
+    - polaris-component-config
+        - polaris-component-config-starter-etcd
 
 ② 在resource/META-INF下创建如下5个环境文件，并分别写入相应的配置。如何写入，请参照上文“域名和环境切换”章节
-- pinpoint-common.properties
-- pinpoint-dev.properties
-- pinpoint-fat.properties
-- pinpoint-pro.properties
-- pinpoint-uat.properties
+- etcd-config-common.properties
+- etcd-config-dev.properties
+- etcd-config-fat.properties
+- etcd-config-pro.properties
+- etcd-config-uat.properties
 
-③ 新建com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor类
+③ 新建com.nepxion.polaris.component.config.etcd.context.EtcdEnvProcessor类
 ```java
-public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
+public class EtcdEnvProcessor extends PolarisEnvPostProcessor {
     // 如果初始化环境的时候，如果还需要做其它处理，请继承process方法
     @Override
     public void process(ConfigurableEnvironment environment) throws Exception {
@@ -956,7 +956,7 @@ public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
     // 返回环境的名称，其值对应为环境文件的前缀
     @Override
     public String getName() {
-        return PolarisConstant.PINPOINT_NAME;
+        return "etcd-config";
     }
 }
 ```
@@ -964,15 +964,13 @@ public class PinpointEnvProcessor extends PolarisEnvPostProcessor {
 ④ 配置resource/META-INF/spring.factories
 ```
 org.springframework.boot.env.EnvironmentPostProcessor=\
-com.nepxion.polaris.component.pinpoint.context.PinpointEnvProcessor
+com.nepxion.polaris.component.config.etcd.context.EtcdEnvProcessor
 ```
 
-#### 核心模块聚合
-① 在polaris-module目录下找到polaris-module-starter-tracing模块下的pom.xml，把polaris-component-pinpoint-starter加入，进行组件层面聚合。使用者也可以自行按照规范新建一个核心模块组件
+#### 组件聚合
+① 在polaris-component-config-starter目录下的pom.xml，把polaris-component-config-starter-etcd加入，进行组件层面聚合，Polaris自动会将该组件在框架层面聚合
 
-② 在polaris-framework下5个顶级框架层，按需引入polaris-module-starter-tracing进行框架层面聚合
-
-③ 如果该核心模块不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
+② 如果该组件不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
 ## Nepxion-Discovery核心功能
 
