@@ -20,6 +20,5 @@
         <module>polaris-component-config-starter-nacos</module>
         <module>polaris-component-config-starter-nacos-console</module>
         <module>polaris-component-config-starter-nacos-sentinel</module>
-        <module>polaris-component-config-starter-nacos</module>
     </modules>
 </project>
