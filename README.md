@@ -338,52 +338,52 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     </parent>
 
     <dependencies>
-        <!-- 旗标核心模块 -->
+        <!-- 旗标核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-banner</artifactId>
+            <artifactId>polaris-component-banner-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 注册发现核心模块 -->
+        <!-- 注册发现核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-discovery</artifactId>
+            <artifactId>polaris-component-discovery-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 配置核心模块 -->
+        <!-- 配置核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-config</artifactId>
+            <artifactId>polaris-component-config-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 调用链核心模块 -->
+        <!-- 调用链核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-tracing</artifactId>
+            <artifactId>polaris-component-tracing-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 指标核心模块 -->
+        <!-- 指标核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-metrics</artifactId>
+            <artifactId>polaris-component-metrics-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 防护核心模块 -->
+        <!-- 防护核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-protector-service</artifactId>
+            <artifactId>polaris-component-protector-starter-service</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- 灰度蓝绿核心模块 -->
+        <!-- 灰度蓝绿核心组件-->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>polaris-module-starter-gray-service</artifactId>
+            <artifactId>polaris-component-gray-starter-service</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -436,7 +436,7 @@ com.alibaba.polaris
 
     <properties>
         <polaris.version>1.0.0</polaris.version>
-        <discovery.version>6.0.7</discovery.version>
+        <discovery.version>6.1.0</discovery.version>
 
         <!-- Spring Cloud Hoxton compatible versions -->
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
@@ -555,39 +555,39 @@ com.alibaba.polaris
 | <img src="http://nepxion.gitee.io/docs/icon-doc/question_message.png"> 灰度蓝绿核心组件 | Nepxion Discovery |
 
 #### 注册发现组件切换
-在polaris-module目录下，搜索全部pom.xml，关键字
+在polaris-component目录下，搜索全部pom.xml，关键字
 ```
 You can select one of following polaris discovery components, such as Nacos
 ```
-把搜索出来的`2`个pom.xml换成使用者想要的组件
+把搜索出来的若干个pom.xml换成使用者想要的组件
 
 #### 配置组件切换
-在polaris-module目录下，搜索全部pom.xml，关键字
+在polaris-component目录下，搜索全部pom.xml，关键字
 ```
 You can select one of following polaris config components, such as Apollo
 ```
-把搜索出来的`4`个pom.xml换成使用者想要的组件
+把搜索出来的若干个pom.xml换成使用者想要的组件
 
 #### 调用链组件切换
-在polaris-module目录下，搜索全部pom.xml，关键字
+在polaris-component目录下，搜索全部pom.xml，关键字
 ```
 You can select one of following polaris tracing components, such as Skywalking
 ```
-把搜索出来的`1`个pom.xml换成使用者想要的组件
+把搜索出来的若干个pom.xml换成使用者想要的组件
 
 #### 指标组件切换
-在polaris-module目录下，搜索全部pom.xml，关键字
+在polaris-component目录下，搜索全部pom.xml，关键字
 ```
 You can select one of following polaris metrics components, such as Micrometer
 ```
-把搜索出来的`1`个pom.xml换成使用者想要的组件
+把搜索出来的若干个pom.xml换成使用者想要的组件
 
 #### 防护组件切换
-在polaris-module目录下，搜索全部pom.xml，关键字
+在polaris-component目录下，搜索全部pom.xml，关键字
 ```
 You can select one of following polaris protector components, such as Sentinel
 ```
-把搜索出来的`3`个pom.xml换成使用者想要的组件
+把搜索出来的若干个pom.xml换成使用者想要的组件
 
 ### 域名和环境切换
 
