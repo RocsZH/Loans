@@ -45,9 +45,19 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
         }
 
         List<Description> descriptions = new ArrayList<Description>();
-        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_NAME + ":", applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_NAME), 0, 1));
-        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_TYPE + ":", StringUtils.isNotEmpty(applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE)) ? applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE) : PolarisConstant.APPLICATION, 0, 1));
-        descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_UUID + ":", StringUtils.isNotEmpty(applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_UUID)) ? applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_UUID) : PolarisConstant.UNKNOWN, 0, 1));
+
+        String applicationName = applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_NAME);
+        if (StringUtils.isNotEmpty(applicationName)) {
+            descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_NAME + ":", applicationName, 0, 1));
+        }
+        String applicationType = applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_TYPE);
+        if (StringUtils.isNotEmpty(applicationType)) {
+            descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_TYPE + ":", applicationType, 0, 1));
+        }
+        String applicationUUId = applicationContext.getEnvironment().getProperty(PolarisConstant.SPRING_APPLICATION_UUID);
+        if (StringUtils.isNotEmpty(applicationUUId)) {
+            descriptions.add(new Description(PolarisConstant.SPRING_APPLICATION_UUID + ":", applicationUUId, 0, 1));
+        }
         String appId = PolarisEnvProvider.getAppId();
         if (StringUtils.isNotEmpty(appId)) {
             descriptions.add(new Description(PolarisConstant.APP_ID + ":", appId, 0, 1));
@@ -107,6 +117,6 @@ public class BannerApplicationContextInitializer implements ApplicationContextIn
 
     @Override
     public int getOrder() {
-        return Ordered.HIGHEST_PRECEDENCE + 1;
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 }
