@@ -142,11 +142,11 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
         - [调用链组件切换](#调用链组件切换)
         - [指标组件切换](#指标组件切换)
         - [防护组件切换](#防护组件切换)
+    - [注解切换](#注解切换)
+    - [配置切换](#配置切换)
     - [域名和环境切换](#域名和环境切换)
         - [域名和环境解析](#域名和环境解析)
         - [域名和环境设置](#域名和环境设置)
-    - [注解切换](#注解切换)
-    - [配置切换](#配置切换)
 - [使用步骤](#使用步骤)
     - [应用搭建](#应用搭建)
         - [引入Parent](#引入Parent)
@@ -574,6 +574,19 @@ You can select one of following polaris protector components, such as Sentinel
 ```
 把搜索出来的若干个pom.xml换成使用者想要的组件
 
+### 注解切换
+当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下四个注解进行切换
+- `@`EnablePolarisGateway
+- `@`EnablePolarisZuul
+- `@`EnablePolarisService
+- `@`EnablePolarisConsole
+
+### 配置切换
+当防护中心选择Sentinel，并选择Apollo和Nacos做DataSource的时候，例如，当选择Apollo的时候，需要注释掉其它所有的Nacos配置。需要在如下三个组件的sentinel-common.properties配置文件里进行切换配
+- polaris-component-protector-starter-sentinel-gateway
+- polaris-component-protector-starter-sentinel-zuul
+- polaris-component-protector-starter-sentinel-service
+
 ### 域名和环境切换
 
 #### 域名和环境解析
@@ -696,19 +709,6 @@ public class PolarisEnvConstant {
 ![](http://nepxion.gitee.io/docs/icon-doc/warning.png) 特别注意：region占位符前后切记不要出现分隔符
 
 ![](http://nepxion.gitee.io/docs/icon-doc/tip.png) 参考[Polaris环境演示视频](http://nepxion.gitee.io/videos/polaris-video/PolarisEnv.wmv)
-
-### 注解切换
-当配置组件切换到Apollo的时候，需要激活Apollo注解@EnableApolloConfig；非Apollo配置组件需要注释掉该注解，否则无法编译通过。需要在如下四个注解进行切换
-- `@`EnablePolarisGateway
-- `@`EnablePolarisZuul
-- `@`EnablePolarisService
-- `@`EnablePolarisConsole
-
-### 配置切换
-当防护中心选择Sentinel，并选择Apollo和Nacos做DataSource的时候，例如，当选择Apollo的时候，需要注释掉其它所有的Nacos配置。需要在如下三个组件的sentinel-common.properties配置文件里进行切换配
-- polaris-component-sentinel-starter-gateway
-- polaris-component-sentinel-starter-zuul
-- polaris-component-sentinel-starter-service
 
 ## 使用步骤
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 参考[Polaris指南主页](https://github.com/Nepxion/PolarisGuide)的源码
