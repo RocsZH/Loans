@@ -1,4 +1,4 @@
-package com.nepxion.polaris.component.common.util;
+package com.nepxion.polaris.component.common.version;
 
 import java.io.File;
 import java.io.IOException;

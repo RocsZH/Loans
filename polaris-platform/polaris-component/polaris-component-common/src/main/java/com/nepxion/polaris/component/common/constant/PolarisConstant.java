@@ -1,7 +1,7 @@
 package com.nepxion.polaris.component.common.constant;
 
 import com.nepxion.discovery.common.constant.DiscoveryConstant;
-import com.nepxion.polaris.component.common.util.PolarisVersion;
+import com.nepxion.polaris.component.common.version.PolarisVersion;
 
 public class PolarisConstant extends DiscoveryConstant {
     public static final String POLARIS_NAME = "Polaris";
