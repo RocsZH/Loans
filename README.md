@@ -406,7 +406,7 @@ com.alibaba.polaris
 - Polaris Parent定义
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 使用者可以自行对Polaris Parent层和Polaris SDK层中三个中间件的版本号进行升级或者降级，也可以自定义更多的第三方中间件版本
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
