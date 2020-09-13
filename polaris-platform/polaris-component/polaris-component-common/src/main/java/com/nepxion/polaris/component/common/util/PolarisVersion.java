@@ -10,28 +10,46 @@ import java.security.CodeSource;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 
+import org.apache.commons.lang3.StringUtils;
+
+import com.nepxion.polaris.component.common.constant.PolarisConstant;
+
 public class PolarisVersion {
     public static String getNacosVersion() {
-        try {
-            // 高版本Nacos
-            return getNacosVersion("com.alibaba.nacos.common.utils.VersionUtils");
-        } catch (Exception e) {
-            try {
-                // 低版本Nacos
-                return getNacosVersion("com.alibaba.nacos.common.util.VersionUtils");
-            } catch (Exception ex) {
+        // 高版本Nacos
+        String nacosVersion = getNacosVersion("com.alibaba.nacos.common.utils.VersionUtils", "version");
+        if (!StringUtils.equals(nacosVersion, PolarisConstant.UNKNOWN)) {
+            return nacosVersion;
+        }
 
-            }
+        nacosVersion = getNacosVersion("com.alibaba.nacos.common.utils.VersionUtils", "VERSION");
+        if (!StringUtils.equals(nacosVersion, PolarisConstant.UNKNOWN)) {
+            return nacosVersion;
+        }
+
+        // 低版本Nacos
+        nacosVersion = getNacosVersion("com.alibaba.nacos.common.util.VersionUtils", "version");
+        if (!StringUtils.equals(nacosVersion, PolarisConstant.UNKNOWN)) {
+            return nacosVersion;
+        }
+
+        nacosVersion = getNacosVersion("com.alibaba.nacos.common.util.VersionUtils", "VERSION");
+        if (!StringUtils.equals(nacosVersion, PolarisConstant.UNKNOWN)) {
+            return nacosVersion;
         }
 
         return null;
     }
 
-    private static String getNacosVersion(String className) throws Exception {
-        Class<?> clazz = Class.forName(className);
-        Field field = clazz.getField("VERSION");
+    private static String getNacosVersion(String className, String versionName) {
+        try {
+            Class<?> clazz = Class.forName(className);
+            Field field = clazz.getField(versionName);
 
-        return field.get("VERSION").toString();
+            return field.get(versionName).toString();
+        } catch (Exception e) {
+            return PolarisConstant.UNKNOWN;
+        }
     }
 
     public static String getVersion(String className) {
