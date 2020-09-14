@@ -425,7 +425,7 @@ com.alibaba.polaris
 
         <!-- Spring Cloud Hoxton compatible versions -->
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.2.2.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
         <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
         <spring.boot.admin.version>2.3.0</spring.boot.admin.version>
 
