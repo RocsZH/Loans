@@ -1035,7 +1035,7 @@ com.nepxion.polaris.component.config.etcd.context.EtcdEnvProcessor
     - 基于Git插件自动创建灰度版本号
 - 元数据Metadata运维平台策略
 - 同城双活多机房切换。基于区域匹配发布或者路由的同城双活多机房切换
-- 数据库灰度发布。基于多数据源的数据库灰度发布，内置简单的数据库灰度发布策略
+- 数据库和消息队列灰度发布。基于多Datasource的数据库灰度发布，基于多Queue的消息队列灰度发布
 - 灰度路由和发布的自动化测试。主要包括
     - 基于Spring Boot/Spring Cloud自动化测试，包括普通调用测试、灰度调用测试和扩展调用测试
     - 基于WRK的性能压力测试
