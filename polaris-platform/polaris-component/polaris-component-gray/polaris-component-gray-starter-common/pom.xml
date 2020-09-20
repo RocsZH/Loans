@@ -22,10 +22,10 @@
         <!-- You can select one of following polaris discovery components, such as Nacos -->
         <dependency>
             <groupId>com.nepxion</groupId>
-            <artifactId>discovery-plugin-starter-nacos</artifactId>
-            <!-- <artifactId>discovery-plugin-starter-eureka</artifactId> -->
-            <!-- <artifactId>discovery-plugin-starter-consul</artifactId> -->
-            <!-- <artifactId>discovery-plugin-starter-zookeeper</artifactId> -->
+            <artifactId>discovery-plugin-register-center-starter-nacos</artifactId>
+            <!-- <artifactId>discovery-plugin-register-center-starter-eureka</artifactId> -->
+            <!-- <artifactId>discovery-plugin-register-center-starter-consul</artifactId> -->
+            <!-- <artifactId>discovery-plugin-register-center-starter-zookeeper</artifactId> -->
         </dependency>
 
         <!-- You can select one of following polaris config components, such as Apollo -->
