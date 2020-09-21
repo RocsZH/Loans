@@ -1191,7 +1191,7 @@ docker run %RUN_MODE% -e JAVA_OPTS="-Dspring.cloud.nacos.discovery.server-addr=%
 
 ![](http://nepxion.gitee.io/docs/icon-doc/information.png) 上述所有的命令组装成一键启动方式的脚本：install-docker.bat和install-docker.sh，请参考polaris-guide-service-a工程目录下的相应脚本
 
-⑥  Docker运行效果
+⑥ Docker运行效果
 
 - Docker Desktop
 
