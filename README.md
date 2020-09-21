@@ -167,10 +167,11 @@ Polaris【北极星】企业级云原生微服务基础架构脚手架，围绕D
     - [新增组件](#新增组件)
         - [组件创建](#组件创建)
         - [组件聚合](#组件聚合)
-- [Nepxion-Discovery核心功能](#Nepxion-Discovery核心功能)
-    - [核心功能概括](#核心功能概括)
-    - [灰度发布和路由的实现方式](#灰度发布和路由的实现方式)
-    - [灰度发布和路由的订阅格式](#灰度发布和路由的订阅格式)
+- [Nepxion-Discovery简介](#Nepxion-Discovery简介)
+    - [核心功能](#核心功能)
+    - [架构模型](#架构模型)
+    - [订阅推送](#订阅推送)
+    - [监控追踪](#监控追踪)
 - [Spring-Boot-2-3-x新特性](#Spring-Boot-2-3-x新特性)
     - [容器化部署](#容器化部署)
         - [部署Polaris框架包](#部署Polaris框架包)
@@ -972,9 +973,9 @@ com.nepxion.polaris.component.config.etcd.context.EtcdEnvProcessor
 
 ② 如果该组件不希望被绑死在框架层，也可以暴露给业务层，由业务开发自行引入
 
-## Nepxion-Discovery核心功能
+## Nepxion-Discovery简介
 
-### 核心功能概括
+### 核心功能
 - 基于Header传递的全链路灰度路由，网关为路由触发点。采用配置中心配置路由策略映射在网关过滤器中植入Header信息而实现，路由策略传递到全链路服务中。主要包括
     - 匹配路由。包括版本匹配路由、区域匹配路由、IP地址和端口匹配路由
     - 权重路由。包括版本权重路由、区域权重路由
@@ -1041,10 +1042,17 @@ com.nepxion.polaris.component.config.etcd.context.EtcdEnvProcessor
     - 基于WRK的性能压力测试
 - Docker容器化和Kubernetes平台的无缝支持部署
 
-### 灰度发布和路由的实现方式
+### 架构模型
+- 灰度方式区别图
+
 ![](http://nepxion.gitee.io/docs/discovery-doc/Difference.jpg)
 
+- 服务治理架构图
+
 ![](http://nepxion.gitee.io/docs/discovery-doc/Govern.jpg)
+
+- 模块结构图
+![](http://nepxion.gitee.io/docs/discovery-doc/Module.jpg)
 
 ① 基于网关为触点的Header传递的全链路灰度路由，适用于网关前置部署方式的企业。域网关部署模式下，最适用于该方式；非域网关部署模式下，开启并行灰度路由下的版本优选策略
 
@@ -1052,9 +1060,23 @@ com.nepxion.polaris.component.config.etcd.context.EtcdEnvProcessor
 
 ③ 基于全局订阅和Header传递组合式全链路灰度路由，上述两种方式的结合体，是比较理想和节省成本的落地方式
 
-### 灰度发布和路由的订阅格式
+### 订阅推送
+- Apollo订阅推送界面
+
 ![](http://nepxion.gitee.io/docs/discovery-doc/Apollo1.jpg)
+
+- Nacos订阅推送界面
+
 ![](http://nepxion.gitee.io/docs/discovery-doc/Nacos2.jpg)
+
+### 监控追踪
+- Jaeger监控追踪界面
+
+![](http://nepxion.gitee.io/docs/discovery-doc/Jaeger2.jpg)
+
+- Skywalking监控追踪界面
+
+![](http://nepxion.gitee.io/docs/discovery-doc/Skywalking1.jpg)
 
 ## Spring-Boot-2-3-x新特性
 
