@@ -1197,13 +1197,9 @@ docker run %RUN_MODE% -e JAVA_OPTS="-Dspring.cloud.nacos.discovery.server-addr=%
 
 ![](http://nepxion.gitee.io/docs/polaris-doc/DockerDesktop.jpg)
 
-- Docker Windows
+- Docker Windows & Linux
 
-![](http://nepxion.gitee.io/docs/polaris-doc/DockerWindows.jpg)
-
-- Docker Linux
-
-![](http://nepxion.gitee.io/docs/polaris-doc/DockerLinux.jpg)
+<img style="max-width:48.5%" src="http://nepxion.gitee.io/docs/polaris-doc/DockerWindows.jpg"> <img style="max-width:50%" src="http://nepxion.gitee.io/docs/polaris-doc/DockerLinux.jpg">
 
 ⑦ 官方部署Docker文档
 
