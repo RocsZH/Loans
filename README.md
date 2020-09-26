@@ -930,11 +930,11 @@ public class DiscoveryGatewayPlugin extends AbstractPlugin {
 ```
 - 定义SPI扩展，在src/main/resources/META-INF/services目录下定义SPI文件
 
-名称为
+名称为固定如下格式
 ```
 com.nepxion.discovery.plugin.strategy.agent.plugin.Plugin
 ```
-内容为Plugin的类全路径（以DiscoveryGatewayPlugin为例）
+内容为Plugin类的全路径（以DiscoveryGatewayPlugin为例）
 ```
 com.nepxion.discovery.plugin.strategy.agent.plugin.gateway.DiscoveryGatewayPlugin
 ```
@@ -945,6 +945,7 @@ com.nepxion.discovery.plugin.strategy.agent.plugin.gateway.DiscoveryGatewayPlugi
 #### Agent启动参数
 Polaris应用完整启动参数如下
 
+- 服务
 PolarisServiceA（同步服务）:
 ```
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
@@ -960,6 +961,7 @@ PolarisServiceB（同步服务）:
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-b -Dpolaris.skywalking.agent.version=1.0.0
 ```
 
+- 网关
 PolarisZuul（同步网关）:
 ```
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-zuul -Dpolaris.skywalking.agent.version=1.0.0
