@@ -946,6 +946,7 @@ com.nepxion.discovery.plugin.strategy.agent.plugin.gateway.DiscoveryGatewayPlugi
 Polaris应用完整启动参数如下
 
 - 服务
+
 PolarisServiceA（同步服务）:
 ```
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-service-a -Dpolaris.skywalking.agent.version=1.0.0
@@ -962,6 +963,7 @@ PolarisServiceB（同步服务）:
 ```
 
 - 网关
+
 PolarisZuul（同步网关）:
 ```
 -javaagent:C:/opt/apache-skywalking-apm-bin/agent/skywalking-agent.jar -Dskywalking.agent.service_name=polaris-zuul -Dpolaris.skywalking.agent.version=1.0.0
