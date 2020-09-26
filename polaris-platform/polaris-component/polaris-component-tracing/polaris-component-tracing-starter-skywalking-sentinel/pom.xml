@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>com.nepxion</groupId>
-            <artifactId>discovery-plugin-strategy-sentinel-starter-skywalking</artifactId>
+            <artifactId>discovery-plugin-strategy-starter-sentinel-skywalking</artifactId>
         </dependency>
     </dependencies>
 </project>

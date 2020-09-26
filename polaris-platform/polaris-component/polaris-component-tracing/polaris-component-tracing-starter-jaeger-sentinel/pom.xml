@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>com.nepxion</groupId>
-            <artifactId>discovery-plugin-strategy-sentinel-starter-opentracing</artifactId>
+            <artifactId>discovery-plugin-strategy-starter-sentinel-opentracing</artifactId>
         </dependency>
 
         <dependency>
