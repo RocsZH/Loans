@@ -422,7 +422,7 @@ com.alibaba.polaris
 
     <properties>
         <polaris.version>1.0.0</polaris.version>
-        <discovery.version>6.2.0</discovery.version>
+        <discovery.version>6.3.0</discovery.version>
 
         <!-- Spring Cloud Hoxton compatible versions -->
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
