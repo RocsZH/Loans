@@ -855,7 +855,7 @@ public class PolarisApplication {
 灰度路由Header和调用链Span在Hystrix线程池隔离模式下或者线程、线程池、@Async注解等异步调用Feign或者RestTemplate时，通过线程上下文切换会存在丢失Header的问题，通过下述步骤解决，同时适用于网关端和服务端。该方案可以替代Hystrix线程池隔离模式下的解决方案，也适用于其它有相同使用场景的基础框架和业务场景，例如：Dubbo
 
 涵盖所有Java框架的异步场景，解决了如下六个异步场景下丢线程上下文的问题
-- `@`Async异步注解
+- `@`Async
 - Hytrix Thread Pool Isolation
 - Runnable
 - Callable
